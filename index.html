@@ -261,6 +261,20 @@
 
         <div class="p-5 flex flex-col gap-5 flex-1">
 
+          <!-- Selected exam row inside card (hidden until exam chosen) -->
+          <div id="card-exam-row" class="hidden flex items-center justify-between gap-3 rounded-xl px-4 py-2.5" style="background:#f0fdf4;border:1.5px solid #a7f3d0">
+            <div class="flex items-center gap-2 min-w-0">
+              <span style="width:8px;height:8px;background:#10b981;border-radius:50%;display:inline-block;flex-shrink:0"></span>
+              <div class="min-w-0">
+                <div id="card-exam-name" class="font-bold text-slate-700 text-sm truncate"></div>
+                <div id="card-exam-spec" class="text-xs font-mono text-slate-400"></div>
+              </div>
+            </div>
+            <button onclick="changeExamFromCard()" class="text-xs font-semibold px-3 py-1.5 rounded-full flex-shrink-0" style="background:rgba(16,185,129,.15);color:#059669;border:none;cursor:pointer">
+              ✏️ Change
+            </button>
+          </div>
+
           <!-- Doc type -->
           <div>
             <div class="section-header">Document Type</div>
@@ -854,11 +868,15 @@ function selectExam(id, skipURL) {
 
   if (!S.exam) return;
 
-  // Update selected bar
+  // Update selected bar (hero) + card row (configure)
   const sp = S.doc === 'photo' ? S.exam.photo : S.exam.sig;
+  const specText = `${sp.w}×${sp.h}px · ${sp.min}–${sp.max}KB · ${sp.fmt}`;
   document.getElementById('sel-exam-name').textContent = S.exam.name;
-  document.getElementById('sel-exam-spec').textContent = `${sp.w}×${sp.h}px · ${sp.min}–${sp.max}KB · ${sp.fmt}`;
+  document.getElementById('sel-exam-spec').textContent = specText;
   document.getElementById('selected-bar').classList.remove('hidden');
+  document.getElementById('card-exam-name').textContent = S.exam.name;
+  document.getElementById('card-exam-spec').textContent = specText;
+  document.getElementById('card-exam-row').classList.remove('hidden');
 
   // Dynamic SEO update
   const sp2 = S.doc === 'photo' ? S.exam.photo : S.exam.sig;
@@ -884,11 +902,19 @@ function selectExam(id, skipURL) {
 function clearExam() {
   S.exam = null;
   document.getElementById('selected-bar').classList.add('hidden');
+  document.getElementById('card-exam-row').classList.add('hidden');
   document.getElementById('main-panels').classList.add('hidden');
   document.getElementById('hint-select').classList.remove('hidden');
   destroyCropper();
   renderGrid(getCurrentList(), !S.query && S.activeCat === 'All');
   history.replaceState({}, '', window.location.pathname);
+}
+
+// "Change" button inside Configure card — scroll to hero grid & focus search
+function changeExamFromCard() {
+  const heroGrid = document.getElementById('exam-grid-section');
+  heroGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => document.getElementById('exam-search').focus(), 400);
 }
 
 function getCurrentList() {
