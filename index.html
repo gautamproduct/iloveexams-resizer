@@ -696,7 +696,34 @@ const EXAMS = [
 ];
 
 const CATS = ['All', ...new Set(EXAMS.map(e => e.cat))];
-const FEATURED = ['upsc','ssc-cgl','ibps-po','sbi-po','neet-ug','jee-main','rbi-grade-b','ssc-chsl'];
+
+// Top 10 shown on default load
+const FEATURED = [
+  'upsc',        // UPSC CSE — most popular
+  'neet-ug',     // NEET UG
+  'jee-main',    // JEE Main
+  'ssc-cgl',     // SSC CGL
+  'ibps-po',     // IBPS PO
+  'sbi-po',      // SBI PO
+  'rbi-grade-b', // RBI Grade B
+  'ssc-chsl',    // SSC CHSL
+  'rrb-alp',     // Railways ALP
+  'uppsc',       // Most popular State PSC
+];
+
+// Top 6 per category when category filter is active
+const TOP_PER_CAT = {
+  'UPSC':      ['upsc','upsc-nda','upsc-cds','upsc-capf','upsc-ies','upsc-geo'],
+  'SSC':       ['ssc-cgl','ssc-chsl','ssc-gd','ssc-mts','ssc-cpo','ssc-steno'],
+  'Banking':   ['ibps-po','sbi-po','rbi-grade-b','ibps-clerk','sbi-clerk','rbi-assistant'],
+  'Defence':   ['upsc-nda','upsc-cds','afcat','coast-guard'],
+  'Railways':  ['rrb-alp','rpf-si','rpf-constable'],
+  'Entrance':  ['jee-main','neet-ug','gate','cuet','cat','clat'],
+  'Central':   ['ugc-net','post-gds','ib-acio','csir-net'],
+  'State PSC': ['uppsc','bpsc','mpsc','mppsc','tnpsc','rpsc'],
+  'Police':    ['up-police','delhi-police','tnusrb','wbprb','bpssc','rsmssb'],
+  'Judiciary': ['delhi-judicial','bombay-hc','patna-hc','raj-judicial','mah-judicial','gauhati-hc'],
+};
 
 // ────────────────────────────────────────────────────────────────────
 // STATE
@@ -705,7 +732,7 @@ const FEATURED = ['upsc','ssc-cgl','ibps-po','sbi-po','neet-ug','jee-main','rbi-
 const S = {
   exam: null, doc: 'photo', edited: false,
   origURL: null, cropper: null, bgMod: null, flipX: 1,
-  activeCat: 'All', query: '',
+  activeCat: 'All', query: '', showAllCat: false,
 };
 
 // ────────────────────────────────────────────────────────────────────
@@ -714,7 +741,7 @@ const S = {
 
 document.addEventListener('DOMContentLoaded', () => {
   buildCatPills();
-  renderGrid(EXAMS);
+  renderGrid(EXAMS, true);
   readURLParams();
 });
 
@@ -740,6 +767,7 @@ function buildCatPills() {
 
 function setCat(cat) {
   S.activeCat = cat;
+  S.showAllCat = false;
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.toggle('active', b.textContent === cat));
   applyFilter();
 }
@@ -750,6 +778,7 @@ function setCat(cat) {
 
 function filterExams(q) {
   S.query = q.toLowerCase();
+  S.showAllCat = false;
   applyFilter();
 }
 
@@ -758,21 +787,34 @@ function applyFilter() {
   const isDefault = !S.query && S.activeCat === 'All';
   if (S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
   if (S.query)               list = list.filter(e => e.name.toLowerCase().includes(S.query) || e.cat.toLowerCase().includes(S.query));
-  renderGrid(list, isDefault);
+
+  // Category mode (no search): cap to TOP_PER_CAT unless user hit "Show all"
+  const isCatCapped = !S.query && S.activeCat !== 'All' && !S.showAllCat;
+  const topSlugs = isCatCapped ? (TOP_PER_CAT[S.activeCat] || []) : [];
+  const display = isCatCapped && topSlugs.length
+    ? list.filter(e => topSlugs.includes(e.slug))
+    : list;
+
+  renderGrid(display, isDefault, isCatCapped && list.length > display.length ? list.length : 0);
 }
 
-function renderGrid(list, isDefault) {
+function showAllCat() {
+  S.showAllCat = true;
+  applyFilter();
+}
+
+function renderGrid(display, isDefault, hiddenCount) {
   const grid = document.getElementById('exam-grid');
   const none = document.getElementById('no-results');
 
-  // Default view: show only 8 featured exams
-  const display = isDefault ? EXAMS.filter(e => FEATURED.includes(e.slug)) : list;
-  document.getElementById('search-count').textContent = isDefault ? '80 exams' : list.length + ' results';
+  // Default view: show only featured exams
+  const shown = isDefault ? EXAMS.filter(e => FEATURED.includes(e.slug)) : display;
+  document.getElementById('search-count').textContent = isDefault ? '80 exams' : (display.length + (hiddenCount||0)) + ' results';
 
-  if (!display.length) { grid.innerHTML = ''; none.classList.remove('hidden'); return; }
+  if (!shown.length) { grid.innerHTML = ''; none.classList.remove('hidden'); return; }
   none.classList.add('hidden');
 
-  const chips = display.map(e => {
+  const chips = shown.map(e => {
     const sp = e.photo;
     const sel = S.exam?.id === e.id;
     return `<button class="chip${sel?' selected':''}" onclick="selectExam(${e.id})">
@@ -781,11 +823,19 @@ function renderGrid(list, isDefault) {
     </button>`;
   }).join('');
 
-  const hint = isDefault
-    ? `<p style="color:rgba(255,255,255,.35);font-size:12px;margin-top:12px;text-align:center">
+  let hint = '';
+  if (isDefault) {
+    hint = `<p style="color:rgba(255,255,255,.35);font-size:12px;margin-top:12px;text-align:center">
         Search above or pick a category to see all 80 exams
-       </p>`
-    : '';
+       </p>`;
+  } else if (hiddenCount > 0) {
+    const total = shown.length + hiddenCount;
+    hint = `<p style="text-align:center;margin-top:14px">
+        <button onclick="showAllCat()" style="background:none;border:1px solid rgba(16,185,129,.4);color:#10b981;border-radius:20px;padding:6px 18px;cursor:pointer;font-size:13px;">
+          Show all ${total} exams in this category →
+        </button>
+      </p>`;
+  }
 
   grid.innerHTML = chips + hint;
 }
