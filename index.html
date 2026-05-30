@@ -785,8 +785,9 @@ function filterExams(q) {
 function applyFilter() {
   let list = EXAMS;
   const isDefault = !S.query && S.activeCat === 'All';
-  if (S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
-  if (S.query)               list = list.filter(e => e.name.toLowerCase().includes(S.query) || e.cat.toLowerCase().includes(S.query));
+  // Category filter only applies when NOT searching — search always spans all 80 exams
+  if (!S.query && S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
+  if (S.query) list = list.filter(e => e.name.toLowerCase().includes(S.query) || e.cat.toLowerCase().includes(S.query));
 
   // Category mode (no search): cap to TOP_PER_CAT unless user hit "Show all"
   const isCatCapped = !S.query && S.activeCat !== 'All' && !S.showAllCat;
@@ -892,8 +893,8 @@ function clearExam() {
 
 function getCurrentList() {
   let list = EXAMS;
-  if (S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
-  if (S.query)               list = list.filter(e => e.name.toLowerCase().includes(S.query));
+  if (!S.query && S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
+  if (S.query) list = list.filter(e => e.name.toLowerCase().includes(S.query) || e.cat.toLowerCase().includes(S.query));
   return list;
 }
 
