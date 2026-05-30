@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://iloveexams.in/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- UPSC -->
+  <url><loc>https://iloveexams.in/?exam=upsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=upsc&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=upsc-ies&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=upsc-capf&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=upsc-nda&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=upsc-cds&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- SSC -->
+  <url><loc>https://iloveexams.in/?exam=ssc-cgl&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-cgl&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-chsl&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-mts&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-gd&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-cpo&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-steno&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ssc-je&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Banking -->
+  <url><loc>https://iloveexams.in/?exam=sbi-po&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=sbi-po&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=sbi-clerk&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ibps-po&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ibps-po&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ibps-clerk&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ibps-rrb-po&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ibps-so&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rbi-grade-b&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rbi-assistant&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=lic-aao&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=nabard&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=sebi&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=niacl&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Entrance -->
+  <url><loc>https://iloveexams.in/?exam=jee-main&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=jee-main&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=neet-ug&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://iloveexams.in/?exam=neet-ug&amp;document=signature</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=gate&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=cuet&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=clat&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=cat&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://iloveexams.in/?exam=cmat&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Defence -->
+  <url><loc>https://iloveexams.in/?exam=afcat&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=coast-guard&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Railways -->
+  <url><loc>https://iloveexams.in/?exam=rrb-alp&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rpf-si&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rpf-constable&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Central -->
+  <url><loc>https://iloveexams.in/?exam=ib-acio&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=post-gds&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ugc-net&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=csir-net&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- State PSC — top ones -->
+  <url><loc>https://iloveexams.in/?exam=uppsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=bpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=mpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=wbcs&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=mppsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=tnpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=tspsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=kpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=gpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=jpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=cgpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=opsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=hpsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=ppsc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Police -->
+  <url><loc>https://iloveexams.in/?exam=up-police&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=delhi-police&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://iloveexams.in/?exam=tnusrb&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=wbprb&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=bpssc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=rsmssb&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Judiciary -->
+  <url><loc>https://iloveexams.in/?exam=delhi-judicial&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=patna-hc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=bombay-hc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=raj-judicial&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://iloveexams.in/?exam=gauhati-hc&amp;document=photo</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+</urlset>
