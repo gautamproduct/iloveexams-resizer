@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exammints – Free Photo &amp; Signature Resizer for Indian Competitive Exams</title>
-  <meta name="description" content="Instantly resize your photo and signature for UPSC, SSC, SBI, IBPS, NEET, JEE and 80+ Indian exams. 100% private — processed in your browser.">
+  <title>ILoveExams – Free Photo &amp; Signature Resizer for UPSC, SSC, SBI, NEET &amp; 80+ Indian Exams</title>
+  <meta name="description" content="Instantly resize your photo and signature for UPSC, SSC, SBI PO, IBPS, NEET, JEE and 80+ Indian competitive exams. Free, instant, 100% private — all processing happens in your browser. No uploads, no server.">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
@@ -149,8 +149,9 @@
     .result-img { width: 100%; object-fit: contain; background: #f8fafc; border-radius: 12px; border: 1.5px solid #e2e8f0; max-height: 190px; }
 
     /* ── logo text ── */
-    .logo-exam  { color: #fff; font-weight: 900; letter-spacing: -1px; }
-    .logo-mints { color: var(--em); font-weight: 900; letter-spacing: -1px; }
+    .logo-i     { color: #fff; font-weight: 900; letter-spacing: -1px; }
+    .logo-heart { color: #ef4444; font-weight: 900; }
+    .logo-exams { color: #fff; font-weight: 900; letter-spacing: -1px; }
     .logo-in    { color: rgba(255,255,255,.4); font-weight: 500; font-size: 13px; margin-left: 2px; vertical-align: middle; }
   </style>
 </head>
@@ -165,9 +166,9 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
       <div>
         <div class="text-3xl leading-none mb-1">
-          <span class="logo-exam">exam</span><span class="logo-mints">mints</span><span class="logo-in">.in</span>
+          <span class="logo-i">I</span><span class="logo-heart">♥</span><span class="logo-exams">Exams</span><span class="logo-in">.in</span>
         </div>
-        <p class="text-sm" style="color:rgba(255,255,255,.45)">Instant photo &amp; signature resizer · 80+ Indian exams</p>
+        <p class="text-sm" style="color:rgba(255,255,255,.45)">Free photo &amp; signature resizer · 80+ Indian exams</p>
       </div>
       <div class="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)">
         <span style="width:7px;height:7px;background:#10b981;border-radius:50%;display:inline-block"></span>
@@ -426,7 +427,7 @@
 <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
 <footer class="border-t border-slate-200 py-8 mt-4 text-center" style="background:#fff">
   <div class="text-xl font-black mb-1">
-    <span style="color:#0f172a">exam</span><span style="color:var(--em)">mints</span><span class="text-slate-300">.in</span>
+    <span style="color:#0f172a">I</span><span style="color:#ef4444">♥</span><span style="color:#0f172a">Exams</span><span style="color:#cbd5e1">.in</span>
   </div>
   <p class="text-sm text-slate-400">Free photo &amp; signature resizer · 80+ Indian exams · Zero uploads</p>
 </footer>
@@ -523,6 +524,7 @@ const EXAMS = [
 ];
 
 const CATS = ['All', ...new Set(EXAMS.map(e => e.cat))];
+const FEATURED = ['upsc','ssc-cgl','ibps-po','sbi-po','neet-ug','jee-main','rbi-grade-b','ssc-chsl'];
 
 // ────────────────────────────────────────────────────────────────────
 // STATE
@@ -581,27 +583,39 @@ function filterExams(q) {
 
 function applyFilter() {
   let list = EXAMS;
+  const isDefault = !S.query && S.activeCat === 'All';
   if (S.activeCat !== 'All') list = list.filter(e => e.cat === S.activeCat);
   if (S.query)               list = list.filter(e => e.name.toLowerCase().includes(S.query) || e.cat.toLowerCase().includes(S.query));
-  renderGrid(list);
+  renderGrid(list, isDefault);
 }
 
-function renderGrid(list) {
+function renderGrid(list, isDefault) {
   const grid = document.getElementById('exam-grid');
   const none = document.getElementById('no-results');
-  document.getElementById('search-count').textContent = list.length + ' exams';
 
-  if (!list.length) { grid.innerHTML = ''; none.classList.remove('hidden'); return; }
+  // Default view: show only 8 featured exams
+  const display = isDefault ? EXAMS.filter(e => FEATURED.includes(e.slug)) : list;
+  document.getElementById('search-count').textContent = isDefault ? '80 exams' : list.length + ' results';
+
+  if (!display.length) { grid.innerHTML = ''; none.classList.remove('hidden'); return; }
   none.classList.add('hidden');
 
-  grid.innerHTML = list.map(e => {
+  const chips = display.map(e => {
     const sp = e.photo;
     const sel = S.exam?.id === e.id;
     return `<button class="chip${sel?' selected':''}" onclick="selectExam(${e.id})">
       <span class="chip-name">${e.name}</span>
-      <span class="chip-spec">${sp.w}×${sp.h} · ${sp.min}-${sp.max}KB</span>
+      <span class="chip-spec">${sp.w}×${sp.h} · ${sp.min}–${sp.max}KB</span>
     </button>`;
   }).join('');
+
+  const hint = isDefault
+    ? `<p style="color:rgba(255,255,255,.35);font-size:12px;margin-top:12px;text-align:center">
+        Search above or pick a category to see all 80 exams
+       </p>`
+    : '';
+
+  grid.innerHTML = chips + hint;
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -613,7 +627,7 @@ function selectExam(id, skipURL) {
   S.edited = false;
   S.flipX  = 1;
 
-  renderGrid(getCurrentList()); // re-render to mark selected
+  renderGrid(getCurrentList(), !S.query && S.activeCat === 'All'); // re-render to mark selected
 
   if (!S.exam) return;
 
@@ -642,7 +656,7 @@ function clearExam() {
   document.getElementById('main-panels').classList.add('hidden');
   document.getElementById('hint-select').classList.remove('hidden');
   destroyCropper();
-  renderGrid(getCurrentList());
+  renderGrid(getCurrentList(), !S.query && S.activeCat === 'All');
   history.replaceState({}, '', window.location.pathname);
 }
 
