@@ -3,8 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ═══ PRIMARY SEO ═══ -->
   <title>ILoveExams – Free Photo &amp; Signature Resizer for UPSC, SSC, SBI, NEET &amp; 80+ Indian Exams</title>
   <meta name="description" content="Instantly resize your photo and signature for UPSC, SSC, SBI PO, IBPS, NEET, JEE and 80+ Indian competitive exams. Free, instant, 100% private — all processing happens in your browser. No uploads, no server.">
+  <meta name="keywords" content="UPSC photo resize, SSC photo size, SBI PO photo resize, IBPS photo size, NEET photo resize, JEE photo resize, exam photo resizer India, passport photo resize online, competitive exam photo size, signature resize India, government exam photo">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="ILoveExams">
+  <meta name="theme-color" content="#0a0e1a">
+  <link rel="canonical" href="https://iloveexams.in/">
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="ILoveExams">
+  <meta property="og:title"       content="ILoveExams – Free Photo &amp; Signature Resizer for 80+ Indian Exams">
+  <meta property="og:description" content="Resize your photo and signature for UPSC, SSC, SBI, IBPS, NEET, JEE and 80+ Indian exams instantly. 100% free, private, and processed in your browser.">
+  <meta property="og:url"         content="https://iloveexams.in/">
+  <meta property="og:image"       content="https://iloveexams.in/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"      content="en_IN">
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@iloveexams_in">
+  <meta name="twitter:title"       content="ILoveExams – Free Photo &amp; Signature Resizer for Indian Exams">
+  <meta name="twitter:description" content="Resize your exam photo &amp; signature for UPSC, SSC, IBPS, NEET, JEE and 80+ Indian exams. Free, instant, 100% private.">
+  <meta name="twitter:image"       content="https://iloveexams.in/og-image.png">
+
+  <!-- ═══ MOBILE / PWA ═══ -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ILoveExams">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
@@ -636,6 +667,14 @@ function selectExam(id, skipURL) {
   document.getElementById('sel-exam-name').textContent = S.exam.name;
   document.getElementById('sel-exam-spec').textContent = `${sp.w}×${sp.h}px · ${sp.min}–${sp.max}KB · ${sp.fmt}`;
   document.getElementById('selected-bar').classList.remove('hidden');
+
+  // Dynamic SEO update
+  const sp2 = S.doc === 'photo' ? S.exam.photo : S.exam.sig;
+  document.title = `${S.exam.name} Photo Resize – ${sp2.w}×${sp2.h}px ${sp2.min}–${sp2.max}KB | ILoveExams`;
+  document.querySelector('meta[name="description"]').setAttribute('content',
+    `Resize your ${S.exam.name} photo to ${sp2.w}×${sp2.h}px, ${sp2.min}–${sp2.max}KB ${sp2.fmt} format. Free, instant, 100% private. Processed in your browser at ILoveExams.in`);
+  document.querySelector('link[rel="canonical"]').setAttribute('href',
+    `https://iloveexams.in/?exam=${S.exam.slug}&document=${S.doc}`);
 
   // Show panels
   document.getElementById('hint-select').classList.add('hidden');
