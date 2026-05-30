@@ -195,33 +195,41 @@
 
 <body>
 
-<!-- ═══════════════════════════ HERO / HEADER ═══════════════════════════ -->
-<div class="hero">
-  <div class="max-w-5xl mx-auto px-4 pt-8 pb-10">
+<!-- ═══════════════════════════ STICKY NAVBAR ═══════════════════════════ -->
+<nav style="position:sticky;top:0;z-index:100;background:#0a0e1a;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+  <div class="max-w-5xl mx-auto px-4" style="height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px">
 
-    <!-- Logo + tagline -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-      <div>
-        <a href="https://ilovexams.in/" style="text-decoration:none;display:inline-block" aria-label="ILoveExams Home">
-          <div class="text-3xl leading-none mb-1">
-            <span class="logo-i">I</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:inline-block;width:.9em;height:.9em;vertical-align:middle;margin:0 1px 4px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="logo-exams">Exams</span><span class="logo-in">.in</span>
-          </div>
-        </a>
-        <p class="text-sm" style="color:rgba(255,255,255,.45)">Free photo &amp; signature resizer · 80+ Indian exams</p>
-      </div>
-      <div class="flex items-center gap-3 flex-wrap justify-end">
-        <div class="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)">
-          <span style="width:7px;height:7px;background:#10b981;border-radius:50%;display:inline-block"></span>
-          100% Private · Processed in your browser
-        </div>
-        <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:12px;font-weight:700;padding:8px 16px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(239,68,68,.35);transition:all .2s"
-           onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 20px rgba(239,68,68,.5)'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(239,68,68,.35)'">
-          ♥ Donate Us
-        </a>
-      </div>
+    <!-- Logo -->
+    <a href="https://ilovexams.in/" style="text-decoration:none;display:flex;align-items:center;gap:0;flex-shrink:0" aria-label="ILoveExams Home">
+      <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px">I</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width:22px;height:22px;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px">Exams</span>
+      <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,.3);margin-left:2px;align-self:flex-end;margin-bottom:4px">.in</span>
+    </a>
+
+    <!-- Right side -->
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#6ee7b7;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22);padding:5px 11px;border-radius:999px;white-space:nowrap">
+        <span style="width:6px;height:6px;background:#10b981;border-radius:50%;display:inline-block;flex-shrink:0"></span>
+        100% Private
+      </span>
+      <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:12px;font-weight:700;padding:7px 15px;border-radius:999px;text-decoration:none;box-shadow:0 4px 12px rgba(239,68,68,.35);transition:all .2s;white-space:nowrap"
+         onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 18px rgba(239,68,68,.5)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 12px rgba(239,68,68,.35)'">
+        ♥ Donate Us
+      </a>
     </div>
+
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO / SEARCH ═══════════════════════════ -->
+<div class="hero">
+  <div class="max-w-5xl mx-auto px-4 pt-7 pb-10">
+
+    <!-- Tagline -->
+    <p class="text-sm mb-6" style="color:rgba(255,255,255,.4)">Free photo &amp; signature resizer · 80+ Indian exams · Processed in your browser</p>
 
     <!-- Search bar -->
     <div id="search-section">
