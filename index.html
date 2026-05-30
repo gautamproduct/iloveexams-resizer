@@ -10,15 +10,15 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="ILoveExams">
   <meta name="theme-color" content="#0a0e1a">
-  <link rel="canonical" href="https://iloveexams.in/">
+  <link rel="canonical" href="https://ilovexams.in/">
 
   <!-- ═══ OPEN GRAPH ═══ -->
   <meta property="og:type"        content="website">
   <meta property="og:site_name"   content="ILoveExams">
   <meta property="og:title"       content="ILoveExams – Free Photo &amp; Signature Resizer for 80+ Indian Exams">
   <meta property="og:description" content="Resize your photo and signature for UPSC, SSC, SBI, IBPS, NEET, JEE and 80+ Indian exams instantly. 100% free, private, and processed in your browser.">
-  <meta property="og:url"         content="https://iloveexams.in/">
-  <meta property="og:image"       content="https://iloveexams.in/og-image.png">
+  <meta property="og:url"         content="https://ilovexams.in/">
+  <meta property="og:image"       content="https://ilovexams.in/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale"      content="en_IN">
@@ -28,7 +28,7 @@
   <meta name="twitter:site"        content="@iloveexams_in">
   <meta name="twitter:title"       content="ILoveExams – Free Photo &amp; Signature Resizer for Indian Exams">
   <meta name="twitter:description" content="Resize your exam photo &amp; signature for UPSC, SSC, IBPS, NEET, JEE and 80+ Indian exams. Free, instant, 100% private.">
-  <meta name="twitter:image"       content="https://iloveexams.in/og-image.png">
+  <meta name="twitter:image"       content="https://ilovexams.in/og-image.png">
 
   <!-- ═══ MOBILE / PWA ═══ -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -471,7 +471,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "ILoveExams Photo Resizer",
-  "url": "https://iloveexams.in",
+  "url": "https://ilovexams.in",
   "description": "Free online photo and signature resizer for 80+ Indian competitive exams including UPSC, SSC, SBI, IBPS, NEET and JEE. All processing is done locally in the browser.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Any",
@@ -494,7 +494,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "ILoveExams",
-    "url": "https://iloveexams.in"
+    "url": "https://ilovexams.in"
   }
 }
 </script>
@@ -504,8 +504,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "ILoveExams",
-  "url": "https://iloveexams.in",
-  "logo": "https://iloveexams.in/logo.png",
+  "url": "https://ilovexams.in",
+  "logo": "https://ilovexams.in/logo.png",
   "description": "ILoveExams provides free tools for Indian competitive exam aspirants, including instant photo and signature resizers for UPSC, SSC, Banking, Railway, Defence and State PSC exams.",
   "sameAs": []
 }
@@ -593,13 +593,13 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://iloveexams.in/"
+      "item": "https://ilovexams.in/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Photo Resizer",
-      "item": "https://iloveexams.in/"
+      "item": "https://ilovexams.in/"
     }
   ]
 }
@@ -815,7 +815,7 @@ function selectExam(id, skipURL) {
   document.querySelector('meta[name="description"]').setAttribute('content',
     `Resize your ${S.exam.name} photo to ${sp2.w}×${sp2.h}px, ${sp2.min}–${sp2.max}KB ${sp2.fmt} format. Free, instant, 100% private. Processed in your browser at ILoveExams.in`);
   document.querySelector('link[rel="canonical"]').setAttribute('href',
-    `https://iloveexams.in/?exam=${S.exam.slug}&document=${S.doc}`);
+    `https://ilovexams.in/?exam=${S.exam.slug}&document=${S.doc}`);
 
   // Show panels
   document.getElementById('hint-select').classList.add('hidden');
@@ -1048,7 +1048,7 @@ async function processImage() {
 
   const dl = document.getElementById('dl-link');
   dl.href     = url;
-  dl.download = `exammints_${S.exam?.slug||'photo'}.${ext}`;
+  dl.download = `iloveexams_${S.exam?.slug||'photo'}.${ext}`;
   showRight('result');
 }
 
