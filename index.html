@@ -763,6 +763,13 @@ document.addEventListener('DOMContentLoaded', () => {
   buildCatPills();
   renderGrid(EXAMS, true);
   readURLParams();
+  // If no exam came from URL, pre-select a random popular exam so the
+  // page is immediately useful rather than showing a blank hint
+  if (!S.exam) {
+    const slug = FEATURED[Math.floor(Math.random() * FEATURED.length)];
+    const exam = EXAMS.find(e => e.slug === slug);
+    if (exam) selectExam(exam.id, true); // skipURL=true — don't pollute the address bar
+  }
 });
 
 function readURLParams() {
