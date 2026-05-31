@@ -568,7 +568,7 @@
 </div>
 
 <!-- ═══════════════════════════ SEO: SPECS REFERENCE ═══════════════════════════ -->
-<section style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:48px 0 40px">
+<section id="seo-specs" style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:48px 0 40px">
   <div class="max-w-5xl mx-auto px-4">
     <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px">Exam Photo &amp; Signature Size Chart</h2>
     <p style="color:#64748b;font-size:14px;margin-bottom:28px">Official specifications for major Indian competitive exams — resize instantly by clicking any exam.</p>
@@ -618,7 +618,7 @@
 <footer style="background:#0a0e1a;color:rgba(255,255,255,.55);margin-top:32px">
 
   <!-- Exam links grid -->
-  <div class="max-w-5xl mx-auto px-4 py-12">
+  <div id="footer-exam-links" class="max-w-5xl mx-auto px-4 py-12">
     <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:28px">
       Resize photos &amp; signatures for 80+ Indian exams
     </p>
@@ -1284,6 +1284,8 @@ function applyPreset(p) {
   hide('exam-grid-section');  // the 80-exam grid
   hide('selected-bar');       // "Change exam" bar
   hide('card-exam-row');      // "Change" row inside the Configure card
+  hide('seo-specs');          // exam specs table (not relevant for KB/dimension tools)
+  hide('footer-exam-links');  // 80-exam footer link grid
 
   // Turn the hero into a clean tool header
   const h1 = document.querySelector('.hero h1');
