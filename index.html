@@ -4,14 +4,336 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0226qH4u04EiETLZppAKo_b77dJGdbbTM64xQ4egLjU" />
-  <title>I♥Exams – Free Photo &amp; Signature Resizer for Indian Exams</title>
-  <meta name="description" content="Free online photo and signature resizer for UPSC, SSC, SBI PO, IBPS, NEET, JEE and 80+ Indian competitive exams. Resize instantly in browser, no upload.">
-  <link rel="canonical" href="https://ilovexams.in/resizer/">
-  <meta http-equiv="refresh" content="0; url=/resizer/">
+
+  <!-- ═══ PERFORMANCE ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+  <!-- ═══ GEO ═══ -->
+  <meta name="geo.region" content="IN">
+  <meta name="geo.placename" content="India">
+  <meta name="DC.language" content="en-IN">
+
+  <!-- ═══ FAVICON ═══ -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script>window.location.replace('/resizer/');</script>
+  <link rel="shortcut icon" href="/favicon.svg">
+
+  <!-- ═══ PRIMARY SEO ═══ -->
+  <title>I♥Exams – Free Image, Photo &amp; Signature Resizer for Indian Exams &amp; ID Cards</title>
+  <meta name="description" content="Every image resize tool you need in one place. Resize photo &amp; signature for UPSC, SSC, NEET, SBI &amp; 80+ exams, resize image to 10/20/100/150 KB, custom size, cm/inch/mm, Voter ID &amp; Aadhaar card. 100% free &amp; private — no upload.">
+  <meta name="keywords" content="image resizer, resize image to 20kb, resize image to 50kb, photo resizer for exam, signature resizer, voter id photo resize, aadhaar card resize, resize image in cm, resize photo custom size, compress image online India">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="ILoveExams">
+  <meta name="theme-color" content="#0a0e1a">
+  <link rel="canonical" href="https://ilovexams.in/">
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="ILoveExams">
+  <meta property="og:title"       content="I♥Exams – Free Image, Photo &amp; Signature Resizer for Indian Exams">
+  <meta property="og:description" content="Every image resize tool in one place — exam photo/signature, resize to KB, custom size, cm/inch/mm, Voter ID &amp; Aadhaar. 100% free &amp; private.">
+  <meta property="og:url"         content="https://ilovexams.in/">
+  <meta property="og:image"       content="https://ilovexams.in/og-image.png">
+  <meta property="og:locale"      content="en_IN">
+
+  <!-- ═══ TWITTER ═══ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="I♥Exams – Free Image Resizer for Indian Exams &amp; ID Cards">
+  <meta name="twitter:description" content="Resize photo, signature, ID cards &amp; any image to exact KB / size. Free, instant, 100% private.">
+  <meta name="twitter:image"       content="https://ilovexams.in/og-image.png">
+
+  <!-- ═══ ADSENSE ═══ -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9837613085159910" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f1f5f9; margin: 0; }
+    .hero { background: linear-gradient(135deg, #0a0e1a 0%, #0d1629 60%, #0a1828 100%); }
+
+    .cat-pill {
+      padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 700;
+      cursor: pointer; border: 1.5px solid #e2e8f0; background: #fff;
+      color: #475569; transition: all .15s ease; white-space: nowrap;
+    }
+    .cat-pill:hover { border-color: #3b82f6; color: #3b82f6; }
+    .cat-pill.active { background: #0f172a; border-color: #0f172a; color: #fff; }
+
+    .tool-card {
+      display: flex; flex-direction: column; align-items: flex-start;
+      background: #fff; border: 1px solid #e9eef5; border-radius: 16px;
+      padding: 26px 24px; text-decoration: none; height: 100%;
+      transition: all .18s ease; box-shadow: 0 1px 2px rgba(15,23,42,.04);
+    }
+    .tool-card:hover { border-color: #cbd5e1; box-shadow: 0 12px 28px rgba(15,23,42,.10); transform: translateY(-3px); }
+    .tool-ico {
+      width: 52px; height: 52px; border-radius: 13px; display: flex;
+      align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px;
+    }
+    .tool-title { font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 7px; }
+    .tool-desc  { font-size: 13.5px; line-height: 1.55; color: #64748b; margin: 0; }
+    .tool-badge { margin-top:auto; }
+  </style>
+
+  <!-- ═══ STRUCTURED DATA ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ILoveExams",
+    "url": "https://ilovexams.in/",
+    "description": "Free online image, photo and signature resizing tools for Indian competitive exams and ID cards.",
+    "inLanguage": "en-IN",
+    "publisher": { "@type": "Organization", "name": "ILoveExams", "url": "https://ilovexams.in/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "ILoveExams Image Resize Tools",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Exam Photo Resizer","url":"https://ilovexams.in/resizer/?document=photo"},
+      {"@type":"ListItem","position":2,"name":"Exam Signature Resizer","url":"https://ilovexams.in/resizer/?document=signature"},
+      {"@type":"ListItem","position":3,"name":"Voter ID Photo Resize","url":"https://ilovexams.in/voter-id-photo-resize/"},
+      {"@type":"ListItem","position":4,"name":"Resize Image to 20 KB","url":"https://ilovexams.in/resize-image-to-20kb/"},
+      {"@type":"ListItem","position":5,"name":"Resize Image to 10 KB","url":"https://ilovexams.in/resize-image-to-10kb/"},
+      {"@type":"ListItem","position":6,"name":"Resize Image to 100 KB","url":"https://ilovexams.in/resize-image-to-100kb/"},
+      {"@type":"ListItem","position":7,"name":"Resize Image to 150 KB","url":"https://ilovexams.in/resize-image-to-150kb/"},
+      {"@type":"ListItem","position":8,"name":"Resize Photo Custom Size","url":"https://ilovexams.in/resize-image-custom-size/"},
+      {"@type":"ListItem","position":9,"name":"Resize Image in cm / inch / mm","url":"https://ilovexams.in/resize-image-cm-inch-mm/"},
+      {"@type":"ListItem","position":10,"name":"Aadhaar Card Resize cm/inch/mm","url":"https://ilovexams.in/aadhaar-card-resize-cm-inch-mm/"},
+      {"@type":"ListItem","position":11,"name":"Voter ID Card Resize cm/inch/mm","url":"https://ilovexams.in/voter-id-card-resize-cm-inch-mm/"}
+    ]
+  }
+  </script>
 </head>
+
 <body>
-  <p>Redirecting to <a href="/resizer/">ilovexams.in/resizer/</a>…</p>
+
+<!-- ═══ STICKY NAVBAR ═══ -->
+<nav style="position:sticky;top:0;z-index:100;background:#0a0e1a;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+  <div class="max-w-6xl mx-auto px-4" style="height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="https://ilovexams.in/" style="text-decoration:none;display:flex;align-items:center;gap:0;flex-shrink:0" aria-label="ILoveExams Home">
+      <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px">I</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width:22px;height:22px;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px">Exams</span>
+      <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,.3);margin-left:2px;align-self:flex-end;margin-bottom:4px">.in</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.22);padding:5px 11px;border-radius:999px;white-space:nowrap">
+        <span style="width:6px;height:6px;background:#3b82f6;border-radius:50%;display:inline-block;flex-shrink:0"></span>
+        100% Private
+      </span>
+      <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:12px;font-weight:700;padding:7px 15px;border-radius:999px;text-decoration:none;box-shadow:0 4px 12px rgba(239,68,68,.35);white-space:nowrap">
+        ♥ Donate Us
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="max-w-4xl mx-auto px-4" style="padding-top:54px;padding-bottom:48px;text-align:center">
+    <h1 style="font-size:clamp(28px,5vw,46px);font-weight:900;color:#fff;margin:0 0 16px;line-height:1.12;letter-spacing:-1px">
+      Every image resize tool you need<br>for Indian exams &amp; ID forms
+    </h1>
+    <p style="font-size:clamp(15px,2.4vw,18px);color:rgba(255,255,255,.6);margin:0 auto;max-width:640px;line-height:1.55">
+      Resize photo &amp; signature for 80+ exams, compress to an exact KB, set a custom size, or work in cm / inch / mm.
+      <strong style="color:#fff">100% free, instant &amp; private</strong> — nothing ever leaves your device.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ CATEGORY PILLS ═══ -->
+<div class="max-w-6xl mx-auto px-4" style="margin-top:-22px;position:relative;z-index:10">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <button class="cat-pill active" data-cat="all" onclick="filterCat('all',this)">All Tools</button>
+    <button class="cat-pill" data-cat="exam" onclick="filterCat('exam',this)">Exam Tools</button>
+    <button class="cat-pill" data-cat="id" onclick="filterCat('id',this)">ID Card</button>
+    <button class="cat-pill" data-cat="kb" onclick="filterCat('kb',this)">By File Size</button>
+    <button class="cat-pill" data-cat="dim" onclick="filterCat('dim',this)">By Dimension</button>
+  </div>
+</div>
+
+<!-- ═══ TOOL GRID ═══ -->
+<main class="max-w-6xl mx-auto px-4" style="padding:34px 16px 56px">
+  <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px">
+
+    <!-- Exam Photo -->
+    <a class="tool-card" data-cat="exam" href="/resizer/?document=photo">
+      <div class="tool-ico" style="background:#dbeafe;color:#2563eb">📷</div>
+      <h2 class="tool-title">Exam Photo Resizer</h2>
+      <p class="tool-desc">Resize your photo to the exact pixels &amp; KB required for UPSC, SSC, NEET, SBI &amp; 80+ Indian exams.</p>
+    </a>
+
+    <!-- Exam Signature -->
+    <a class="tool-card" data-cat="exam" href="/resizer/?document=signature">
+      <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">✍️</div>
+      <h2 class="tool-title">Exam Signature Resizer</h2>
+      <p class="tool-desc">Resize your signature to exact dimensions &amp; file size for any Indian competitive exam form.</p>
+    </a>
+
+    <!-- Voter ID Photo -->
+    <a class="tool-card" data-cat="id" href="/voter-id-photo-resize/">
+      <div class="tool-ico" style="background:#ccfbf1;color:#0d9488">🪪</div>
+      <h2 class="tool-title">Voter ID Photo Resize</h2>
+      <p class="tool-desc">Resize your photo to the size accepted for Voter ID / EPIC card online applications.</p>
+    </a>
+
+    <!-- Aadhaar cm/inch/mm -->
+    <a class="tool-card" data-cat="id dim" href="/aadhaar-card-resize-cm-inch-mm/">
+      <div class="tool-ico" style="background:#dcfce7;color:#16a34a">🆔</div>
+      <h2 class="tool-title">Aadhaar Card Resize</h2>
+      <p class="tool-desc">Resize an Aadhaar card image in centimetres, inches or millimetres at print-ready DPI.</p>
+    </a>
+
+    <!-- Voter ID Card cm/inch/mm -->
+    <a class="tool-card" data-cat="id dim" href="/voter-id-card-resize-cm-inch-mm/">
+      <div class="tool-ico" style="background:#cffafe;color:#0891b2">📇</div>
+      <h2 class="tool-title">Voter ID Card Resize</h2>
+      <p class="tool-desc">Resize a Voter ID card image by cm, inch or mm — perfect for printing &amp; documents.</p>
+    </a>
+
+    <!-- Resize to 10 KB -->
+    <a class="tool-card" data-cat="kb" href="/resize-image-to-10kb/">
+      <div class="tool-ico" style="background:#fee2e2;color:#dc2626">💾</div>
+      <h2 class="tool-title">Resize Image to 10 KB</h2>
+      <p class="tool-desc">Compress any photo down to 10 KB while keeping it as sharp as possible.</p>
+    </a>
+
+    <!-- Resize to 20 KB -->
+    <a class="tool-card" data-cat="kb" href="/resize-image-to-20kb/">
+      <div class="tool-ico" style="background:#ffedd5;color:#ea580c">💾</div>
+      <h2 class="tool-title">Resize Image to 20 KB</h2>
+      <p class="tool-desc">Shrink your image to exactly 20 KB — a common limit for online exam &amp; ID forms.</p>
+    </a>
+
+    <!-- Resize to 100 KB -->
+    <a class="tool-card" data-cat="kb" href="/resize-image-to-100kb/">
+      <div class="tool-ico" style="background:#fef3c7;color:#d97706">💾</div>
+      <h2 class="tool-title">Resize Image to 100 KB</h2>
+      <p class="tool-desc">Reduce any image file size to 100 KB in one click without losing clarity.</p>
+    </a>
+
+    <!-- Resize to 150 KB -->
+    <a class="tool-card" data-cat="kb" href="/resize-image-to-150kb/">
+      <div class="tool-ico" style="background:#fef9c3;color:#ca8a04">💾</div>
+      <h2 class="tool-title">Resize Image to 150 KB</h2>
+      <p class="tool-desc">Compress your photo to 150 KB while preserving crisp, upload-ready quality.</p>
+    </a>
+
+    <!-- Custom Size -->
+    <a class="tool-card" data-cat="dim" href="/resize-image-custom-size/">
+      <div class="tool-ico" style="background:#f3e8ff;color:#9333ea">📐</div>
+      <h2 class="tool-title">Resize to Custom Size</h2>
+      <p class="tool-desc">Enter any width × height and target file size — full manual control over your image.</p>
+    </a>
+
+    <!-- cm/inch/mm -->
+    <a class="tool-card" data-cat="dim" href="/resize-image-cm-inch-mm/">
+      <div class="tool-ico" style="background:#fce7f3;color:#db2777">📏</div>
+      <h2 class="tool-title">Resize in cm / inch / mm</h2>
+      <p class="tool-desc">Resize an image by centimetres, inches or millimetres at your chosen DPI.</p>
+    </a>
+
+  </div>
+
+  <!-- empty state -->
+  <p id="empty" style="display:none;text-align:center;color:#94a3b8;font-size:14px;padding:40px 0">No tools in this category yet.</p>
+</main>
+
+<!-- ═══ TRUST STRIP ═══ -->
+<section style="background:#fff;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">
+  <div class="max-w-5xl mx-auto px-4" style="padding:36px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">
+    <div>
+      <div style="font-size:24px;margin-bottom:6px">🔒</div>
+      <div style="font-size:15px;font-weight:800;color:#0f172a">100% Private</div>
+      <p style="font-size:12.5px;color:#64748b;margin:4px 0 0">Images are processed in your browser. Nothing is uploaded to any server.</p>
+    </div>
+    <div>
+      <div style="font-size:24px;margin-bottom:6px">⚡</div>
+      <div style="font-size:15px;font-weight:800;color:#0f172a">Instant &amp; Free</div>
+      <p style="font-size:12.5px;color:#64748b;margin:4px 0 0">No sign-up, no watermark, no limits. Resize as many images as you want.</p>
+    </div>
+    <div>
+      <div style="font-size:24px;margin-bottom:6px">📱</div>
+      <div style="font-size:15px;font-weight:800;color:#0f172a">Works on Mobile</div>
+      <p style="font-size:12.5px;color:#64748b;margin:4px 0 0">Use it on any Android or iPhone browser — no app to install.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:#0a0e1a;color:rgba(255,255,255,.55)">
+  <div class="max-w-6xl mx-auto px-4" style="padding:40px 16px 22px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:28px 20px">
+      <div>
+        <h3 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3b82f6;margin-bottom:10px">Exam Tools</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+          <li><a href="/resizer/?document=photo" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Photo Resizer</a></li>
+          <li><a href="/resizer/?document=signature" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Signature Resizer</a></li>
+          <li><a href="/resizer/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">All 80+ Exams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3b82f6;margin-bottom:10px">ID Cards</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+          <li><a href="/voter-id-photo-resize/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Voter ID Photo Resize</a></li>
+          <li><a href="/voter-id-card-resize-cm-inch-mm/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Voter ID Card (cm/inch/mm)</a></li>
+          <li><a href="/aadhaar-card-resize-cm-inch-mm/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Aadhaar Card (cm/inch/mm)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3b82f6;margin-bottom:10px">By File Size</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+          <li><a href="/resize-image-to-10kb/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize Image to 10 KB</a></li>
+          <li><a href="/resize-image-to-20kb/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize Image to 20 KB</a></li>
+          <li><a href="/resize-image-to-100kb/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize Image to 100 KB</a></li>
+          <li><a href="/resize-image-to-150kb/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize Image to 150 KB</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3b82f6;margin-bottom:10px">By Dimension</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+          <li><a href="/resize-image-custom-size/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize to Custom Size</a></li>
+          <li><a href="/resize-image-cm-inch-mm/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Resize in cm / inch / mm</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.07);padding:20px 16px;text-align:center">
+    <div style="font-size:16px;font-weight:900;margin-bottom:6px">
+      <span style="color:#fff">I</span><span style="color:#ef4444">♥</span><span style="color:#fff">Exams</span><span style="color:rgba(255,255,255,.25)">.in</span>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,.25);margin:0">
+      Free image, photo &amp; signature resizer for Indian competitive exams &amp; ID cards · 100% private · No uploads · No server
+    </p>
+    <p style="font-size:11px;color:rgba(255,255,255,.18);margin:8px 0 0">
+      © 2026 ILoveExams.in ·
+      <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="color:rgba(239,68,68,.6);text-decoration:none;font-weight:600">♥ Donate &amp; support this free tool</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  function filterCat(cat, btn) {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    let shown = 0;
+    document.querySelectorAll('.tool-card').forEach(card => {
+      const cats = (card.dataset.cat || '').split(' ');
+      const show = cat === 'all' || cats.includes(cat);
+      card.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    document.getElementById('empty').style.display = shown ? 'none' : 'block';
+  }
+</script>
+
 </body>
 </html>
