@@ -123,8 +123,22 @@
       <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px">Exams</span>
       <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,.3);margin-left:2px;align-self:flex-end;margin-bottom:4px">.in</span>
     </a>
+    <div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
+      <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="#tools-grid" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
+      <div class="relative group" style="padding:20px 0">
+        <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
+        <div class="hidden group-hover:block" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:248px;z-index:60">
+          <a href="/#id" onclick="filterCat('id')" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">🪪 ID Card — Voter, Aadhaar, PAN</a>
+          <a href="/#kb" onclick="filterCat('kb')" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">💾 By File Size — 10–500&nbsp;KB</a>
+          <a href="/#dim" onclick="filterCat('dim')" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">📐 By Dimension — cm, inch, custom</a>
+          <div style="height:1px;background:#e2e8f0;margin:6px 8px"></div>
+          <a href="#tools-grid" onclick="filterCat('all')" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#2563eb;font-size:13px;font-weight:700;white-space:nowrap">View all tools →</a>
+        </div>
+      </div>
+    </div>
     <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.22);padding:5px 11px;border-radius:999px;white-space:nowrap">
+      <span class="hidden sm:flex" style="align-items:center;gap:6px;font-size:11px;font-weight:600;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.22);padding:5px 11px;border-radius:999px;white-space:nowrap">
         <span style="width:6px;height:6px;background:#3b82f6;border-radius:50%;display:inline-block;flex-shrink:0"></span>
         100% Private
       </span>
@@ -150,7 +164,7 @@
 </div>
 
 <!-- ═══ CATEGORY PILLS ═══ -->
-<div class="max-w-6xl mx-auto px-4" style="margin-top:-22px;position:relative;z-index:10">
+<div id="tools-grid" class="max-w-6xl mx-auto px-4" style="margin-top:-22px;position:relative;z-index:10;scroll-margin-top:70px">
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
     <button class="cat-pill active" data-cat="all" onclick="filterCat('all',this)">All Tools</button>
     <button class="cat-pill" data-cat="exam" onclick="filterCat('exam',this)">Exam Tools</button>
@@ -315,6 +329,8 @@
     </p>
     <p style="font-size:11px;color:rgba(255,255,255,.18);margin:8px 0 0">
       © 2026 ILoveExams.in ·
+      <a href="/privacy/" style="color:rgba(255,255,255,.4);text-decoration:none">Privacy</a> ·
+      <a href="/terms/" style="color:rgba(255,255,255,.4);text-decoration:none">Terms</a> ·
       <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="color:rgba(239,68,68,.6);text-decoration:none;font-weight:600">♥ Donate &amp; support this free tool</a>
     </p>
   </div>
@@ -323,7 +339,9 @@
 <script>
   function filterCat(cat, btn) {
     document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
+    // If no button passed (e.g. called from nav dropdown), find the matching pill
+    const activePill = btn || document.querySelector('.cat-pill[data-cat="' + cat + '"]');
+    if (activePill) activePill.classList.add('active');
     let shown = 0;
     document.querySelectorAll('.tool-card').forEach(card => {
       const cats = (card.dataset.cat || '').split(' ');
@@ -333,6 +351,18 @@
     });
     document.getElementById('empty').style.display = shown ? 'none' : 'block';
   }
+
+  // Activate filter from URL hash (#id / #kb / #dim) — used by nav dropdown links
+  function applyHashFilter() {
+    const h = (location.hash || '').replace('#', '');
+    if (['exam', 'id', 'kb', 'dim'].includes(h)) {
+      filterCat(h);
+      const grid = document.getElementById('tools-grid');
+      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  window.addEventListener('hashchange', applyHashFilter);
+  applyHashFilter();
 </script>
 
 </body>

@@ -1,0 +1,184 @@
+#!/usr/bin/env node
+/**
+ * Generates /privacy/ and /terms/ static pages with the same nav/footer as the
+ * rest of the site. Run: node generate-legal.js
+ */
+const fs = require('fs');
+const path = require('path');
+
+const SVG_HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:inline-block;width:.9em;height:.9em;vertical-align:middle;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const DD_LINK = 'display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap';
+const NAV_LINKS = `<div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
+      <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
+      <div class="relative group" style="padding:20px 0">
+        <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
+        <div class="hidden group-hover:block" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:248px;z-index:60">
+          <a href="/#id" style="${DD_LINK}">🪪 ID Card — Voter, Aadhaar, PAN</a>
+          <a href="/#kb" style="${DD_LINK}">💾 By File Size — 10–500&nbsp;KB</a>
+          <a href="/#dim" style="${DD_LINK}">📐 By Dimension — cm, inch, custom</a>
+          <div style="height:1px;background:#e2e8f0;margin:6px 8px"></div>
+          <a href="/" style="${DD_LINK};color:#2563eb;font-weight:700">View all tools →</a>
+        </div>
+      </div>
+    </div>`;
+
+const NAV = `<nav class="hero-nav">
+  <div class="hero-nav-inner">
+    <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:0;flex-shrink:0">
+      <span style="font-size:22px;font-weight:900;color:#fff">I</span>${SVG_HEART}<span style="font-size:22px;font-weight:900;color:#fff">Exams</span><span style="font-size:12px;color:rgba(255,255,255,.3);font-weight:500;margin-left:2px">.in</span>
+    </a>
+    ${NAV_LINKS}
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <span class="hidden sm:inline-flex" style="font-size:11px;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);padding:4px 10px;border-radius:999px;white-space:nowrap">● 100% Private</span>
+      <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap">♥ Donate</a>
+    </div>
+  </div>
+</nav>`;
+
+const FOOTER = `<footer style="background:#0a0e1a;color:rgba(255,255,255,.5);margin-top:40px;padding:28px 16px;text-align:center">
+  <a href="/" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0;margin-bottom:8px">
+    <span style="font-size:20px;font-weight:900;color:#fff">I</span>${SVG_HEART}<span style="font-size:20px;font-weight:900;color:#fff">Exams</span><span style="font-size:12px;color:rgba(255,255,255,.25);font-weight:500;margin-left:2px">.in</span>
+  </a>
+  <p style="font-size:12px;margin:0 0 8px">Free image, photo &amp; signature resizer for Indian exams &amp; ID cards</p>
+  <p style="font-size:11px;margin:0;color:rgba(255,255,255,.4)">
+    <a href="/" style="color:rgba(255,255,255,.5);text-decoration:none">Home</a> ·
+    <a href="/resizer/" style="color:rgba(255,255,255,.5);text-decoration:none">Exam Resizer</a> ·
+    <a href="/privacy/" style="color:rgba(255,255,255,.5);text-decoration:none">Privacy</a> ·
+    <a href="/terms/" style="color:rgba(255,255,255,.5);text-decoration:none">Terms</a> ·
+    <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="color:rgba(239,68,68,.6);text-decoration:none">♥ Donate</a>
+  </p>
+</footer>`;
+
+function page({ slug, title, desc, h1, updated, bodyHTML }) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9837613085159910" crossorigin="anonymous"></script>
+  <title>${title}</title>
+  <meta name="description" content="${desc}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ilovexams.in/${slug}/">
+  <meta name="theme-color" content="#0a0e1a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ILoveExams">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${desc}">
+  <meta property="og:url" content="https://ilovexams.in/${slug}/">
+  <meta property="og:image" content="https://ilovexams.in/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',-apple-system,sans-serif; background:#f8fafc; color:#0f172a; }
+    .hero-nav { background:#0a0e1a; border-bottom:1px solid rgba(255,255,255,.08); position:sticky; top:0; z-index:50; }
+    .hero-nav-inner { max-width:900px; margin:0 auto; padding:0 16px; height:56px; display:flex; align-items:center; justify-content:space-between; }
+    .legal { max-width:760px; margin:0 auto; padding:40px 16px 56px; }
+    .legal h2 { font-size:18px; font-weight:800; color:#0f172a; margin:28px 0 10px; }
+    .legal p, .legal li { font-size:14.5px; line-height:1.7; color:#334155; margin:0 0 12px; }
+    .legal ul { padding-left:22px; margin:0 0 12px; }
+    .legal a { color:#2563eb; }
+  </style>
+</head>
+<body>
+${NAV}
+<div style="background:linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%);padding:40px 16px 32px">
+  <div style="max-width:760px;margin:0 auto">
+    <h1 style="font-size:clamp(24px,4vw,34px);font-weight:900;color:#fff;margin:0 0 8px">${h1}</h1>
+    <p style="color:rgba(255,255,255,.55);font-size:13px;margin:0">Last updated: ${updated}</p>
+  </div>
+</div>
+<div class="legal">
+${bodyHTML}
+</div>
+${FOOTER}
+</body>
+</html>`;
+}
+
+const UPDATED = 'May 31, 2026';
+
+const privacy = page({
+  slug: 'privacy',
+  title: 'Privacy Policy – ILoveExams.in',
+  desc: 'How ILoveExams.in handles your data. All image processing happens in your browser — your photos are never uploaded to any server.',
+  h1: 'Privacy Policy',
+  updated: UPDATED,
+  bodyHTML: `
+<p>ILoveExams.in ("we", "us", "the site") provides free, browser-based image, photo and signature resizing tools. This policy explains what data we handle and how.</p>
+
+<h2>1. Your images never leave your device</h2>
+<p>All resizing, cropping and compression happens locally in your browser using HTML5 Canvas. Your photos, signatures and documents are <strong>never uploaded to our servers</strong>. We never see, store, or have access to the images you process.</p>
+
+<h2>2. Information we do not collect</h2>
+<ul>
+  <li>We do not require an account, login or registration.</li>
+  <li>We do not ask for your name, email, phone number or any personal details to use the tools.</li>
+  <li>We do not store the files you resize.</li>
+</ul>
+
+<h2>3. Cookies and analytics</h2>
+<p>We use Google AdSense to show advertisements, which helps keep the site free. Google and its partners may use cookies and similar technologies to serve ads based on your visits to this and other websites. We may also use standard analytics to understand aggregate, anonymous usage (such as which tools are popular).</p>
+<p>You can manage or opt out of personalised advertising through <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a> and <a href="https://www.aboutads.info" target="_blank" rel="noopener">www.aboutads.info</a>.</p>
+
+<h2>4. Third-party links</h2>
+<p>The site may link to external pages (for example exam authority websites or a donation page). We are not responsible for the privacy practices of those external sites.</p>
+
+<h2>5. Children's privacy</h2>
+<p>The site is a general-purpose utility and is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+
+<h2>6. Changes to this policy</h2>
+<p>We may update this policy from time to time. The "Last updated" date above reflects the latest revision.</p>
+
+<h2>7. Contact</h2>
+<p>For any privacy questions, you can reach us via the donation/contact links on the site.</p>
+`
+});
+
+const terms = page({
+  slug: 'terms',
+  title: 'Terms & Conditions – ILoveExams.in',
+  desc: 'Terms of use for ILoveExams.in free online image, photo and signature resizing tools.',
+  h1: 'Terms & Conditions',
+  updated: UPDATED,
+  bodyHTML: `
+<p>By using ILoveExams.in ("the site") you agree to these Terms &amp; Conditions. If you do not agree, please do not use the site.</p>
+
+<h2>1. Free service</h2>
+<p>The site offers free online tools to resize and compress images, photos and signatures for Indian competitive exams, ID cards and general use. No account is required.</p>
+
+<h2>2. "As is" — no warranty</h2>
+<p>The tools are provided "as is" without warranties of any kind. While we aim to match the size and dimension requirements of various exams and ID documents, <strong>you are responsible for verifying that your final image meets the exact requirements</strong> published by the relevant exam authority or organisation before submitting it. We are not affiliated with, endorsed by, or officially connected to any exam board, government body or organisation named on the site.</p>
+
+<h2>3. Acceptable use</h2>
+<ul>
+  <li>Use the tools only for lawful purposes.</li>
+  <li>Do not attempt to disrupt, overload, reverse-engineer or misuse the site.</li>
+  <li>You are solely responsible for the content of images you process.</li>
+</ul>
+
+<h2>4. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, we are not liable for any loss or damage — including rejected applications, missed deadlines, or data loss — arising from use of the site. Your use of the tools is entirely at your own risk.</p>
+
+<h2>5. Intellectual property</h2>
+<p>The site's name, design and content are owned by ILoveExams.in. Exam names and logos referenced are the property of their respective owners and are used only for identification.</p>
+
+<h2>6. Advertisements</h2>
+<p>The site is supported by advertising (Google AdSense). By using the site you acknowledge that ads may be displayed.</p>
+
+<h2>7. Changes</h2>
+<p>We may update these terms at any time. Continued use of the site after changes constitutes acceptance of the updated terms.</p>
+`
+});
+
+fs.mkdirSync(path.join(__dirname, 'privacy'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'terms'), { recursive: true });
+fs.writeFileSync(path.join(__dirname, 'privacy', 'index.html'), privacy);
+fs.writeFileSync(path.join(__dirname, 'terms', 'index.html'), terms);
+console.log('✅ Wrote /privacy/ and /terms/');

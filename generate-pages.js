@@ -93,6 +93,23 @@ const EXAMS = [
 
 const SVG_HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width:20px;height:20px;margin:0 1px 2px;vertical-align:middle"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+// Shared centred nav links (Exam Resizer · All Tools · Tools ▾ dropdown)
+const DD_LINK = 'display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap';
+const NAV_LINKS = `<div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
+      <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
+      <div class="relative group" style="padding:20px 0">
+        <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
+        <div class="hidden group-hover:block" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:248px;z-index:60">
+          <a href="/#id" style="${DD_LINK}">🪪 ID Card — Voter, Aadhaar, PAN</a>
+          <a href="/#kb" style="${DD_LINK}">💾 By File Size — 10–500&nbsp;KB</a>
+          <a href="/#dim" style="${DD_LINK}">📐 By Dimension — cm, inch, custom</a>
+          <div style="height:1px;background:#e2e8f0;margin:6px 8px"></div>
+          <a href="/" style="${DD_LINK};color:#2563eb;font-weight:700">View all tools →</a>
+        </div>
+      </div>
+    </div>`;
+
 function generatePage(exam, docType) {
   const spec   = docType === 'photo' ? exam.photo : exam.sig;
   const label  = docType === 'photo' ? 'Photo' : 'Signature';
@@ -245,8 +262,9 @@ function generatePage(exam, docType) {
     <a href="/" class="logo">
       <span class="logo-i">I</span>${SVG_HEART}<span class="logo-e">Exams</span><span class="logo-in">.in</span>
     </a>
+    ${NAV_LINKS}
     <div style="display:flex;align-items:center;gap:10px">
-      <span style="font-size:11px;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);padding:4px 10px;border-radius:999px;white-space:nowrap">● 100% Private</span>
+      <span class="hidden sm:inline-flex" style="font-size:11px;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);padding:4px 10px;border-radius:999px;white-space:nowrap">● 100% Private</span>
       <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener"
          style="font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap">♥ Donate</a>
     </div>
@@ -429,6 +447,8 @@ function generatePage(exam, docType) {
     <a href="/" style="color:rgba(255,255,255,.4);text-decoration:none">Home</a> ·
     <a href="/resizer/${exam.slug}-photo-resize/" style="color:rgba(255,255,255,.4);text-decoration:none">${exam.name} Photo</a> ·
     <a href="/resizer/${exam.slug}-signature-resize/" style="color:rgba(255,255,255,.4);text-decoration:none">${exam.name} Signature</a> ·
+    <a href="/privacy/" style="color:rgba(255,255,255,.4);text-decoration:none">Privacy</a> ·
+    <a href="/terms/" style="color:rgba(255,255,255,.4);text-decoration:none">Terms</a> ·
     <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="color:rgba(239,68,68,.6);text-decoration:none">♥ Donate</a>
   </p>
 </footer>
@@ -456,13 +476,4 @@ EXAMS.forEach(exam => {
 });
 
 console.log(`✅ Generated ${count} pages`);
-
-// Write updated sitemap
-const existingSitemap = fs.readFileSync(path.join(__dirname, 'sitemap.xml'), 'utf8');
-const insertBefore = '</urlset>';
-const newSitemap = existingSitemap.replace(
-  insertBefore,
-  `\n  <!-- Individual exam landing pages -->\n${sitemapEntries.join('\n')}\n\n${insertBefore}`
-);
-fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), newSitemap, 'utf8');
-console.log(`✅ Sitemap updated with ${count} new URLs`);
+console.log('ℹ️  Run "node generate-sitemap.js" to rebuild sitemap.xml');
