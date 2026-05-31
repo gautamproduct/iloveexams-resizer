@@ -21,6 +21,16 @@ const adSlot = (label = 'ADVERTISEMENT', maxW = 760) => `
 </aside>
 <script>(function(){try{var ins=document.currentScript.previousElementSibling.querySelector('.adsbygoogle');if(ins&&/^\\d+$/.test(ins.dataset.adSlot)){(adsbygoogle=window.adsbygoogle||[]).push({});}}catch(e){}})();</script>`;
 
+// Sticky left-rail ad (only shows on screens >=1500px so it never overlaps content)
+const LEFT_RAIL = `
+<aside class="ad-left-rail" style="position:fixed;left:14px;top:88px;width:160px;z-index:40;display:none" aria-label="Sponsored content">
+  <p style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:.1em;margin:0 0 4px;text-align:left">ADVERTISEMENT</p>
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:8px;min-height:600px;display:flex;align-items:center;justify-content:center">
+    <ins class="adsbygoogle" style="display:block;width:144px;height:600px" data-ad-client="ca-pub-9837613085159910" data-ad-slot="${AD_SLOT_ID}" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+  </div>
+</aside>
+<script>(function(){var r=document.querySelector('.ad-left-rail');if(!r)return;function u(){r.style.display=window.innerWidth>=1500?'block':'none';}u();window.addEventListener('resize',u);var ins=r.querySelector('.adsbygoogle');if(ins&&/^\\d+$/.test(ins.dataset.adSlot)){try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}}})();</script>`;
+
 // Shared centred nav links (Exam Resizer · All Tools · Tools ▾ dropdown)
 const DD_LINK = 'display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap';
 const NAV_LINKS = `<div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
