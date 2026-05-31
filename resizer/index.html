@@ -1581,7 +1581,7 @@ function applyUnitUI() {
   if (lw) lw.textContent = '(' + u + ')';
   if (lh) lh.textContent = '(' + u + ')';
   const dr = document.getElementById('dpi-row');
-  if (dr) dr.style.display = u === 'px' ? 'none' : 'flex';
+  if (dr) dr.style.display = 'flex'; // always show DPI — relevant for all modes
   const us = document.getElementById('dim-unit'); if (us) us.value = u;
   const ds = document.getElementById('dim-dpi');  if (ds) ds.value = String(S.dpi || 300);
   updatePxHint();
@@ -1590,10 +1590,23 @@ function applyUnitUI() {
 function updatePxHint() {
   const hint = document.getElementById('px-hint');
   if (!hint) return;
-  if ((S.unit || 'px') === 'px') { hint.style.display = 'none'; return; }
   const sp = getSpecs();
-  hint.textContent = '= ' + sp.w + ' × ' + sp.h + ' px  @ ' + (S.dpi || 300) + ' DPI';
-  hint.style.display = 'block';
+  const dpi = S.dpi || 300;
+  const u = S.unit || 'px';
+  if (u === 'px') {
+    // show physical print size at chosen DPI
+    if (sp.w && sp.h) {
+      const inW = (sp.w / dpi).toFixed(2), inH = (sp.h / dpi).toFixed(2);
+      const cmW = (sp.w * 2.54 / dpi).toFixed(2), cmH = (sp.h * 2.54 / dpi).toFixed(2);
+      hint.textContent = '≈ ' + cmW + ' × ' + cmH + ' cm  (' + inW + ' × ' + inH + ' in)  @ ' + dpi + ' DPI';
+      hint.style.display = 'block';
+    } else {
+      hint.style.display = 'none';
+    }
+  } else {
+    hint.textContent = '= ' + sp.w + ' × ' + sp.h + ' px  @ ' + dpi + ' DPI';
+    hint.style.display = 'block';
+  }
 }
 
 // user switched unit → convert displayed values through px, keep physical size
