@@ -347,7 +347,7 @@
             <div class="space-y-3" style="background:#f8fafc;border-radius:14px;padding:16px;border:1.5px solid #f1f5f9">
 
               <!-- Dimensions -->
-              <div>
+              <div id="wh-fields">
                 <div class="section-header">Dimensions (px)</div>
                 <div class="flex items-center gap-2">
                   <div class="flex-1">
@@ -1154,6 +1154,7 @@ const S = {
   exam: null, doc: 'photo', edited: false,
   origURL: null, cropper: null, bgMod: null, flipX: 1,
   activeCat: 'All', query: '', showAllCat: false,
+  freeDim: false,   // when true: keep original aspect ratio, only hit target KB
 };
 
 // ────────────────────────────────────────────────────────────────────
@@ -1175,11 +1176,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function readURLParams() {
   const p = new URLSearchParams(window.location.search);
+
+  // ── Generic tool preset (voter id, aadhaar, resize-to-KB, custom, etc.) ──
+  // e.g. /resizer/?preset=voter-id-photo&w=200&h=230&maxkb=50&title=Voter%20ID%20Photo
+  //      /resizer/?preset=to-20kb&maxkb=20&free=1&title=Resize%20to%2020%20KB
+  if (p.get('preset')) { applyPreset(p); return; }
+
   const slug = p.get('exam');
   const doc  = p.get('document') || 'photo';
   if (!slug) return;
   const exam = EXAMS.find(e => e.slug === slug);
   if (exam) { selectExam(exam.id, true); selectDoc(doc, true); }
+}
+
+// Build a synthetic "exam" from URL params so any tool can reuse the engine.
+function applyPreset(p) {
+  const free  = p.get('free') === '1';
+  const w     = parseInt(p.get('w'))     || (free ? 0 : 600);
+  const h     = parseInt(p.get('h'))     || (free ? 0 : 600);
+  const maxkb = parseInt(p.get('maxkb')) || 50;
+  const minkb = free ? 0 : (parseInt(p.get('minkb')) || 0);
+  const fmt   = (p.get('fmt') || 'JPG').toUpperCase();
+  const title = p.get('title') || 'Image Resizer';
+  const spec  = { w, h, min: minkb, max: maxkb, fmt };
+
+  const synthetic = {
+    id: 99999, slug: p.get('preset'), name: title, cat: 'Tool',
+    photo: spec, sig: spec,
+  };
+  // Replace any prior synthetic, then register so selectExam() can find it
+  const i = EXAMS.findIndex(e => e.id === 99999);
+  if (i >= 0) EXAMS.splice(i, 1);
+  EXAMS.push(synthetic);
+
+  S.freeDim = free;
+  selectExam(99999, true);
+
+  // In free mode there are no fixed dimensions — relabel + hide the W/H inputs
+  if (free) {
+    const wh = document.getElementById('wh-fields');
+    if (wh) wh.style.display = 'none';
+    const cs = document.getElementById('card-exam-spec');
+    if (cs) cs.textContent = `Target ≤ ${maxkb} KB · keeps original size · ${fmt}`;
+    const sb = document.getElementById('sel-exam-spec');
+    if (sb) sb.textContent = `Target ≤ ${maxkb} KB · ${fmt}`;
+  }
+
+  // Tool-specific SEO
+  document.title = `${title} – Free Online Tool | ILoveExams`;
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.setAttribute('content', `${title}. Free, instant and 100% private — your image is processed in your browser and never uploaded.`);
+  const cn = document.querySelector('link[rel="canonical"]');
+  if (cn) cn.setAttribute('href', p.get('canon') || 'https://ilovexams.in/resizer/');
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -1394,7 +1442,7 @@ function onSpecChange() {
   S.edited = true;
   document.getElementById('reset-btn').classList.remove('hidden');
   updateStrip();
-  if (S.cropper) {
+  if (S.cropper && !S.freeDim) {
     const sp = getSpecs();
     S.cropper.setAspectRatio(sp.w / sp.h);
   }
@@ -1449,8 +1497,8 @@ function initCropper(src) {
   img.src = src;
   const sp = getSpecs();
   S.cropper = new Cropper(img, {
-    aspectRatio: sp.w / sp.h,
-    viewMode: 1, dragMode: 'move', autoCropArea: 0.85,
+    aspectRatio: S.freeDim ? NaN : sp.w / sp.h,
+    viewMode: 1, dragMode: 'move', autoCropArea: S.freeDim ? 1 : 0.85,
     restore: false, guides: true, center: true, highlight: false,
     cropBoxMovable: true, cropBoxResizable: true,
   });
@@ -1492,7 +1540,7 @@ async function triggerBgRemoval() {
     img.src = newSrc;
     await new Promise(r => { img.onload = r; });
     const sp = getSpecs();
-    S.cropper = new Cropper(img, { aspectRatio: sp.w/sp.h, viewMode:1, dragMode:'move', autoCropArea:0.85 });
+    S.cropper = new Cropper(img, { aspectRatio: S.freeDim ? NaN : sp.w/sp.h, viewMode:1, dragMode:'move', autoCropArea: S.freeDim ? 1 : 0.85 });
     el.style.display = 'none';
   } catch(err) {
     tx.textContent = '⚠️ Failed. Check console.'; console.error(err);
@@ -1510,20 +1558,40 @@ async function processImage() {
   const mime = sp.fmt==='PNG'?'image/png': sp.fmt==='WEBP'?'image/webp':'image/jpeg';
   const ext  = sp.fmt==='PNG'?'png'      : sp.fmt==='WEBP'?'webp'     :'jpg';
 
-  const canvas = S.cropper.getCroppedCanvas({
-    width: sp.w, height: sp.h,
-    imageSmoothingEnabled: true, imageSmoothingQuality: 'high',
-  });
+  // Fixed-dimension mode (exams, custom, ID cards) → crop to exact w×h.
+  // Free-dimension mode (resize-to-KB) → keep the image's own size & aspect.
+  let canvas = S.freeDim
+    ? S.cropper.getCroppedCanvas({ imageSmoothingEnabled: true, imageSmoothingQuality: 'high' })
+    : S.cropper.getCroppedCanvas({ width: sp.w, height: sp.h, imageSmoothingEnabled: true, imageSmoothingQuality: 'high' });
 
   const maxB = sp.max * 1024, minB = sp.min * 1024;
   let q = 0.97, blob;
   const toB = q => new Promise(r => canvas.toBlob(r, mime, q));
 
   do { blob = await toB(q); q -= 0.04; } while (blob && blob.size > maxB && q > 0.05);
-  if (blob && blob.size < minB && mime !== 'image/png') {
+
+  // Free mode: if still over target at lowest quality, progressively downscale
+  if (S.freeDim) {
+    let guard = 0;
+    while (blob && blob.size > maxB && canvas.width > 80 && guard < 30) {
+      const c2 = document.createElement('canvas');
+      c2.width  = Math.round(canvas.width  * 0.85);
+      c2.height = Math.round(canvas.height * 0.85);
+      const ctx = c2.getContext('2d');
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(canvas, 0, 0, c2.width, c2.height);
+      canvas = c2;
+      q = 0.92; blob = await toB(q);
+      while (blob && blob.size > maxB && q > 0.05) { q -= 0.06; blob = await toB(q); }
+      guard++;
+    }
+  } else if (blob && blob.size < minB && mime !== 'image/png') {
     q = 1.0;
     while (blob.size < minB && q <= 1.0) { blob = await toB(q); q += 0.01; }
   }
+
+  // recompute effective output dimensions for the result readout
+  sp.w = canvas.width; sp.h = canvas.height;
 
   const url = URL.createObjectURL(blob);
   const kb  = (blob.size / 1024).toFixed(1);
