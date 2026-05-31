@@ -348,18 +348,37 @@
 
               <!-- Dimensions -->
               <div id="wh-fields">
-                <div class="section-header">Dimensions (px)</div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="section-header" style="margin-bottom:0">Dimensions</div>
+                  <select id="dim-unit" onchange="onUnitChange()" class="text-xs font-semibold" style="border:1.5px solid #e2e8f0;border-radius:8px;padding:4px 8px;background:#fff;color:#475569;cursor:pointer">
+                    <option value="px">px</option>
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                    <option value="mm">mm</option>
+                  </select>
+                </div>
                 <div class="flex items-center gap-2">
                   <div class="flex-1">
-                    <label class="block text-xs text-slate-400 mb-1">Width</label>
-                    <input type="number" id="req-w" min="1" max="9999" class="inp" oninput="onSpecChange()">
+                    <label class="block text-xs text-slate-400 mb-1">Width <span id="unit-lbl-w">(px)</span></label>
+                    <input type="number" id="req-w" min="0" step="any" class="inp" oninput="onSpecChange()">
                   </div>
                   <span class="text-slate-300 text-xl mt-5">×</span>
                   <div class="flex-1">
-                    <label class="block text-xs text-slate-400 mb-1">Height</label>
-                    <input type="number" id="req-h" min="1" max="9999" class="inp" oninput="onSpecChange()">
+                    <label class="block text-xs text-slate-400 mb-1">Height <span id="unit-lbl-h">(px)</span></label>
+                    <input type="number" id="req-h" min="0" step="any" class="inp" oninput="onSpecChange()">
                   </div>
                 </div>
+                <div id="dpi-row" class="flex items-center gap-2 mt-2" style="display:none">
+                  <label class="text-xs text-slate-400 whitespace-nowrap">Resolution</label>
+                  <select id="dim-dpi" onchange="onDpiChange()" class="inp" style="flex:1">
+                    <option value="72">72 DPI (screen)</option>
+                    <option value="96">96 DPI</option>
+                    <option value="150">150 DPI</option>
+                    <option value="300" selected>300 DPI (print)</option>
+                    <option value="600">600 DPI (high quality)</option>
+                  </select>
+                </div>
+                <p id="px-hint" class="text-xs font-semibold mt-1.5" style="display:none;color:var(--em)"></p>
               </div>
 
               <!-- KB -->
@@ -1155,6 +1174,7 @@ const S = {
   origURL: null, cropper: null, bgMod: null, flipX: 1,
   activeCat: 'All', query: '', showAllCat: false,
   freeDim: false,   // when true: keep original aspect ratio, only hit target KB
+  unit: 'px', dpi: 300,   // dimension unit (px/cm/inch/mm) + print resolution
 };
 
 // ────────────────────────────────────────────────────────────────────
@@ -1210,7 +1230,19 @@ function applyPreset(p) {
   EXAMS.push(synthetic);
 
   S.freeDim = free;
+
+  // Default dimension unit inferred from the preset slug (user can still switch)
+  const slug = p.get('preset') || '';
+  let unit = 'px';
+  if      (slug.includes('in-inches'))  unit = 'inch';
+  else if (slug.includes('in-mm'))      unit = 'mm';
+  else if (slug.includes('in-cm') || slug.includes('cm-inch-mm')) unit = 'cm';
+  if (p.get('unit')) unit = p.get('unit');
+  S.unit = free ? 'px' : unit;
+  S.dpi  = parseInt(p.get('dpi')) || 300;
+
   selectExam(99999, true);
+  applyUnitUI();
 
   // In free mode there are no fixed dimensions — relabel + hide the W/H inputs
   if (free) {
@@ -1416,36 +1448,105 @@ function selectDoc(t, skipURL) {
 // SPECS
 // ────────────────────────────────────────────────────────────────────
 
+// ── Unit conversion (canonical store is px; inputs display the chosen unit) ──
+function unitToPx(v, unit, dpi) {
+  if (unit === 'cm')   return v * dpi / 2.54;
+  if (unit === 'inch') return v * dpi;
+  if (unit === 'mm')   return v * dpi / 25.4;
+  return v;
+}
+function pxToUnit(px, unit, dpi) {
+  if (unit === 'cm')   return px * 2.54 / dpi;
+  if (unit === 'inch') return px / dpi;
+  if (unit === 'mm')   return px * 25.4 / dpi;
+  return px;
+}
+function roundUnit(v, unit) { return unit === 'px' ? Math.round(v) : Math.round(v * 100) / 100; }
+
 function fillSpecs() {
   if (!S.exam) return;
   const src = S.doc === 'photo' ? S.exam.photo : S.exam.sig;
-  document.getElementById('req-w').value   = src.w;
-  document.getElementById('req-h').value   = src.h;
+  const u = S.unit || 'px', d = S.dpi || 300;
+  document.getElementById('req-w').value   = roundUnit(pxToUnit(src.w, u, d), u);
+  document.getElementById('req-h').value   = roundUnit(pxToUnit(src.h, u, d), u);
   document.getElementById('req-min').value = src.min;
   document.getElementById('req-max').value = src.max;
   document.getElementById('req-fmt').value = src.fmt;
   document.getElementById('reset-btn').classList.add('hidden');
   S.edited = false;
+  applyUnitUI();
 }
 
 function getSpecs() {
+  const u = S.unit || 'px', d = S.dpi || 300;
+  let w = Math.round(unitToPx(parseFloat(document.getElementById('req-w').value) || 0, u, d));
+  let h = Math.round(unitToPx(parseFloat(document.getElementById('req-h').value) || 0, u, d));
   return {
-    w:   parseInt(document.getElementById('req-w').value)   || 400,
-    h:   parseInt(document.getElementById('req-h').value)   || 400,
+    w:   Math.min(w || 400, 20000),
+    h:   Math.min(h || 400, 20000),
     min: parseInt(document.getElementById('req-min').value) || 20,
     max: parseInt(document.getElementById('req-max').value) || 300,
     fmt: document.getElementById('req-fmt').value           || 'JPG',
   };
 }
 
-function onSpecChange() {
-  S.edited = true;
-  document.getElementById('reset-btn').classList.remove('hidden');
+// shared UI refresh (strip + px hint + live cropper aspect) — no "edited" flag
+function refreshSpecUI() {
   updateStrip();
+  updatePxHint();
   if (S.cropper && !S.freeDim) {
     const sp = getSpecs();
     S.cropper.setAspectRatio(sp.w / sp.h);
   }
+}
+
+function onSpecChange() {
+  S.edited = true;
+  document.getElementById('reset-btn').classList.remove('hidden');
+  refreshSpecUI();
+}
+
+// reflect the current unit on labels / DPI row / dropdown
+function applyUnitUI() {
+  const u = S.unit || 'px';
+  const lw = document.getElementById('unit-lbl-w');
+  const lh = document.getElementById('unit-lbl-h');
+  if (lw) lw.textContent = '(' + u + ')';
+  if (lh) lh.textContent = '(' + u + ')';
+  const dr = document.getElementById('dpi-row');
+  if (dr) dr.style.display = u === 'px' ? 'none' : 'flex';
+  const us = document.getElementById('dim-unit'); if (us) us.value = u;
+  const ds = document.getElementById('dim-dpi');  if (ds) ds.value = String(S.dpi || 300);
+  updatePxHint();
+}
+
+function updatePxHint() {
+  const hint = document.getElementById('px-hint');
+  if (!hint) return;
+  if ((S.unit || 'px') === 'px') { hint.style.display = 'none'; return; }
+  const sp = getSpecs();
+  hint.textContent = '= ' + sp.w + ' × ' + sp.h + ' px  @ ' + (S.dpi || 300) + ' DPI';
+  hint.style.display = 'block';
+}
+
+// user switched unit → convert displayed values through px, keep physical size
+function onUnitChange() {
+  const newU = document.getElementById('dim-unit').value;
+  const oldU = S.unit || 'px', d = S.dpi || 300;
+  const curW = parseFloat(document.getElementById('req-w').value) || 0;
+  const curH = parseFloat(document.getElementById('req-h').value) || 0;
+  const pxW = unitToPx(curW, oldU, d), pxH = unitToPx(curH, oldU, d);
+  S.unit = newU;
+  document.getElementById('req-w').value = roundUnit(pxToUnit(pxW, newU, d), newU);
+  document.getElementById('req-h').value = roundUnit(pxToUnit(pxH, newU, d), newU);
+  applyUnitUI();
+  refreshSpecUI();
+}
+
+// user changed DPI → physical size (displayed unit value) stays, pixels recompute
+function onDpiChange() {
+  S.dpi = parseInt(document.getElementById('dim-dpi').value) || 300;
+  refreshSpecUI();
 }
 
 function resetSpecs() { fillSpecs(); updateStrip(); }
