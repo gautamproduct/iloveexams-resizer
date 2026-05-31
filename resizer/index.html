@@ -253,6 +253,12 @@
       Free photo &amp; signature resizer for UPSC, SSC, SBI PO, IBPS, NEET, JEE &amp; 80+ Indian competitive exams
     </h1>
 
+    <!-- Tool hero (shown only in ?preset= tool mode) -->
+    <div id="tool-hero" class="hidden" style="margin-bottom:4px">
+      <p id="tool-hero-sub" style="font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.55;max-width:640px"></p>
+      <a href="https://ilovexams.in/" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12.5px;font-weight:600;color:#93c5fd;text-decoration:none">← Browse all tools</a>
+    </div>
+
     <!-- Search bar -->
     <div id="search-section">
       <div class="relative mb-5">
@@ -357,6 +363,7 @@
                     <option value="mm">mm</option>
                   </select>
                 </div>
+                <p id="dim-note" class="text-xs mb-2" style="display:none;color:#64748b">✓ Original size kept — edit only if you want to resize.</p>
                 <div class="flex items-center gap-2">
                   <div class="flex-1">
                     <label class="block text-xs text-slate-400 mb-1">Width <span id="unit-lbl-w">(px)</span></label>
@@ -1244,7 +1251,30 @@ function applyPreset(p) {
   selectExam(99999, true);
   applyUnitUI();
 
-  // In free mode there are no fixed dimensions — relabel + hide the W/H inputs
+  // ── Tool mode: hide the exam-browsing UI (user came for ONE specific tool) ──
+  const hide = id => { const e = document.getElementById(id); if (e) e.style.display = 'none'; };
+  hide('search-section');     // search bar + category pills
+  hide('exam-grid-section');  // the 80-exam grid
+  hide('selected-bar');       // "Change exam" bar
+  hide('card-exam-row');      // "Change" row inside the Configure card
+
+  // Turn the hero into a clean tool header
+  const h1 = document.querySelector('.hero h1');
+  if (h1) {
+    h1.textContent = title;
+    h1.style.cssText = 'font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.25;letter-spacing:-.01em';
+  }
+  const th = document.getElementById('tool-hero');
+  if (th) {
+    const sub = document.getElementById('tool-hero-sub');
+    if (sub) sub.textContent = free
+      ? `Compress any image to ≤ ${maxkb} KB. Your original dimensions are kept by default — processed instantly in your browser, never uploaded.`
+      : `Resize to ${w}×${h}px (${fmt}). Free, instant and 100% private — processed in your browser, never uploaded.`;
+    th.classList.remove('hidden');
+  }
+
+  // Free mode → no fixed dimensions yet; the W/H fields are filled from the
+  // uploaded image (original size) once a file is chosen. Keep them hidden until then.
   if (free) {
     const wh = document.getElementById('wh-fields');
     if (wh) wh.style.display = 'none';
@@ -1481,12 +1511,14 @@ function getSpecs() {
   const u = S.unit || 'px', d = S.dpi || 300;
   let w = Math.round(unitToPx(parseFloat(document.getElementById('req-w').value) || 0, u, d));
   let h = Math.round(unitToPx(parseFloat(document.getElementById('req-h').value) || 0, u, d));
+  const minRaw = parseInt(document.getElementById('req-min').value);  // 0 is valid (KB tools)
+  const maxRaw = parseInt(document.getElementById('req-max').value);
   return {
     w:   Math.min(w || 400, 20000),
     h:   Math.min(h || 400, 20000),
-    min: parseInt(document.getElementById('req-min').value) || 20,
-    max: parseInt(document.getElementById('req-max').value) || 300,
-    fmt: document.getElementById('req-fmt').value           || 'JPG',
+    min: isNaN(minRaw) ? 20  : minRaw,
+    max: isNaN(maxRaw) ? 300 : maxRaw,
+    fmt: document.getElementById('req-fmt').value || 'JPG',
   };
 }
 
@@ -1553,13 +1585,18 @@ function resetSpecs() { fillSpecs(); updateStrip(); }
 
 function updateStrip() {
   const sp = getSpecs();
-  document.getElementById('strip-dim').textContent  = `${sp.w} × ${sp.h}`;
-  document.getElementById('strip-size').textContent = `${sp.min}–${sp.max} KB`;
+  const wRaw = parseFloat(document.getElementById('req-w').value) || 0;
+  // KB tools before upload have no dimensions yet → show "Original"
+  const dimTxt  = (S.freeDim && !wRaw) ? 'Original' : `${sp.w} × ${sp.h}`;
+  const sizeTxt = sp.min ? `${sp.min}–${sp.max} KB` : `≤ ${sp.max} KB`;
+  document.getElementById('strip-dim').textContent  = dimTxt;
+  document.getElementById('strip-size').textContent = sizeTxt;
   document.getElementById('strip-fmt').textContent  = sp.fmt;
 
-  // update selected bar
+  // update selected bar (hidden in tool mode, used by exam mode)
   if (S.exam) {
-    document.getElementById('sel-exam-spec').textContent = `${sp.w}×${sp.h}px · ${sp.min}–${sp.max}KB · ${sp.fmt}`;
+    document.getElementById('sel-exam-spec').textContent =
+      (S.freeDim && !wRaw) ? `Original size · ${sizeTxt} · ${sp.fmt}` : `${sp.w}×${sp.h}px · ${sizeTxt} · ${sp.fmt}`;
   }
 }
 
@@ -1602,7 +1639,25 @@ function initCropper(src) {
     viewMode: 1, dragMode: 'move', autoCropArea: S.freeDim ? 1 : 0.85,
     restore: false, guides: true, center: true, highlight: false,
     cropBoxMovable: true, cropBoxResizable: true,
+    ready() { if (S.freeDim) prefillFreeDims(); },
   });
+}
+
+// KB tools: once the image is loaded, default the output size to the image's
+// OWN dimensions and reveal the (now editable) W/H fields. Untouched = original.
+function prefillFreeDims() {
+  if (!S.freeDim || !S.cropper) return;
+  const d = S.cropper.getImageData();
+  const w = Math.round(d.naturalWidth), h = Math.round(d.naturalHeight);
+  if (!w || !h) return;
+  S.unit = 'px';
+  const rw = document.getElementById('req-w'), rh = document.getElementById('req-h');
+  if (rw) rw.value = w;
+  if (rh) rh.value = h;
+  const wh = document.getElementById('wh-fields'); if (wh) wh.style.display = '';
+  const note = document.getElementById('dim-note'); if (note) note.style.display = 'block';
+  applyUnitUI();
+  updateStrip();
 }
 
 function destroyCropper() {
@@ -1659,11 +1714,11 @@ async function processImage() {
   const mime = sp.fmt==='PNG'?'image/png': sp.fmt==='WEBP'?'image/webp':'image/jpeg';
   const ext  = sp.fmt==='PNG'?'png'      : sp.fmt==='WEBP'?'webp'     :'jpg';
 
-  // Fixed-dimension mode (exams, custom, ID cards) → crop to exact w×h.
-  // Free-dimension mode (resize-to-KB) → keep the image's own size & aspect.
-  let canvas = S.freeDim
-    ? S.cropper.getCroppedCanvas({ imageSmoothingEnabled: true, imageSmoothingQuality: 'high' })
-    : S.cropper.getCroppedCanvas({ width: sp.w, height: sp.h, imageSmoothingEnabled: true, imageSmoothingQuality: 'high' });
+  // Both modes now render to the W/H in the fields. For KB tools those fields
+  // are pre-filled with the image's ORIGINAL dimensions (kept unless the user
+  // edits them); the only difference is KB tools may downscale further below
+  // if the target size can't be reached by quality alone.
+  let canvas = S.cropper.getCroppedCanvas({ width: sp.w, height: sp.h, imageSmoothingEnabled: true, imageSmoothingQuality: 'high' });
 
   const maxB = sp.max * 1024, minB = sp.min * 1024;
   let q = 0.97, blob;
