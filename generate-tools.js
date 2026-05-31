@@ -9,6 +9,18 @@ const path = require('path');
 
 const SVG_HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:inline-block;width:.9em;height:.9em;vertical-align:middle;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+// Manual ad slot ID — replace 'PASTE_AD_SLOT_ID' with your AdSense ad-unit slot
+// number after creating ONE "Display ads – Responsive" unit in AdSense.
+const AD_SLOT_ID = 'PASTE_AD_SLOT_ID';
+const adSlot = (label = 'ADVERTISEMENT', maxW = 760) => `
+<aside class="ad-slot" style="max-width:${maxW}px;margin:32px auto;padding:0 16px;display:block" aria-label="Sponsored content">
+  <p style="font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:.12em;margin:0 0 6px;text-align:left">${label}</p>
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;min-height:260px;display:flex;align-items:center;justify-content:center">
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:230px" data-ad-client="ca-pub-9837613085159910" data-ad-slot="${AD_SLOT_ID}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</aside>
+<script>(function(){try{var ins=document.currentScript.previousElementSibling.querySelector('.adsbygoogle');if(ins&&/^\\d+$/.test(ins.dataset.adSlot)){(adsbygoogle=window.adsbygoogle||[]).push({});}}catch(e){}})();</script>`;
+
 // Shared centred nav links (Exam Resizer · All Tools · Tools ▾ dropdown)
 const DD_LINK = 'display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap';
 const NAV_LINKS = `<div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
@@ -236,6 +248,8 @@ function page(t) {
     <div style="margin-top:20px;text-align:center"><a href="${url}" class="cta-btn" style="font-size:15px;padding:12px 32px;border-radius:12px">Start Now – Free &amp; Instant →</a></div>
   </div>
 
+  ${adSlot('ADVERTISEMENT')}
+
   <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 16px">Frequently Asked Questions</h2>
   <div class="faq-item"><div class="faq-q">Is ${t.name} free?</div><div class="faq-a">Yes — completely free. No account, no watermark, no limits on how many images you resize.</div></div>
   <div class="faq-item"><div class="faq-q">Is my image safe?</div><div class="faq-a">100%. All processing happens locally in your browser with HTML5 Canvas. Your image is never uploaded to any server.</div></div>
@@ -247,6 +261,8 @@ function page(t) {
       ${relatedLinks(t)}
     </div>
   </div>
+
+  ${adSlot('ADVERTISEMENT')}
 </div>
 
 <footer style="background:#0a0e1a;color:rgba(255,255,255,.5);margin-top:40px;padding:28px 16px;text-align:center">
