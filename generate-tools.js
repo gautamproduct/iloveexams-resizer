@@ -128,7 +128,120 @@ const TOOLS = [
     blurb:'Resize any image by centimetres, inches or millimetres at your chosen DPI, then download instantly.' },
 ];
 
+const TODAY = '2026-06-05';
 const GROUP_LABEL = { id:'ID Card & Document', kb:'Resize by File Size', dim:'Resize by Dimension' };
+
+function faqs(t) {
+  const base = [
+    { q:`Is ${t.name} free?`, a:`Yes — completely free. No account, no watermark, no limits on how many images you process.` },
+    { q:`Is my image safe and private?`, a:`100%. All processing happens locally in your browser using HTML5 Canvas. Your image is never uploaded to any server — it never leaves your device.` },
+    { q:`Does it work on mobile phones?`, a:`Yes. Open ilovexams.in in Chrome or Safari on any Android or iPhone, upload your image and download the result — no app required.` },
+    { q:`What image formats are supported?`, a:`JPG, JPEG, PNG, WEBP and HEIC/HEIF (on supported browsers). The output is always JPEG for maximum compatibility with Indian government exam and ID portals.` },
+    { q:`Do I need to install any software?`, a:`No installation needed. The tool works entirely in your browser — Chrome, Firefox, Edge or Safari, on desktop or mobile.` },
+  ];
+  if (t.group === 'kb') {
+    base.push(
+      { q:`Will resizing reduce my image quality?`, a:`The tool keeps quality as high as possible while hitting the ${t.maxkb >= 1024 ? (t.maxkb/1024)+' MB' : t.maxkb+' KB'} target. For very small limits like 10–20 KB, minor quality reduction is unavoidable — but the result will still be accepted by exam portals.` },
+      { q:`Why do exam portals have a KB file-size limit?`, a:`Most Indian government portals (SSC, UPSC, IBPS, NTA, RRB) set strict KB limits to keep their databases lean and ensure fast uploads on low-bandwidth connections. Exceeding the limit causes the upload form to reject your file outright.` },
+    );
+  } else if (t.group === 'id') {
+    base.push(
+      { q:`Will the image be cropped automatically?`, a:`You can manually crop before processing. The tool then resizes the cropped area to the exact pixel dimensions and file-size range required for this document type.` },
+      { q:`Can I use a photo taken on my smartphone?`, a:`Yes. Modern smartphone photos work perfectly. Upload from your gallery and the tool resizes to the exact official requirements automatically.` },
+    );
+  } else {
+    base.push(
+      { q:`What DPI should I use for print?`, a:`For standard print quality (ID cards, exam photos, documents) use 300 DPI as a guide: 1 inch = 300 px, 1 cm ≈ 118 px, 1 mm ≈ 11.8 px. The tool outputs exact pixel dimensions — set the pixels accordingly.` },
+      { q:`Why is the output JPEG and not PNG?`, a:`JPEG is the format accepted by virtually all Indian government exam and ID portals. It produces much smaller files than PNG with excellent photo quality, making it ideal for online form uploads.` },
+    );
+  }
+  return base;
+}
+
+function toolContent(t) {
+  if (t.group === 'kb') {
+    const portals = {
+      10: 'SSC CGL, CHSL, MTS and several state PSC portals require scanned signatures under 10–20 KB.',
+      15: 'State-level exam boards and older government portals often cap signature images at 15 KB.',
+      20: 'SSC CGL, SSC CHSL, RRB NTPC and many bank recruitment portals require photos in the 20–50 KB range.',
+      25: 'IBPS PO, IBPS Clerk and SBI recruitment portals typically accept photos of 20–25 KB.',
+      30: 'Railway Recruitment Boards (RRB) and some state PSC portals accept photos and signatures under 30 KB.',
+      40: 'Several state public service commissions specify a 40 KB ceiling for candidate photographs.',
+      50: 'UPSC, SSC, IBPS, SBI, NTA NEET and most premium exam portals accept photos in the 20–50 KB range.',
+      80: 'Passport, visa and premium ID portals that allow higher-resolution photos typically cap at 80 KB.',
+      100: 'UPSC CSE, NDA, CDS and most high-profile exam portals set the photo limit at 100 KB.',
+      150: 'State-level recruitment boards and some private university portals accept photos up to 150 KB.',
+      200: 'NTA JEE Main, NEET-UG and CUET portals allow photos up to 200–300 KB for high-resolution uploads.',
+      300: 'Aadhaar-linked portals and some passport application systems accept scanned images up to 300 KB.',
+      500: 'High-resolution document scans and international visa applications commonly permit files up to 500 KB.',
+      1024: 'High-quality document uploads and international portals generally accept files up to 1 MB.',
+    };
+    const portalNote = portals[t.maxkb] || `Many Indian exam and government portals set a ${t.maxkb >= 1024 ? (t.maxkb/1024)+' MB' : t.maxkb+' KB'} limit for photo uploads.`;
+    return `
+  <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px 24px;margin-top:24px;margin-bottom:24px">
+    <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 12px">Why Resize an Image to ${t.maxkb >= 1024 ? (t.maxkb/1024)+' MB' : t.maxkb+' KB'}?</h2>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">${portalNote} When you try to upload a photo or signature that exceeds the portal's limit, the form rejects it outright — forcing you to reduce the file size before you can proceed with your application.</p>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">Traditional methods — opening Paint, Photoshop or GIMP — require installed software and several manual steps. Our browser-based tool does it in one click, with no upload, no sign-up and no cost.</p>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:18px 0 8px">Tips for the best result</h3>
+    <ul style="font-size:14px;color:#475569;line-height:1.9;padding-left:20px;margin:0 0 16px">
+      <li>Start with the highest-quality original you have — the tool compresses intelligently to hit the target while keeping the image as sharp as possible.</li>
+      <li>For exam photos, use a clear, well-lit picture against a plain white or light background.</li>
+      <li>Crop tightly to the face (leaving a small margin) before resizing — this gives the tool more pixels to work with at the target size.</li>
+      <li>If the output looks blurry, try using a slightly larger original as input.</li>
+    </ul>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:0 0 8px">Other tools you might need</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/age-calculator/" style="font-size:13px;color:#059669;background:#ecfdf5;border:1px solid #6ee7b7;padding:5px 12px;border-radius:8px;text-decoration:none">🎂 Age Calculator</a>
+      <a href="/compress-image/" style="font-size:13px;color:#7c3aed;background:#f5f3ff;border:1px solid #c4b5fd;padding:5px 12px;border-radius:8px;text-decoration:none">🗜 Compress Image</a>
+      <a href="/png-to-jpg/" style="font-size:13px;color:#d97706;background:#fffbeb;border:1px solid #fcd34d;padding:5px 12px;border-radius:8px;text-decoration:none">🖼 PNG to JPG</a>
+      <a href="/word-counter/" style="font-size:13px;color:#0284c7;background:#f0f9ff;border:1px solid #7dd3fc;padding:5px 12px;border-radius:8px;text-decoration:none">📝 Word Counter</a>
+    </div>
+  </div>`;
+  } else if (t.group === 'id') {
+    return `
+  <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px 24px;margin-top:24px;margin-bottom:24px">
+    <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 12px">About ${t.name}</h2>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">${t.blurb} Getting the pixel dimensions and file size exactly right is essential — government portals reject uploads that don't match the stated requirements, and mistakes can cost you a deadline.</p>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">All processing happens inside your browser using HTML5 Canvas — your personal ID documents and photos never leave your device. No cloud storage, no server logs, no privacy risk.</p>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:18px 0 8px">Tips for the best result</h3>
+    <ul style="font-size:14px;color:#475569;line-height:1.9;padding-left:20px;margin:0 0 16px">
+      <li>Use a high-resolution original (at least 400×400 px) for the sharpest output at the target dimensions.</li>
+      <li>Crop the image to just the face or document content before resizing — this maximises quality.</li>
+      <li>Check the portal's requirements carefully: some specify both pixel dimensions AND a KB file-size limit.</li>
+      <li>For physical print (ID cards, photos), use a 300 DPI printer for the best quality output.</li>
+    </ul>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:0 0 8px">Other tools you might need</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/age-calculator/" style="font-size:13px;color:#059669;background:#ecfdf5;border:1px solid #6ee7b7;padding:5px 12px;border-radius:8px;text-decoration:none">🎂 Age Calculator</a>
+      <a href="/resize-image-to-50kb/" style="font-size:13px;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;padding:5px 12px;border-radius:8px;text-decoration:none">💾 Resize to 50 KB</a>
+      <a href="/resize-image-to-100kb/" style="font-size:13px;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;padding:5px 12px;border-radius:8px;text-decoration:none">💾 Resize to 100 KB</a>
+      <a href="/compress-image/" style="font-size:13px;color:#7c3aed;background:#f5f3ff;border:1px solid #c4b5fd;padding:5px 12px;border-radius:8px;text-decoration:none">🗜 Compress Image</a>
+    </div>
+  </div>`;
+  } else {
+    return `
+  <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px 24px;margin-top:24px;margin-bottom:24px">
+    <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 12px">About ${t.name}</h2>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">${t.blurb} Whether you're preparing documents for an exam application, resizing photos for print, or converting an image to a specific measurement for a project, this tool handles the conversion instantly in your browser.</p>
+    <p style="font-size:14px;color:#475569;line-height:1.75;margin:0 0 12px">No software to install. No upload. Your image stays on your device — privacy guaranteed.</p>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:18px 0 8px">DPI reference guide</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:16px">
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px"><p style="margin:0 0 3px;font-weight:700;color:#0f172a;font-size:13px">72 DPI</p><p style="margin:0;font-size:12px;color:#64748b">Web / digital display</p></div>
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px"><p style="margin:0 0 3px;font-weight:700;color:#0f172a;font-size:13px">150 DPI</p><p style="margin:0;font-size:12px;color:#64748b">Minimum print quality</p></div>
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px"><p style="margin:0 0 3px;font-weight:700;color:#0f172a;font-size:13px">300 DPI</p><p style="margin:0;font-size:12px;color:#64748b">Standard print (ID cards, photos)</p></div>
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px"><p style="margin:0 0 3px;font-weight:700;color:#0f172a;font-size:13px">600 DPI</p><p style="margin:0;font-size:12px;color:#64748b">High-quality print / scanning</p></div>
+    </div>
+    <p style="font-size:13px;color:#64748b;margin:0 0 12px"><strong>Quick conversions at 300 DPI:</strong> 1 inch = 300 px &nbsp;|&nbsp; 1 cm ≈ 118 px &nbsp;|&nbsp; 1 mm ≈ 11.8 px</p>
+    <h3 style="font-size:15px;font-weight:700;color:#0f172a;margin:0 0 8px">Other tools you might need</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/age-calculator/" style="font-size:13px;color:#059669;background:#ecfdf5;border:1px solid #6ee7b7;padding:5px 12px;border-radius:8px;text-decoration:none">🎂 Age Calculator</a>
+      <a href="/compress-image/" style="font-size:13px;color:#7c3aed;background:#f5f3ff;border:1px solid #c4b5fd;padding:5px 12px;border-radius:8px;text-decoration:none">🗜 Compress Image</a>
+      <a href="/passport-size-photo-resize/" style="font-size:13px;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;padding:5px 12px;border-radius:8px;text-decoration:none">📸 Passport Photo</a>
+      <a href="/word-counter/" style="font-size:13px;color:#0284c7;background:#f0f9ff;border:1px solid #7dd3fc;padding:5px 12px;border-radius:8px;text-decoration:none">📝 Word Counter</a>
+    </div>
+  </div>`;
+  }
+}
 
 function relatedLinks(tool) {
   return TOOLS.filter(t => t.group === tool.group && t.slug !== tool.slug).slice(0, 10)
@@ -211,10 +324,10 @@ function page(t) {
     {"@type":"HowToStep","position":4,"name":"Download","text":"Click Download to save the result to your device."}]}
   <\/script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Is ${t.name} free?","acceptedAnswer":{"@type":"Answer","text":"Yes, ${t.name} on ILoveExams is 100% free with no sign-up, no watermark and no limits."}},
-    {"@type":"Question","name":"Is my image uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser using HTML5 Canvas. Your image never leaves your device."}},
-    {"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, it works on any Android or iPhone browser — no app needed."}}]}
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"${t.name}","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"${canonical}","description":"${desc}","provider":{"@type":"Organization","name":"ILoveExams","url":"https://ilovexams.in/"}}
+  <\/script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[${faqs(t).map(f=>`{"@type":"Question","name":${JSON.stringify(f.q)},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(f.a)}}}`).join(',')}]}
   <\/script>
 </head>
 <body>
@@ -260,10 +373,10 @@ function page(t) {
 
   ${adSlot('ADVERTISEMENT')}
 
+  ${toolContent(t)}
+
   <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 16px">Frequently Asked Questions</h2>
-  <div class="faq-item"><div class="faq-q">Is ${t.name} free?</div><div class="faq-a">Yes — completely free. No account, no watermark, no limits on how many images you resize.</div></div>
-  <div class="faq-item"><div class="faq-q">Is my image safe?</div><div class="faq-a">100%. All processing happens locally in your browser with HTML5 Canvas. Your image is never uploaded to any server.</div></div>
-  <div class="faq-item"><div class="faq-q">Does it work on mobile?</div><div class="faq-a">Yes. Open ilovexams.in in Chrome or Safari on Android/iPhone, upload, and download — no app required.</div></div>
+  ${faqs(t).map(f=>`<div class="faq-item"><div class="faq-q">${f.q}</div><div class="faq-a">${f.a}</div></div>`).join('\n  ')}
 
   <div style="margin-top:32px;background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:24px">
     <h2 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 14px">More ${GROUP_LABEL[t.group]} Tools</h2>
@@ -294,13 +407,12 @@ function page(t) {
 }
 
 let count = 0;
-const today = '2026-05-31';
 const sitemapEntries = [];
 TOOLS.forEach(t => {
   const dir = path.join(__dirname, t.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), page(t), 'utf8');
-  sitemapEntries.push(`  <url><loc>https://ilovexams.in/${t.slug}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
+  sitemapEntries.push(`  <url><loc>https://ilovexams.in/${t.slug}/</loc><lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
   count++;
 });
 console.log(`✅ Generated ${count} tool pages`);

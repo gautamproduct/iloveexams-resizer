@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks Calculator — Total Marks & Percentage | iLoveExams</title>
+<meta name="description" content="Free marks calculator for Indian students. Calculate total marks, subject-wise percentage, aggregate percentage, and grade from your exam marks. Works for CBSE, State Boards, and competitive exams.">
+<meta name="keywords" content="marks calculator, marks percentage calculator, total marks calculator, aggregate percentage calculator, grade calculator, cbse marks calculator, how to calculate marks percentage">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="IN">
+<link rel="canonical" href="https://ilovexams.in/marks-calculator/">
+<meta property="og:title" content="Marks Calculator — Total Marks & Percentage | iLoveExams">
+<meta property="og:description" content="Calculate total marks, subject-wise percentage, aggregate percentage, and grade from exam marks. Free for Indian students.">
+<meta property="og:url" content="https://ilovexams.in/marks-calculator/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ilovexams.in/"},
+        {"@type":"ListItem","position":2,"name":"Marks Calculator","item":"https://ilovexams.in/marks-calculator/"}
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Marks Calculator",
+      "url": "https://ilovexams.in/marks-calculator/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {"@type":"Offer","price":"0","priceCurrency":"INR"},
+      "description": "Calculate total marks, subject-wise percentage and grade from exam results. Free for Indian students."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How to calculate total marks percentage?","acceptedAnswer":{"@type":"Answer","text":"Add up all marks obtained, divide by total maximum marks, and multiply by 100. For example, if you got 450 in 5 subjects out of 500, percentage = 450/500 × 100 = 90%."}},
+        {"@type":"Question","name":"How are grades calculated in CBSE?","acceptedAnswer":{"@type":"Answer","text":"CBSE uses a grading scale: A1 (91–100%), A2 (81–90%), B1 (71–80%), B2 (61–70%), C1 (51–60%), C2 (41–50%), D (33–40%), E (below 33 — fail)."}},
+        {"@type":"Question","name":"What is the CBSE passing marks?","acceptedAnswer":{"@type":"Answer","text":"Students must score at least 33% in each subject and in aggregate to pass CBSE Class 10 and 12 exams."}},
+        {"@type":"Question","name":"How to add more subjects in the marks calculator?","acceptedAnswer":{"@type":"Answer","text":"Click the 'Add Subject' button to add up to 10 subjects. Each row has a subject name, marks obtained, and total marks field."}},
+        {"@type":"Question","name":"Does this work for state board exams?","acceptedAnswer":{"@type":"Answer","text":"Yes. The marks calculator works for any board exam — CBSE, ICSE, Maharashtra Board, UP Board, Rajasthan Board, Tamil Nadu Board, etc. Just enter the marks and maximum marks for each subject."}},
+        {"@type":"Question","name":"What is aggregate percentage?","acceptedAnswer":{"@type":"Answer","text":"Aggregate percentage is the overall percentage across all subjects combined. It is calculated as (sum of all marks obtained ÷ sum of all maximum marks) × 100."}},
+        {"@type":"Question","name":"What is a distinction in Indian exams?","acceptedAnswer":{"@type":"Answer","text":"In most Indian boards, distinction is awarded for 75% and above. First division is 60–74%, second division is 45–59%, and third division is 33–44%."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .subject-row { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+  input[type=text], input[type=number] { border: 2px solid #e5e7eb; border-radius: 8px; padding: 0.5rem 0.6rem; width: 100%; font-size: 0.95rem; outline: none; }
+  input[type=text]:focus, input[type=number]:focus { border-color: #6366f1; }
+  .calc-btn { background: #6366f1; color: #fff; border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-size: 1rem; font-weight: 600; cursor: pointer; }
+  .calc-btn:hover { background: #4f46e5; }
+  .add-btn { background: #f3f4f6; color: #374151; border: 2px solid #e5e7eb; border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
+  .del-btn { background: #fee2e2; color: #dc2626; border: none; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.85rem; cursor: pointer; font-weight: 600; }
+  .result-card { background: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem; display: none; }
+  .grade-badge { display: inline-block; padding: 0.3rem 1rem; border-radius: 9999px; font-weight: 700; font-size: 1rem; }
+  .faq-item { border-bottom: 1px solid #e5e7eb; padding: 1rem 0; }
+  .faq-q { font-weight: 600; color: #1f2937; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-a { color: #4b5563; margin-top: 0.5rem; display: none; line-height: 1.6; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 font-bold text-xl text-indigo-600">
+      <span>📐</span> iLoveExams
+    </a>
+    <nav class="hidden sm:flex gap-4 text-sm text-gray-600">
+      <a href="/percentage-calculator/" class="hover:text-indigo-600">% Calculator</a>
+      <a href="/cgpa-to-percentage/" class="hover:text-indigo-600">CGPA to %</a>
+      <a href="/age-calculator/" class="hover:text-indigo-600">Age Calc</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-8">
+
+  <nav class="text-sm text-gray-500 mb-4">
+    <a href="/" class="hover:text-indigo-600">Home</a> › Marks Calculator
+  </nav>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Marks Calculator</h1>
+  <p class="text-gray-600 mb-6">Enter subject-wise marks to calculate your total, aggregate percentage, and grade.</p>
+
+  <!-- Calculator -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
+    <div class="subject-row mb-1">
+      <span class="text-xs font-semibold text-gray-500 uppercase">Subject</span>
+      <span class="text-xs font-semibold text-gray-500 uppercase">Obtained</span>
+      <span class="text-xs font-semibold text-gray-500 uppercase">Total</span>
+      <span></span>
+    </div>
+    <div id="subjects-container">
+      <div class="subject-row">
+        <input type="text" placeholder="e.g. Mathematics" value="Mathematics">
+        <input type="number" placeholder="Marks" min="0" class="obtained">
+        <input type="number" placeholder="Max" min="1" value="100" class="total">
+        <button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="e.g. Science" value="Science">
+        <input type="number" placeholder="Marks" min="0" class="obtained">
+        <input type="number" placeholder="Max" min="1" value="100" class="total">
+        <button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="e.g. English" value="English">
+        <input type="number" placeholder="Marks" min="0" class="obtained">
+        <input type="number" placeholder="Max" min="1" value="100" class="total">
+        <button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="e.g. Hindi" value="Hindi">
+        <input type="number" placeholder="Marks" min="0" class="obtained">
+        <input type="number" placeholder="Max" min="1" value="100" class="total">
+        <button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="e.g. Social Science" value="Social Science">
+        <input type="number" placeholder="Marks" min="0" class="obtained">
+        <input type="number" placeholder="Max" min="1" value="100" class="total">
+        <button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-3">
+      <button class="add-btn" onclick="addRow()">+ Add Subject</button>
+      <button class="calc-btn" onclick="calculate()">Calculate</button>
+    </div>
+
+    <div class="result-card mt-5" id="result-card">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+        <div class="text-center">
+          <p class="text-xs text-gray-500 mb-1">Total Obtained</p>
+          <p class="text-2xl font-bold text-gray-900" id="res-total">—</p>
+        </div>
+        <div class="text-center">
+          <p class="text-xs text-gray-500 mb-1">Total Max</p>
+          <p class="text-2xl font-bold text-gray-900" id="res-max">—</p>
+        </div>
+        <div class="text-center">
+          <p class="text-xs text-gray-500 mb-1">Percentage</p>
+          <p class="text-2xl font-bold text-green-600" id="res-pct">—</p>
+        </div>
+        <div class="text-center">
+          <p class="text-xs text-gray-500 mb-1">Grade</p>
+          <p class="text-2xl font-bold" id="res-grade">—</p>
+        </div>
+      </div>
+      <div id="subject-breakdown" class="text-sm text-gray-600"></div>
+    </div>
+  </div>
+
+  <!-- Grading table -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">📊 CBSE Grading Scale Reference</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead><tr class="bg-indigo-50"><th class="text-left p-3 font-semibold">Grade</th><th class="text-left p-3 font-semibold">Percentage Range</th><th class="text-left p-3 font-semibold">Grade Points</th><th class="text-left p-3 font-semibold">Remark</th></tr></thead>
+        <tbody>
+          <tr class="border-t"><td class="p-3 font-semibold text-green-700">A1</td><td class="p-3">91–100%</td><td class="p-3">10</td><td class="p-3 text-gray-500">Exceptional</td></tr>
+          <tr class="border-t bg-gray-50"><td class="p-3 font-semibold text-green-600">A2</td><td class="p-3">81–90%</td><td class="p-3">9</td><td class="p-3 text-gray-500">Excellent</td></tr>
+          <tr class="border-t"><td class="p-3 font-semibold text-blue-600">B1</td><td class="p-3">71–80%</td><td class="p-3">8</td><td class="p-3 text-gray-500">Very Good</td></tr>
+          <tr class="border-t bg-gray-50"><td class="p-3 font-semibold text-blue-500">B2</td><td class="p-3">61–70%</td><td class="p-3">7</td><td class="p-3 text-gray-500">Good</td></tr>
+          <tr class="border-t"><td class="p-3 font-semibold text-yellow-600">C1</td><td class="p-3">51–60%</td><td class="p-3">6</td><td class="p-3 text-gray-500">Average</td></tr>
+          <tr class="border-t bg-gray-50"><td class="p-3 font-semibold text-yellow-500">C2</td><td class="p-3">41–50%</td><td class="p-3">5</td><td class="p-3 text-gray-500">Satisfactory</td></tr>
+          <tr class="border-t"><td class="p-3 font-semibold text-orange-600">D</td><td class="p-3">33–40%</td><td class="p-3">4</td><td class="p-3 text-gray-500">Pass</td></tr>
+          <tr class="border-t bg-gray-50"><td class="p-3 font-semibold text-red-600">E</td><td class="p-3">Below 33%</td><td class="p-3">—</td><td class="p-3 text-red-500">Fail</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">How to Use This Marks Calculator</h2>
+    <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+      <p>This calculator is designed for Indian school and college students. Enter each subject's name, the marks you obtained, and the maximum marks for that subject. The calculator adds up your totals and shows your aggregate percentage and CBSE-equivalent grade automatically.</p>
+      <p><strong>Adding subjects:</strong> Click "Add Subject" to add more rows. You can add up to 10 subjects. Use the ✕ button to remove a subject row.</p>
+      <p><strong>Board exams (CBSE/ICSE/State):</strong> Enter marks for all 5 or 6 subjects. For best-of-5 calculation (used by many colleges), simply remove the lowest-scoring subject row before calculating.</p>
+      <p><strong>Competitive exam marks:</strong> For exams like UPSC Mains (each paper has different maximum marks), just enter each paper name and its marks/maximum. The aggregate percentage will be calculated correctly.</p>
+      <p>Related tools: <a href="/percentage-calculator/" class="text-indigo-600 hover:underline">Percentage Calculator</a> · <a href="/cgpa-to-percentage/" class="text-indigo-600 hover:underline">CGPA to Percentage</a> · <a href="/age-calculator-for-upsc/" class="text-indigo-600 hover:underline">UPSC Age Calculator</a></p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How to calculate total marks percentage? <span>+</span></div><div class="faq-a">Add all marks obtained, divide by total maximum marks, multiply by 100. Example: 450 out of 500 = 90%. This calculator does it automatically for you.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How are grades calculated in CBSE? <span>+</span></div><div class="faq-a">CBSE uses: A1 (91–100%), A2 (81–90%), B1 (71–80%), B2 (61–70%), C1 (51–60%), C2 (41–50%), D (33–40%), E (below 33% — fail).</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What are the passing marks in CBSE? <span>+</span></div><div class="faq-a">Students must score at least 33% in each subject and in aggregate to pass CBSE Class 10 and 12 exams.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How to add more subjects? <span>+</span></div><div class="faq-a">Click the "Add Subject" button below the table. You can add up to 10 subjects. Use the ✕ button to remove any subject row.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does this work for state board exams? <span>+</span></div><div class="faq-a">Yes. Works for CBSE, ICSE, Maharashtra Board, UP Board, Rajasthan Board, Tamil Nadu Board, and any other board. Just enter marks and maximum marks per subject.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a distinction in Indian exams? <span>+</span></div><div class="faq-a">In most Indian boards: Distinction = 75%+, First Division = 60–74%, Second Division = 45–59%, Third Division = 33–44%, Fail = below 33%.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this marks calculator free? <span>+</span></div><div class="faq-a">Yes, completely free. No login, no download, no ads blocking your results. Works on mobile and desktop.</div></div>
+  </div>
+
+  <!-- Related -->
+  <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">Related Tools</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <a href="/percentage-calculator/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">Percentage Calculator</a>
+      <a href="/cgpa-to-percentage/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">CGPA to %</a>
+      <a href="/bmi-calculator/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">BMI Calculator</a>
+      <a href="/age-calculator/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">Age Calculator</a>
+      <a href="/age-calculator-for-nda/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">NDA Age Calc</a>
+      <a href="/word-counter/" class="bg-white rounded-lg p-3 text-center hover:shadow-md transition text-sm font-medium text-indigo-600">Word Counter</a>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-gray-900 text-gray-400 py-8 text-sm">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <p class="mb-2"><a href="/" class="text-white font-bold">iLoveExams.in</a> — Free tools for Indian exam aspirants</p>
+    <p>© 2026 iLoveExams.in · <a href="/privacy/" class="hover:text-white">Privacy</a></p>
+  </div>
+</footer>
+
+<script>
+const GRADES = [
+  {min:91,label:'A1',color:'#15803d'},{min:81,label:'A2',color:'#16a34a'},
+  {min:71,label:'B1',color:'#2563eb'},{min:61,label:'B2',color:'#3b82f6'},
+  {min:51,label:'C1',color:'#ca8a04'},{min:41,label:'C2',color:'#d97706'},
+  {min:33,label:'D', color:'#ea580c'},{min:0, label:'E', color:'#dc2626'},
+];
+
+function getGrade(pct) {
+  return GRADES.find(g => pct >= g.min) || GRADES[GRADES.length-1];
+}
+
+function addRow() {
+  const c = document.getElementById('subjects-container');
+  if (c.children.length >= 10) { alert('Maximum 10 subjects allowed.'); return; }
+  const row = document.createElement('div');
+  row.className = 'subject-row';
+  row.innerHTML = `<input type="text" placeholder="Subject name"><input type="number" placeholder="Marks" min="0" class="obtained"><input type="number" placeholder="Max" min="1" value="100" class="total"><button class="del-btn" onclick="delRow(this)" title="Remove">✕</button>`;
+  c.appendChild(row);
+}
+
+function delRow(btn) {
+  const c = document.getElementById('subjects-container');
+  if (c.children.length <= 1) { alert('At least one subject required.'); return; }
+  btn.parentElement.remove();
+}
+
+function calculate() {
+  const rows = document.querySelectorAll('#subjects-container .subject-row');
+  let totalObtained = 0, totalMax = 0;
+  const breakdown = [];
+
+  rows.forEach(row => {
+    const name = row.querySelector('input[type=text]').value.trim() || 'Subject';
+    const obt = parseFloat(row.querySelector('.obtained').value);
+    const tot = parseFloat(row.querySelector('.total').value);
+    if (!isNaN(obt) && !isNaN(tot) && tot > 0) {
+      totalObtained += obt;
+      totalMax += tot;
+      const pct = (obt / tot * 100).toFixed(1);
+      const g = getGrade(parseFloat(pct));
+      breakdown.push(`<span class="inline-flex items-center gap-1 mr-3"><strong>${name}</strong>: ${obt}/${tot} = ${pct}% <span style="color:${g.color};font-weight:700">${g.label}</span></span>`);
+    }
+  });
+
+  if (totalMax === 0) { alert('Please enter marks for at least one subject.'); return; }
+
+  const aggPct = (totalObtained / totalMax * 100).toFixed(2);
+  const grade = getGrade(parseFloat(aggPct));
+
+  document.getElementById('res-total').textContent = totalObtained;
+  document.getElementById('res-max').textContent = totalMax;
+  document.getElementById('res-pct').textContent = aggPct + '%';
+  const gradeEl = document.getElementById('res-grade');
+  gradeEl.textContent = grade.label;
+  gradeEl.style.color = grade.color;
+  document.getElementById('subject-breakdown').innerHTML = breakdown.join('');
+  document.getElementById('result-card').style.display = 'block';
+}
+
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  const open = ans.style.display === 'block';
+  ans.style.display = open ? 'none' : 'block';
+  el.querySelector('span').textContent = open ? '+' : '−';
+}
+</script>
+</body>
+</html>

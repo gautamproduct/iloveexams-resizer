@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const today = '2026-05-31';
+const today = '2026-06-05';
 const ROOT = __dirname;
 
 function hasIndex(dir) {

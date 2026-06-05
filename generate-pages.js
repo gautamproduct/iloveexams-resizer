@@ -480,7 +480,7 @@ function generatePage(exam, docType) {
 // Generate all pages
 let count = 0;
 const sitemapEntries = [];
-const today = '2026-05-31';
+const today = '2026-06-05';
 
 EXAMS.forEach(exam => {
   ['photo', 'signature'].forEach(docType => {
