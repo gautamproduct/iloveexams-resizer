@@ -38,7 +38,7 @@ const EXAMS = [
   {slug:'rrb-alp',      name:'RRB ALP',                  cat:'Railways',  photo:{w:275,  h:354,  min:50,  max:150,  fmt:'JPG'}, sig:{w:275,  h:157,  min:30,  max:49,  fmt:'JPG'}},
   {slug:'rpf-si',       name:'RPF SI',                   cat:'Railways',  photo:{w:320,  h:240,  min:20,  max:50,   fmt:'JPG'}, sig:{w:140,  h:60,   min:10,  max:40,  fmt:'JPG'}},
   {slug:'rpf-constable',name:'RPF Constable',            cat:'Railways',  photo:{w:320,  h:240,  min:20,  max:50,   fmt:'JPG'}, sig:{w:140,  h:60,   min:10,  max:40,  fmt:'JPG'}},
-  {slug:'jee-main',     name:'JEE Main',                 cat:'Entrance',  photo:{w:275,  h:354,  min:10,  max:300,  fmt:'JPG'}, sig:{w:275,  h:118,  min:10,  max:50,  fmt:'JPG'}},
+  {slug:'jee-main',     name:'JEE Main',                 cat:'Entrance',  photo:{w:275,  h:354,  min:10,  max:200,  fmt:'JPG'}, sig:{w:275,  h:118,  min:10,  max:100, fmt:'JPG'}},
   {slug:'neet-ug',      name:'NEET UG',                  cat:'Entrance',  photo:{w:275,  h:354,  min:10,  max:200,  fmt:'JPG'}, sig:{w:275,  h:118,  min:4,   max:30,  fmt:'JPG'}},
   {slug:'gate',         name:'GATE',                     cat:'Entrance',  photo:{w:350,  h:450,  min:5,   max:1000, fmt:'JPG'}, sig:{w:400,  h:120,  min:3,   max:1000,fmt:'JPG'}},
   {slug:'cuet',         name:'CUET UG',                  cat:'Entrance',  photo:{w:200,  h:230,  min:10,  max:200,  fmt:'JPG'}, sig:{w:140,  h:60,   min:4,   max:30,  fmt:'JPG'}},
@@ -147,6 +147,12 @@ const BANK_EXTRA_DOCS = {
 };
 const DECLARATION_TEXT = 'I, _______ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.';
 
+// NEET-UG also asks for a postcard-size (4×6 inch) photo. NTA gives inches + KB only;
+// 600×900 px is 4×6 inch at 150 DPI and stays comfortably inside 10–200 KB.
+const NEET_POSTCARD = { exam: 'neet-ug', key: 'postcard-photo', label: 'Postcard Size Photo', short: 'Postcard Photo',
+  w: 600, h: 900, min: 10, max: 200, fmt: 'JPG', inches: '4×6 inch',
+  tip: 'Use a recent colour photo with a white background and your face clearly visible — the same photo as your passport-size upload.' };
+
 // Generic size pages driven by search demand, in addition to every size used by an exam
 const EXTRA_SIZES = [
   { w: 150, h: 200, max: 50 }, { w: 250, h: 250, max: 50 }, { w: 200, h: 200, max: 50 },
@@ -154,4 +160,4 @@ const EXTRA_SIZES = [
   { w: 413, h: 531, max: 100 }, { w: 350, h: 450, max: 100 }, { w: 100, h: 120, max: 50 },
 ];
 
-module.exports = { EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES };
+module.exports = { EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };

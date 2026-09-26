@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 const D = require('./exams-data');
-const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES } = D;
+const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD } = D;
 const S = require('./seo-shell');
 const { SITE, YEAR, MONTH_YEAR, esc } = S;
 
@@ -28,8 +28,8 @@ const write = (rel, html) => {
 const px = sp => `${sp.w}×${sp.h}`;
 const kb = sp => `${sp.min}–${sp.max} KB`;
 const mode = arr => { const c = {}; arr.forEach(x => c[x] = (c[x] || 0) + 1); return Object.entries(c).sort((a, b) => b[1] - a[1])[0][0]; };
-const presetURL = ({ slug, w, h, min, max, title, canon }) =>
-  `/resizer/?preset=${encodeURIComponent(slug)}&w=${w}&h=${h}&minkb=${min}&maxkb=${max}&fmt=JPG&title=${encodeURIComponent(title)}&canon=${encodeURIComponent(canon)}&embed=1`;
+const presetURL = ({ slug, w, h, min, max, title, canon, unit, dpi }) =>
+  `/resizer/?preset=${encodeURIComponent(slug)}&w=${w}&h=${h}&minkb=${min}&maxkb=${max}&fmt=JPG&title=${encodeURIComponent(title)}&canon=${encodeURIComponent(canon)}${unit ? `&unit=${unit}&dpi=${dpi}` : ''}&embed=1`;
 
 let pages = 0;
 
@@ -176,6 +176,47 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   }
 }
 
+// ─── 3b. NEET postcard-size photo ─────────────────────────────────────────────
+{
+  const doc = NEET_POSTCARD, exam = EXAMS.find(e => e.slug === doc.exam);
+  const dirName = `${exam.slug}-${doc.key}-resize`;
+  const canonical = `${SITE}/resizer/${dirName}/`;
+  const cat = CATEGORIES[exam.cat];
+  const title = `NEET Postcard Size Photo ${YEAR}: ${doc.inches}, ${doc.min}–${doc.max}KB | Resize Free`;
+  const desc = `NEET ${YEAR} postcard size photo: ${doc.inches} (${doc.w}×${doc.h} px at 150 DPI), ${doc.min}–${doc.max} KB, JPG. Resize free online — no upload, works on mobile.`;
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: cat.title, url: `${SITE}/resizer/${cat.hub}/` }, { name: 'NEET Postcard Photo', url: canonical }];
+  const faqs = [
+    { q: 'What is the NEET postcard size photo?', a: `A ${doc.inches} colour photo (width × height) uploaded as a JPG of ${doc.min}–${doc.max} KB, in addition to the passport-size photo.` },
+    { q: 'How many pixels is a 4×6 inch photo?', a: '600×900 px at 150 DPI, 800×1200 px at 200 DPI or 1200×1800 px at 300 DPI. The NEET portal checks the file size (10–200 KB) and format; this tool uses 600×900 px so the file fits easily.' },
+    { q: 'Is the NEET postcard photo different from the passport photo?', a: `Both should be the same recent photo. The passport-size photo is 3.5×4.5 cm (${px(exam.photo)} px, ${kb(exam.photo)}); the postcard photo is ${doc.inches}. <a href="/resizer/neet-ug-photo-resize/">Resize the passport-size photo</a>.` },
+    { q: `What is the NEET signature size?`, a: `${px(exam.sig)} px, ${kb(exam.sig)}, JPG. <a href="/resizer/neet-ug-signature-resize/">Resize NEET signature</a>.` },
+  ];
+  const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs }), S.appSchema({ url: canonical, name: 'NEET Postcard Photo Resizer', desc }), S.faqSchema(faqs)] })}
+<header class="hero"><div class="hero-in">
+  ${S.crumbsHtml(crumbs)}
+  <h1>NEET Postcard Size Photo ${YEAR} &amp; Free Resizer</h1>
+  <p class="lede">Resize your NEET postcard photo to <strong>${doc.inches}</strong> and <strong>${doc.min}–${doc.max} KB</strong> (JPG) — free, instant, private.</p>
+  <div class="chips"><span class="chip">📐 ${doc.inches}</span><span class="chip">${doc.w}×${doc.h} px</span><span class="chip">💾 ${doc.min}–${doc.max} KB</span><span class="chip ok">✓ No upload</span></div>
+  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
+</div></header>
+<main class="wrap">
+  <div class="answer"><p>The <strong>NEET-UG postcard size photo</strong> is <strong>${doc.inches}</strong> (${doc.w}×${doc.h} px at 150 DPI), uploaded as a <strong>JPG of ${doc.min}–${doc.max} KB</strong>. ${doc.tip}</p></div>
+  ${S.toolFrame(presetURL({ slug: dirName, ...doc, title: 'NEET Postcard Size Photo (4×6 inch)', canon: canonical, unit: 'inch', dpi: 150 }), `NEET Postcard Photo Resizer — ${doc.inches}, ${doc.min}–${doc.max} KB`)}
+  ${S.adSlot()}
+  <section class="card"><h2>All NEET ${YEAR} upload sizes</h2>
+    <div class="tbl-wrap"><table class="grid"><thead><tr><th>Document</th><th>Size</th><th>File size</th><th></th></tr></thead><tbody>
+      <tr><td>Passport size photo</td><td class="m">3.5×4.5 cm (${px(exam.photo)}px)</td><td class="m">${kb(exam.photo)}</td><td><a href="/resizer/neet-ug-photo-resize/">Resize →</a></td></tr>
+      <tr><td>Postcard size photo</td><td class="m">${doc.inches}</td><td class="m">${doc.min}–${doc.max} KB</td><td><em>this page</em></td></tr>
+      <tr><td>Signature</td><td class="m">${px(exam.sig)}px</td><td class="m">${kb(exam.sig)}</td><td><a href="/resizer/neet-ug-signature-resize/">Resize →</a></td></tr>
+    </tbody></table></div>
+  </section>
+  <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
+  <p class="note">Based on the NTA NEET-UG information bulletin (last review: ${MONTH_YEAR}). Always verify against the latest bulletin.</p>
+</main>
+${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
+  write(`resizer/${dirName}`, html); pages++;
+}
+
 // ─── 4. Pixel-size pages ──────────────────────────────────────────────────────
 const sizes = new Map(); // "WxH" -> { w, h, users: [{exam, doc, spec}] }
 const addSize = (w, h) => { const k = `${w}x${h}`; if (!sizes.has(k)) sizes.set(k, { w, h, users: [], extraMax: null }); return sizes.get(k); };
@@ -294,9 +335,26 @@ ${ordered.map(e => `- ${e.name}: photo ${px(e.photo)} px, ${kb(e.photo)}; signat
 - Left thumb impression: 240×240 px, 20–50 KB, JPG
 - Handwritten declaration: 800×400 px, 50–100 KB, JPG. Text: "${DECLARATION_TEXT}"
 
+## NEET-UG postcard size photo
+- ${NEET_POSTCARD.inches}, ${NEET_POSTCARD.min}–${NEET_POSTCARD.max} KB, JPG — ${SITE}/resizer/neet-ug-postcard-photo-resize/
+
 Sizes are compiled from official notifications; users should verify against the latest notification.
 `;
   fs.writeFileSync(path.join(ROOT, 'llms.txt'), txt, 'utf8');
+}
+
+// ─── 7. Custom 404 (GitHub Pages serves /404.html with a 404 status) ─────────
+{
+  const popular = ['post-gds', 'ibps-rrb-clerk', 'ukpsc', 'cat', 'niacl', 'ssc-cgl', 'neet-ug', 'upsc'].map(s => EXAMS.find(e => e.slug === s)).filter(Boolean);
+  const html = `${S.head({ title: 'Page not found | ILoveExams', desc: 'This page does not exist. Find your exam photo and signature resizer here.', canonical: `${SITE}/404.html` }).replace('content="index, follow, max-snippet:-1, max-image-preview:large"', 'content="noindex, follow"')}
+<header class="hero"><div class="hero-in"><h1>Page not found</h1><p class="lede" style="display:block">This link may be old or mistyped. Find your exam below — every resizer is free and runs in your browser.</p></div></header>
+<main class="wrap">
+  <section class="card"><h2>Popular exam resizers</h2><ul class="links">${popular.map(e => `<li><a href="/resizer/${e.slug}-photo-resize/">${esc(seoOf(e).short)} Photo</a></li><li><a href="/resizer/${e.slug}-signature-resize/">${esc(seoOf(e).short)} Signature</a></li>`).join('')}</ul></section>
+  <section class="card"><h2>Browse</h2><ul class="links"><li><a href="/resizer/">All 80+ exams</a></li><li><a href="/resizer/photo-signature-size-chart/">Size chart ${YEAR}</a></li><li><a href="/resizer/size/">Resize by pixels</a></li>${Object.values(CATEGORIES).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/">All tools</a></li></ul></section>
+  ${S.adSlot()}
+</main>
+${S.footer()}`;
+  fs.writeFileSync(path.join(ROOT, '404.html'), html, 'utf8');
 }
 
 console.log(`✅ Generated ${pages} hub/size/document pages, updated engine size table, wrote llms.txt`);

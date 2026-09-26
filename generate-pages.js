@@ -174,6 +174,7 @@ function generatePage(exam, docType) {
     </section>
   </div>
   ${bankCard}
+  ${exam.slug === 'neet-ug' ? `<section class="card"><h2>NEET also needs a postcard size photo</h2><p>Along with the passport-size photo, NEET asks for a <strong>4×6 inch postcard size photo (10–200 KB, JPG)</strong>.</p><p style="margin:12px 0 0"><a class="btn" href="/resizer/neet-ug-postcard-photo-resize/">Resize NEET postcard photo →</a></p></section>` : ''}
 
   <section class="card">
     <h2>${esc(short)} ${label} Guidelines — Do's &amp; Don'ts</h2>

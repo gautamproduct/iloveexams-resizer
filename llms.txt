@@ -53,7 +53,7 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 - RRB ALP: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-alp-photo-resize/
 - RPF SI: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-si-photo-resize/
 - RPF Constable: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-constable-photo-resize/
-- JEE Main: photo 275×354 px, 10–300 KB; signature 275×118 px, 10–50 KB — https://ilovexams.in/resizer/jee-main-photo-resize/
+- JEE Main: photo 275×354 px, 10–200 KB; signature 275×118 px, 10–100 KB — https://ilovexams.in/resizer/jee-main-photo-resize/
 - NEET UG: photo 275×354 px, 10–200 KB; signature 275×118 px, 4–30 KB — https://ilovexams.in/resizer/neet-ug-photo-resize/
 - GATE: photo 350×450 px, 5–1000 KB; signature 400×120 px, 3–1000 KB — https://ilovexams.in/resizer/gate-photo-resize/
 - CUET UG: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/cuet-photo-resize/
@@ -104,5 +104,8 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 ## Bank exam extra documents (IBPS pattern)
 - Left thumb impression: 240×240 px, 20–50 KB, JPG
 - Handwritten declaration: 800×400 px, 50–100 KB, JPG. Text: "I, _______ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
+
+## NEET-UG postcard size photo
+- 4×6 inch, 10–200 KB, JPG — https://ilovexams.in/resizer/neet-ug-postcard-photo-resize/
 
 Sizes are compiled from official notifications; users should verify against the latest notification.

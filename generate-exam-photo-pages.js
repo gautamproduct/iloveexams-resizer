@@ -94,8 +94,8 @@ const EXAMS = [
     portalNote: 'Upload on NTA NEET application portal (neet.nta.nic.in) during the registration window.',
     tips: ['Write your name and date of photo at the bottom of the physical photo (if printed).', 'White or very light grey background is required.', 'Photo must be recent (within 3 months) for recognition at exam centres.', 'High-contrast, well-lit photo prevents rejection at the exam centre.'],
     faqs: [
-      { q: 'What is the NEET photo size 2025?', a: 'NEET-UG (NTA) typically requires a photo of 480×576 pixels (or equivalent 3.5×4.5 cm at 200 DPI), 10–200 KB in JPG with a white background. Always confirm from the current year NTA information bulletin.' },
-      { q: 'What is the NEET signature size?', a: 'NEET signature: approximately 480×144 pixels, 4–30 KB in JPG. Sign on plain white paper in black ink and scan or photograph clearly.' },
+      { q: 'What is the NEET photo size 2025?', a: 'NEET-UG (NTA) requires a recent colour passport-size photo (3.5×4.5 cm, which is 275×354 pixels at 200 DPI), 10–200 KB in JPG with a white background, plus a postcard-size (4×6 inch) photo of 10–200 KB. Always confirm from the current NTA information bulletin.' },
+      { q: 'What is the NEET signature size?', a: 'NEET signature: 275×118 pixels, 4–30 KB in JPG. Sign on plain white paper in black ink and scan or photograph clearly.' },
       { q: 'Does NEET require the candidate\'s name on the photo?', a: 'NTA NEET recommends (and sometimes requires) the candidate to print their name and the date the photo was taken at the bottom of the photo before scanning it.' },
       { q: 'What happens if my NEET photo is rejected?', a: 'Incorrect photos can result in rejection of your online application, barring you from receiving your admit card. Always use exactly the dimensions and KB range specified.' },
       { q: 'Can I use the same photo for NEET and JEE?', a: 'Only if it meets both exams\' specifications (which sometimes differ). NTA NEET and JEE Main are separate portals — upload fresh photos sized for each exam.' },
@@ -116,11 +116,11 @@ const EXAMS = [
     portalNote: 'Upload on the NTA JEE Main portal (jeemain.nta.nic.in) during registration.',
     tips: ['Use a white or very light background.', 'No caps, sunglasses or religious head coverings (unless for genuine religious reasons, with supporting document).', 'The same photo must be carried to the exam hall.', 'Keep the original (unedited) photo safe — you may need it for counselling.'],
     faqs: [
-      { q: 'What is the JEE Main photo size 2025?', a: 'NTA JEE Main requires a photo of 480×576 pixels (equivalent to 3.5×4.5 cm passport size at 200 DPI), 10–200 KB in JPG format with a plain white background.' },
-      { q: 'What is the JEE Main signature size?', a: 'JEE Main signature: approximately 480×144 pixels, 4–30 KB in JPG. Sign on white paper in black ink.' },
-      { q: 'Does JEE Main and NEET have the same photo requirements?', a: 'Yes, NTA uses the same specifications for both JEE Main and NEET-UG: ~480×576 px, 10–200 KB, JPG, white background. But always verify from the specific information bulletin each year.' },
+      { q: 'What is the JEE Main photo size 2025?', a: 'NTA JEE Main requires a recent colour passport-size photo (3.5×4.5 cm, which is 275×354 pixels at 200 DPI) with about 80% of the face visible, 10–200 KB in JPG format with a plain white background.' },
+      { q: 'What is the JEE Main signature size?', a: 'JEE Main signature: 275×118 pixels, 10–100 KB in JPG. Sign on white paper in black ink.' },
+      { q: 'Does JEE Main and NEET have the same photo requirements?', a: 'The photo is the same (passport size, 275×354 px, 10–200 KB, JPG) but the signature differs: 10–100 KB for JEE Main and 4–30 KB for NEET. NEET also needs a postcard-size photo. Always verify from the current bulletin.' },
       { q: 'Do I need to carry the same photo to the JEE Main exam centre?', a: 'Yes. NTA requires you to carry a printout of your admit card and the same photograph that was uploaded during registration. A mismatch may cause issues at the centre.' },
-      { q: 'Can I upload a photo taken with my phone for JEE Main?', a: 'Yes. Use your phone camera in good lighting against a white wall. Then use our resize tool to bring it to 480×576 px under 200 KB in JPG.' },
+      { q: 'Can I upload a photo taken with my phone for JEE Main?', a: 'Yes. Use your phone camera in good lighting against a white wall. Then use our resize tool to bring it to 275×354 px and 10–200 KB in JPG.' },
       { q: 'What format does JEE Main accept for the photo?', a: 'Only JPG/JPEG format. Convert PNG or HEIC photos to JPG using our PNG to JPG converter before uploading.' },
     ],
   },
@@ -160,8 +160,8 @@ const EXAMS = [
     portalNote: 'Upload on the UPSC online application portal (upsconline.nic.in) during NDA/NA registration.',
     tips: ['Military-style photo: look directly at the camera, no smile, formal attire.', 'Plain white or light background.', 'Keep the same photo for SSB documents — consistency is important.', 'Do not edit or filter the photo.'],
     faqs: [
-      { q: 'What is the NDA photo size for online application?', a: 'UPSC NDA online application typically requires a passport-size colour photo of 400×400 pixels, 20–100 KB in JPG with a plain white background.' },
-      { q: 'What is the NDA signature size?', a: 'NDA signature: approximately 400×200 pixels, 10–50 KB in JPG. Sign clearly on white paper in black ink.' },
+      { q: 'What is the NDA photo size for online application?', a: 'UPSC NDA online application typically requires a passport-size colour photo of 400×400 pixels, 20–300 KB in JPG with a plain white background (the common UPSC online application specification).' },
+      { q: 'What is the NDA signature size?', a: 'NDA signature: 400×400 pixels, 20–100 KB in JPG. Sign clearly on white paper in black ink.' },
       { q: 'Can girls apply for NDA and submit a photo?', a: 'Yes. Female candidates have been eligible for NDA since 2022. The same photo requirements apply.' },
       { q: 'What kind of photo should I use for NDA?', a: 'A formal, front-facing colour photo in a collared shirt or formal attire. Plain white background. No cap, sunglasses or jewellery. Direct gaze at the camera.' },
       { q: 'Does NDA require a recent photo?', a: 'Yes. Use a recent passport-size photo taken within the last 6 months. The same photo must be used throughout the NDA selection process (SSB, medical, etc.).' },
@@ -225,9 +225,27 @@ function specRow(label, spec) {
     </tr>`;
 }
 
+// ── Keep in sync with the resizer: specs from exams-data.js, current year, and
+//    CTAs pointing at the static landing pages instead of ?preset= query URLs.
+const { EXAMS: DATA } = require('./exams-data');
+const YEAR = new Date().getFullYear();
+const DATA_SLUG = { 'upsc-photo-size': 'upsc', 'ssc-cgl-photo-size': 'ssc-cgl', 'ssc-chsl-photo-size': 'ssc-chsl',
+  'neet-photo-size': 'neet-ug', 'jee-main-photo-size': 'jee-main', 'ibps-po-photo-size': 'ibps-po',
+  'nda-photo-size': 'upsc-nda', 'sbi-po-photo-size': 'sbi-po' };
+EXAMS.forEach((ex, i) => {
+  const d = DATA.find(e => e.slug === DATA_SLUG[ex.slug]);
+  const synced = JSON.parse(JSON.stringify(ex).replace(/\b2025\b/g, String(YEAR)));
+  if (d) {
+    for (const k of ['photo', 'sig']) Object.assign(synced[k], { w: d[k].w, h: d[k].h, minKb: d[k].min, maxKb: d[k].max, fmt: d[k].fmt });
+    synced.resizerPhotoUrl = `/resizer/${d.slug}-photo-resize/`;
+    synced.resizerSigUrl = `/resizer/${d.slug}-signature-resize/`;
+  }
+  EXAMS[i] = synced;
+});
+
 function page(exam) {
   const canonical = `https://ilovexams.in/${exam.slug}/`;
-  const title = `${exam.name} Photo & Signature Size Requirements 2025 | ILoveExams`;
+  const title = `${exam.name} Photo & Signature Size Requirements ${YEAR} | ILoveExams`;
   const faqSchema = exam.faqs.map(f =>
     `{"@type":"Question","name":${JSON.stringify(f.q)},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(f.a)}}}`
   ).join(',');
@@ -248,7 +266,7 @@ function page(exam) {
   <meta name="geo.placename" content="India">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ILoveExams">
-  <meta property="og:title" content="${exam.name} Photo Size Requirements 2025 | ILoveExams">
+  <meta property="og:title" content="${exam.name} Photo Size Requirements ${YEAR} | ILoveExams">
   <meta property="og:description" content="${exam.desc}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="https://ilovexams.in/og-image.png">
