@@ -15,7 +15,7 @@ const ROOT = __dirname;
 const today = new Date().toISOString().slice(0, 10);
 
 // Top-level dirs that are never pages
-const SKIP = new Set(['node_modules', '.git', '.claude']);
+const SKIP = new Set(['node_modules', '.git', '.claude', '_before', 'assets']);
 
 function walk(rel, out) {
   const abs = path.join(ROOT, rel);
@@ -61,16 +61,48 @@ ${entries.join('\n')}
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
 
+// Section sitemaps (optional extra submissions in Search Console → per-section indexing reports).
+// sitemap.xml above stays the complete list.
+const SECTIONS = {
+  'sitemap-exam-pages.xml': p => /^resizer\/[^/]+-resize$/.test(p) || /^[a-z0-9-]+-photo-size$/.test(p),
+  'sitemap-pixel-sizes.xml': p => p.startsWith('resizer/size'),
+  'sitemap-exam-calculators.xml': p => /score-calculator|rank-predictor|typing-test|exam-calculators|^age-calculator/.test(p),
+  'sitemap-pdf-image-tools.xml': p => /pdf|jpg|png|heic|webp|image|photo|signature|resize-|compress|marksheet|certificate/.test(p) && !p.startsWith('resizer/'),
+};
+const used = new Set();
+const sectionFiles = [];
+for (const [file, test] of Object.entries(SECTIONS)) {
+  const list = pagesList.filter(p => p && !used.has(p) && test(p));
+  list.forEach(p => used.add(p));
+  const body = list.map(p => entries[pagesList.indexOf(p)]).join('\n');
+  fs.writeFileSync(path.join(ROOT, file), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`, 'utf8');
+  sectionFiles.push(`${file} (${list.length})`);
+}
+const rest = pagesList.filter(p => !used.has(p));
+fs.writeFileSync(path.join(ROOT, 'sitemap-core.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rest.map(p => entries[pagesList.indexOf(p)]).join('\n')}\n</urlset>\n`, 'utf8');
+sectionFiles.push(`sitemap-core.xml (${rest.length})`);
+
 // Site-wide post-processing. AdSense site verification: every page (incl. hand-written and older generated
 // ones) must carry the account meta tag. Idempotent.
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
 let tagged = 0, navFixed = 0;
+const crypto = require('crypto');
+const ASSET_V = {};
+(function hashAssets(dir, rel) {
+  for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
+    const r = rel ? `${rel}/${d.name}` : d.name;
+    if (d.isDirectory()) hashAssets(path.join(dir, d.name), r);
+    else if (/\.(css|js)$/.test(d.name)) ASSET_V[r] = crypto.createHash('md5').update(fs.readFileSync(path.join(dir, d.name))).digest('hex').slice(0, 8);
+  }
+})(path.join(ROOT, 'assets'), '');
 for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '404.html']) {
   const f = path.join(ROOT, p);
   if (!fs.existsSync(f)) continue;
   const h = fs.readFileSync(f, 'utf8');
   let out = h.includes('google-adsense-account') ? h : h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n  ${ADS_META}`);
   if (out !== h) tagged++;
+  // Cache-busting: /assets/x.css → /assets/x.css?v=<content hash>
+  out = out.replace(/(["'])\/assets\/([\w\/.-]+\.(?:css|js))(?:\?v=[a-f0-9]+)?\1/g, (m, q, file) => ASSET_V[file] ? `${q}/assets/${file}?v=${ASSET_V[file]}${q}` : m);
   // Same top-bar menu on every page (see site-nav.js)
   const navved = normalizeNav(out);
   if (navved !== out) navFixed++;
@@ -78,4 +110,4 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
 }
 if (tagged) console.log(`✅ Added AdSense account meta to ${tagged} pages`);
 if (navFixed) console.log(`✅ Normalised top menu on ${navFixed} pages`);
-console.log(`✅ Sitemap rebuilt: ${entries.length} URLs`);
+console.log(`✅ Sitemap rebuilt: ${entries.length} URLs · sections: ${sectionFiles.join(', ')}`);

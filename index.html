@@ -9,7 +9,6 @@
   <!-- ═══ PERFORMANCE ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
   <!-- ═══ GEO ═══ -->
   <meta name="geo.region" content="IN">
@@ -57,7 +56,7 @@
   <!-- ═══ ADSENSE ═══ -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9837613085159910" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/tw.css?v=c55f1083">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -163,6 +162,8 @@
           <a href="/#id">🪪 ID Card — Voter, Aadhaar, PAN</a>
           <a href="/#kb">💾 By File Size — 10–500 KB</a>
           <a href="/#dim">📐 By Dimension — cm, inch, custom</a>
+          <a href="/pdf-tools/">📄 PDF Tools — compress, merge, split</a>
+          <a href="/exam-calculators/">🧮 Exam Calculators — score, rank</a>
           <hr>
           <a class="all" href="/#all">View all tools →</a>
         </div>
@@ -205,6 +206,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     <button class="cat-pill" data-cat="id" onclick="filterCat('id',this)">ID Card</button>
     <button class="cat-pill" data-cat="kb" onclick="filterCat('kb',this)">By File Size</button>
     <button class="cat-pill" data-cat="dim" onclick="filterCat('dim',this)">By Dimension</button>
+    <button class="cat-pill" data-cat="pdf" onclick="filterCat('pdf',this)">PDF Tools</button>
     <button class="cat-pill" data-cat="convert" onclick="filterCat('convert',this)">Converters</button>
     <button class="cat-pill" data-cat="calc" onclick="filterCat('calc',this)">Calculators</button>
     <button class="cat-pill" data-cat="text" onclick="filterCat('text',this)">Text Tools</button>
@@ -404,6 +406,198 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
 
+
+    <!-- Compress PDF -->
+    <a class="tool-card" data-cat="pdf" href="/compress-pdf/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">🗜</div>
+      <p class="tool-title">Compress PDF</p>
+      <p class="tool-desc">Reduce PDF size to 100 KB, 200 KB, 500 KB or 1 MB for exam forms — on your device.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Compress PDF to 200 KB -->
+    <a class="tool-card" data-cat="pdf" href="/compress-pdf-to-200kb/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📉</div>
+      <p class="tool-title">Compress PDF to 200 KB</p>
+      <p class="tool-desc">Fit certificates and mark sheets under a 200 KB upload limit in one tap.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Merge PDF -->
+    <a class="tool-card" data-cat="pdf" href="/merge-pdf/">
+      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">➕</div>
+      <p class="tool-title">Merge PDF</p>
+      <p class="tool-desc">Combine several PDFs into one, in any order.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Split PDF -->
+    <a class="tool-card" data-cat="pdf" href="/split-pdf/">
+      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">✂️</div>
+      <p class="tool-title">Split PDF</p>
+      <p class="tool-desc">Extract the pages you need, or split every page into its own PDF.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- PDF to JPG -->
+    <a class="tool-card" data-cat="pdf" href="/pdf-to-jpg/">
+      <div class="tool-ico" style="background:#fff7ed;color:#ea580c">🖼</div>
+      <p class="tool-title">PDF to JPG</p>
+      <p class="tool-desc">Convert PDF pages to high-quality JPG images.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Organise PDF Pages -->
+    <a class="tool-card" data-cat="pdf" href="/organize-pdf/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🗂</div>
+      <p class="tool-title">Organise PDF Pages</p>
+      <p class="tool-desc">Reorder, delete or rotate pages with a visual preview.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Rotate PDF -->
+    <a class="tool-card" data-cat="pdf" href="/rotate-pdf/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🔄</div>
+      <p class="tool-title">Rotate PDF</p>
+      <p class="tool-desc">Fix sideways or upside-down scanned pages permanently.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Add Watermark to PDF -->
+    <a class="tool-card" data-cat="pdf" href="/add-watermark-to-pdf/">
+      <div class="tool-ico" style="background:#fef2f2;color:#dc2626">💧</div>
+      <p class="tool-title">Add Watermark to PDF</p>
+      <p class="tool-desc">Stamp "Only for verification" on ID and certificate copies.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Add Page Numbers -->
+    <a class="tool-card" data-cat="pdf" href="/add-page-numbers-to-pdf/">
+      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">🔢</div>
+      <p class="tool-title">Add Page Numbers</p>
+      <p class="tool-desc">Number PDF pages — "Page 1 of N" and more.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- PDF to Text -->
+    <a class="tool-card" data-cat="pdf" href="/extract-text-from-pdf/">
+      <div class="tool-ico" style="background:#f8fafc;color:#475569">📝</div>
+      <p class="tool-title">PDF to Text</p>
+      <p class="tool-desc">Copy all text from a PDF or save it as .txt.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- HEIC to JPG -->
+    <a class="tool-card" data-cat="convert" href="/heic-to-jpg/">
+      <div class="tool-ico" style="background:#fdf4ff;color:#a21caf">📱</div>
+      <p class="tool-title">HEIC to JPG</p>
+      <p class="tool-desc">Convert iPhone photos to JPG — portals don't accept HEIC.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- WEBP to JPG -->
+    <a class="tool-card" data-cat="convert" href="/webp-to-jpg/">
+      <div class="tool-ico" style="background:#fffbeb;color:#d97706">🔁</div>
+      <p class="tool-title">WEBP to JPG</p>
+      <p class="tool-desc">Convert WEBP, PNG, GIF and BMP images to JPG in bulk.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- JPG Resize -->
+    <a class="tool-card" data-cat="dim convert" href="/jpg-resize/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📐</div>
+      <p class="tool-title">JPG Resize</p>
+      <p class="tool-desc">Resize a JPG to exact pixels, cm or inches and a KB limit.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Photo with Name & Date -->
+    <a class="tool-card" data-cat="exam" href="/photo-with-name-and-date/">
+      <div class="tool-ico" style="background:#fce7f3;color:#be185d">🏷</div>
+      <p class="tool-title">Photo with Name &amp; Date</p>
+      <p class="tool-desc">Print your name and photo date below your passport photo, sized for forms.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Join Photo & Signature -->
+    <a class="tool-card" data-cat="exam" href="/join-photo-and-signature/">
+      <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">🧩</div>
+      <p class="tool-title">Join Photo &amp; Signature</p>
+      <p class="tool-desc">Combine photo and signature into one image under your KB limit.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Resize Mark Sheet -->
+    <a class="tool-card" data-cat="exam kb" href="/resize-marksheet-for-online-form/">
+      <div class="tool-ico" style="background:#ecfdf5;color:#059669">📄</div>
+      <p class="tool-title">Resize Mark Sheet</p>
+      <p class="tool-desc">Compress a scanned mark sheet to 100–500 KB for online forms.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Resize Certificate -->
+    <a class="tool-card" data-cat="exam kb" href="/resize-certificate-for-online-form/">
+      <div class="tool-ico" style="background:#ecfdf5;color:#059669">📜</div>
+      <p class="tool-title">Resize Certificate</p>
+      <p class="tool-desc">Caste, EWS, domicile certificates under the portal's KB limit.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Exam Score Calculators -->
+    <a class="tool-card" data-cat="calc" href="/exam-calculators/">
+      <div class="tool-ico" style="background:#fefce8;color:#ca8a04">🧮</div>
+      <p class="tool-title">Exam Score Calculators</p>
+      <p class="tool-desc">NEET, JEE, SSC, bank, UPSC &amp; CAT score calculators with negative marking.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- NEET Score Calculator -->
+    <a class="tool-card" data-cat="calc" href="/neet-score-calculator/">
+      <div class="tool-ico" style="background:#fce7f3;color:#be185d">🩺</div>
+      <p class="tool-title">NEET Score Calculator</p>
+      <p class="tool-desc">Calculate NEET marks from the answer key (+4 / −1) with exam pattern.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- JEE Main Score Calculator -->
+    <a class="tool-card" data-cat="calc" href="/jee-main-score-calculator/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">⚙️</div>
+      <p class="tool-title">JEE Main Score Calculator</p>
+      <p class="tool-desc">Calculate JEE Main marks subject-wise (+4 / −1).</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- JEE Main Rank Predictor -->
+    <a class="tool-card" data-cat="calc" href="/jee-main-rank-predictor/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">🏆</div>
+      <p class="tool-title">JEE Main Rank Predictor</p>
+      <p class="tool-desc">Convert your JEE Main percentile to an expected All India Rank.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- SSC CGL Score Calculator -->
+    <a class="tool-card" data-cat="calc" href="/ssc-cgl-score-calculator/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">📊</div>
+      <p class="tool-title">SSC CGL Score Calculator</p>
+      <p class="tool-desc">Tier 1 marks with −0.5 negative marking, section-wise.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- UPSC Prelims Score Calculator -->
+    <a class="tool-card" data-cat="calc" href="/upsc-prelims-score-calculator/">
+      <div class="tool-ico" style="background:#fff7ed;color:#ea580c">🏛</div>
+      <p class="tool-title">UPSC Prelims Score Calculator</p>
+      <p class="tool-desc">GS Paper I score and CSAT qualifying check.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+
+    <!-- Typing Test -->
+    <a class="tool-card" data-cat="calc text" href="/typing-test/">
+      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">⌨️</div>
+      <p class="tool-title">Typing Test</p>
+      <p class="tool-desc">Practise for SSC skill tests — live WPM, accuracy and KDPH.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
   </div>
 
   <!-- empty state -->
@@ -563,7 +757,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
   window.applyHashFilter = applyHashFilter;
   function applyHashFilter() {
     const h = (location.hash || '').replace('#', '');
-    if (['exam', 'id', 'kb', 'dim', 'all', 'tools-grid'].includes(h)) {
+    if (['exam', 'id', 'kb', 'dim', 'pdf', 'convert', 'calc', 'text', 'all', 'tools-grid'].includes(h)) {
       filterCat(h === 'tools-grid' ? 'all' : h);
       const grid = document.getElementById('tools-grid');
       if (!grid) return;

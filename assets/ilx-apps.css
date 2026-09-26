@@ -1,0 +1,54 @@
+/* Shared UI for the in-browser tools (PDF, image, exam calculators). */
+.app{background:#fff;border:1.5px solid #bfdbfe;border-radius:16px;padding:18px;margin:0 0 20px;box-shadow:0 8px 30px rgba(37,99,235,.08)}
+.app h2{font-size:17px;font-weight:800;margin:0 0 12px}
+.drop{border:2px dashed #93c5fd;border-radius:14px;background:#f8fbff;padding:28px 16px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s}
+.drop:hover,.drop.over{background:#eff6ff;border-color:#2563eb}
+.drop .big{font-size:34px;line-height:1}
+.drop strong{display:block;font-size:15.5px;margin:8px 0 4px;color:#0f172a}
+.drop span{font-size:13px;color:#64748b}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+.row label{font-size:13px;font-weight:600;color:#334155}
+.inp,.sel{border:1.5px solid #cbd5e1;border-radius:10px;padding:9px 11px;font-size:14px;background:#fff;color:#0f172a;min-width:0}
+.inp:focus,.sel:focus{outline:none;border-color:#2563eb}
+.num{width:92px}
+.go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;font-weight:700;border:0;border-radius:12px;padding:12px 22px;font-size:15px;cursor:pointer}
+.go:disabled{opacity:.55;cursor:not-allowed}
+.go.alt{background:linear-gradient(135deg,#475569,#334155)}
+.go.ok{background:linear-gradient(135deg,#16a34a,#15803d)}
+.mini{border:1.5px solid #cbd5e1;background:#fff;border-radius:8px;padding:5px 9px;font-size:12.5px;font-weight:600;cursor:pointer;color:#334155}
+.mini:hover{border-color:#2563eb;color:#2563eb}
+.chips-kb{display:flex;flex-wrap:wrap;gap:6px}
+.chips-kb button{border:1.5px solid #cbd5e1;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;color:#334155}
+.chips-kb button.on{background:#2563eb;border-color:#2563eb;color:#fff}
+.files{list-style:none;margin:12px 0;padding:0}
+.files li{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:6px;font-size:13.5px;background:#fff}
+.files li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files li .sz{color:#64748b;font-size:12px;white-space:nowrap}
+.status{font-size:13.5px;color:#475569;margin:10px 0;min-height:1.2em}
+.status.err{color:#dc2626}
+.bar{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3b82f6,#2563eb);transition:width .2s}
+.result{border:1.5px solid #bbf7d0;background:#f0fdf4;border-radius:14px;padding:14px 16px;margin-top:14px}
+.result .big{font-size:22px;font-weight:900;color:#0f172a}
+.result .sub{font-size:13px;color:#475569}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin:12px 0}
+.thumbs .t{position:relative;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px;background:#fff;text-align:center;font-size:12px;color:#475569}
+.thumbs .t canvas,.thumbs .t img{max-width:100%;height:auto;display:block;margin:0 auto 4px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.thumbs .t.off{opacity:.35}
+.thumbs .t .acts{display:flex;justify-content:center;gap:4px;margin-top:4px}
+.preview{max-width:100%;border:1px solid #e2e8f0;border-radius:10px;display:block;margin:10px auto;background:#fff}
+.grid2{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+.stat{border:1px solid #e2e8f0;border-radius:12px;padding:12px;background:#f8fafc;text-align:center}
+.stat b{display:block;font-size:22px;font-weight:900;color:#0f172a}
+.stat span{font-size:12px;color:#64748b}
+.typing-src{font-family:ui-monospace,Menlo,monospace;font-size:16px;line-height:1.8;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;user-select:none}
+.typing-src .c{color:#16a34a}.typing-src .w{color:#dc2626;background:#fee2e2}.typing-src .cur{background:#dbeafe}
+textarea.inp{width:100%;min-height:130px;font-family:inherit;line-height:1.6}
+.hide{display:none!important}
+@media(max-width:520px){
+  .app{padding:14px 12px}
+  .app table.grid th,.app table.grid td{padding:8px 5px;font-size:13px}
+  .app table.grid td .num{width:56px;padding:8px 6px}
+  .app table.grid td span{font-size:11px!important}
+}

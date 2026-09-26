@@ -59,7 +59,7 @@ function generatePage(exam, docType) {
   const cat       = CATEGORIES[exam.cat];
   const isBank    = BANK_EXTRA_EXAMS.includes(exam.slug);
 
-  const title = (t => t.length <= 62 ? `${t} | Resize Free` : t)(`${short} ${label} Size ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`);
+  const title = (t => t.length <= 58 ? `${t} | Resize Free` : t)(`${short} ${label} Size ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`);
   const desc  = `${short} ${lc} size ${YEAR}: ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt}. Resize & compress your ${lc} online in seconds — free, no upload, works on mobile.`;
   const answer = `The <strong>${esc(exam.name)} ${lc}</strong> must be <strong>${spec.w} × ${spec.h} pixels</strong> (width × height), with a file size between <strong>${spec.min} KB and ${spec.max} KB</strong>, in <strong>${spec.fmt}/JPEG</strong> format. Upload your ${lc} in the tool below and it is resized and compressed to exactly this size in one click.`;
 

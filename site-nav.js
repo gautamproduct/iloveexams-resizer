@@ -18,6 +18,8 @@ const TOOLS = [
   { href: '/#id', t: '🪪 ID Card — Voter, Aadhaar, PAN' },
   { href: '/#kb', t: '💾 By File Size — 10–500 KB' },
   { href: '/#dim', t: '📐 By Dimension — cm, inch, custom' },
+  { href: '/pdf-tools/', t: '📄 PDF Tools — compress, merge, split' },
+  { href: '/exam-calculators/', t: '🧮 Exam Calculators — score, rank' },
 ];
 
 const CSS = `<style id="ilx-nav-css">

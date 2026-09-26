@@ -271,7 +271,7 @@ for (const g of GUIDES) {
   const article = { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.desc, url: canonical, mainEntityOfPage: canonical,
     datePublished: PUBLISHED, dateModified: S.ISO_DATE, inLanguage: 'en-IN', image: `${SITE}/og-image.png`,
     author: { '@type': 'Organization', name: 'ILoveExams Team', url: `${SITE}/about/` }, publisher: { '@type': 'Organization', name: 'ILoveExams', url: `${SITE}/`, logo: { '@type': 'ImageObject', url: `${SITE}/apple-touch-icon.png` } } };
-  const html = `${S.head({ title: `${g.title} | ILoveExams`, desc: g.desc, canonical, schema: [article, S.crumbsSchema(crumbs), ...(g.faqs.length ? [S.faqSchema(g.faqs)] : [])] })}
+  const html = `${S.head({ title: g.title.length > 60 ? g.title : `${g.title} | ILoveExams`, desc: g.desc, canonical, schema: [article, S.crumbsSchema(crumbs), ...(g.faqs.length ? [S.faqSchema(g.faqs)] : [])] })}
 <header class="hero"><div class="hero-in">
   ${S.crumbsHtml(crumbs)}
   <h1>${esc(g.h1)}</h1>

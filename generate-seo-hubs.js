@@ -358,6 +358,12 @@ ${ordered.map(e => `- ${e.name}: photo ${px(e.photo)} px, ${kb(e.photo)}; signat
 - Left thumb impression: 240×240 px, 20–50 KB, JPG
 - Handwritten declaration: 800×400 px, 50–100 KB, JPG. Text: "${DECLARATION_TEXT}"
 
+## Free tools (run in the browser, no upload)
+- PDF: compress PDF to 100/200/300/500 KB, 1/2 MB (${SITE}/compress-pdf/), merge, split, rotate, organise pages, PDF to JPG, watermark, page numbers, PDF to text — ${SITE}/pdf-tools/
+- Images: HEIC to JPG, WEBP to JPG, JPG resize, compress image, photo with name and date, join photo and signature
+- Exam calculators with marking schemes: NEET (+4/−1), JEE Main (+4/−1), CUET (+5/−1), SSC CGL/CHSL Tier 1 (+2/−0.5), IBPS/SBI prelims (+1/−0.25), RRB NTPC (+1/−1/3), UPSC Prelims, CAT — ${SITE}/exam-calculators/
+- JEE Main percentile to rank predictor, typing speed test (WPM, KDPH)
+
 ## NEET-UG postcard size photo
 - ${NEET_POSTCARD.inches}, ${NEET_POSTCARD.min}–${NEET_POSTCARD.max} KB, JPG — ${SITE}/resizer/neet-ug-postcard-photo-resize/
 
