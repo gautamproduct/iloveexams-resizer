@@ -1,7 +1,7 @@
 /* Shared UI for the in-browser tools (PDF, image, exam calculators). */
-.app{background:#fff;border:1.5px solid #bfdbfe;border-radius:16px;padding:18px;margin:0 0 20px;box-shadow:0 8px 30px rgba(37,99,235,.08)}
+.app{background:#fff;border:1px solid #bfdbfe;border-radius:20px;padding:20px;margin:0 0 20px;box-shadow:0 1px 2px rgba(16,24,40,.05),0 18px 40px rgba(37,99,235,.10)}
 .app h2{font-size:17px;font-weight:800;margin:0 0 12px}
-.drop{border:2px dashed #93c5fd;border-radius:14px;background:#f8fbff;padding:28px 16px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s}
+.drop{border:2px dashed #93c5fd;border-radius:16px;background:linear-gradient(180deg,#f8fbff,#f1f6ff);padding:30px 16px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}.drop:active{transform:scale(.995)}
 .drop:hover,.drop.over{background:#eff6ff;border-color:#2563eb}
 .drop .big{font-size:34px;line-height:1}
 .drop strong{display:block;font-size:15.5px;margin:8px 0 4px;color:#0f172a}
@@ -11,7 +11,7 @@
 .inp,.sel{border:1.5px solid #cbd5e1;border-radius:10px;padding:9px 11px;font-size:14px;background:#fff;color:#0f172a;min-width:0}
 .inp:focus,.sel:focus{outline:none;border-color:#2563eb}
 .num{width:92px}
-.go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;font-weight:700;border:0;border-radius:12px;padding:12px 22px;font-size:15px;cursor:pointer}
+.go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;font-weight:700;border:0;border-radius:12px;padding:13px 24px;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(37,99,235,.28);transition:transform .15s,box-shadow .15s}.go:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 10px 24px rgba(37,99,235,.34)}
 .go:disabled{opacity:.55;cursor:not-allowed}
 .go.alt{background:linear-gradient(135deg,#475569,#334155)}
 .go.ok{background:linear-gradient(135deg,#16a34a,#15803d)}
@@ -52,3 +52,5 @@ textarea.inp{width:100%;min-height:130px;font-family:inherit;line-height:1.6}
   .app table.grid td .num{width:56px;padding:8px 6px}
   .app table.grid td span{font-size:11px!important}
 }
+
+@media(max-width:520px){.app .go{width:100%}}
