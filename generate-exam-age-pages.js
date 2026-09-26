@@ -268,9 +268,17 @@ function eligRow(e) {
   return `<tr style="border-bottom:1px solid #f1f5f9"><td style="padding:9px 12px;color:#0f172a;font-weight:600">${e.cat}</td><td style="padding:9px 12px;color:#475569;text-align:center">${e.min}</td><td style="padding:9px 12px;color:#475569;text-align:center">${e.max === 999 ? 'No limit' : e.max}</td><td style="padding:9px 12px;color:#475569;text-align:center">${e.attempts}</td></tr>`;
 }
 
+// Years follow the build date: titles/keywords/questions cover the current and
+// next exam cycle (e.g. "2026-2027"); worked examples in answers use this year.
+const { YEAR: THIS_YEAR, YEARS } = require('./seo-shell');
+EXAMS.forEach(ex => {
+  ex.keywords = ex.keywords.replace(/\b2025\b/g, YEARS);
+  ex.faqs.forEach(f => { f.q = f.q.replace(/\b2025\b/g, YEARS); f.a = f.a.replace(/\b2025\b/g, String(THIS_YEAR)); });
+});
+
 function page(exam) {
   const canonical = `https://ilovexams.in/${exam.slug}/`;
-  const title = `Age Calculator for ${exam.name} 2025 – Check Eligibility | ILoveExams`;
+  const title = `${exam.shortName} Age Calculator ${YEARS} – Check Eligibility | ILoveExams`;
   const mainFaq = exam.faqs.map(f =>
     `{"@type":"Question","name":${JSON.stringify(f.q)},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(f.a)}}}`
   ).join(',');

@@ -84,6 +84,15 @@ for (const [catName, cat] of Object.entries(CATEGORIES)) {
   <div class="answer"><p>Most ${esc(cat.title.replace(/\s*\(.*\)/, ''))} require a <strong>photo of ${mp}</strong> and a <strong>signature of ${ms}</strong> in JPG format. The exact requirement for every exam is in the table below.</p></div>
   <section class="card"><h2>${esc(cat.title)} — Size Chart ${YEAR}</h2>${examTable(list)}</section>
   ${catName === 'Banking' ? `<section class="card"><h2>Thumb impression &amp; handwritten declaration</h2><p>IBPS, SBI, RBI, NIACL and LIC AAO forms also need a <strong>left thumb impression (240×240px, 20–50 KB)</strong> and a <strong>handwritten declaration (800×400px, 50–100 KB)</strong>.</p><ul class="links">${BANK_EXTRA_EXAMS.map(s => EXAMS.find(e => e.slug === s)).map(e => `<li><a href="/resizer/${e.slug}-declaration-resize/">${esc(seoOf(e).short)} declaration</a></li><li><a href="/resizer/${e.slug}-thumb-impression-resize/">${esc(seoOf(e).short)} thumb</a></li>`).join('')}</ul></section>` : ''}
+  <section class="card"><h2>How to get your ${esc(cat.title.replace(/\s*\(.*\)/, ''))} photo &amp; signature accepted</h2>
+    <ol style="margin:0;padding-left:20px">
+      <li><strong>Find your exam's exact size</strong> in the table above — sizes differ even between exams from the same body, and the portal checks them strictly.</li>
+      <li><strong>Start from a good original.</strong> Take a fresh photo against a plain white wall in daylight, and sign in black ink on white paper. <a href="/resizer/guides/take-exam-photo-with-phone/">Photo guide</a> · <a href="/resizer/guides/scan-signature-for-online-form/">Signature guide</a>.</li>
+      <li><strong>Crop to the required shape before resizing</strong>, so your face or signature is not stretched. Every resizer here locks the crop to the right ratio.</li>
+      <li><strong>Hit the KB window, not just the pixels.</strong> Files below the minimum are rejected just like files above the maximum — the tool handles both.</li>
+      <li><strong>Save as JPG</strong> and check the preview before you submit. If something goes wrong, see <a href="/resizer/guides/photo-upload-rejected-reasons/">12 reasons uploads get rejected</a>.</li>
+    </ol>
+  </section>
   ${S.adSlot()}
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
   <section class="card"><h2>Other exam categories</h2><ul class="links">${Object.values(CATEGORIES).filter(c => c !== cat).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/resizer/photo-signature-size-chart/">All exams chart</a></li></ul></section>
@@ -160,6 +169,12 @@ for (const slug of BANK_EXTRA_EXAMS) {
   ${isDecl ? `<section class="card"><h2>${esc(short)} Handwritten Declaration Text</h2><p>Copy this text in your own handwriting (English, running letters, black ink, white paper):</p><p class="decl">${esc(DECLARATION_TEXT)}</p><p class="note">Use the exact wording in your official notification if it differs.</p></section>` : ''}
   ${S.toolFrame(presetURL({ slug: dirName, ...doc, title: `${short} ${doc.label}`, canon: canonical }), `${short} ${doc.label} Resizer — ${doc.w}×${doc.h}px, ${doc.min}–${doc.max} KB`)}
   ${S.adSlot()}
+  <section class="card"><h2>How to make the ${esc(short)} ${doc.label.toLowerCase()}</h2>
+    <ol style="margin:0;padding-left:20px">${doc.steps.map(x => `<li>${x}</li>`).join('')}</ol>
+    <h3>Common mistakes that get it rejected</h3>
+    <ul class="check x">${doc.mistakes.map(x => `<li>${x}</li>`).join('')}</ul>
+    <p style="margin:12px 0 0;font-size:14px">📖 Full guide: <a href="/resizer/guides/ibps-thumb-impression-handwritten-declaration/">thumb impression &amp; handwritten declaration</a></p>
+  </section>
   <section class="card"><h2>All ${esc(short)} document sizes</h2>
     <div class="tbl-wrap"><table class="grid"><thead><tr><th>Document</th><th>Dimensions</th><th>File size</th><th></th></tr></thead><tbody>
       <tr><td>Photo</td><td class="m">${px(exam.photo)}px</td><td class="m">${kb(exam.photo)}</td><td><a href="/resizer/${slug}-photo-resize/">Resize →</a></td></tr>
@@ -203,6 +218,16 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   <div class="answer"><p>The <strong>NEET-UG postcard size photo</strong> is <strong>${doc.inches}</strong> (${doc.w}×${doc.h} px at 150 DPI), uploaded as a <strong>JPG of ${doc.min}–${doc.max} KB</strong>. ${doc.tip}</p></div>
   ${S.toolFrame(presetURL({ slug: dirName, ...doc, title: 'NEET Postcard Size Photo (4×6 inch)', canon: canonical, unit: 'inch', dpi: 150 }), `NEET Postcard Photo Resizer — ${doc.inches}, ${doc.min}–${doc.max} KB`)}
   ${S.adSlot()}
+  <section class="card"><h2>How to prepare the NEET postcard photo</h2>
+    <ol style="margin:0;padding-left:20px">
+      <li>Use the <strong>same recent photo</strong> as your passport-size upload — colour, white background, face clearly visible.</li>
+      <li>Keep the <strong>portrait 4×6 shape</strong> (2:3). If your photo is wider, crop it in the tool rather than stretching it.</li>
+      <li>Frame from the head to below the shoulders, face centred, with a little space above the head.</li>
+      <li>Do not use filters, beauty mode or background blur — NTA asks for an unaltered photo.</li>
+      <li>Keep a few printed postcard-size copies: you may be asked to bring them to the exam centre.</li>
+    </ol>
+    <p style="margin:12px 0 0;font-size:14px">📖 <a href="/resizer/guides/take-exam-photo-with-phone/">How to take an exam photo with your phone</a></p>
+  </section>
   <section class="card"><h2>All NEET ${YEAR} upload sizes</h2>
     <div class="tbl-wrap"><table class="grid"><thead><tr><th>Document</th><th>Size</th><th>File size</th><th></th></tr></thead><tbody>
       <tr><td>Passport size photo</td><td class="m">3.5×4.5 cm (${px(exam.photo)}px)</td><td class="m">${kb(exam.photo)}</td><td><a href="/resizer/neet-ug-photo-resize/">Resize →</a></td></tr>
@@ -217,7 +242,7 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   write(`resizer/${dirName}`, html); pages++;
 }
 
-// ─── 4. Pixel-size pages ──────────────────────────────────────────────────────
+// ─── 4. Pixel-size pages (no ad slots: short template pages — keep AdSense to content-rich pages) ──────────────────────────────────────────────────────
 const sizes = new Map(); // "WxH" -> { w, h, users: [{exam, doc, spec}] }
 const addSize = (w, h) => { const k = `${w}x${h}`; if (!sizes.has(k)) sizes.set(k, { w, h, users: [], extraMax: null }); return sizes.get(k); };
 EXAMS.forEach(e => {
@@ -256,7 +281,6 @@ for (const s of sizeList) {
 <main class="wrap">
   <div class="answer"><p>To resize a ${noun.toLowerCase()} to <strong>${w}×${h} pixels</strong>, upload it below, crop to the locked ${S.ratio(w, h)} frame and tap Process — you get a ${w}×${h} px JPG ${min ? `between ${min} and ${max} KB` : `under ${max} KB`}. ${w}×${h} px equals <strong>${cm(200)}</strong> at 200 DPI.</p></div>
   ${S.toolFrame(presetURL({ slug: `size-${w}x${h}`, w, h, min, max, title: `Resize to ${w}×${h} px`, canon: canonical }), `${w}×${h} px Resizer`)}
-  ${S.adSlot()}
   <section class="card"><h2>${w}×${h} pixels in cm and inches</h2>
     <div class="tbl-wrap"><table class="grid" style="min-width:0"><thead><tr><th>DPI</th><th>Centimetres</th><th>Inches</th></tr></thead><tbody>
       ${[96, 200, 300].map(d => `<tr><td>${d} DPI</td><td class="m">${cm(d)}</td><td class="m">${(w / d).toFixed(2)} × ${(h / d).toFixed(2)} in</td></tr>`).join('')}
@@ -285,7 +309,6 @@ ${S.footer()}`;
   <section class="card"><h2>All sizes (width × height)</h2><div class="tbl-wrap"><table class="grid" style="min-width:0"><thead><tr><th>Size</th><th>Used by</th></tr></thead><tbody>
   ${sizeList.map(x => `<tr><td class="m"><a href="/resizer/size/${x.w}x${x.h}-pixels/">${x.w}×${x.h} px</a></td><td>${x.users.length ? esc([...new Set(x.users.map(u => seoOf(u.e).short))].slice(0, 6).join(', ')) + (x.users.length > 6 ? '…' : '') : 'General use'}</td></tr>`).join('\n  ')}
   </tbody></table></div></section>
-  ${S.adSlot()}
 </main>
 ${S.footer()}`;
   write('resizer/size', html); pages++;
@@ -351,7 +374,6 @@ Sizes are compiled from official notifications; users should verify against the 
 <main class="wrap">
   <section class="card"><h2>Popular exam resizers</h2><ul class="links">${popular.map(e => `<li><a href="/resizer/${e.slug}-photo-resize/">${esc(seoOf(e).short)} Photo</a></li><li><a href="/resizer/${e.slug}-signature-resize/">${esc(seoOf(e).short)} Signature</a></li>`).join('')}</ul></section>
   <section class="card"><h2>Browse</h2><ul class="links"><li><a href="/resizer/">All 80+ exams</a></li><li><a href="/resizer/photo-signature-size-chart/">Size chart ${YEAR}</a></li><li><a href="/resizer/size/">Resize by pixels</a></li>${Object.values(CATEGORIES).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/">All tools</a></li></ul></section>
-  ${S.adSlot()}
 </main>
 ${S.footer()}`;
   fs.writeFileSync(path.join(ROOT, '404.html'), html, 'utf8');

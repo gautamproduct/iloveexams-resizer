@@ -141,9 +141,25 @@ const BANK_EXTRA_EXAMS = ['ibps-po', 'ibps-clerk', 'ibps-rrb-po', 'ibps-rrb-cler
   'sbi-po', 'sbi-clerk', 'rbi-grade-b', 'rbi-assistant', 'niacl', 'lic-aao'];
 const BANK_EXTRA_DOCS = {
   'thumb-impression': { label: 'Left Thumb Impression', short: 'Thumb Impression', w: 240, h: 240, min: 20, max: 50, fmt: 'JPG',
-    tip: 'Press your left thumb on a blue or black ink pad, then on plain white paper. Photograph or scan it in good light, with no smudges.' },
+    tip: 'Press your left thumb on a blue or black ink pad, then on plain white paper. Photograph or scan it in good light, with no smudges.',
+    steps: ['Use a blue or black stamp-pad ink — not pen ink smeared on the thumb.',
+      'Press your left thumb lightly on the pad so it is evenly coated, without excess ink.',
+      'Place the thumb on plain white paper and roll it gently once from one side to the other, then lift straight up.',
+      'Make 3–4 impressions and pick the one where the ridges are clearest.',
+      'Photograph it from directly above in daylight, then crop to a square around the print in the tool below.'],
+    mistakes: ['A black blob with no visible ridges (too much ink)', 'A faint, patchy print (too little ink or pressure)',
+      'Right thumb used when the left is available', 'Shadows, fingers or the ink pad visible in the photo',
+      'The print is tiny in a large white frame — crop close'] },
   'declaration': { label: 'Handwritten Declaration', short: 'Declaration', w: 800, h: 400, min: 50, max: 100, fmt: 'JPG',
-    tip: 'Write the declaration in English, in your own handwriting, with black ink on white paper. Capital letters are not accepted.' },
+    tip: 'Write the declaration in English, in your own handwriting, with black ink on white paper. Capital letters are not accepted.',
+    steps: ['Take a plain white A4 sheet and a black ink pen.',
+      'Write the declaration text in English, in your normal running handwriting, filling in your own name.',
+      'Keep it to 3–4 even lines so it stays readable at 800×400 pixels.',
+      'Photograph the sheet flat, from directly above, in daylight.',
+      'Crop close around the text (a wide 2:1 shape) in the tool below and download the JPG.'],
+    mistakes: ['Text written in CAPITAL letters', 'Typed or printed text instead of handwriting',
+      'Written by someone else, or in a language other than English (unless the notification allows it)',
+      'Blue or faint pen that becomes unreadable after compression', 'Wrong text — always copy the text given in your notification'] },
 };
 const DECLARATION_TEXT = 'I, _______ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required.';
 

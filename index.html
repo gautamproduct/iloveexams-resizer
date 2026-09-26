@@ -21,13 +21,23 @@
   <link rel="shortcut icon" href="/favicon.svg">
 
   <!-- ═══ PRIMARY SEO ═══ -->
-  <title>I♥Exams – Free Image, Photo &amp; Signature Resizer for Indian Exams &amp; ID Cards</title>
+  <title>ILoveExams – Free Exam Photo &amp; Signature Resizer, Image Tools</title>
   <meta name="description" content="Every image resize tool you need in one place. Resize photo &amp; signature for UPSC, SSC, NEET, SBI &amp; 80+ exams, resize image to 10/20/100/150 KB, custom size, cm/inch/mm, Voter ID &amp; Aadhaar card. 100% free &amp; private — no upload.">
   <meta name="keywords" content="image resizer, resize image to 20kb, resize image to 50kb, photo resizer for exam, signature resizer, voter id photo resize, aadhaar card resize, resize image in cm, resize photo custom size, compress image online India">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta name="author" content="ILoveExams">
   <meta name="theme-color" content="#0a0e1a">
   <link rel="canonical" href="https://ilovexams.in/">
+  <meta name="application-name" content="ILoveExams">
+  <meta name="apple-mobile-web-app-title" content="ILoveExams">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ILoveExams">
+  <meta property="og:title" content="ILoveExams – Free Exam Photo &amp; Signature Resizer">
+  <meta property="og:description" content="Resize photo &amp; signature for 80+ Indian exams, compress to exact KB, resize in cm/inch/mm. Free, private, no upload.">
+  <meta property="og:url" content="https://ilovexams.in/">
+  <meta property="og:image" content="https://ilovexams.in/og-image.png">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- ═══ OPEN GRAPH ═══ -->
   <meta property="og:type"        content="website">
@@ -84,11 +94,15 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://ilovexams.in/#website",
     "name": "ILoveExams",
+    "alternateName": ["I Love Exams", "ilovexams.in"],
     "url": "https://ilovexams.in/",
     "description": "Free online image, photo and signature resizing tools for Indian competitive exams and ID cards.",
     "inLanguage": "en-IN",
-    "publisher": { "@type": "Organization", "name": "ILoveExams", "url": "https://ilovexams.in/" }
+    "publisher": { "@type": "Organization", "@id": "https://ilovexams.in/#org", "name": "ILoveExams", "url": "https://ilovexams.in/",
+      "logo": "https://ilovexams.in/apple-touch-icon.png", "email": "gautamcoder@gmail.com",
+      "contactPoint": { "@type": "ContactPoint", "email": "gautamcoder@gmail.com", "contactType": "customer support", "url": "https://ilovexams.in/contact/" } }
   }
   </script>
   <script type="application/ld+json">
@@ -97,8 +111,8 @@
     "@type": "ItemList",
     "name": "ILoveExams Image Resize Tools",
     "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Exam Photo Resizer","url":"https://ilovexams.in/resizer/?document=photo"},
-      {"@type":"ListItem","position":2,"name":"Exam Signature Resizer","url":"https://ilovexams.in/resizer/?document=signature"},
+      {"@type":"ListItem","position":1,"name":"Exam Photo & Signature Resizer","url":"https://ilovexams.in/resizer/"},
+      {"@type":"ListItem","position":2,"name":"Exam Photo & Signature Size Chart","url":"https://ilovexams.in/resizer/photo-signature-size-chart/"},
       {"@type":"ListItem","position":3,"name":"Voter ID Photo Resize","url":"https://ilovexams.in/voter-id-photo-resize/"},
       {"@type":"ListItem","position":4,"name":"Resize Image to 20 KB","url":"https://ilovexams.in/resize-image-to-20kb/"},
       {"@type":"ListItem","position":5,"name":"Resize Image to 10 KB","url":"https://ilovexams.in/resize-image-to-10kb/"},
@@ -126,6 +140,9 @@
     </a>
     <div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
       <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="/resizer/photo-signature-size-chart/" style="color:rgba(255,255,255,.75);text-decoration:none">Size Chart</a>
+      <a href="/compress-image/" style="color:rgba(255,255,255,.75);text-decoration:none">Compress Image</a>
+      <a href="/resizer/guides/" style="color:rgba(255,255,255,.75);text-decoration:none">Guides</a>
       <a href="#tools-grid" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
       <div class="relative group" style="padding:20px 0">
         <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
@@ -183,17 +200,17 @@
   <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px">
 
     <!-- Exam Photo -->
-    <a class="tool-card" data-cat="exam" href="/resizer/?document=photo">
+    <a class="tool-card" data-cat="exam" href="/resizer/">
       <div class="tool-ico" style="background:#dbeafe;color:#2563eb">📷</div>
       <h2 class="tool-title">Exam Photo Resizer</h2>
       <p class="tool-desc">Resize your photo to the exact pixels &amp; KB required for UPSC, SSC, NEET, SBI &amp; 80+ Indian exams.</p>
     </a>
 
     <!-- Exam Signature -->
-    <a class="tool-card" data-cat="exam" href="/resizer/?document=signature">
+    <a class="tool-card" data-cat="exam" href="/resizer/photo-signature-size-chart/">
       <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">✍️</div>
-      <h2 class="tool-title">Exam Signature Resizer</h2>
-      <p class="tool-desc">Resize your signature to exact dimensions &amp; file size for any Indian competitive exam form.</p>
+      <h2 class="tool-title">Photo &amp; Signature Size Chart</h2>
+      <p class="tool-desc">Exact photo &amp; signature pixels and KB for 80+ Indian exams in one table — tap any exam to resize.</p>
     </a>
 
     <!-- Voter ID Photo -->
@@ -414,8 +431,8 @@
       <div>
         <h3 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3b82f6;margin-bottom:10px">Exam Tools</h3>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
-          <li><a href="/resizer/?document=photo" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Photo Resizer</a></li>
-          <li><a href="/resizer/?document=signature" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Signature Resizer</a></li>
+          <li><a href="/resizer/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Photo Resizer</a></li>
+          <li><a href="/resizer/photo-signature-size-chart/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Photo &amp; Signature Size Chart</a></li>
           <li><a href="/resizer/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">All 80+ Exams</a></li>
           <li><a href="/resizer/photo-signature-size-chart/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Exam Size Chart</a></li>
           <li><a href="/resizer/bank-exam-photo-signature-size/" style="font-size:12.5px;color:rgba(255,255,255,.8);text-decoration:none">Bank Exam Sizes</a></li>
