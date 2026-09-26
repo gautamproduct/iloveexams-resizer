@@ -9,8 +9,12 @@ const path = require('path');
 const SVG_HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:inline-block;width:.9em;height:.9em;vertical-align:middle;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 const DD_LINK = 'display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap';
-const NAV_LINKS = `<div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
+const NAV_LINKS = `<div class="hidden lg:flex items-center" style="gap:20px;font-size:13.5px;font-weight:600">
       <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="/resizer/photo-signature-size-chart/" style="color:rgba(255,255,255,.75);text-decoration:none">Size Chart</a>
+      <a href="/resize-image-to-50kb/" style="color:rgba(255,255,255,.75);text-decoration:none">Resize to 50 KB</a>
+      <a href="/compress-image/" style="color:rgba(255,255,255,.75);text-decoration:none">Compress Image</a>
+      <a href="/resizer/guides/" style="color:rgba(255,255,255,.75);text-decoration:none">Guides</a>
       <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
       <div class="relative group" style="padding:20px 0">
         <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>

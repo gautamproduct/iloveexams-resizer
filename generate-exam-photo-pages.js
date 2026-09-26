@@ -309,8 +309,12 @@ function page(exam) {
     <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:0;flex-shrink:0">
       <span style="font-size:22px;font-weight:900;color:#fff">I</span>${SVG_HEART}<span style="font-size:22px;font-weight:900;color:#fff">Exams</span><span style="font-size:12px;color:rgba(255,255,255,.3);font-weight:500;margin-left:2px">.in</span>
     </a>
-    <div class="hidden md:flex items-center" style="gap:26px;font-size:13.5px;font-weight:600">
+    <div class="hidden lg:flex items-center" style="gap:20px;font-size:13.5px;font-weight:600">
       <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
+      <a href="/resizer/photo-signature-size-chart/" style="color:rgba(255,255,255,.75);text-decoration:none">Size Chart</a>
+      <a href="/resize-image-to-50kb/" style="color:rgba(255,255,255,.75);text-decoration:none">Resize to 50 KB</a>
+      <a href="/compress-image/" style="color:rgba(255,255,255,.75);text-decoration:none">Compress Image</a>
+      <a href="/resizer/guides/" style="color:rgba(255,255,255,.75);text-decoration:none">Guides</a>
       <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
     </div>
     <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">

@@ -42,11 +42,11 @@ a{color:#2563eb}
 .logo{text-decoration:none;display:flex;align-items:center}
 .logo-t{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.5px}
 .logo-in{font-size:12px;color:rgba(255,255,255,.3);font-weight:500;margin-left:2px;align-self:flex-end;margin-bottom:3px}
-.nav-links{display:none;gap:24px;font-size:13.5px;font-weight:600}
+.nav-links{display:none;gap:20px;font-size:13.5px;font-weight:600}
 .nav-links a{color:rgba(255,255,255,.75);text-decoration:none}
 .nav-links a:hover{color:#fff}
 .donate{font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap}
-@media(min-width:768px){.nav-links{display:flex}}
+@media(min-width:1024px){.nav-links{display:flex}}
 .hero{background:linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%);padding:28px 16px 26px;color:#fff}
 .hero-in,.wrap{max-width:960px;margin:0 auto}
 .wrap{padding:24px 16px 8px}
@@ -152,8 +152,9 @@ function head({ title, desc, canonical, schema = [], ogTitle, extraHead = '' }) 
     <a href="/" class="logo" aria-label="ILoveExams home"><span class="logo-t">I</span>${SVG_HEART}<span class="logo-t">Exams</span><span class="logo-in">.in</span></a>
     <div class="nav-links">
       <a href="/resizer/">Exam Resizer</a>
-      <a href="/resizer/photo-signature-size-chart/">Size Chart ${YEAR}</a>
-      <a href="/resizer/size/">By Pixel Size</a>
+      <a href="/resizer/photo-signature-size-chart/">Size Chart</a>
+      <a href="/resize-image-to-50kb/">Resize to 50 KB</a>
+      <a href="/compress-image/">Compress Image</a>
       <a href="/resizer/guides/">Guides</a>
       <a href="/">All Tools</a>
     </div>
