@@ -64,6 +64,21 @@
   .faq-a { color: #4b5563; margin-top: 0.5rem; display: none; line-height: 1.6; }
   .uni-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background: #e0e7ff; color: #4338ca; }
 </style>
+<style id="ilx-nav-css">
+.ilx-nav{display:none;align-items:center;gap:22px;font-size:13.5px;font-weight:600}
+@media(min-width:1024px){.ilx-nav{display:flex}}
+.ilx-nav>a,.ilx-dd>button{color:var(--ilx-nav-fg,rgba(255,255,255,.75));text-decoration:none;background:none;border:0;cursor:pointer;font:inherit;padding:0}
+.ilx-nav>a:hover,.ilx-dd>button:hover{color:var(--ilx-nav-hover,#fff)}
+.ilx-dd{position:relative;padding:18px 0}
+.ilx-dd>button{display:flex;align-items:center;gap:5px}
+.ilx-dd-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:250px;z-index:60}
+.ilx-dd:hover .ilx-dd-menu,.ilx-dd:focus-within .ilx-dd-menu{display:block}
+.ilx-dd.ilx-closed .ilx-dd-menu{display:none!important}
+.ilx-dd-menu a{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap}
+.ilx-dd-menu a:hover{background:#f1f5f9}
+.ilx-dd-menu hr{border:0;height:1px;background:#e2e8f0;margin:6px 8px}
+.ilx-dd-menu a.all{color:#2563eb;font-weight:700}
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen">
 
@@ -72,14 +87,24 @@
     <a href="/" class="flex items-center gap-2 font-bold text-xl text-indigo-600">
       <span>📐</span> iLoveExams
     </a>
-    <nav class="hidden sm:flex gap-4 text-sm text-gray-600">
-      <a href="/resizer/" class="hover:text-indigo-600">Exam Resizer</a>
-      <a href="/resizer/photo-signature-size-chart/" class="hover:text-indigo-600">Size Chart</a>
-      <a href="/resize-image-to-50kb/" class="hover:text-indigo-600">Resize to 50 KB</a>
-      <a href="/compress-image/" class="hover:text-indigo-600">Compress Image</a>
-      <a href="/resizer/guides/" class="hover:text-indigo-600">Guides</a>
-      <a href="/" class="hover:text-indigo-600">All Tools</a>
-    </nav>
+    <nav aria-label="Main"><div class="ilx-nav" style="--ilx-nav-fg:#475569;--ilx-nav-hover:#4f46e5">
+      <a href="/resizer/">Exam Resizer</a>
+      <a href="/resize-image-to-50kb/">Resize to 50 KB</a>
+      <a href="/compress-image/">Compress Image</a>
+      <div class="ilx-dd">
+        <button type="button" aria-haspopup="true">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
+        <div class="ilx-dd-menu">
+          <a href="/#id">🪪 ID Card — Voter, Aadhaar, PAN</a>
+          <a href="/#kb">💾 By File Size — 10–500 KB</a>
+          <a href="/#dim">📐 By Dimension — cm, inch, custom</a>
+          <hr>
+          <a class="all" href="/#all">View all tools →</a>
+        </div>
+      </div>
+    </div><script>(function(){var dd=document.currentScript.previousElementSibling.querySelector('.ilx-dd');if(!dd)return;
+dd.addEventListener('mouseleave',function(){dd.classList.remove('ilx-closed')});
+dd.querySelector('.ilx-dd-menu').addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;dd.classList.add('ilx-closed');if(document.activeElement)document.activeElement.blur();
+if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof window.applyHashFilter==='function'){e.preventDefault();history.replaceState(null,'',a.getAttribute('href').slice(1));window.applyHashFilter();}});})();</script></nav>
   </div>
 </header>
 

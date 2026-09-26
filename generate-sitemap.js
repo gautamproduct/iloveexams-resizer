@@ -9,6 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { normalizeNav } = require('./site-nav');
 
 const ROOT = __dirname;
 const today = new Date().toISOString().slice(0, 10);
@@ -60,17 +61,21 @@ ${entries.join('\n')}
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
 
-// AdSense site verification: every page (incl. hand-written and older generated
+// Site-wide post-processing. AdSense site verification: every page (incl. hand-written and older generated
 // ones) must carry the account meta tag. Idempotent.
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
-let tagged = 0;
+let tagged = 0, navFixed = 0;
 for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '404.html']) {
   const f = path.join(ROOT, p);
   if (!fs.existsSync(f)) continue;
   const h = fs.readFileSync(f, 'utf8');
-  if (h.includes('google-adsense-account')) continue;
-  const out = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n  ${ADS_META}`);
-  if (out !== h) { fs.writeFileSync(f, out, 'utf8'); tagged++; }
+  let out = h.includes('google-adsense-account') ? h : h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n  ${ADS_META}`);
+  if (out !== h) tagged++;
+  // Same top-bar menu on every page (see site-nav.js)
+  const navved = normalizeNav(out);
+  if (navved !== out) navFixed++;
+  if (navved !== h) fs.writeFileSync(f, navved, 'utf8');
 }
 if (tagged) console.log(`✅ Added AdSense account meta to ${tagged} pages`);
+if (navFixed) console.log(`✅ Normalised top menu on ${navFixed} pages`);
 console.log(`✅ Sitemap rebuilt: ${entries.length} URLs`);

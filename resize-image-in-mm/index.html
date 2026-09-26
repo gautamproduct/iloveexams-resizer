@@ -64,6 +64,21 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Resize Image in mm free?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely free. No account, no watermark, no limits on how many images you process."}},{"@type":"Question","name":"Is my image safe and private?","acceptedAnswer":{"@type":"Answer","text":"100%. All processing happens locally in your browser using HTML5 Canvas. Your image is never uploaded to any server — it never leaves your device."}},{"@type":"Question","name":"Does it work on mobile phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open ilovexams.in in Chrome or Safari on any Android or iPhone, upload your image and download the result — no app required."}},{"@type":"Question","name":"What image formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JPG, JPEG, PNG, WEBP and HEIC/HEIF (on supported browsers). The output is always JPEG for maximum compatibility with Indian government exam and ID portals."}},{"@type":"Question","name":"Do I need to install any software?","acceptedAnswer":{"@type":"Answer","text":"No installation needed. The tool works entirely in your browser — Chrome, Firefox, Edge or Safari, on desktop or mobile."}},{"@type":"Question","name":"What DPI should I use for print?","acceptedAnswer":{"@type":"Answer","text":"For standard print quality (ID cards, exam photos, documents) use 300 DPI as a guide: 1 inch = 300 px, 1 cm ≈ 118 px, 1 mm ≈ 11.8 px. The tool outputs exact pixel dimensions — set the pixels accordingly."}},{"@type":"Question","name":"Why is the output JPEG and not PNG?","acceptedAnswer":{"@type":"Answer","text":"JPEG is the format accepted by virtually all Indian government exam and ID portals. It produces much smaller files than PNG with excellent photo quality, making it ideal for online form uploads."}}]}
   </script>
+<style id="ilx-nav-css">
+.ilx-nav{display:none;align-items:center;gap:22px;font-size:13.5px;font-weight:600}
+@media(min-width:1024px){.ilx-nav{display:flex}}
+.ilx-nav>a,.ilx-dd>button{color:var(--ilx-nav-fg,rgba(255,255,255,.75));text-decoration:none;background:none;border:0;cursor:pointer;font:inherit;padding:0}
+.ilx-nav>a:hover,.ilx-dd>button:hover{color:var(--ilx-nav-hover,#fff)}
+.ilx-dd{position:relative;padding:18px 0}
+.ilx-dd>button{display:flex;align-items:center;gap:5px}
+.ilx-dd-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:250px;z-index:60}
+.ilx-dd:hover .ilx-dd-menu,.ilx-dd:focus-within .ilx-dd-menu{display:block}
+.ilx-dd.ilx-closed .ilx-dd-menu{display:none!important}
+.ilx-dd-menu a{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap}
+.ilx-dd-menu a:hover{background:#f1f5f9}
+.ilx-dd-menu hr{border:0;height:1px;background:#e2e8f0;margin:6px 8px}
+.ilx-dd-menu a.all{color:#2563eb;font-weight:700}
+</style>
 </head>
 <body>
 
@@ -72,24 +87,24 @@
     <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:0;flex-shrink:0">
       <span style="font-size:22px;font-weight:900;color:#fff">I</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:inline-block;width:.9em;height:.9em;vertical-align:middle;margin:0 1px 3px"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:22px;font-weight:900;color:#fff">Exams</span><span style="font-size:12px;color:rgba(255,255,255,.3);font-weight:500;margin-left:2px">.in</span>
     </a>
-    <div class="hidden lg:flex items-center" style="gap:20px;font-size:13.5px;font-weight:600">
-      <a href="/resizer/" style="color:rgba(255,255,255,.75);text-decoration:none">Exam Resizer</a>
-      <a href="/resizer/photo-signature-size-chart/" style="color:rgba(255,255,255,.75);text-decoration:none">Size Chart</a>
-      <a href="/resize-image-to-50kb/" style="color:rgba(255,255,255,.75);text-decoration:none">Resize to 50 KB</a>
-      <a href="/compress-image/" style="color:rgba(255,255,255,.75);text-decoration:none">Compress Image</a>
-      <a href="/resizer/guides/" style="color:rgba(255,255,255,.75);text-decoration:none">Guides</a>
-      <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none">All Tools</a>
-      <div class="relative group" style="padding:20px 0">
-        <button style="color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:5px;padding:0">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
-        <div class="hidden group-hover:block" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);padding:8px;min-width:248px;z-index:60">
-          <a href="/#id" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">🪪 ID Card — Voter, Aadhaar, PAN</a>
-          <a href="/#kb" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">💾 By File Size — 10–500&nbsp;KB</a>
-          <a href="/#dim" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap">📐 By Dimension — cm, inch, custom</a>
-          <div style="height:1px;background:#e2e8f0;margin:6px 8px"></div>
-          <a href="/" style="display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#0f172a;font-size:13px;font-weight:600;white-space:nowrap;color:#2563eb;font-weight:700">View all tools →</a>
+    <div class="ilx-nav">
+      <a href="/resizer/">Exam Resizer</a>
+      <a href="/resize-image-to-50kb/">Resize to 50 KB</a>
+      <a href="/compress-image/">Compress Image</a>
+      <div class="ilx-dd">
+        <button type="button" aria-haspopup="true">Tools <span style="font-size:8px;opacity:.7">▼</span></button>
+        <div class="ilx-dd-menu">
+          <a href="/#id">🪪 ID Card — Voter, Aadhaar, PAN</a>
+          <a href="/#kb">💾 By File Size — 10–500 KB</a>
+          <a href="/#dim">📐 By Dimension — cm, inch, custom</a>
+          <hr>
+          <a class="all" href="/#all">View all tools →</a>
         </div>
       </div>
-    </div>
+    </div><script>(function(){var dd=document.currentScript.previousElementSibling.querySelector('.ilx-dd');if(!dd)return;
+dd.addEventListener('mouseleave',function(){dd.classList.remove('ilx-closed')});
+dd.querySelector('.ilx-dd-menu').addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;dd.classList.add('ilx-closed');if(document.activeElement)document.activeElement.blur();
+if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof window.applyHashFilter==='function'){e.preventDefault();history.replaceState(null,'',a.getAttribute('href').slice(1));window.applyHashFilter();}});})();</script>
     <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
       <span class="hidden sm:inline-flex" style="font-size:11px;color:#93c5fd;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);padding:4px 10px;border-radius:999px;white-space:nowrap">● 100% Private</span>
       <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ef4444,#dc2626);padding:6px 14px;border-radius:999px;text-decoration:none;white-space:nowrap">♥ Donate</a>
