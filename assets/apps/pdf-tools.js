@@ -401,5 +401,152 @@
     $('#dl').onclick = function () { X.download(new Blob([$('#out').value], { type: 'text/plain' }), name + '.txt'); };
   };
 
+  // Re-render every page as an image into a new PDF (used by unlock + black & white)
+  async function rasterPdf(doc, opts, st, bar) {
+    var L = await X.pdfLib(), out = await L.PDFDocument.create();
+    for (var i = 1; i <= doc.numPages; i++) {
+      X.status(st, 'Processing page ' + i + ' of ' + doc.numPages + '…'); if (bar) X.progress(bar, i / doc.numPages);
+      var r = await renderPage(doc, i, opts.scale || 2, 3000);
+      if (opts.gray) grayscale(r.canvas);
+      if (opts.contrast) {
+        var ctx = r.canvas.getContext('2d'), d = ctx.getImageData(0, 0, r.canvas.width, r.canvas.height), p = d.data;
+        for (var k = 0; k < p.length; k += 4) { var v = p[k] < 140 ? Math.max(0, p[k] * 0.6 - 20) : Math.min(255, p[k] * 1.25 + 30); p[k] = p[k + 1] = p[k + 2] = v; }
+        ctx.putImageData(d, 0, 0);
+      }
+      var img = await out.embedJpg(new Uint8Array(await (await X.canvasBlob(r.canvas, 'image/jpeg', opts.q || 0.85)).arrayBuffer()));
+      out.addPage([r.w, r.h]).drawImage(img, { x: 0, y: 0, width: r.w, height: r.h });
+      r.canvas.width = r.canvas.height = 0;
+    }
+    return new Blob([await out.save()], { type: 'application/pdf' });
+  }
+
+  /* ── Unlock PDF (remove password — you must know it) ───────────────────── */
+  tools['unlock-pdf'] = function () {
+    var $ = ui(dropHtml(false, 'Choose password-protected PDF') + '<ul class="files" id="fl"></ul>' +
+      '<div class="row"><label for="pw">PDF password</label><input class="inp" id="pw" type="password" autocomplete="off" placeholder="Enter the password" style="flex:1;min-width:180px"></div>' +
+      '<p style="font-size:12.5px;color:#64748b;margin:0">e-Aadhaar password: first 4 letters of your name in CAPITALS + birth year (e.g. RAHU1998).</p>' +
+      '<div class="bar hide" id="bar"><i></i></div><div class="status" id="st"></div><button class="go" id="go" disabled>Unlock PDF</button>');
+    var file = null;
+    X.drop($('.drop'), { accept: 'application/pdf,.pdf' }, function (f) {
+      file = f[0]; $('#fl').innerHTML = '<li><span>🔒</span><span class="nm">' + X.esc(file.name) + '</span><span class="sz">' + X.kb(file.size) + '</span></li>'; $('#go').disabled = false; $('#pw').focus();
+    });
+    $('#pw').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !$('#go').disabled) $('#go').click(); });
+    $('#go').onclick = async function () {
+      var st = $('#st'), bar = $('#bar'), btn = this; btn.disabled = true; bar.classList.remove('hide');
+      try {
+        var pdfjs = await X.pdfjs(), doc;
+        try { doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()), password: $('#pw').value }).promise; }
+        catch (e) { if (e && e.name === 'PasswordException') { X.status(st, $('#pw').value ? '⚠️ Wrong password — please check and try again.' : 'This PDF needs its password. Enter it above.', true); return; } throw e; }
+        var blob = await rasterPdf(doc, { scale: 2, q: 0.88 }, st, bar);
+        X.download(blob, X.baseName(file.name) + '-unlocked.pdf');
+        X.status(st, '✅ Unlocked — saved without a password (' + X.kb(blob.size) + '). Need it smaller? Use Compress PDF.');
+      } catch (e) { X.status(st, '⚠️ ' + (e.message || e), true); } finally { btn.disabled = false; }
+    };
+  };
+
+  /* ── PDF to black & white ──────────────────────────────────────────────── */
+  tools['pdf-black-white'] = function () {
+    var $ = ui(dropHtml(false, 'Choose PDF to convert') + '<ul class="files" id="fl"></ul>' +
+      '<div class="row"><label><input type="radio" name="bw" value="gray" checked> Grayscale</label><label><input type="radio" name="bw" value="contrast"> High-contrast black &amp; white (best for scanned text)</label></div>' +
+      '<div class="bar hide" id="bar"><i></i></div><div class="status" id="st"></div><button class="go" id="go" disabled>Convert to black &amp; white</button>');
+    var file = null;
+    X.drop($('.drop'), { accept: 'application/pdf,.pdf' }, function (f) {
+      file = f[0]; $('#fl').innerHTML = '<li><span>📄</span><span class="nm">' + X.esc(file.name) + '</span><span class="sz">' + X.kb(file.size) + '</span></li>'; $('#go').disabled = false;
+    });
+    $('#go').onclick = async function () {
+      var st = $('#st'), bar = $('#bar'), btn = this; btn.disabled = true; bar.classList.remove('hide');
+      try {
+        var hc = app.querySelector('input[name=bw]:checked').value === 'contrast';
+        var blob = await rasterPdf(await openPdfjs(file), { scale: 1.8, gray: true, contrast: hc, q: 0.8 }, st, bar);
+        X.download(blob, X.baseName(file.name) + '-bw.pdf');
+        X.status(st, '✅ Converted (' + X.kb(file.size) + ' → ' + X.kb(blob.size) + ').');
+      } catch (e) { fail(st, e); } finally { btn.disabled = false; }
+    };
+  };
+
+  /* ── Resize PDF pages to A4 ────────────────────────────────────────────── */
+  tools['resize-pdf-a4'] = function () {
+    var $ = ui(dropHtml(false, 'Choose PDF to resize') + '<ul class="files" id="fl"></ul>' +
+      '<div class="row"><label>Page size</label><select class="sel" id="ps"><option value="a4" selected>A4 (21 × 29.7 cm)</option><option value="letter">US Letter</option><option value="legal">Legal</option></select>' +
+      '<label>Margin</label><select class="sel" id="mg"><option value="0">None</option><option value="14" selected>Small</option><option value="36">Normal</option></select></div>' +
+      '<div class="status" id="st"></div><button class="go" id="go" disabled>Resize pages</button>');
+    var file = null, SIZES = { a4: [595.28, 841.89], letter: [612, 792], legal: [612, 1008] };
+    X.drop($('.drop'), { accept: 'application/pdf,.pdf' }, function (f) {
+      file = f[0]; $('#fl').innerHTML = '<li><span>📄</span><span class="nm">' + X.esc(file.name) + '</span><span class="sz">' + X.kb(file.size) + '</span></li>'; $('#go').disabled = false;
+    });
+    $('#go').onclick = async function () {
+      var st = $('#st'), btn = this; btn.disabled = true;
+      try {
+        var L = await X.pdfLib(), src = await L.PDFDocument.load(await file.arrayBuffer()), out = await L.PDFDocument.create();
+        var base = SIZES[$('#ps').value], m = +$('#mg').value;
+        var embedded = await out.embedPages(src.getPages());
+        embedded.forEach(function (ep, i) {
+          var rot = src.getPage(i).getRotation().angle % 180 !== 0, w = rot ? ep.height : ep.width, h = rot ? ep.width : ep.height;
+          var land = w > h, W = land ? base[1] : base[0], H = land ? base[0] : base[1];
+          var k = Math.min((W - 2 * m) / w, (H - 2 * m) / h), dw = w * k, dh = h * k;
+          var pg = out.addPage([W, H]);
+          if (!rot) pg.drawPage(ep, { x: (W - dw) / 2, y: (H - dh) / 2, width: dw, height: dh });
+          else pg.drawPage(ep, { x: (W + dw) / 2, y: (H - dh) / 2, width: dh, height: dw, rotate: L.degrees(90) });
+        });
+        X.download(new Blob([await out.save()], { type: 'application/pdf' }), X.baseName(file.name) + '-' + $('#ps').value + '.pdf');
+        X.status(st, '✅ ' + embedded.length + ' page(s) fitted to ' + $('#ps').selectedOptions[0].text + '. Text stays sharp and selectable.');
+      } catch (e) { fail(st, e); } finally { btn.disabled = false; }
+    };
+  };
+
+  /* ── Sign PDF (place your signature image) ─────────────────────────────── */
+  tools['sign-pdf'] = function () {
+    var $ = ui(dropHtml(false, '1. Choose PDF to sign') + '<ul class="files" id="fl"></ul>' +
+      '<h2 style="margin-top:14px">2. Your signature</h2><div class="row"><button class="mini" type="button" id="mDraw">✍️ Draw</button><button class="mini" type="button" id="mUp">🖼 Upload image</button></div>' +
+      '<div id="drawBox"><canvas id="pad" width="600" height="200" style="width:100%;max-width:420px;height:auto;aspect-ratio:3/1;border:1.5px dashed #93c5fd;border-radius:12px;background:#fff;touch-action:none;display:block"></canvas><div class="row"><button class="mini" type="button" id="clr">Clear</button><span style="font-size:12.5px;color:#64748b">Sign with your finger or mouse</span></div></div>' +
+      '<div id="upBox" class="hide"><div class="drop" id="sdrop" tabindex="0" role="button" style="padding:16px"><strong>Choose signature image</strong><span>White background is removed automatically</span></div><img id="sprev" class="preview hide" style="max-height:90px" alt="Signature preview"></div>' +
+      '<h2 style="margin-top:14px">3. Where to place it</h2><div class="row"><label>Page</label><select class="sel" id="pg"><option value="last">Last page</option><option value="first">First page</option><option value="all">Every page</option></select>' +
+      '<label>Position</label><select class="sel" id="pos"><option value="br">Bottom right</option><option value="bl">Bottom left</option><option value="bc">Bottom centre</option></select>' +
+      '<label>Size</label><select class="sel" id="sz"><option value="0.2">Small</option><option value="0.28" selected>Medium</option><option value="0.36">Large</option></select></div>' +
+      '<div class="row"><label><input type="checkbox" id="dt"> Add today\'s date under the signature</label></div>' +
+      '<div class="status" id="st"></div><button class="go" id="go" disabled>Sign PDF</button>');
+    var file = null, sigImg = null, drawn = false, mode = 'draw';
+    var pad = $('#pad'), pctx = pad.getContext('2d'), drawing = false;
+    pctx.lineWidth = 3.2; pctx.lineCap = 'round'; pctx.lineJoin = 'round'; pctx.strokeStyle = '#0b1a5c';
+    function pt(e) { var r = pad.getBoundingClientRect(); return [(e.clientX - r.left) * pad.width / r.width, (e.clientY - r.top) * pad.height / r.height]; }
+    pad.addEventListener('pointerdown', function (e) { drawing = true; pad.setPointerCapture(e.pointerId); var p = pt(e); pctx.beginPath(); pctx.moveTo(p[0], p[1]); });
+    pad.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pt(e); pctx.lineTo(p[0], p[1]); pctx.stroke(); drawn = true; ready(); });
+    pad.addEventListener('pointerup', function () { drawing = false; });
+    $('#clr').onclick = function () { pctx.clearRect(0, 0, pad.width, pad.height); drawn = false; ready(); };
+    $('#mDraw').onclick = function () { mode = 'draw'; $('#drawBox').classList.remove('hide'); $('#upBox').classList.add('hide'); ready(); };
+    $('#mUp').onclick = function () { mode = 'up'; $('#upBox').classList.remove('hide'); $('#drawBox').classList.add('hide'); ready(); };
+    function ready() { $('#go').disabled = !(file && (mode === 'draw' ? drawn : sigImg)); }
+    X.drop($('.drop'), { accept: 'application/pdf,.pdf' }, function (f) {
+      file = f[0]; $('#fl').innerHTML = '<li><span>📄</span><span class="nm">' + X.esc(file.name) + '</span><span class="sz">' + X.kb(file.size) + '</span></li>'; ready();
+    });
+    X.drop($('#sdrop'), { accept: 'image/*' }, async function (f) {
+      var img = await X.loadImage(URL.createObjectURL(f[0])), c = document.createElement('canvas'), k = Math.min(1, 900 / img.naturalWidth);
+      c.width = img.naturalWidth * k; c.height = img.naturalHeight * k;
+      var ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0, c.width, c.height);
+      var d = ctx.getImageData(0, 0, c.width, c.height), p = d.data;
+      for (var i = 0; i < p.length; i += 4) { var l = (p[i] + p[i + 1] + p[i + 2]) / 3; if (l > 200) p[i + 3] = 0; else if (l > 150) p[i + 3] = Math.round((200 - l) / 50 * 255); }
+      ctx.putImageData(d, 0, 0); sigImg = c; $('#sprev').src = c.toDataURL('image/png'); $('#sprev').classList.remove('hide'); ready();
+    });
+    $('#go').onclick = async function () {
+      var st = $('#st'), btn = this; btn.disabled = true;
+      try {
+        var src = mode === 'draw' ? pad : sigImg;
+        var L = await X.pdfLib(), doc = await L.PDFDocument.load(await file.arrayBuffer());
+        var png = await doc.embedPng(new Uint8Array(await (await X.canvasBlob(src, 'image/png')).arrayBuffer()));
+        var font = await doc.embedFont(L.StandardFonts.Helvetica), pages = doc.getPages(), which = $('#pg').value;
+        var list = which === 'all' ? pages : [which === 'first' ? pages[0] : pages[pages.length - 1]];
+        var today = new Date(), date = ('0' + today.getDate()).slice(-2) + '/' + ('0' + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+        list.forEach(function (p) {
+          var W = p.getWidth(), H = p.getHeight(), w = W * +$('#sz').value, h = w * png.height / png.width, m = 36, pos = $('#pos').value;
+          var x = pos === 'br' ? W - w - m : pos === 'bl' ? m : (W - w) / 2, y = m + ($('#dt').checked ? 14 : 0);
+          p.drawImage(png, { x: x, y: y, width: w, height: h });
+          if ($('#dt').checked) p.drawText('Date: ' + date, { x: x, y: m - 2, size: 9, font: font, color: L.rgb(0.15, 0.15, 0.15) });
+        });
+        X.download(new Blob([await doc.save()], { type: 'application/pdf' }), X.baseName(file.name) + '-signed.pdf');
+        X.status(st, '✅ Signed ' + list.length + ' page(s).');
+      } catch (e) { fail(st, e); } finally { btn.disabled = false; }
+    };
+  };
+
   if (tools[tool]) tools[tool]();
 })();

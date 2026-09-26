@@ -245,7 +245,7 @@ EXAMS.forEach((ex, i) => {
 
 function page(exam) {
   const canonical = `https://ilovexams.in/${exam.slug}/`;
-  const title = `${exam.name} Photo & Signature Size Requirements ${YEAR} | ILoveExams`;
+  const title = (t => t.length <= 60 ? `${t} | ILoveExams` : t)(`${exam.name} Photo & Signature Size Requirements ${YEAR}`);
   const faqSchema = exam.faqs.map(f =>
     `{"@type":"Question","name":${JSON.stringify(f.q)},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(f.a)}}}`
   ).join(',');

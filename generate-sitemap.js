@@ -86,6 +86,13 @@ sectionFiles.push(`sitemap-core.xml (${rest.length})`);
 // ones) must carry the account meta tag. Idempotent.
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
 let tagged = 0, navFixed = 0;
+function trimDesc(d) {
+  const lim = 158;
+  const cut = d.slice(0, lim + 1);
+  const cands = ['. ', ' — ', '; ', ', '].map(sep => cut.lastIndexOf(sep)).filter(i => i > 90);
+  if (cands.length) { const i = Math.max(...cands); return d.slice(0, i).replace(/[,;—\s]+$/, '') + '.'; }
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;—\s]+$/, '') + '…';
+}
 const crypto = require('crypto');
 const ASSET_V = {};
 (function hashAssets(dir, rel) {
@@ -103,6 +110,16 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
   if (out !== h) tagged++;
   // Cache-busting: /assets/x.css → /assets/x.css?v=<content hash>
   out = out.replace(/(["'])\/assets\/([\w\/.-]+\.(?:css|js))(?:\?v=[a-f0-9]+)?\1/g, (m, q, file) => ASSET_V[file] ? `${q}/assets/${file}?v=${ASSET_V[file]}${q}` : m);
+  // Meta description: Google shows ~155 characters — trim long ones at a sentence/phrase boundary
+  out = out.replace(/(<meta name="description" content=")([^"]{161,})(")/, (m, a, d, b) => a + trimDesc(d) + b);
+  // Pages without social tags get them from title/description/canonical (WhatsApp/Telegram previews)
+  if (!/property="og:image"/.test(out)) {
+    const t = (out.match(/<title>([^<]*)<\/title>/) || [])[1] || 'ILoveExams';
+    const d = (out.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+    const c = (out.match(/<link rel="canonical" href="([^"]+)"/) || [])[1] || 'https://ilovexams.in/';
+    const og = `<meta property="og:type" content="website">\n  <meta property="og:site_name" content="ILoveExams">\n  <meta property="og:title" content="${t}">\n  <meta property="og:description" content="${d}">\n  <meta property="og:url" content="${c}">\n  <meta property="og:image" content="https://ilovexams.in/og-image.png">\n  <meta name="twitter:card" content="summary_large_image">`;
+    out = out.replace(/(<title>[^<]*<\/title>)/, `$1\n  ${og}`);
+  }
   // Same top-bar menu on every page (see site-nav.js)
   const navved = normalizeNav(out);
   if (navved !== out) navFixed++;

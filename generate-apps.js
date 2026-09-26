@@ -73,7 +73,7 @@ const PRIVACY_FAQ = { q: 'Are my files uploaded to a server?', a: 'No. The tool 
 const PDF_HUB = { name: 'PDF Tools', slug: 'pdf-tools' };
 const IMG_HUB = { name: 'All Tools', slug: '' };
 const CALC_HUB = { name: 'Exam Calculators', slug: 'exam-calculators' };
-const PDF_RELATED = [['/compress-pdf/', 'Compress PDF'], ['/merge-pdf/', 'Merge PDF'], ['/split-pdf/', 'Split PDF'], ['/pdf-to-jpg/', 'PDF to JPG'], ['/image-to-pdf/', 'JPG to PDF'], ['/rotate-pdf/', 'Rotate PDF'], ['/organize-pdf/', 'Organise PDF pages'], ['/pdf-tools/', 'All PDF tools']];
+const PDF_RELATED = [['/compress-pdf/', 'Compress PDF'], ['/merge-pdf/', 'Merge PDF'], ['/split-pdf/', 'Split PDF'], ['/pdf-to-jpg/', 'PDF to JPG'], ['/image-to-pdf/', 'JPG to PDF'], ['/unlock-pdf/', 'Unlock PDF'], ['/sign-pdf/', 'Sign PDF'], ['/organize-pdf/', 'Organise PDF pages'], ['/pdf-tools/', 'All PDF tools']];
 const rel = (list, self) => list.filter(r => r[0] !== `/${self}/`);
 
 // ─── 1. PDF tools ─────────────────────────────────────────────────────────────
@@ -183,6 +183,33 @@ const PDF_TOOLS = [
     answer: 'Choose a PDF — its text appears below, page by page. Tap <strong>Copy text</strong> or download it as a .txt file. Scanned PDFs (images only) have no text to extract.',
     steps: ['Choose the PDF.', 'Wait a moment while pages are read.', 'Copy the text or download .txt.'],
     faqs: [{ q: 'Why is no text found?', a: 'Scanned PDFs are just images of pages, so there is no text layer to extract.' }, PRIVACY_FAQ] },
+  { slug: 'unlock-pdf', tool: 'unlock-pdf', crumb: 'Unlock PDF', title: 'Unlock PDF – Remove Password from PDF Online Free (e-Aadhaar)', h1: 'Unlock PDF – Remove PDF Password',
+    desc: 'Remove the password from a PDF you own — e-Aadhaar, bank statements, salary slips — so exam and job portals accept it. Free, runs on your device.',
+    lede: 'Portals reject <strong>password-protected PDFs</strong>. Enter the password once and save an unlocked copy.',
+    answer: 'Choose the locked PDF, type its password and tap <strong>Unlock PDF</strong>. You get a copy that opens without a password. For e-Aadhaar, the password is the first 4 letters of your name in CAPITALS followed by your birth year (for example <strong>RAHU1998</strong>).',
+    steps: ['Choose the password-protected PDF.', 'Enter its password.', 'Tap Unlock PDF and download the unlocked copy.'],
+    faqs: [{ q: 'Can this unlock a PDF without the password?', a: 'No. You must know the password — this tool removes it from a document you already have access to, such as your own e-Aadhaar or bank statement.' },
+      { q: 'What is the e-Aadhaar PDF password?', a: 'The first 4 letters of your name (as on Aadhaar) in CAPITAL letters, followed by your year of birth — e.g. RAHU1998.' },
+      { q: 'Why is the unlocked PDF larger?', a: 'Pages are re-saved as images to remove the protection. Use <a href="/compress-pdf/">Compress PDF</a> to bring it under your portal\'s limit.' }, PRIVACY_FAQ] },
+  { slug: 'sign-pdf', tool: 'sign-pdf', crumb: 'Sign PDF', title: 'Sign PDF Online Free – Add Your Signature to a PDF', h1: 'Sign PDF – Add Your Signature',
+    desc: 'Draw or upload your signature and place it on a PDF — last page, first page or every page, with an optional date. Free, private, no upload.',
+    lede: 'Sign undertakings, declarations and forms without printing — <strong>draw with your finger</strong> or upload a signature photo.',
+    answer: 'Choose the PDF, draw your signature (or upload a photo of it — the white background is removed), pick the page and position, and tap <strong>Sign PDF</strong>.',
+    steps: ['Choose the PDF.', 'Draw your signature or upload a signature image.', 'Pick page, position and size — optionally add today\'s date.', 'Tap Sign PDF and download.'],
+    faqs: [{ q: 'Is a signature added this way legally valid?', a: 'It is an image of your signature, suitable for most forms and undertakings that ask for a signed copy. It is not a certificate-based digital signature (DSC).' },
+      { q: 'Can I sign every page?', a: 'Yes — choose "Every page" in the page option.' }, PRIVACY_FAQ] },
+  { slug: 'pdf-to-black-and-white', tool: 'pdf-black-white', crumb: 'PDF to black & white', title: 'Convert PDF to Black and White Online Free – Grayscale PDF', h1: 'PDF to Black & White (Grayscale)',
+    desc: 'Convert a colour PDF to grayscale or high-contrast black & white — sharper scanned text and smaller files. Free, private, no upload.',
+    lede: 'Make scans of mark sheets and certificates <strong>crisp and readable</strong> — and smaller.',
+    answer: 'Choose a PDF, pick <strong>Grayscale</strong> or <strong>High-contrast black &amp; white</strong>, and tap Convert. High contrast whitens the paper and darkens the text — ideal for photographed documents.',
+    steps: ['Choose the PDF.', 'Pick Grayscale or High-contrast.', 'Tap Convert and download.'],
+    faqs: [{ q: 'Will it make my PDF smaller?', a: 'Usually yes. For an exact limit, run the result through <a href="/compress-pdf/">Compress PDF</a>.' }, PRIVACY_FAQ] },
+  { slug: 'resize-pdf-to-a4', tool: 'resize-pdf-a4', crumb: 'Resize PDF to A4', title: 'Resize PDF to A4 Online Free – Change PDF Page Size', h1: 'Resize PDF to A4 Page Size',
+    desc: 'Fit every page of a PDF onto A4, Letter or Legal paper without cropping — text stays sharp. Free, private, no upload.',
+    lede: 'Mixed page sizes or phone-sized scans? Put every page on a <strong>standard A4 sheet</strong>.',
+    answer: 'Choose a PDF, pick A4 (or Letter/Legal) and a margin, and tap <strong>Resize pages</strong>. Each page is scaled to fit and centred — nothing is cropped, and text stays selectable.',
+    steps: ['Choose the PDF.', 'Pick the page size and margin.', 'Tap Resize pages and download.'],
+    faqs: [{ q: 'Does resizing to A4 reduce quality?', a: 'No. Pages are scaled as vector content, so text and lines stay sharp.' }, PRIVACY_FAQ] },
 ];
 for (const t of PDF_TOOLS) page({ kind: 'pdf', tips: 'pdf', hub: PDF_HUB, related: rel(PDF_RELATED, t.slug), ...t });
 
@@ -191,7 +218,7 @@ for (const t of PDF_TOOLS) page({ kind: 'pdf', tips: 'pdf', hub: PDF_HUB, relate
   const all = [['/compress-pdf/', 'Compress PDF', 'Reduce PDF size to any KB'], ...KB_TARGETS.map(k => [`/compress-pdf-to-${kbSlug(k)}/`, `Compress PDF to ${kbName(k)}`, `Fit forms with a ${kbName(k)} limit`]),
     ['/merge-pdf/', 'Merge PDF', 'Combine PDFs into one'], ['/split-pdf/', 'Split PDF', 'Extract pages or split every page'], ['/organize-pdf/', 'Organise PDF', 'Reorder, delete, rotate pages'],
     ['/rotate-pdf/', 'Rotate PDF', 'Fix sideways pages'], ['/pdf-to-jpg/', 'PDF to JPG', 'Convert pages to images'], ['/image-to-pdf/', 'JPG to PDF', 'Turn photos into a PDF'],
-    ['/add-watermark-to-pdf/', 'Add watermark', 'Stamp text on every page'], ['/add-page-numbers-to-pdf/', 'Page numbers', 'Number PDF pages'], ['/extract-text-from-pdf/', 'PDF to text', 'Copy text from a PDF']];
+    ['/add-watermark-to-pdf/', 'Add watermark', 'Stamp text on every page'], ['/unlock-pdf/', 'Unlock PDF', 'Remove a password you know (e-Aadhaar)'], ['/sign-pdf/', 'Sign PDF', 'Draw or upload your signature'], ['/pdf-to-black-and-white/', 'PDF to black & white', 'Grayscale or high contrast'], ['/resize-pdf-to-a4/', 'Resize PDF to A4', 'Fit pages to A4/Letter'], ['/add-page-numbers-to-pdf/', 'Page numbers', 'Number PDF pages'], ['/extract-text-from-pdf/', 'PDF to text', 'Copy text from a PDF']];
   page({ slug: 'pdf-tools', crumb: 'PDF Tools', title: 'Free PDF Tools – Compress, Merge, Split, Convert (No Upload)', h1: 'Free PDF Tools for Exam & Job Forms',
     desc: 'Compress PDF to 100/200/500 KB, merge, split, rotate, organise and convert PDFs — free, and every tool runs on your device.',
     lede: 'Every PDF task an application form needs — <strong>private by design</strong>: files never leave your device.',
@@ -268,7 +295,7 @@ page({
   answer: 'Upload your JPG in the tool below, type the width and height you need (in px, cm, mm or inches), set the maximum KB, crop, and download. It works for PNG, HEIC and WEBP too, and always saves a JPG.',
   frame: { src: `/resizer/?preset=jpg-resize&w=600&h=600&minkb=0&maxkb=500&fmt=JPG&title=${encodeURIComponent('JPG Resize')}&canon=${encodeURIComponent(`${SITE}/jpg-resize/`)}&embed=1`, title: 'JPG resize — set width, height and KB' },
   body: `<section class="card"><h2>Popular JPG sizes</h2><ul class="links">${[[200, 230], [275, 354], [150, 200], [140, 60], [300, 300], [413, 531], [600, 600], [250, 250]].map(([w, h]) => `<li><a href="/resizer/size/${w}x${h}-pixels/">${w}×${h} px</a></li>`).join('')}</ul>
-    <h3>Resize JPG by file size</h3><ul class="links">${[20, 50, 100, 200, 500].map(k => `<li><a href="/resize-image-to-${k}kb/">JPG to ${k} KB</a></li>`).join('')}</ul></section>`,
+    <h3>Resize JPG by file size</h3><ul class="links">${[10, 20, 30, 50, 100, 200, 300, 500].map(k => `<li><a href="/resize-image-to-${k}kb/">JPG to ${k} KB</a></li>`).join('')}<li><a href="/resize-image-to-1mb/">JPG to 1 MB</a></li><li><a href="/resize-photo-to-50kb/">Photo to 50 KB</a></li><li><a href="/resize-photo-to-100kb/">Photo to 100 KB</a></li><li><a href="/resize-signature-to-10kb/">Signature to 10 KB</a></li><li><a href="/resize-signature-to-20kb/">Signature to 20 KB</a></li></ul></section>`,
   steps: ['Upload the JPG.', 'Enter width and height (choose px, cm, mm or inch).', 'Set the maximum KB.', 'Crop and download.'],
   howto: 'resize a JPG',
   faqs: [{ q: 'How do I resize a JPG without losing quality?', a: 'Resize to the exact size you need in one step and keep the KB limit as high as the form allows — quality drops only when the file must be very small.' },
@@ -350,7 +377,7 @@ for (const c of CALCS) {
       { q: `Is this ${short} score the final score?`, a: 'It is your raw score from the answer key. The official result may apply normalisation, bonus marks for dropped questions, or conversion to percentiles.' },
       { q: 'Is the calculator free and private?', a: 'Yes — it runs in your browser and nothing you enter is sent anywhere.' },
     ],
-    related: CALCS.filter(x => x !== c).slice(0, 8).map(x => [`/${x.slug}/`, `${x.exam} score calculator`]),
+    related: CALCS.filter(x => x !== c).map(x => [`/${x.slug}/`, `${x.exam} score calculator`]).concat([['/jee-main-rank-predictor/', 'JEE Main rank predictor'], ['/typing-test/', 'Typing test']]),
     note: `Exam patterns are based on the latest official notifications (reviewed ${MONTH_YEAR}). Always confirm with the current notification — if the pattern changes, section-wise entries still let you calculate correctly.`,
   });
 }

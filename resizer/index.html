@@ -28,7 +28,7 @@
 
   <!-- ═══ PRIMARY SEO ═══ -->
   <title>Exam Photo &amp; Signature Resizer 2026-2027 – 80+ Indian Exams (Free)</title>
-  <meta name="description" content="Instantly resize your photo and signature for UPSC, SSC, SBI PO, IBPS, NEET, JEE and 80+ Indian competitive exams. Free, instant, 100% private — all processing happens in your browser. No uploads, no server.">
+  <meta name="description" content="Instantly resize your photo and signature for UPSC, SSC, SBI PO, IBPS, NEET, JEE and 80+ Indian competitive exams. Free, instant, 100% private.">
   <meta name="keywords" content="UPSC photo resize, SSC photo size, SBI PO photo resize, IBPS photo size, NEET photo resize, JEE photo resize, exam photo resizer India, passport photo resize online, competitive exam photo size, signature resize India, government exam photo">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="ILoveExams">
@@ -82,7 +82,7 @@
     }
   </script>
 
-  <link rel="stylesheet" href="/assets/tw.css?v=c55f1083">
+  <link rel="stylesheet" href="/assets/tw.css?v=f0b7c6fa">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" defer></script>
 
@@ -137,7 +137,7 @@
 
     /* ── search bar ── */
     .search-bar {
-      width: 100%; padding: 13px 16px 13px 44px;
+      width: 100%; padding: 13px 88px 13px 44px; text-overflow: ellipsis;
       border: 1.5px solid rgba(255,255,255,.12); border-radius: 14px;
       background: rgba(255,255,255,.07); color: #fff; font-size: 15px;
       outline: none; backdrop-filter: blur(8px); transition: all .2s;
@@ -234,7 +234,7 @@
     html.embed body { background: #fff; }
     html.embed body > nav, html.embed .hero, html.embed #hint-select, html.embed #seo-specs,
     html.embed footer, html.embed .ad-slot, html.embed .ad-result, html.embed #selected-bar,
-    html.embed #card-exam-row { display: none !important; }
+    html.embed #card-exam-row, html.embed #engine-faq { display: none !important; }
     html.embed body > .max-w-5xl { padding: 12px !important; max-width: none; }
     /* Specs are preset on landing pages — on phones show the upload card first */
     @media (max-width: 1023px) { html.embed #main-panels > .grid > :last-child { order: -1; } }
@@ -314,9 +314,10 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
   <div class="max-w-5xl mx-auto px-4 pt-7 pb-10">
 
     <!-- H1 — primary SEO heading -->
-    <h1 style="font-size:14px;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:24px;letter-spacing:.01em;line-height:1.5">
-      Free photo &amp; signature resizer for UPSC, SSC, SBI PO, IBPS, NEET, JEE &amp; 80+ Indian competitive exams
+    <h1 style="font-size:clamp(23px,4.6vw,34px);font-weight:900;color:#fff;margin:0 0 8px;letter-spacing:-.02em;line-height:1.15">
+      Exam Photo &amp; Signature Resizer
     </h1>
+    <p id="engine-sub" style="font-size:14.5px;color:rgba(255,255,255,.6);margin:0 0 22px;line-height:1.5">Pick your exam — we set the exact pixels &amp; KB for UPSC, SSC, IBPS, SBI, NEET, JEE &amp; 80+ exams. Free, private, no upload.</p>
 
     <!-- Tool hero (shown only in ?preset= tool mode) -->
     <div id="tool-hero" class="hidden" style="margin-bottom:4px">
@@ -327,7 +328,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     <!-- Search bar -->
     <div id="search-section">
       <div class="relative mb-5">
-        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5" style="color:rgba(255,255,255,.35)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5" style="color:rgba(255,255,255,.6)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
         </svg>
         <input id="exam-search" type="text" class="search-bar" placeholder="Search UPSC, SSC, IBPS, NEET, JEE…" oninput="filterExams(this.value)" autocomplete="off">
@@ -605,13 +606,6 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
               <span>Loved it? Donate &amp; keep it free</span>
             </a>
 
-            <!-- AD: shown after download — best moment, task is done -->
-            <div class="ad-result" style="margin:4px 0">
-              <p style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:.1em;margin:0 0 4px">ADVERTISEMENT</p>
-              <ins class="adsbygoogle" style="display:block;width:100%;min-height:100px" data-ad-client="ca-pub-9837613085159910" data-ad-slot="8189529514" data-ad-format="auto" data-full-width-responsive="true"></ins>
-              <script>(function(){if(window.IS_EMBED)return;try{var ins=document.currentScript.previousElementSibling;if(ins&&/^\d+$/.test(ins.dataset.adSlot)){(adsbygoogle=window.adsbygoogle||[]).push({});}}catch(e){}})();</script>
-            </div>
-
             <button onclick="goUpload()" class="text-xs text-slate-400 hover:text-slate-600 text-center py-1">← Process another</button>
           </div>
 
@@ -731,6 +725,39 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     </p>
   </div>
 </section>
+
+<!-- ENGINE-FAQ:START (generated by generate-seo-hubs.js) -->
+<section id="engine-faq" style="background:#fff;border-top:1px solid #e2e8f0;padding:40px 0">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:14px">Exam Photo &amp; Signature Size — FAQs</h2>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for UPSC?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">UPSC CSE photo: 400×400 pixels, 20–300 KB, JPG. Signature: 400×400 pixels, 20–100 KB, JPG. <a href="/resizer/upsc-photo-resize/">Resize UPSC photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for SSC CGL?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">SSC CGL photo: 275×354 pixels, 20–50 KB, JPG. Signature: 236×79 pixels, 10–20 KB, JPG. <a href="/resizer/ssc-cgl-photo-resize/">Resize SSC CGL photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for SSC CHSL?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">SSC CHSL photo: 200×240 pixels, 20–50 KB, JPG. Signature: 200×80 pixels, 10–20 KB, JPG. <a href="/resizer/ssc-chsl-photo-resize/">Resize SSC CHSL photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for SBI PO?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">SBI PO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. <a href="/resizer/sbi-po-photo-resize/">Resize SBI PO photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for IBPS PO?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">IBPS PO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. <a href="/resizer/ibps-po-photo-resize/">Resize IBPS PO photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for NEET?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">NEET UG photo: 275×354 pixels, 10–200 KB, JPG. Signature: 275×118 pixels, 4–30 KB, JPG. <a href="/resizer/neet-ug-photo-resize/">Resize NEET photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for JEE Main?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">JEE Main photo: 275×354 pixels, 10–200 KB, JPG. Signature: 275×118 pixels, 10–100 KB, JPG. <a href="/resizer/jee-main-photo-resize/">Resize JEE Main photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for CUET UG?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">CUET UG photo: 200×230 pixels, 10–200 KB, JPG. Signature: 140×60 pixels, 4–30 KB, JPG. <a href="/resizer/cuet-photo-resize/">Resize CUET UG photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for GATE?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">GATE photo: 350×450 pixels, 5–1000 KB, JPG. Signature: 400×120 pixels, 3–1000 KB, JPG. <a href="/resizer/gate-photo-resize/">Resize GATE photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for CAT?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">CAT (IIM) photo: 1200×1200 pixels, 30–80 KB, JPG. Signature: 1000×350 pixels, 30–80 KB, JPG. <a href="/resizer/cat-photo-resize/">Resize CAT photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for RRB ALP?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">RRB ALP photo: 275×354 pixels, 50–150 KB, JPG. Signature: 275×157 pixels, 30–49 KB, JPG. <a href="/resizer/rrb-alp-photo-resize/">Resize RRB ALP photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for SSC GD?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">SSC GD Constable photo: 200×240 pixels, 20–50 KB, JPG. Signature: 240×80 pixels, 10–20 KB, JPG. <a href="/resizer/ssc-gd-photo-resize/">Resize SSC GD photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for UPPSC?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">UPPSC photo: 180×216 pixels, 20–50 KB, JPG. Signature: 216×108 pixels, 10–30 KB, JPG. <a href="/resizer/uppsc-photo-resize/">Resize UPPSC photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for BPSC?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">BPSC photo: 250×250 pixels, 20–50 KB, JPG. Signature: 220×100 pixels, 10–20 KB, JPG. <a href="/resizer/bpsc-photo-resize/">Resize BPSC photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for UPSC NDA?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">UPSC NDA photo: 400×400 pixels, 20–300 KB, JPG. Signature: 400×400 pixels, 20–100 KB, JPG. <a href="/resizer/upsc-nda-photo-resize/">Resize UPSC NDA photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for Delhi Police?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">Delhi Police photo: 100×120 pixels, 20–50 KB, JPG. Signature: 40×60 pixels, 20–50 KB, JPG. <a href="/resizer/delhi-police-photo-resize/">Resize Delhi Police photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for LIC AAO?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">LIC AAO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. <a href="/resizer/lic-aao-photo-resize/">Resize LIC AAO photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for IBPS RRB Clerk?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">IBPS RRB Assistant photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. <a href="/resizer/ibps-rrb-clerk-photo-resize/">Resize IBPS RRB Clerk photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for India Post GDS?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">India Post GDS photo: 320×400 pixels, 30–100 KB, JPG. Signature: 300×120 pixels, 20–100 KB, JPG. <a href="/resizer/post-gds-photo-resize/">Resize India Post GDS photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">What is the photo and signature size for UKPSC?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">UKPSC photo: 150×200 pixels, 30–50 KB, JPG. Signature: 150×100 pixels, 20–30 KB, JPG. <a href="/resizer/ukpsc-photo-resize/">Resize UKPSC photo</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">Is my photo uploaded to any server?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">No. The resizer runs entirely in your browser — your photo and signature never leave your device.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">Can I remove the background from my exam photo?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">Yes. After uploading, tap Remove BG to make the background plain white using on-device AI. The first use downloads the model, which takes a few seconds.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">Can I change the dimensions or KB for my exam?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">Yes. Every preset can be edited — change width, height, minimum and maximum KB, or switch to cm, mm or inches, if your notification differs.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">How do I reduce my photo below 50 KB?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">Pick your exam and tap Process — the tool lowers JPG quality automatically until the file fits the KB range. For any image, use <a href="/resize-image-to-50kb/">Resize image to 50 KB</a>.</div></details>
+    <details style="border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;background:#fff"><summary style="cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;color:#0f172a">Does ILoveExams work on mobile phones?</summary><div style="padding:0 16px 13px;font-size:14px;color:#475569;line-height:1.6">Yes — it works in Chrome and Safari on Android and iPhone, and HEIC photos from iPhones are converted automatically.</div></details>
+  </div>
+</section>
+<!-- ENGINE-FAQ:END -->
 
 <!-- ═══════════════════════════ AD SLOT: ENGINE BOTTOM ═══════════════════════════ -->
 <aside class="ad-slot" style="max-width:760px;margin:32px auto;padding:0 16px;display:block" aria-label="Sponsored content">
@@ -940,206 +967,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the photo size for UPSC exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "UPSC requires a passport-size photograph of 400×400 pixels in JPG format. The file size must be between 20 KB and 300 KB. ILoveExams automatically resizes and compresses your photo to meet these exact specifications."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for SSC CGL?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SSC CGL requires a photograph of 275×354 pixels in JPG format with a file size between 20 KB and 50 KB. The signature must be 236×79 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for SBI PO and IBPS PO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SBI PO and IBPS PO require a photograph of 200×230 pixels in JPG format with a file size between 20 KB and 50 KB. The signature should be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for NEET UG?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "NEET UG requires a photograph of 275×354 pixels in JPG format with file size between 10 KB and 200 KB. The signature must be 275×118 pixels between 4 KB and 30 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my photo uploaded to any server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. ILoveExams processes all images entirely within your browser using the HTML5 Canvas API. Your photos never leave your device and are never uploaded to any server, ensuring complete privacy."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I remove the background from my exam photo?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. ILoveExams includes an AI-powered background removal tool that runs entirely in your browser. Click the 'Remove BG' button after uploading your photo. The AI model loads once and works offline after that."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What photo size does JEE Main require?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "JEE Main requires a photograph of 275×354 pixels in JPG format with file size between 10 KB and 300 KB. The signature must be 275×118 pixels between 10 KB and 50 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I change the photo dimensions for my exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. After selecting any exam preset, all image requirements — width, height, minimum KB, maximum KB, and format — are fully editable. You can override any preset value before processing."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for IBPS PO and IBPS Clerk?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IBPS PO and IBPS Clerk require a photograph of 200×230 pixels in JPG format with a file size between 20 KB and 50 KB. The signature must be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for RBI Grade B?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "RBI Grade B requires a passport-size photograph of 200×230 pixels in JPG format with file size between 20 KB and 50 KB. Signature should be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for GATE exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "GATE requires a photograph of 480×640 pixels in JPG format with file size between 5 KB and 200 KB. The signature must be 160×160 pixels between 5 KB and 100 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for SSC CHSL?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SSC CHSL requires a photograph of 200×240 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 200×80 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for CUET?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CUET requires a photograph of 200×230 pixels in JPG format with file size between 10 KB and 200 KB. The signature must be 200×80 pixels between 5 KB and 30 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for UPSC NDA and CDS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "UPSC NDA and CDS require a passport-size photograph of 400×400 pixels in JPG format with file size between 20 KB and 300 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for RRB ALP and Railway exams?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "RRB ALP and most Railway exams require a photograph of 200×230 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for UPPSC?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "UPPSC requires a photograph of 300×300 pixels in JPG format with file size between 20 KB and 100 KB. Signature must be 300×80 pixels between 10 KB and 30 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for BPSC?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "BPSC requires a photograph of 200×230 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for SSC GD Constable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SSC GD Constable requires a photograph of 200×240 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 240×80 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the signature size for UPSC exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "UPSC requires a signature of 400×400 pixels in JPG format with file size between 20 KB and 100 KB. ILoveExams automatically resizes your signature to meet these exact specifications."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for CAT exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CAT (Common Admission Test) requires a photograph of 200×240 pixels in JPG format with file size between 10 KB and 100 KB. Signature must be 200×80 pixels between 5 KB and 30 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for Delhi Police exam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Delhi Police requires a photograph of 200×240 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 200×80 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I reduce photo size below 50 KB for SSC CGL?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Upload your photo on ILoveExams, select SSC CGL preset, then click Process Image. The tool automatically compresses the image using a quality loop until it falls within 20–50 KB while keeping the exact 275×354 pixel dimensions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the photo size for LIC AAO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "LIC AAO requires a photograph of 200×230 pixels in JPG format with file size between 20 KB and 50 KB. Signature must be 140×60 pixels between 10 KB and 20 KB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does ILoveExams work on mobile phones?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, ILoveExams works fully on mobile phones and tablets. The entire tool is browser-based — just open ilovexams.in on your Android or iPhone browser, upload your photo from the gallery, and download the resized image. No app installation needed."
-      }
-    }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the photo and signature size for UPSC?","acceptedAnswer":{"@type":"Answer","text":"UPSC CSE photo: 400×400 pixels, 20–300 KB, JPG. Signature: 400×400 pixels, 20–100 KB, JPG. Resize UPSC photo."}},{"@type":"Question","name":"What is the photo and signature size for SSC CGL?","acceptedAnswer":{"@type":"Answer","text":"SSC CGL photo: 275×354 pixels, 20–50 KB, JPG. Signature: 236×79 pixels, 10–20 KB, JPG. Resize SSC CGL photo."}},{"@type":"Question","name":"What is the photo and signature size for SSC CHSL?","acceptedAnswer":{"@type":"Answer","text":"SSC CHSL photo: 200×240 pixels, 20–50 KB, JPG. Signature: 200×80 pixels, 10–20 KB, JPG. Resize SSC CHSL photo."}},{"@type":"Question","name":"What is the photo and signature size for SBI PO?","acceptedAnswer":{"@type":"Answer","text":"SBI PO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. Resize SBI PO photo."}},{"@type":"Question","name":"What is the photo and signature size for IBPS PO?","acceptedAnswer":{"@type":"Answer","text":"IBPS PO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. Resize IBPS PO photo."}},{"@type":"Question","name":"What is the photo and signature size for NEET?","acceptedAnswer":{"@type":"Answer","text":"NEET UG photo: 275×354 pixels, 10–200 KB, JPG. Signature: 275×118 pixels, 4–30 KB, JPG. Resize NEET photo."}},{"@type":"Question","name":"What is the photo and signature size for JEE Main?","acceptedAnswer":{"@type":"Answer","text":"JEE Main photo: 275×354 pixels, 10–200 KB, JPG. Signature: 275×118 pixels, 10–100 KB, JPG. Resize JEE Main photo."}},{"@type":"Question","name":"What is the photo and signature size for CUET UG?","acceptedAnswer":{"@type":"Answer","text":"CUET UG photo: 200×230 pixels, 10–200 KB, JPG. Signature: 140×60 pixels, 4–30 KB, JPG. Resize CUET UG photo."}},{"@type":"Question","name":"What is the photo and signature size for GATE?","acceptedAnswer":{"@type":"Answer","text":"GATE photo: 350×450 pixels, 5–1000 KB, JPG. Signature: 400×120 pixels, 3–1000 KB, JPG. Resize GATE photo."}},{"@type":"Question","name":"What is the photo and signature size for CAT?","acceptedAnswer":{"@type":"Answer","text":"CAT (IIM) photo: 1200×1200 pixels, 30–80 KB, JPG. Signature: 1000×350 pixels, 30–80 KB, JPG. Resize CAT photo."}},{"@type":"Question","name":"What is the photo and signature size for RRB ALP?","acceptedAnswer":{"@type":"Answer","text":"RRB ALP photo: 275×354 pixels, 50–150 KB, JPG. Signature: 275×157 pixels, 30–49 KB, JPG. Resize RRB ALP photo."}},{"@type":"Question","name":"What is the photo and signature size for SSC GD?","acceptedAnswer":{"@type":"Answer","text":"SSC GD Constable photo: 200×240 pixels, 20–50 KB, JPG. Signature: 240×80 pixels, 10–20 KB, JPG. Resize SSC GD photo."}},{"@type":"Question","name":"What is the photo and signature size for UPPSC?","acceptedAnswer":{"@type":"Answer","text":"UPPSC photo: 180×216 pixels, 20–50 KB, JPG. Signature: 216×108 pixels, 10–30 KB, JPG. Resize UPPSC photo."}},{"@type":"Question","name":"What is the photo and signature size for BPSC?","acceptedAnswer":{"@type":"Answer","text":"BPSC photo: 250×250 pixels, 20–50 KB, JPG. Signature: 220×100 pixels, 10–20 KB, JPG. Resize BPSC photo."}},{"@type":"Question","name":"What is the photo and signature size for UPSC NDA?","acceptedAnswer":{"@type":"Answer","text":"UPSC NDA photo: 400×400 pixels, 20–300 KB, JPG. Signature: 400×400 pixels, 20–100 KB, JPG. Resize UPSC NDA photo."}},{"@type":"Question","name":"What is the photo and signature size for Delhi Police?","acceptedAnswer":{"@type":"Answer","text":"Delhi Police photo: 100×120 pixels, 20–50 KB, JPG. Signature: 40×60 pixels, 20–50 KB, JPG. Resize Delhi Police photo."}},{"@type":"Question","name":"What is the photo and signature size for LIC AAO?","acceptedAnswer":{"@type":"Answer","text":"LIC AAO photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. Resize LIC AAO photo."}},{"@type":"Question","name":"What is the photo and signature size for IBPS RRB Clerk?","acceptedAnswer":{"@type":"Answer","text":"IBPS RRB Assistant photo: 200×230 pixels, 20–50 KB, JPG. Signature: 140×60 pixels, 10–20 KB, JPG. Resize IBPS RRB Clerk photo."}},{"@type":"Question","name":"What is the photo and signature size for India Post GDS?","acceptedAnswer":{"@type":"Answer","text":"India Post GDS photo: 320×400 pixels, 30–100 KB, JPG. Signature: 300×120 pixels, 20–100 KB, JPG. Resize India Post GDS photo."}},{"@type":"Question","name":"What is the photo and signature size for UKPSC?","acceptedAnswer":{"@type":"Answer","text":"UKPSC photo: 150×200 pixels, 30–50 KB, JPG. Signature: 150×100 pixels, 20–30 KB, JPG. Resize UKPSC photo."}},{"@type":"Question","name":"Is my photo uploaded to any server?","acceptedAnswer":{"@type":"Answer","text":"No. The resizer runs entirely in your browser — your photo and signature never leave your device."}},{"@type":"Question","name":"Can I remove the background from my exam photo?","acceptedAnswer":{"@type":"Answer","text":"Yes. After uploading, tap Remove BG to make the background plain white using on-device AI. The first use downloads the model, which takes a few seconds."}},{"@type":"Question","name":"Can I change the dimensions or KB for my exam?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every preset can be edited — change width, height, minimum and maximum KB, or switch to cm, mm or inches, if your notification differs."}},{"@type":"Question","name":"How do I reduce my photo below 50 KB?","acceptedAnswer":{"@type":"Answer","text":"Pick your exam and tap Process — the tool lowers JPG quality automatically until the file fits the KB range. For any image, use Resize image to 50 KB."}},{"@type":"Question","name":"Does ILoveExams work on mobile phones?","acceptedAnswer":{"@type":"Answer","text":"Yes — it works in Chrome and Safari on Android and iPhone, and HEIC photos from iPhones are converted automatically."}}]}</script>
 
 <script type="application/ld+json">
 {
@@ -1350,7 +1178,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!S.exam) {
     const slug = FEATURED[Math.floor(Math.random() * FEATURED.length)];
     const exam = EXAMS.find(e => e.slug === slug);
-    if (exam) selectExam(exam.id, true); // skipURL=true — don't pollute the address bar
+    // skipURL=true — don't pollute the address bar; S.autoPick — don't scroll the visitor away from the top
+    if (exam) { S.autoPick = true; selectExam(exam.id, true); S.autoPick = false; }
   }
 });
 
@@ -1436,6 +1265,7 @@ function applyPreset(p) {
 
   // ── Tool mode: hide the exam-browsing UI (user came for ONE specific tool) ──
   const hide = id => { const e = document.getElementById(id); if (e) e.style.display = 'none'; };
+  hide('engine-sub');         // generic subtitle (tool-hero has its own)
   hide('search-section');     // search bar + category pills
   hide('exam-grid-section');  // the 80-exam grid
   hide('selected-bar');       // "Change exam" bar
@@ -1598,7 +1428,7 @@ function selectExam(id, skipURL) {
   if (!skipURL) pushURL();
 
   // Scroll to panels
-  setTimeout(() => document.getElementById('main-panels').scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+  if (!S.autoPick) setTimeout(() => document.getElementById('main-panels').scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
 }
 
 function clearExam() {

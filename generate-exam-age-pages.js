@@ -114,7 +114,7 @@ const EXAMS = [
       { q: 'What is the age cut-off date for IBPS PO?', a: 'Age for IBPS PO eligibility is calculated as of the date specified in the notification — usually the opening date of the application form. This date changes each year.' },
       { q: 'Is there an attempt limit for IBPS PO?', a: 'No. There is no limit on the number of times you can attempt IBPS PO, as long as you meet the age and qualification criteria each time you apply.' },
       { q: 'What qualification is needed for IBPS PO?', a: "A bachelor's degree in any discipline from a recognised university (or its equivalent as recognised by the Central Government)." },
-      { q: 'What is the IBPS PO photo size requirement?', a: 'IBPS PO requires a photo of approximately 200×230 pixels, 20–50 KB in JPG. Signature: approximately 80×30 pixels, under 20 KB. Check the current year notification for exact specs.' },
+      { q: 'What is the IBPS PO photo size requirement?', a: 'IBPS PO requires a photo of approximately 200×230 pixels, 20–50 KB in JPG. Signature: 140×60 pixels, 10–20 KB, JPG. Check the current year notification for exact specs.' },
       { q: 'Can I apply for IBPS PO in my final year of graduation?', a: 'Yes. Final-year students can apply, but they must have completed the degree before the date of interview/joining specified in the notification.' },
       { q: 'What is the difference between IBPS PO and IBPS Clerk age limit?', a: 'IBPS PO: 20–30 years (general). IBPS Clerk: 20–28 years (general). Both have the same OBC/SC/ST relaxations, but the maximum age for Clerk is 2 years lower.' },
     ],
@@ -198,7 +198,7 @@ const EXAMS = [
       { q: 'How many times can I attempt SBI PO?', a: 'There is no limit on the number of SBI PO attempts. You can apply every year as long as you meet the age and qualification criteria.' },
       { q: 'Is there an age relaxation for SBI PO?', a: 'Yes. OBC (Non-Creamy Layer) gets +3 years, SC/ST gets +5 years, PwBD gets +10 years over the general upper age limit. J&K residents may get additional relaxation per central government norms.' },
       { q: 'Can final year students apply for SBI PO?', a: 'Yes. Final-year degree students can apply for SBI PO, but they must submit their final degree certificate by the date specified in the offer letter/notification.' },
-      { q: 'What is the SBI PO photo size requirement?', a: 'SBI PO application requires a colour passport-size photo, approximately 200×230 pixels, 20–50 KB in JPG. Signature: approximately 80×30 pixels, under 20 KB.' },
+      { q: 'What is the SBI PO photo size requirement?', a: 'SBI PO application requires a colour passport-size photo, approximately 200×230 pixels, 20–50 KB in JPG. Signature: 140×60 pixels, 10–20 KB, JPG.' },
     ],
   },
   {
