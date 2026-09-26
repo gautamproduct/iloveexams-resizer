@@ -228,7 +228,7 @@ function specRow(label, spec) {
 // ── Keep in sync with the resizer: specs from exams-data.js, current year, and
 //    CTAs pointing at the static landing pages instead of ?preset= query URLs.
 const { EXAMS: DATA } = require('./exams-data');
-const YEAR = new Date().getFullYear();
+const { YEARS: YEAR } = require('./seo-shell');
 const DATA_SLUG = { 'upsc-photo-size': 'upsc', 'ssc-cgl-photo-size': 'ssc-cgl', 'ssc-chsl-photo-size': 'ssc-chsl',
   'neet-photo-size': 'neet-ug', 'jee-main-photo-size': 'jee-main', 'ibps-po-photo-size': 'ibps-po',
   'nda-photo-size': 'upsc-nda', 'sbi-po-photo-size': 'sbi-po' };

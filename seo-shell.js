@@ -11,6 +11,12 @@ const AD_SLOT_ID = '8189529514';
 const BUILD_DATE = new Date();
 const ISO_DATE = BUILD_DATE.toISOString().slice(0, 10);
 const YEAR = BUILD_DATE.getFullYear();
+// From September, application forms for next year's exam cycle start opening
+// (JEE Main, NEET, bank exams), so pages cover both years instead of spawning
+// duplicate "-2027" pages. Rolls forward automatically on each build.
+const SPAN_NEXT = BUILD_DATE.getMonth() >= 8;
+const NEXT_YEAR = YEAR + 1;
+const YEARS = SPAN_NEXT ? `${YEAR}-${NEXT_YEAR}` : `${YEAR}`;
 const MONTH_YEAR = BUILD_DATE.toLocaleString('en-IN', { month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -113,6 +119,7 @@ function head({ title, desc, canonical, schema = [], ogTitle, extraHead = '' }) 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="${AD_CLIENT}">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -147,6 +154,7 @@ function head({ title, desc, canonical, schema = [], ogTitle, extraHead = '' }) 
       <a href="/resizer/">Exam Resizer</a>
       <a href="/resizer/photo-signature-size-chart/">Size Chart ${YEAR}</a>
       <a href="/resizer/size/">By Pixel Size</a>
+      <a href="/resizer/guides/">Guides</a>
       <a href="/">All Tools</a>
     </div>
     <a class="donate" href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener">♥ Donate</a>
@@ -203,7 +211,9 @@ function footer(extraLinks = []) {
     { href: '/resizer/photo-signature-size-chart/', t: `Exam Size Chart ${YEAR}` },
     { href: '/resizer/size/', t: 'Resize by Pixels' },
     ...extraLinks,
-    { href: '/', t: 'All Tools' }, { href: '/privacy/', t: 'Privacy' }, { href: '/terms/', t: 'Terms' },
+    { href: '/resizer/guides/', t: 'Guides' },
+    { href: '/', t: 'All Tools' }, { href: '/about/', t: 'About' }, { href: '/contact/', t: 'Contact' },
+    { href: '/privacy/', t: 'Privacy' }, { href: '/terms/', t: 'Terms' },
   ];
   return `<footer class="foot">
   <a href="/" class="logo" style="justify-content:center"><span class="logo-t" style="font-size:20px">I</span>${SVG_HEART}<span class="logo-t" style="font-size:20px">Exams</span><span class="logo-in">.in</span></a>
@@ -218,4 +228,4 @@ function footer(extraLinks = []) {
 const toCm = (px, dpi) => (px * 2.54 / dpi).toFixed(2);
 const ratio = (w, h) => { const g = (a, b) => b ? g(b, a % b) : a; const d = g(w, h); const r = `${w / d}:${h / d}`; return r.length > 7 ? (w / h).toFixed(2) + ':1' : r; };
 
-module.exports = { SITE, ISO_DATE, YEAR, MONTH_YEAR, esc, jsonLd, adSlot, head, footer, crumbsHtml, crumbsSchema, toolFrame, faqHtml, faqSchema, webPageSchema, appSchema, toCm, ratio };
+module.exports = { SITE, ISO_DATE, YEAR, YEARS, SPAN_NEXT, NEXT_YEAR, MONTH_YEAR, esc, jsonLd, adSlot, head, footer, crumbsHtml, crumbsSchema, toolFrame, faqHtml, faqSchema, webPageSchema, appSchema, toCm, ratio };

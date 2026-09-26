@@ -5,7 +5,7 @@
 Images are processed in the user's browser and never uploaded. All tools are free with no sign-up.
 
 ## Key pages
-- [Photo & signature size chart 2026 (all exams)](https://ilovexams.in/resizer/photo-signature-size-chart/)
+- [Photo & signature size chart 2026-2027 (all exams)](https://ilovexams.in/resizer/photo-signature-size-chart/)
 - [Exam photo & signature resizer](https://ilovexams.in/resizer/)
 - [Resize by pixel size](https://ilovexams.in/resizer/size/)
 - [UPSC Exams photo & signature size](https://ilovexams.in/resizer/upsc-exam-photo-signature-size/)

@@ -59,4 +59,18 @@ ${entries.join('\n')}
 `;
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
+
+// AdSense site verification: every page (incl. hand-written and older generated
+// ones) must carry the account meta tag. Idempotent.
+const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
+let tagged = 0;
+for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '404.html']) {
+  const f = path.join(ROOT, p);
+  if (!fs.existsSync(f)) continue;
+  const h = fs.readFileSync(f, 'utf8');
+  if (h.includes('google-adsense-account')) continue;
+  const out = h.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n  ${ADS_META}`);
+  if (out !== h) { fs.writeFileSync(f, out, 'utf8'); tagged++; }
+}
+if (tagged) console.log(`✅ Added AdSense account meta to ${tagged} pages`);
 console.log(`✅ Sitemap rebuilt: ${entries.length} URLs`);

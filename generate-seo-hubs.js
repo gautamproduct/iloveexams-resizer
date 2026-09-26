@@ -17,7 +17,7 @@ const path = require('path');
 const D = require('./exams-data');
 const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD } = D;
 const S = require('./seo-shell');
-const { SITE, YEAR, MONTH_YEAR, esc } = S;
+const { SITE, YEARS: YEAR, MONTH_YEAR, esc } = S;
 
 const ROOT = __dirname;
 const write = (rel, html) => {
@@ -309,7 +309,7 @@ ${S.footer()}`;
   engine = engine.replace(
     /Click any exam name above to auto-load its specifications and start resizing instantly\.\s*All 80\+ exams supported — <a href="#exam-grid-section"[^>]*>browse the full list ↑<\/a>/,
     `Tap any exam for its full size guide and resizer. <a href="/resizer/photo-signature-size-chart/" style="color:#3b82f6;text-decoration:none">Printable size chart ${YEAR} →</a>`);
-  engine = engine.replace(/(<title>Exam Photo &amp; Signature Resizer )\d{4}/, `$1${YEAR}`);
+  engine = engine.replace(/(<title>Exam Photo &amp; Signature Resizer )\d{4}(?:-\d{4})?/, `$1${YEAR}`);
   fs.writeFileSync(enginePath, engine, 'utf8');
 }
 

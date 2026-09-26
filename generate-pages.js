@@ -13,7 +13,7 @@ const path = require('path');
 
 const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS } = require('./exams-data');
 const S = require('./seo-shell');
-const { SITE, YEAR, MONTH_YEAR, esc } = S;
+const { SITE, YEARS: YEAR, MONTH_YEAR, esc } = S;
 
 const specStr = sp => `${sp.w}×${sp.h}px, ${sp.min}–${sp.max} KB`;
 const sameSpec = (a, b) => a.w === b.w && a.h === b.h && a.min === b.min && a.max === b.max && a.fmt === b.fmt;
@@ -94,6 +94,10 @@ function generatePage(exam, docType) {
     { q: `What is the ${short} ${other} size?`,
       a: `The ${esc(exam.name)} ${other} must be ${otherSpec.w}×${otherSpec.h} pixels, ${otherSpec.min}–${otherSpec.max} KB, ${otherSpec.fmt}. <a href="${otherURL}">Resize your ${short} ${other} here</a>.` },
   ];
+  if (S.SPAN_NEXT) {
+    faqs.splice(2, 0, { q: `What is the ${short} ${lc} size for ${S.NEXT_YEAR}?`,
+      a: `Use ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt} — the size in recent ${esc(exam.name)} notifications. It rarely changes between years; if the ${S.NEXT_YEAR} notification changes it we update this page, and you can edit width, height and KB in the tool.` });
+  }
   if (isBank) {
     const t = BANK_EXTRA_DOCS['thumb-impression'], d = BANK_EXTRA_DOCS['declaration'];
     faqs.push({ q: `What are the ${short} thumb impression and handwritten declaration sizes?`,
@@ -124,6 +128,7 @@ function generatePage(exam, docType) {
       <tr><td>Signature</td><td class="m">${exam.sig.w}×${exam.sig.h}px</td><td class="m">${exam.sig.min}–${exam.sig.max} KB</td><td><a href="/resizer/${exam.slug}-signature-resize/">Resize →</a></td></tr>
       ${Object.entries(BANK_EXTRA_DOCS).map(([k, d]) => `<tr><td>${d.label}</td><td class="m">${d.w}×${d.h}px</td><td class="m">${d.min}–${d.max} KB</td><td><a href="/resizer/${exam.slug}-${k}-resize/">Resize →</a></td></tr>`).join('\n      ')}
     </tbody></table></div>
+    <p style="margin:12px 0 0;font-size:14px">📖 <a href="/resizer/guides/ibps-thumb-impression-handwritten-declaration/">How to make the thumb impression and handwritten declaration</a></p>
   </section>` : '';
 
   const html = `${S.head({ title, desc, canonical, schema, ogTitle: `${short} ${label} Size ${YEAR} – ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB` })}
@@ -199,6 +204,7 @@ function generatePage(exam, docType) {
       <li>Wrong format — PNG, HEIC or PDF instead of ${spec.fmt}.</li>
       <li>${docType === 'photo' ? 'Dark, blurred or non-white background, or face not clearly visible.' : 'Faint, blurred or cut-off signature, or signature in capital letters.'}</li>
     </ul>
+    <p style="margin:12px 0 0;font-size:14px">📖 ${docType === 'photo' ? '<a href="/resizer/guides/take-exam-photo-with-phone/">How to take an exam photo with your phone</a>' : '<a href="/resizer/guides/scan-signature-for-online-form/">How to scan your signature for online forms</a>'} · <a href="/resizer/guides/photo-upload-rejected-reasons/">12 reasons uploads get rejected</a></p>
   </section>
 
   ${sameSize.length ? `<section class="card">
