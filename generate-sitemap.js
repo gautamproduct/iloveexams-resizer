@@ -82,6 +82,19 @@ const rest = pagesList.filter(p => !used.has(p));
 fs.writeFileSync(path.join(ROOT, 'sitemap-core.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rest.map(p => entries[pagesList.indexOf(p)]).join('\n')}\n</urlset>\n`, 'utf8');
 sectionFiles.push(`sitemap-core.xml (${rest.length})`);
 
+// Copies inside /resizer/ for the URL-prefix property https://ilovexams.in/resizer/
+// (a sitemap there may only list URLs under /resizer/).
+const urlset = list => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${list.map(p => entries[pagesList.indexOf(p)]).join('\n')}\n</urlset>\n`;
+const inResizer = pagesList.filter(p => p === 'resizer' || p.startsWith('resizer/'));
+const resizerMaps = {
+  'sitemap.xml': inResizer,
+  'sitemap-exam-pages.xml': inResizer.filter(p => /^resizer\/[^/]+-resize$/.test(p)),
+  'sitemap-pixel-sizes.xml': inResizer.filter(p => p.startsWith('resizer/size')),
+  'sitemap-hubs-guides.xml': inResizer.filter(p => !/-resize$/.test(p) && !p.startsWith('resizer/size')),
+};
+for (const [f, list] of Object.entries(resizerMaps)) fs.writeFileSync(path.join(ROOT, 'resizer', f), urlset(list), 'utf8');
+sectionFiles.push(`resizer/: ${Object.entries(resizerMaps).map(([f, l]) => `${f} (${l.length})`).join(', ')}`);
+
 // Site-wide post-processing. AdSense site verification: every page (incl. hand-written and older generated
 // ones) must carry the account meta tag. Idempotent.
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
