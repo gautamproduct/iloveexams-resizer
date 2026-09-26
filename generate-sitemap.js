@@ -1,44 +1,56 @@
 #!/usr/bin/env node
 /**
- * Rebuilds sitemap.xml from scratch by scanning generated directories.
+ * Rebuilds sitemap.xml from scratch by scanning every directory that has an index.html.
  * Deterministic — no duplicates. Run LAST: node generate-sitemap.js
+ *
+ * lastmod = the file's last git commit date, or today for files changed since then,
+ * so Google gets an honest freshness signal instead of one frozen date.
  */
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
-const today = '2026-06-05';
 const ROOT = __dirname;
+const today = new Date().toISOString().slice(0, 10);
 
-function hasIndex(dir) {
-  return fs.existsSync(path.join(dir, 'index.html'));
+// Top-level dirs that are never pages
+const SKIP = new Set(['node_modules', '.git', '.claude']);
+
+function walk(rel, out) {
+  const abs = path.join(ROOT, rel);
+  for (const d of fs.readdirSync(abs, { withFileTypes: true })) {
+    if (!d.isDirectory() || SKIP.has(d.name) || d.name.startsWith('.')) continue;
+    const child = rel ? `${rel}/${d.name}` : d.name;
+    if (fs.existsSync(path.join(ROOT, child, 'index.html'))) out.push(child);
+    walk(child, out);
+  }
+  return out;
 }
-function dirsWithIndex(base) {
-  if (!fs.existsSync(base)) return [];
-  return fs.readdirSync(base, { withFileTypes: true })
-    .filter(d => d.isDirectory() && hasIndex(path.join(base, d.name)))
-    .map(d => d.name)
-    .sort();
+
+function lastmod(file) {
+  try {
+    const dirty = execSync(`git status --porcelain -- "${file}"`, { cwd: ROOT }).toString().trim();
+    if (dirty) return today;
+    const d = execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: ROOT }).toString().trim();
+    return d || today;
+  } catch { return today; }
 }
 
-const url = (loc, priority, freq = 'monthly') =>
-  `  <url><loc>https://ilovexams.in/${loc}</loc><lastmod>${today}</lastmod><changefreq>${freq}</changefreq><priority>${priority}</priority></url>`;
+function priority(p) {
+  if (p === '' || p === 'resizer') return '1.0';
+  if (p === 'resizer/photo-signature-size-chart') return '0.9';
+  if (/^resizer\/[^/]+-(photo|signature)-resize$/.test(p)) return '0.8';
+  if (/-photo-signature-size$/.test(p) || p === 'resizer/size') return '0.8';
+  if (p === 'privacy' || p === 'terms') return '0.3';
+  return '0.7';
+}
 
-// Top-level dirs that are NOT tool pages
-const NON_TOOL = new Set(['resizer', 'privacy', 'terms', 'node_modules', '.git', '.claude']);
-
-const examSlugs = dirsWithIndex(path.join(ROOT, 'resizer'));
-const toolSlugs = dirsWithIndex(ROOT).filter(d => !NON_TOOL.has(d));
-
-const entries = [];
-entries.push(url('', '1.0', 'weekly'));
-entries.push(url('resizer/', '1.0', 'weekly'));
-entries.push('  <!-- Legal -->');
-entries.push(url('privacy/', '0.3', 'yearly'));
-entries.push(url('terms/', '0.3', 'yearly'));
-entries.push('  <!-- Tool landing pages -->');
-toolSlugs.forEach(s => entries.push(url(`${s}/`, '0.8')));
-entries.push('  <!-- Exam landing pages -->');
-examSlugs.forEach(s => entries.push(url(`resizer/${s}/`, '0.8')));
+const pagesList = ['', ...walk('', [])].sort((a, b) => priority(b) - priority(a) || a.localeCompare(b));
+const entries = pagesList.map(p => {
+  const file = p ? `${p}/index.html` : 'index.html';
+  const loc = `https://ilovexams.in/${p ? p + '/' : ''}`;
+  return `  <url><loc>${loc}</loc><lastmod>${lastmod(file)}</lastmod><priority>${priority(p)}</priority></url>`;
+});
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -47,5 +59,4 @@ ${entries.join('\n')}
 `;
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
-const realUrls = entries.filter(e => e.includes('<loc>')).length;
-console.log(`✅ Sitemap rebuilt: ${realUrls} URLs (${toolSlugs.length} tools, ${examSlugs.length} exam pages)`);
+console.log(`✅ Sitemap rebuilt: ${entries.length} URLs`);

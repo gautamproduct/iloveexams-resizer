@@ -1,0 +1,108 @@
+# ILoveExams
+
+> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for 80+ exams, updated September 2026.
+
+Images are processed in the user's browser and never uploaded. All tools are free with no sign-up.
+
+## Key pages
+- [Photo & signature size chart 2026 (all exams)](https://ilovexams.in/resizer/photo-signature-size-chart/)
+- [Exam photo & signature resizer](https://ilovexams.in/resizer/)
+- [Resize by pixel size](https://ilovexams.in/resizer/size/)
+- [UPSC Exams photo & signature size](https://ilovexams.in/resizer/upsc-exam-photo-signature-size/)
+- [SSC Exams photo & signature size](https://ilovexams.in/resizer/ssc-exam-photo-signature-size/)
+- [Bank Exams (IBPS, SBI, RBI) photo & signature size](https://ilovexams.in/resizer/bank-exam-photo-signature-size/)
+- [Defence Exams photo & signature size](https://ilovexams.in/resizer/defence-exam-photo-signature-size/)
+- [Railway Exams (RRB, RPF) photo & signature size](https://ilovexams.in/resizer/railway-exam-photo-signature-size/)
+- [Entrance Exams (JEE, NEET, CAT) photo & signature size](https://ilovexams.in/resizer/entrance-exam-photo-signature-size/)
+- [Central Govt Exams photo & signature size](https://ilovexams.in/resizer/central-govt-exam-photo-signature-size/)
+- [State PSC Exams photo & signature size](https://ilovexams.in/resizer/state-psc-photo-signature-size/)
+- [Police & State SSB Exams photo & signature size](https://ilovexams.in/resizer/police-exam-photo-signature-size/)
+- [Judiciary & High Court Exams photo & signature size](https://ilovexams.in/resizer/judiciary-exam-photo-signature-size/)
+
+## Exam photo and signature sizes (width×height px, KB, JPG)
+- UPSC CSE: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-photo-resize/
+- UPSC IES / ESE: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-ies-photo-resize/
+- UPSC Geo-Scientist: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-geo-photo-resize/
+- UPSC CAPF AC: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-capf-photo-resize/
+- UPSC NDA: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-nda-photo-resize/
+- UPSC CDS: photo 400×400 px, 20–300 KB; signature 400×400 px, 20–100 KB — https://ilovexams.in/resizer/upsc-cds-photo-resize/
+- SSC CGL: photo 275×354 px, 20–50 KB; signature 236×79 px, 10–20 KB — https://ilovexams.in/resizer/ssc-cgl-photo-resize/
+- SSC CHSL: photo 200×240 px, 20–50 KB; signature 200×80 px, 10–20 KB — https://ilovexams.in/resizer/ssc-chsl-photo-resize/
+- SSC MTS: photo 200×240 px, 20–50 KB; signature 240×80 px, 10–20 KB — https://ilovexams.in/resizer/ssc-mts-photo-resize/
+- SSC GD Constable: photo 200×240 px, 20–50 KB; signature 240×80 px, 10–20 KB — https://ilovexams.in/resizer/ssc-gd-photo-resize/
+- SSC CPO SI: photo 275×354 px, 20–50 KB; signature 236×79 px, 10–20 KB — https://ilovexams.in/resizer/ssc-cpo-photo-resize/
+- SSC Stenographer: photo 200×240 px, 20–50 KB; signature 200×80 px, 10–20 KB — https://ilovexams.in/resizer/ssc-steno-photo-resize/
+- SSC JE: photo 275×354 px, 20–50 KB; signature 236×79 px, 10–20 KB — https://ilovexams.in/resizer/ssc-je-photo-resize/
+- SBI PO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/sbi-po-photo-resize/
+- SBI Clerk: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/sbi-clerk-photo-resize/
+- IBPS PO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ibps-po-photo-resize/
+- IBPS Clerk: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ibps-clerk-photo-resize/
+- IBPS RRB Officer: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ibps-rrb-po-photo-resize/
+- IBPS RRB Assistant: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ibps-rrb-clerk-photo-resize/
+- IBPS SO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ibps-so-photo-resize/
+- RBI Grade B: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/rbi-grade-b-photo-resize/
+- RBI Assistant: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/rbi-assistant-photo-resize/
+- LIC AAO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/lic-aao-photo-resize/
+- LIC ADO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/lic-ado-photo-resize/
+- NABARD Grade A: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/nabard-photo-resize/
+- IDBI Executive: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/idbi-photo-resize/
+- NIACL AO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/niacl-photo-resize/
+- SEBI Grade A: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/sebi-photo-resize/
+- AFCAT: photo 200×230 px, 10–50 KB; signature 140×60 px, 10–50 KB — https://ilovexams.in/resizer/afcat-photo-resize/
+- Coast Guard Navik: photo 200×230 px, 10–100 KB; signature 140×60 px, 10–100 KB — https://ilovexams.in/resizer/coast-guard-photo-resize/
+- RRB ALP: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-alp-photo-resize/
+- RPF SI: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-si-photo-resize/
+- RPF Constable: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-constable-photo-resize/
+- JEE Main: photo 275×354 px, 10–300 KB; signature 275×118 px, 10–50 KB — https://ilovexams.in/resizer/jee-main-photo-resize/
+- NEET UG: photo 275×354 px, 10–200 KB; signature 275×118 px, 4–30 KB — https://ilovexams.in/resizer/neet-ug-photo-resize/
+- GATE: photo 350×450 px, 5–1000 KB; signature 400×120 px, 3–1000 KB — https://ilovexams.in/resizer/gate-photo-resize/
+- CUET UG: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/cuet-photo-resize/
+- CLAT: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/clat-photo-resize/
+- CAT (IIM): photo 1200×1200 px, 30–80 KB; signature 1000×350 px, 30–80 KB — https://ilovexams.in/resizer/cat-photo-resize/
+- NTA CMAT: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/cmat-photo-resize/
+- XAT: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/xat-photo-resize/
+- IB ACIO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ib-acio-photo-resize/
+- India Post GDS: photo 320×400 px, 30–100 KB; signature 300×120 px, 20–100 KB — https://ilovexams.in/resizer/post-gds-photo-resize/
+- UGC NET: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/ugc-net-photo-resize/
+- CSIR UGC NET: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/csir-net-photo-resize/
+- UPPSC: photo 180×216 px, 20–50 KB; signature 216×108 px, 10–30 KB — https://ilovexams.in/resizer/uppsc-photo-resize/
+- BPSC: photo 250×250 px, 20–50 KB; signature 220×100 px, 10–20 KB — https://ilovexams.in/resizer/bpsc-photo-resize/
+- MPSC (Maharashtra): photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/mpsc-photo-resize/
+- WBCS: photo 138×177 px, 20–100 KB; signature 138×59 px, 10–20 KB — https://ilovexams.in/resizer/wbcs-photo-resize/
+- OPSC (Odisha): photo 200×240 px, 20–100 KB; signature 140×60 px, 10–50 KB — https://ilovexams.in/resizer/opsc-photo-resize/
+- APSC (Assam): photo 200×250 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/apsc-photo-resize/
+- MPPSC: photo 275×354 px, 25–200 KB; signature 275×118 px, 25–200 KB — https://ilovexams.in/resizer/mppsc-photo-resize/
+- JPSC (Jharkhand): photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/jpsc-photo-resize/
+- TNPSC: photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/tnpsc-photo-resize/
+- KPSC (Kerala): photo 150×200 px, 20–30 KB; signature 150×100 px, 20–30 KB — https://ilovexams.in/resizer/kpsc-photo-resize/
+- GPSC (Gujarat): photo 130×180 px, 10–15 KB; signature 275×90 px, 10–15 KB — https://ilovexams.in/resizer/gpsc-photo-resize/
+- RPSC / RAS: photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/rpsc-photo-resize/
+- TSPSC (Telangana): photo 275×354 px, 20–50 KB; signature 275×118 px, 10–30 KB — https://ilovexams.in/resizer/tspsc-photo-resize/
+- CGPSC: photo 275×354 px, 30–100 KB; signature 275×118 px, 20–50 KB — https://ilovexams.in/resizer/cgpsc-photo-resize/
+- UKPSC: photo 150×200 px, 30–50 KB; signature 150×100 px, 20–30 KB — https://ilovexams.in/resizer/ukpsc-photo-resize/
+- APPSC (Arunachal): photo 200×250 px, 50–100 KB; signature 140×60 px, 20–50 KB — https://ilovexams.in/resizer/appsc-photo-resize/
+- PPSC (Punjab): photo 140×177 px, 10–40 KB; signature 140×80 px, 10–40 KB — https://ilovexams.in/resizer/ppsc-photo-resize/
+- HPSC (Haryana): photo 138×177 px, 10–100 KB; signature 138×59 px, 10–50 KB — https://ilovexams.in/resizer/hpsc-photo-resize/
+- JKPSC: photo 200×240 px, 10–20 KB; signature 200×100 px, 10–20 KB — https://ilovexams.in/resizer/jkpsc-photo-resize/
+- SPSC (Sikkim): photo 150×200 px, 10–50 KB; signature 150×100 px, 5–30 KB — https://ilovexams.in/resizer/spsc-photo-resize/
+- UP Police: photo 180×225 px, 20–50 KB; signature 200×80 px, 5–20 KB — https://ilovexams.in/resizer/up-police-photo-resize/
+- Delhi Police: photo 100×120 px, 20–50 KB; signature 40×60 px, 20–50 KB — https://ilovexams.in/resizer/delhi-police-photo-resize/
+- WBPRB (WB Police): photo 200×240 px, 10–50 KB; signature 140×80 px, 10–30 KB — https://ilovexams.in/resizer/wbprb-photo-resize/
+- BPSSC (Bihar Police): photo 200×230 px, 30–50 KB; signature 140×60 px, 20–50 KB — https://ilovexams.in/resizer/bpssc-photo-resize/
+- TNUSRB (TN Police): photo 275×354 px, 20–50 KB; signature 200×80 px, 10–20 KB — https://ilovexams.in/resizer/tnusrb-photo-resize/
+- JKSSB: photo 180×225 px, 20–50 KB; signature 180×100 px, 10–20 KB — https://ilovexams.in/resizer/jkssb-photo-resize/
+- OSSSC (Odisha): photo 200×240 px, 20–100 KB; signature 140×60 px, 10–50 KB — https://ilovexams.in/resizer/osssc-photo-resize/
+- RSMSSB (Rajasthan): photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/rsmssb-photo-resize/
+- Delhi Judicial: photo 200×240 px, 20–50 KB; signature 140×80 px, 10–20 KB — https://ilovexams.in/resizer/delhi-judicial-photo-resize/
+- Patna High Court: photo 200×240 px, 20–50 KB; signature 140×80 px, 10–20 KB — https://ilovexams.in/resizer/patna-hc-photo-resize/
+- Bombay High Court: photo 200×240 px, 20–50 KB; signature 120×80 px, 10–20 KB — https://ilovexams.in/resizer/bombay-hc-photo-resize/
+- Rajasthan Judicial: photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/raj-judicial-photo-resize/
+- Maharashtra Judicial: photo 200×240 px, 20–50 KB; signature 140×80 px, 10–20 KB — https://ilovexams.in/resizer/mah-judicial-photo-resize/
+- Gauhati High Court: photo 200×240 px, 20–100 KB; signature 140×80 px, 10–50 KB — https://ilovexams.in/resizer/gauhati-hc-photo-resize/
+- CG Judicial Service: photo 200×240 px, 20–100 KB; signature 140×80 px, 10–100 KB — https://ilovexams.in/resizer/cg-judicial-photo-resize/
+
+## Bank exam extra documents (IBPS pattern)
+- Left thumb impression: 240×240 px, 20–50 KB, JPG
+- Handwritten declaration: 800×400 px, 50–100 KB, JPG. Text: "I, _______ (Name of the candidate), hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required."
+
+Sizes are compiled from official notifications; users should verify against the latest notification.
