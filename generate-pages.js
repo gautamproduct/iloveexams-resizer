@@ -59,8 +59,13 @@ function generatePage(exam, docType) {
   const cat       = CATEGORIES[exam.cat];
   const isBank    = BANK_EXTRA_EXAMS.includes(exam.slug);
 
-  const title = (t => t.length <= 58 ? `${t} | Resize Free` : t)(`${short} ${label} Size ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`);
-  const desc  = `${short} ${lc} size ${YEAR}: ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt}. Resize & compress your ${lc} online in seconds — free, no upload, works on mobile.`;
+  const nd = docType === 'photo' && seo.nameDate;   // exam needs name + date printed on the photo
+  const title = nd
+    ? `${short} Photo with Name & Date ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`
+    : (t => t.length <= 64 ? t : `${short} ${label} Size ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`)(`${short} ${label} Size ${YEAR} & Resizer: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`);
+  const desc  = nd
+    ? `${short} photo with name & date ${YEAR}: ${spec.w}×${spec.h} px, ${spec.min}–${spec.max} KB JPG. Add your name and photo date, resize and compress in one step — free, no upload.`
+    : `${short} ${lc} size ${YEAR}: ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt}. Resize & compress your ${lc} online in seconds — free, no upload, works on mobile.`;
   const answer = `The <strong>${esc(exam.name)} ${lc}</strong> must be <strong>${spec.w} × ${spec.h} pixels</strong> (width × height), with a file size between <strong>${spec.min} KB and ${spec.max} KB</strong>, in <strong>${spec.fmt}/JPEG</strong> format. Upload your ${lc} in the tool below and it is resized and compressed to exactly this size in one click.`;
 
   const crumbs = [
@@ -94,6 +99,7 @@ function generatePage(exam, docType) {
     { q: `What is the ${short} ${other} size?`,
       a: `The ${esc(exam.name)} ${other} must be ${otherSpec.w}×${otherSpec.h} pixels, ${otherSpec.min}–${otherSpec.max} KB, ${otherSpec.fmt}. <a href="${otherURL}">Resize your ${short} ${other} here</a>.` },
   ];
+  if (nd) faqs.unshift({ q: `Does the ${short} photo need name and date?`, a: `Yes. ${nd.rule} The tool on this page adds both and resizes the photo to ${spec.w}×${spec.h} px, ${spec.min}–${spec.max} KB.` });
   if (S.SPAN_NEXT) {
     faqs.splice(2, 0, { q: `What is the ${short} ${lc} size for ${S.NEXT_YEAR}?`,
       a: `Use ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt} — the size in recent ${esc(exam.name)} notifications. It rarely changes between years; if the ${S.NEXT_YEAR} notification changes it we update this page, and you can edit width, height and KB in the tool.` });
@@ -131,12 +137,12 @@ function generatePage(exam, docType) {
     <p style="margin:12px 0 0;font-size:14px">📖 <a href="/resizer/guides/ibps-thumb-impression-handwritten-declaration/">How to make the thumb impression and handwritten declaration</a></p>
   </section>` : '';
 
-  const html = `${S.head({ title, desc, canonical, schema, ogTitle: `${short} ${label} Size ${YEAR} – ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB` })}
+  const html = `${S.head({ title, desc, canonical, schema, extraHead: nd ? '<link rel="stylesheet" href="/assets/ilx-apps.css">' : '', ogTitle: `${short} ${label} Size ${YEAR} – ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB` })}
 
 <header class="hero">
   <div class="hero-in">
     ${S.crumbsHtml(crumbs)}
-    <h1>${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer</h1>
+    <h1>${nd ? `${esc(short)} Photo with Name &amp; Date ${YEAR} — Size &amp; Free Maker` : `${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer`}</h1>
     <p class="lede">Resize your ${esc(exam.name)} ${lc} to exactly <strong>${spec.w}×${spec.h} pixels</strong> and <strong>${spec.min}–${spec.max} KB</strong> (${spec.fmt}) in one click — free, instant and private.</p>
     <div class="chips">
       <span class="chip">📐 ${spec.w}×${spec.h} px</span>
@@ -151,7 +157,11 @@ function generatePage(exam, docType) {
 <main class="wrap">
   <div class="answer" id="answer"><p>${answer}</p></div>
 
-  ${S.toolFrame(`/resizer/?exam=${exam.slug}&document=${docType}&embed=1`, `${short} ${label} Resizer — ${specStr(spec)}`)}
+  ${nd ? `<div class="answer" style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border-color:#fde68a"><p>⚠️ ${nd.rule} Use the tool below — it prints them for you and keeps the file in ${spec.min}–${spec.max} KB.</p></div>
+  <section id="app" class="app" data-tool="photo-name-date" data-size="${spec.w}x${spec.h}" data-max="${spec.max}" data-min="${spec.min}" data-strip="${nd.strip}" style="min-height:190px"><noscript>Please enable JavaScript to use this tool.</noscript></section>
+  <p style="font-size:13.5px;margin:-8px 0 20px">Notification doesn't need name &amp; date? <a href="/resizer/?exam=${exam.slug}&amp;document=photo">Use the plain ${esc(short)} photo resizer →</a></p>`
+      : S.toolFrame(`/resizer/?exam=${exam.slug}&document=${docType}&embed=1`, `${short} ${label} Resizer — ${specStr(spec)}`)}
+  ${seo.note ? `<p class="note" style="margin:0 0 20px">${seo.note}</p>` : ''}
 
   ${S.adSlot()}
 
@@ -229,7 +239,7 @@ function generatePage(exam, docType) {
   ${S.adSlot()}
 </main>
 
-${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
+${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}${nd ? '\n<script src="/assets/ilx-apps.js" defer></script><script src="/assets/apps/image-tools.js" defer></script>' : ''}`;
 
   const dir = path.join(__dirname, 'resizer', slugDir);
   fs.mkdirSync(dir, { recursive: true });

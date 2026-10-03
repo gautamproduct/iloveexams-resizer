@@ -94,6 +94,12 @@
       '<div class="row"><label>Name/date strip</label><select class="sel" id="strip"><option value="0.2">20% of photo height</option><option value="0.25" selected>25%</option><option value="0.3">30%</option></select>' +
       '<label><input type="checkbox" id="up" checked> CAPITAL letters</label></div>' +
       '<div class="status" id="st"></div><button class="go" id="go" disabled>Create photo</button><div id="res"></div>');
+    // Page presets (e.g. TNPSC: 275×354, 20–50 KB, 1.5 cm strip ≈ 33%)
+    var D = app.dataset;
+    if (D.size) { if (![].some.call($('#sz').options, function (o) { return o.value === D.size; })) $('#sz').insertAdjacentHTML('afterbegin', '<option value="' + D.size + '">' + D.size.replace('x', '×') + ' px</option>'); $('#sz').value = D.size; }
+    if (D.max) $('#mx').value = D.max;
+    if (D.min) $('#mn').value = D.min;
+    if (D.strip) { if (![].some.call($('#strip').options, function (o) { return o.value === D.strip; })) $('#strip').insertAdjacentHTML('beforeend', '<option value="' + D.strip + '">' + Math.round(D.strip * 100) + '% (exam rule)</option>'); $('#strip').value = D.strip; }
     var img = null, fname = 'photo';
     X.drop($('.drop'), { accept: 'image/*,.heic,.heif' }, async function (f) {
       try { fname = X.baseName(f[0].name); img = await toImage(f[0]); $('#go').disabled = false; X.status($('#st'), '✅ Photo loaded (' + img.naturalWidth + '×' + img.naturalHeight + '). Enter your name and tap Create.'); }

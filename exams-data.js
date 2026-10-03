@@ -96,8 +96,11 @@ const SEO = {
   'niacl':          { short: 'NIACL AO',        alt: ['New India Assurance AO', 'NIACL Assistant'] },
   'cat':            { short: 'CAT',             alt: ['IIM CAT', 'CAT exam'] },
   'ukpsc':          { short: 'UKPSC',           alt: ['Uttarakhand PSC'] },
-  'kpsc':           { short: 'Kerala PSC',      alt: ['KPSC', 'Kerala PSC Thulasi'] },
-  'tnpsc':          { short: 'TNPSC',           alt: ['Tamil Nadu PSC', 'TNPSC Group 4', 'TNPSC Group 2'] },
+  'kpsc':           { short: 'Kerala PSC',      alt: ['KPSC Kerala', 'Kerala PSC Thulasi'],
+                      note: 'This page is for <strong>Kerala PSC</strong> (Thulasi one-time registration). Applying to <strong>Karnataka PSC</strong> (kpsc.kar.nic.in)? Its photo and signature limits differ by notification — check yours, then set the exact width, height and KB in the <a href="/jpg-resize/">JPG resizer</a>.' },
+  'tnpsc':          { short: 'TNPSC',           alt: ['Tamil Nadu PSC', 'TNPSC Group 4', 'TNPSC Group 2', 'TNPSC photo compressor'],
+                      // TNPSC OTR: name (CAPITALS, as in SSLC) + photo date printed in a 1.5 cm strip at the bottom of a 3.5×4.5 cm photo
+                      nameDate: { strip: 0.33, rule: 'TNPSC requires your <strong>name in CAPITAL letters (as on your SSLC mark sheet)</strong> and the <strong>date the photo was taken (DD/MM/YYYY)</strong> printed in a strip at the bottom of the photo.' } },
   'apsc':           { short: 'APSC',            alt: ['Assam PSC', 'APSC CCE'] },
   'csir-net':       { short: 'CSIR NET',        alt: ['CSIR UGC NET', 'NTA CSIR NET'] },
   'ugc-net':        { short: 'UGC NET',         alt: ['NTA UGC NET'] },

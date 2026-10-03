@@ -1,6 +1,6 @@
 # ILoveExams
 
-> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for 80+ exams, updated September 2026.
+> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for 80+ exams, updated October 2026.
 
 Images are processed in the user's browser and never uploaded. All tools are free with no sign-up.
 
