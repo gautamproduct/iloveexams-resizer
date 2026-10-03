@@ -55,7 +55,14 @@
       zone.addEventListener('drop', function (e) { var f = [].slice.call(e.dataTransfer.files || []); if (f.length) onFiles(opts.multiple ? f : f.slice(0, 1)); });
       return input;
     },
-    status: function (el, msg, isErr) { el.textContent = msg || ''; el.classList.toggle('err', !!isErr); },
+    status: function (el, msg, isErr) {
+      el.textContent = msg || ''; el.classList.toggle('err', !!isErr);
+      // Analytics: every tool reports success (✅ …) and failures through here
+      if (msg && window.ilxTrack) {
+        if (isErr) ilxTrack('tool_error', { stage: 'process', message: String(msg).slice(0, 100) });
+        else if (/^✅/.test(msg)) ilxTrack('tool_success', { message: String(msg).replace(/\d[\d.,]*/g, '#').slice(0, 100) });
+      }
+    },
     progress: function (el, frac) { var i = el.querySelector('i'); if (i) i.style.width = Math.round(Math.max(0, Math.min(1, frac)) * 100) + '%'; },
     canvasBlob: function (canvas, type, q) { return new Promise(function (r) { canvas.toBlob(r, type || 'image/jpeg', q); }); },
     loadImage: function (src) {

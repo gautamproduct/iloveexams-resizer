@@ -148,6 +148,56 @@ const FOOTER = `<footer class="ilx-foot"><div class="ilx-foot-in">
   <div class="ilx-foot-bottom"><span>© ${new Date().getFullYear()} ILoveExams.in · Not affiliated with any exam body</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener">♥ Donate</a></span></div>
 </div></footer>`;
 
+/**
+ * Google Analytics 4 + site-wide event tracking (all pages).
+ * Speed: events are only queued into dataLayer (a few µs each); gtag.js itself loads after the page has
+ * fully loaded and the browser is idle — or on the first tap/scroll — so it never delays first paint or LCP.
+ * Listeners are delegated (one per event type on document), passive, and wrapped in try/catch.
+ * Privacy: never sends file names, typed text or image data — only file type, size bucket and button labels.
+ * GA4 Enhanced Measurement already covers page_view, scroll, outbound clicks, site search, link file_download.
+ */
+const GA_ID = 'G-027ZSSR80V';
+const ANALYTICS = `<script id="ilx-ga">(function(){
+var w=window,d=document,ID='${GA_ID}',P=null;
+// Same-site iframe (the resizer inside exam pages): send events through the parent page — no 2nd page_view
+try{if(w.parent!==w&&w.parent.ilxTrack)P=w.parent}catch(e){}
+w.dataLayer=w.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}w.gtag=w.gtag||gtag;
+if(!P){gtag('js',new Date());gtag('config',ID,w.parent!==w?{embedded:'external',page_referrer:d.referrer}:{})}
+var tool=location.pathname.replace(/^\\/|\\/$/g,'')||'home',sent={};
+var st={};
+function ev(n,p){try{p=p||{};if(P)return P.ilxTrack(n,p);p.tool=tool;st[n]=1;
+ if(p.message)p.message=(p.message+'').replace(/[^\\s:/]+\\.(jpe?g|png|pdf|heic|heif|webp|gif|bmp|tiff?|docx?)/gi,'[file]');
+ w.gtag('event',n,p)}catch(e){}}
+w.ilxTrack=ev;
+var loaded=0;function load(){if(loaded||P)return;loaded=1;var s=d.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;d.head.appendChild(s)}
+function idle(){(w.requestIdleCallback||setTimeout)(load,{timeout:2500})}
+if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:1});
+['pointerdown','keydown','scroll','touchstart'].forEach(function(t){w.addEventListener(t,load,{once:1,passive:1})});
+function kb(b){b/=1024;return b<20?'<20KB':b<50?'20-50KB':b<100?'50-100KB':b<500?'100-500KB':b<2048?'0.5-2MB':b<10240?'2-10MB':'>10MB'}
+function label(el){return((el.getAttribute('aria-label')||el.innerText||el.value||el.title||el.id||'')+'').replace(/\\s+/g,' ').trim().slice(0,60)}
+function files(list,how){if(!list||!list.length)return;var f=list[0];ev('file_upload',{method:how,file_count:list.length,file_type:(f.type||(f.name.split('.').pop()||'')).toLowerCase().slice(0,40),file_size:kb(f.size)})}
+d.addEventListener('click',function(e){try{var el=e.target.closest('a,button,[role=button],summary,label[for]');if(!el)return;
+ if(el.tagName==='A'&&el.hasAttribute('download')){if(e.isTrusted)ev('tool_download',{file_name_ext:(el.getAttribute('download')||'').split('.').pop().slice(0,10),via:'link'});return}
+ var sec=el.closest('header,nav,footer,[id]');
+ ev(el.tagName==='A'?'link_click':'button_click',{label:label(el),link_url:el.tagName==='A'?(el.getAttribute('href')||'').slice(0,100):undefined,section:sec?(sec.id||sec.tagName.toLowerCase()):'body'})}catch(x){}},{capture:1,passive:1});
+d.addEventListener('change',function(e){try{var t=e.target;if(t.type==='file'){files(t.files,'picker');return}
+ if(t.tagName==='SELECT'||t.type==='radio'||t.type==='checkbox'||t.type==='range'||t.type==='number'||t.type==='color')
+ ev('setting_change',{setting:(t.name||t.id||'').slice(0,40),value:(t.type==='checkbox'?t.checked:t.tagName==='SELECT'?(t.options[t.selectedIndex]||{}).text:t.value)+''})
+ else if(!sent['in_'+(t.name||t.id)]){sent['in_'+(t.name||t.id)]=1;ev('input_used',{field:(t.name||t.id||t.type||'').slice(0,40)})}}catch(x){}},{capture:1,passive:1});
+d.addEventListener('drop',function(e){try{files(e.dataTransfer&&e.dataTransfer.files,'drag_drop')}catch(x){}},{capture:1,passive:1});
+d.addEventListener('paste',function(e){try{files(e.clipboardData&&e.clipboardData.files,'paste')}catch(x){}},{capture:1,passive:1});
+d.addEventListener('copy',function(){ev('copy_text')},{passive:1});
+d.addEventListener('submit',function(e){ev('form_submit',{form:(e.target.id||e.target.name||'').slice(0,40)})},{capture:1});
+// Programmatic downloads (a.download + a.click()) — how every tool saves its result
+var oc=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){try{if(this.hasAttribute('download'))ev('tool_download',{file_name_ext:(this.getAttribute('download')||'').split('.').pop().slice(0,10),via:'tool'})}catch(x){}return oc.apply(this,arguments)};
+if(navigator.share){var os=navigator.share.bind(navigator);navigator.share=function(o){ev('share',{method:'native'});return os(o)}}
+var errs=0;function err(m){if(errs++<5)ev('js_error',{message:(m+'').slice(0,100)})}
+w.addEventListener('error',function(e){if(e.message)err(e.message)});w.addEventListener('unhandledrejection',function(e){err(e.reason&&e.reason.message||e.reason)});
+var oa=w.alert;w.alert=function(m){ev('tool_alert',{message:(m+'').slice(0,100)});return oa.apply(w,arguments)};
+d.addEventListener('visibilitychange',function(){if(!P&&d.visibilityState==='hidden'&&!sent.vis){sent.vis=1;ev('page_leave',{seconds:Math.round(performance.now()/1000),outcome:st.tool_download?'downloaded':(st.tool_error||st.js_error)?(st.file_upload?'uploaded_then_error':'error'):st.file_upload?'uploaded_no_download':'no_upload',transport_type:'beacon'})}});
+})();</script>`;
+
 // Find the element starting at `start` and return the index just past its matching close tag.
 function matchClose(html, start, tag) {
   const re = new RegExp(`<${tag}\\b|</${tag}>`, 'g');
@@ -191,7 +241,10 @@ function normalizeNav(html) {
   // Theme + menu CSS once per page (refresh if already present)
   html = html.replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com" crossorigin><link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com\/css2\?family=Inter[^>]*>\s*<style id="ilx-nav-css">[\s\S]*?<\/style>\n?|<style id="ilx-nav-css">[\s\S]*?<\/style>\n?/, '');
   html = html.replace('</head>', `${CSS}\n</head>`);
+  // Analytics once per page, as early as possible in <head> (refresh if already present)
+  html = html.replace(/<script id="ilx-ga">[\s\S]*?<\/script>\n?/, '');
+  html = html.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1\n${ANALYTICS}`);
   return html;
 }
 
-module.exports = { normalizeNav, navHtml, CSS, FOOTER };
+module.exports = { normalizeNav, navHtml, CSS, FOOTER, ANALYTICS };
