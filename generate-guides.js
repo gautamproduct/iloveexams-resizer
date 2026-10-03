@@ -333,6 +333,33 @@ ${S.footer()}`;
   write('about', html.replace('</style>', '.guide h2{font-size:20px;margin:22px 0 8px}.guide h2:first-child{margin-top:0}.guide p,.guide li{font-size:15.5px;line-height:1.7}</style>'));
 }
 
+// ─── Size updates log (trust: what changed and when) ─────────────────────────
+{
+  const LOG = [
+    ['2026-10-03', 'TNPSC and Kerala PSC photo pages now add your <strong>name and photo date</strong> on the photo, as both commissions require.', ['/resizer/tnpsc-photo-resize/', '/resizer/kpsc-photo-resize/']],
+    ['2026-10-03', 'Resizer: iPhone <strong>HEIC</strong> photos now open in every browser; clearer steps and a one-tap “next: signature” button.', ['/resizer/']],
+    ['2026-09-26', '<strong>JEE Main</strong> limits updated to the 2026 information bulletin: photo 10–200 KB, signature 10–100 KB.', ['/resizer/jee-main-photo-resize/', '/resizer/jee-main-signature-resize/']],
+    ['2026-09-26', '<strong>UPSC Prelims</strong> calculator: CSAT qualifying mark corrected to 33% = 66 of 200.', ['/upsc-prelims-score-calculator/']],
+    ['2026-09-26', '<strong>IBPS PO / SBI PO</strong> age-calculator pages: signature corrected to 140×60 px, 10–20 KB.', ['/resizer/ibps-po-signature-resize/']],
+    ['2026-09-26', 'Resizer FAQs corrected for GATE, CAT, UPPSC, RRB ALP, Delhi Police, CUET and JEE to match the official sizes used by the tool.', ['/resizer/photo-signature-size-chart/']],
+    ['2026-09-26', 'Added the <strong>NEET postcard-size photo</strong> (4×6 inch, 10–200 KB) and IBPS-pattern <strong>thumb impression &amp; handwritten declaration</strong> pages.', ['/resizer/neet-ug-postcard-photo-resize/', '/resizer/bank-exam-photo-signature-size/']],
+    ['2026-09-26', 'Signatures below the minimum KB (e.g. 10 KB for bank exams) are now brought up to the limit automatically.', ['/resizer/ibps-po-signature-resize/']],
+  ];
+  const canonical = `${SITE}/resizer/updates/`;
+  const title = 'Exam Photo & Signature Size Updates – What Changed';
+  const desc = 'A dated log of every exam photo and signature size we have updated or corrected, so you always know the specs on ILoveExams are current.';
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Size updates', url: canonical }];
+  const fmtD = d => new Date(d + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs })] })}
+<header class="hero"><div class="hero-in">${S.crumbsHtml(crumbs)}<h1>Size Updates</h1><p class="lede" style="display:block">Every change to an exam size on ILoveExams, with the date. We check official notifications and fix sizes as soon as they change.</p></div></header>
+<main class="wrap">
+  <section class="card"><h2>Recent updates</h2><ul class="check">${LOG.map(([d, t, links]) => `<li><strong>${fmtD(d)}</strong> — ${t} ${links.map(u => `<a href="${u}">View →</a>`).join(' ')}</li>`).join('')}</ul></section>
+  <section class="card"><h2>Found a size that has changed?</h2><p>Email <a href="mailto:gautamcoder@gmail.com?subject=Size%20update">gautamcoder@gmail.com</a> with the exam name and a link to the official notification — we update pages within a day or two.</p></section>
+</main>
+${S.footer()}`;
+  write('resizer/updates', html);
+}
+
 // ─── Contact page ────────────────────────────────────────────────────────────
 {
   const EMAIL = 'gautamcoder@gmail.com';

@@ -97,6 +97,7 @@ const SEO = {
   'cat':            { short: 'CAT',             alt: ['IIM CAT', 'CAT exam'] },
   'ukpsc':          { short: 'UKPSC',           alt: ['Uttarakhand PSC'] },
   'kpsc':           { short: 'Kerala PSC',      alt: ['KPSC Kerala', 'Kerala PSC Thulasi'],
+                      nameDate: { strip: 0.25, rule: 'Kerala PSC requires your <strong>name</strong> and the <strong>date the photo was taken</strong> printed at the bottom of the photo.' },
                       note: 'This page is for <strong>Kerala PSC</strong> (Thulasi one-time registration). Applying to <strong>Karnataka PSC</strong> (kpsc.kar.nic.in)? Its photo and signature limits differ by notification — check yours, then set the exact width, height and KB in the <a href="/jpg-resize/">JPG resizer</a>.' },
   'tnpsc':          { short: 'TNPSC',           alt: ['Tamil Nadu PSC', 'TNPSC Group 4', 'TNPSC Group 2', 'TNPSC photo compressor'],
                       // TNPSC OTR: name (CAPITALS, as in SSLC) + photo date printed in a 1.5 cm strip at the bottom of a 3.5×4.5 cm photo
@@ -179,4 +180,59 @@ const EXTRA_SIZES = [
   { w: 413, h: 531, max: 100 }, { w: 350, h: 450, max: 100 }, { w: 100, h: 120, max: 50 },
 ];
 
-module.exports = { EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };
+// Exam-specific "where & how to upload" guidance for the highest-traffic exams.
+// Only facts that hold across cycles — always defer to the current notification.
+const IBPS = { body: 'IBPS', url: 'https://www.ibps.in/', tips: [
+  'IBPS forms need <strong>four uploads</strong>: photo, signature, left thumb impression and handwritten declaration — the form will not submit until all four are in.',
+  'The uploaded photo is printed on your call letter and matched at the exam centre and document verification. Keep a printed copy of the same photo.',
+  'Sign in your normal running hand — IBPS rejects signatures in CAPITAL letters and compares your signature at every stage.',
+  'Upload in the first days of the window: the portal slows down near the last date.'] };
+const NTA = tipsExtra => ({ body: 'National Testing Agency (NTA)', url: 'https://nta.ac.in/', tips: [
+  'NTA asks for a recent colour photo with about 80% of the face visible, plain white background, without a mask or cap.',
+  'Use the same photo on exam day — NTA checks it against you at the centre.', ...tipsExtra] });
+const GUIDES = {
+  'ibps-rrb-clerk': IBPS, 'ibps-rrb-po': IBPS, 'ibps-po': IBPS, 'ibps-clerk': IBPS, 'ibps-so': IBPS,
+  'sbi-po': { body: 'State Bank of India', url: 'https://sbi.co.in/web/careers', tips: IBPS.tips.slice(0, 3) },
+  'sbi-clerk': { body: 'State Bank of India', url: 'https://sbi.co.in/web/careers', tips: IBPS.tips.slice(0, 3) },
+  'niacl': { body: 'The New India Assurance Co. Ltd.', url: 'https://www.newindia.co.in/', tips: [
+    'NIACL uses the IBPS-style form: photo, signature, left thumb impression and handwritten declaration are all required.',
+    'Your signature must not be in capital letters; keep it identical to the one you will sign at the exam centre.'] },
+  'post-gds': { body: 'India Post (Gramin Dak Sevak)', url: 'https://indiapostgdsonline.gov.in/', tips: [
+    'GDS has two steps: <strong>register</strong> first to get a registration number, then <strong>apply</strong> — the photo and signature are uploaded during the application.',
+    'Selection is on Class 10 marks with no written exam, so a rejected or unclear upload can cost you the post — check the preview before submitting.',
+    'Keep the same mobile number and email for the whole process; the registration number is sent there.'] },
+  'ukpsc': { body: 'Uttarakhand Public Service Commission', url: 'https://psc.uk.gov.in/', tips: [
+    'UKPSC checks both pixel size and file size — a 150×200 photo must also stay within 30–50 KB.',
+    'Use a recent photo with a plain light background; the same photo appears on your admit card.',
+    'Prepare the signature (150×100 px, 20–30 KB) before you start the form so you can finish in one sitting.'] },
+  'tnpsc': { body: 'Tamil Nadu Public Service Commission', url: 'https://www.tnpsc.gov.in/', tips: [
+    'Photo and signature are uploaded once in your <strong>One Time Registration (OTR)</strong> and reused for every TNPSC exam you apply to.',
+    'Print your name in CAPITAL letters exactly as on your SSLC mark sheet, and the date the photo was taken (DD/MM/YYYY), at the bottom of the photo.',
+    'The photo must be recent — within three months of the notification.'] },
+  'kpsc': { body: 'Kerala Public Service Commission', url: 'https://thulasi.psc.kerala.gov.in/', tips: [
+    'Kerala PSC uses a one-time profile (Thulasi): the photo you upload is used for all applications from your profile.',
+    'Your name and the date the photo was taken must be printed at the bottom of the photo.'] },
+  'apsc': { body: 'Assam Public Service Commission', url: 'https://apsc.nic.in/', tips: [
+    'Keep the photo at 200×250 px within 20–50 KB and the signature at 140×60 px within 10–20 KB.',
+    'Certificates for APSC applications are usually uploaded separately as PDFs — use Compress PDF if they are over the limit.'] },
+  'csir-net': NTA(['CSIR NET is conducted by NTA, so photo rules match other NTA exams.']),
+  'ugc-net': NTA(['UGC NET is conducted by NTA, so photo rules match other NTA exams.']),
+  'jee-main': NTA(['JEE Main uses passport-size (3.5×4.5 cm) photos — 275×354 px at 200 DPI.']),
+  'neet-ug': NTA(['NEET also asks for a postcard-size (4×6 inch) photo — use the postcard photo resizer.']),
+  'cuet': NTA([]),
+  'cat': { body: 'IIM CAT', url: 'https://iimcat.ac.in/', tips: [
+    'CAT photo and signature are uploaded during registration, usually open in August–September.',
+    'CAT asks for large, square photos (1200×1200 px) — start from a sharp original so the result is not blurry.'] },
+  'rpsc': { body: 'Rajasthan Public Service Commission', url: 'https://rpsc.rajasthan.gov.in/', tips: [
+    'RPSC applications are filled through your <strong>SSO Rajasthan</strong> ID (sso.rajasthan.gov.in) using the One Time Registration profile.',
+    'Your photo and signature in the OTR profile are reused for future RPSC applications — keep them up to date.'] },
+  'gpsc': { body: 'Gujarat Public Service Commission', url: 'https://gpsc-ojas.gujarat.gov.in/', tips: [
+    'GPSC applications run on OJAS: fill the form, note your confirmation number, then upload photo and signature with it.',
+    'GPSC limits are tight (photo 10–15 KB) — the resizer compresses to fit automatically.'] },
+  'osssc': { body: 'Odisha Subordinate Staff Selection Commission', url: 'https://osssc.gov.in/', tips: [
+    'Keep the photo at 200×240 px within 20–100 KB and the signature at 140×60 px within 10–50 KB.'] },
+  'afcat': { body: 'Indian Air Force (AFCAT)', url: 'https://afcat.cdac.in/', tips: [
+    'AFCAT photos should be formal and front-facing with a plain background — they are verified again at the AFSB interview.'] },
+};
+
+module.exports = { GUIDES, EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };

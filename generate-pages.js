@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS } = require('./exams-data');
+const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, GUIDES } = require('./exams-data');
 const S = require('./seo-shell');
 const { SITE, YEARS: YEAR, MONTH_YEAR, esc } = S;
 
@@ -150,7 +150,7 @@ function generatePage(exam, docType) {
       <span class="chip">🖼 ${spec.fmt}</span>
       <span class="chip ok">✓ No upload · Works on mobile</span>
     </div>
-    <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time>${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>
+    <p class="updated">✓ Checked against the official notification · Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time>${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>
   </div>
 </header>
 
@@ -189,6 +189,10 @@ function generatePage(exam, docType) {
     </section>
   </div>
   ${bankCard}
+  ${GUIDES[exam.slug] ? `<section class="card"><h2>Where &amp; how to upload your ${esc(short)} ${lc}</h2>
+    <p>You upload it on the official <strong>${esc(GUIDES[exam.slug].body)}</strong> website: <a href="${GUIDES[exam.slug].url}" target="_blank" rel="noopener">${GUIDES[exam.slug].url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</a> (always use the link in the official notification).</p>
+    <ul class="check">${GUIDES[exam.slug].tips.map(t => `<li>${t}</li>`).join('')}</ul>
+  </section>` : ''}
   ${exam.slug === 'neet-ug' ? `<section class="card"><h2>NEET also needs a postcard size photo</h2><p>Along with the passport-size photo, NEET asks for a <strong>4×6 inch postcard size photo (10–200 KB, JPG)</strong>.</p><p style="margin:12px 0 0"><a class="btn" href="/resizer/neet-ug-postcard-photo-resize/">Resize NEET postcard photo →</a></p></section>` : ''}
 
   <section class="card">
@@ -234,7 +238,7 @@ function generatePage(exam, docType) {
     <p style="margin:14px 0 0;font-size:14px"><a href="/resizer/${cat.hub}/">All ${esc(cat.title)} photo &amp; signature sizes →</a> · <a href="/resizer/photo-signature-size-chart/">Full exam size chart ${YEAR} →</a> · <a href="/resizer/size/${spec.w}x${spec.h}-pixels/">Resize any image to ${spec.w}×${spec.h}px →</a></p>
   </section>
 
-  <p class="note">Specifications on this page are compiled from recent official ${esc(exam.name)} notifications and checked regularly (last review: ${MONTH_YEAR}). Always cross-check with the latest official notification before submitting — if the size has changed, you can edit width, height and KB directly in the tool.</p>
+  <p class="note">Specifications on this page are compiled from recent official ${esc(exam.name)} notifications and checked regularly (last review: ${MONTH_YEAR}). Always cross-check with the latest official notification before submitting — if the size has changed, you can edit width, height and KB directly in the tool. Spotted a change? <a href="mailto:gautamcoder@gmail.com?subject=${encodeURIComponent(`Size update: ${exam.name} ${lc}`)}">Tell us</a> and we will update this page.</p>
 
   ${S.adSlot()}
 </main>

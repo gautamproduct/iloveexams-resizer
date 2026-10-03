@@ -82,7 +82,7 @@
     }
   </script>
 
-  <link rel="stylesheet" href="/assets/tw.css?v=ffb985b4">
+  <link rel="stylesheet" href="/assets/tw.css?v=3845137b">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" defer></script>
 
@@ -237,7 +237,9 @@
     html.embed #card-exam-row, html.embed #engine-faq { display: none !important; }
     html.embed body > .max-w-5xl { padding: 12px !important; max-width: none; }
     /* Specs are preset on landing pages — on phones show the upload card first */
-    @media (max-width: 1023px) { html.embed #main-panels > .grid > :last-child { order: -1; } }
+    html.embed #main-panels > .grid { grid-template-columns: 1fr !important; }
+    html.embed #main-panels > .grid > :last-child { order: -1; }
+    .cfg-collapsed > .p-5 { display: none !important; }
   </style>
 
 
@@ -422,9 +424,11 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
       <!-- ══════════════ LEFT: CONFIGURE ══════════════ -->
       <div class="card flex flex-col">
         <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
-          <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--em)">1</span>
-          <span class="font-bold text-slate-700">Configure</span>
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#64748b">⚙</span>
+          <span class="font-bold text-slate-700">Size settings</span>
+          <button type="button" id="cfg-toggle" onclick="toggleCfg()" class="ml-auto text-xs font-semibold" style="color:var(--em);display:none">Edit size</button>
         </div>
+        <p id="cfg-note" class="px-6 pt-3 text-xs text-slate-500" style="display:none;margin:0">✓ Already set to the official size. Change it only if your notification says something different.</p>
 
         <div class="p-5 flex flex-col gap-5 flex-1">
 
@@ -546,8 +550,9 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
       <!-- ══════════════ RIGHT: UPLOAD & PROCESS ══════════════ -->
       <div class="card flex flex-col">
         <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
-          <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--em)">2</span>
-          <span class="font-bold text-slate-700">Upload &amp; Process</span>
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--em)" id="flow-num">1</span>
+          <span class="font-bold text-slate-700" id="flow-title">Upload your photo</span>
+          <span class="ml-auto text-xs text-slate-400 font-semibold" id="flow-steps">Step 1 of 3</span>
         </div>
 
         <div class="p-5 flex-1 flex flex-col gap-4">
@@ -580,11 +585,17 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
                 </svg>
               </div>
               <div>
-                <p class="font-bold text-slate-700 text-center">Click or drop image here</p>
-                <p class="text-sm text-slate-400 text-center mt-0.5">JPG, PNG, HEIC, WEBP · up to 15 MB</p>
+                <p class="font-bold text-slate-700 text-center" id="up-title">Tap to choose your photo</p>
+                <p class="text-sm text-slate-400 text-center mt-0.5">or drag &amp; drop · JPG, PNG, HEIC, WEBP · any size</p>
               </div>
             </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" class="tool-btn" style="justify-content:center;padding:11px 8px;font-size:13.5px" onclick="document.getElementById('file-input').click()">🖼 From gallery</button>
+              <button type="button" class="tool-btn" style="justify-content:center;padding:11px 8px;font-size:13.5px" onclick="document.getElementById('cam-input').click()">📷 Take a photo</button>
+            </div>
+            <p id="up-error" class="text-sm font-semibold rounded-lg px-3 py-2" style="display:none;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca"></p>
             <input type="file" id="file-input" accept="image/*,.heic,.heif" class="hidden" onchange="onFileSelect(event)">
+            <input type="file" id="cam-input" accept="image/*" capture="environment" class="hidden" onchange="onFileSelect(event)">
           </div>
 
           <!-- Editor -->
@@ -598,6 +609,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
               <button class="tool-btn" id="btn-bg" onclick="triggerBgRemoval()" style="border-color:#c084fc;color:#7c3aed;background:#faf5ff">🪄 Remove BG</button>
             </div>
 
+            <p class="text-sm font-semibold rounded-lg px-3 py-2" style="background:#eff6ff;color:#1e40af;margin:0" id="crop-hint">👆 Drag the box so your face is in the middle. Pinch or use Zoom to adjust.</p>
             <!-- Cropper -->
             <div class="crop-wrap flex-1" style="min-height:220px">
               <img id="crop-img" src="" alt="" style="max-width:100%;display:block">
@@ -612,7 +624,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
               <span id="bg-txt">Loading AI model (first time ~20s)…</span>
             </div>
 
-            <button class="btn-primary" onclick="processImage()">⚡ Process &amp; Download</button>
+            <button class="btn-primary" id="btn-process" onclick="processImage()">✓ Done — make my photo</button>
             <button onclick="goUpload()" class="text-xs text-slate-400 hover:text-slate-600 text-center py-1">← Upload different image</button>
           </div>
 
@@ -644,7 +656,10 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
               </div>
             </div>
 
-            <a id="dl-link" href="#" class="btn-download">⬇️ Download Image</a>
+            <div id="res-banner" class="text-sm font-semibold rounded-xl px-4 py-3" style="line-height:1.5"></div>
+            <a id="dl-link" href="#" class="btn-download" onclick="setTimeout(markSaved,300)">⬇️ Download</a>
+            <p id="dl-saved" class="text-xs text-center font-semibold" style="display:none;color:#15803d;margin:-6px 0 0">✓ Saved — check your Downloads / Gallery, then upload it on the form.</p>
+            <button type="button" id="next-doc" onclick="goNextDoc()" class="tool-btn" style="display:none;justify-content:center;padding:12px;font-size:14px;font-weight:700;border-color:#93c5fd;color:#1d4ed8;background:#eff6ff"></button>
 
             <!-- Donate nudge after download -->
             <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener"
@@ -840,7 +855,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     <div><h4>Exam help</h4><ul>
       <li><a href="/exam-calculators/">Score calculators</a></li><li><a href="/jee-main-rank-predictor/">JEE rank predictor</a></li>
       <li><a href="/age-calculator/">Age calculator</a></li><li><a href="/typing-test/">Typing test</a></li>
-      <li><a href="/resizer/guides/">Guides</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
+      <li><a href="/resizer/guides/">Guides</a> · <a href="/resizer/updates/">Size updates</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
   </div>
   <div class="ilx-foot-bottom"><span>© 2026 ILoveExams.in · Not affiliated with any exam body</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener">♥ Donate</a></span></div>
 </div></footer>
@@ -1109,6 +1124,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if (window.IS_EMBED) {
+  // Settings are preset by the landing page — fold them away (one tap to edit)
+  document.addEventListener('DOMContentLoaded', () => {
+    const t = document.getElementById('cfg-toggle'), n = document.getElementById('cfg-note');
+    if (t) { t.style.display = 'inline'; toggleCfg(false); }
+    if (n) n.style.display = 'block';
+  });
   // Measure the content itself (not the viewport) so the parent iframe can shrink as well as grow
   const postH = () => {
     const box = document.querySelector('body > .max-w-5xl');
@@ -1532,6 +1553,7 @@ function onDpiChange() {
 function resetSpecs() { fillSpecs(); updateStrip(); }
 
 function updateStrip() {
+  setTimeout(updateFlowCopy, 0);
   const sp = getSpecs();
   const wRaw = parseFloat(document.getElementById('req-w').value) || 0;
   // KB tools before upload have no dimensions yet → show "Original"
@@ -1553,6 +1575,7 @@ function updateStrip() {
 // ────────────────────────────────────────────────────────────────────
 
 function showRight(name) {
+  setFlowStep(name === 'editor' ? 2 : name === 'result' ? 3 : 1);
   ['upload','editor','result'].forEach(s =>
     document.getElementById('st-'+s).classList.toggle('hidden', s !== name)
   );
@@ -1565,12 +1588,86 @@ function showRight(name) {
 function onDragOver(e)  { e.preventDefault(); document.getElementById('drop-zone').classList.add('over'); }
 function onDragLeave()  { document.getElementById('drop-zone').classList.remove('over'); }
 function onDrop(e)      { e.preventDefault(); document.getElementById('drop-zone').classList.remove('over'); const f = e.dataTransfer.files[0]; if(f) loadFile(f); }
-function onFileSelect(e){ if(e.target.files[0]) loadFile(e.target.files[0]); }
+function onFileSelect(e){ if(e.target.files[0]) loadFile(e.target.files[0]); e.target.value = ''; }
 
-function loadFile(file) {
+function upError(msg) {
+  const el = document.getElementById('up-error');
+  if (!el) return alert(msg);
+  el.textContent = msg; el.style.display = msg ? 'block' : 'none';
+}
+
+// Accept any photo a student has: HEIC/HEIF (iPhone) is converted first; non-images get a clear message
+async function loadFile(file) {
+  upError('');
+  const isHeic = /\.(heic|heif)$/i.test(file.name) || /heic|heif/i.test(file.type);
+  if (!isHeic && file.type && !file.type.startsWith('image/')) {
+    return upError(file.type === 'application/pdf'
+      ? 'That is a PDF. Please choose a photo (JPG or PNG). To shrink a PDF, use Compress PDF.'
+      : 'Please choose a photo — JPG, PNG, HEIC or WEBP.');
+  }
+  let blob = file;
+  if (isHeic) {
+    const t = document.getElementById('up-title'), old = t ? t.textContent : '';
+    if (t) t.textContent = 'Converting iPhone photo…';
+    try {
+      if (!window.heic2any) await new Promise((res, rej) => { const sc = document.createElement('script'); sc.src = 'https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js'; sc.onload = res; sc.onerror = rej; document.head.appendChild(sc); });
+      blob = await window.heic2any({ blob: file, toType: 'image/jpeg', quality: 0.95 });
+      if (Array.isArray(blob)) blob = blob[0];
+    } catch (err) {
+      if (t) t.textContent = old;
+      return upError('Could not open this iPhone (HEIC) photo. Please take a screenshot of it or choose a JPG.');
+    }
+    if (t) t.textContent = old;
+  }
   const r = new FileReader();
-  r.onload = ev => { S.origURL = ev.target.result; S.flipX = 1; initCropper(ev.target.result); showRight('editor'); };
-  r.readAsDataURL(file);
+  r.onload = ev => {
+    const test = new Image();
+    test.onload = () => { S.origURL = ev.target.result; S.flipX = 1; initCropper(ev.target.result); showRight('editor'); };
+    test.onerror = () => upError('This file could not be opened as a photo. Please choose a JPG or PNG.');
+    test.src = ev.target.result;
+  };
+  r.readAsDataURL(blob);
+}
+
+// Plain-language labels that follow the chosen document (photo / signature / tool)
+function updateFlowCopy() {
+  if (!S.exam) return;
+  const sp = getSpecs(), tool = S.exam.id === 99999;
+  const noun = tool ? 'image' : (S.doc === 'photo' ? 'photo' : 'signature');
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  set('up-title', `Tap to choose your ${noun}`);
+  set('crop-hint', noun === 'signature' ? '👆 Drag the box tightly around your signature. Pinch or use Zoom to adjust.'
+    : noun === 'photo' ? '👆 Drag the box so your face is in the middle. Pinch or use Zoom to adjust.'
+    : '👆 Drag the box to choose the part to keep. Pinch or use Zoom to adjust.');
+  const dims = (S.freeDim && !(parseFloat(document.getElementById('req-w').value) || 0)) ? '' : ` ${sp.w}×${sp.h} px`;
+  set('btn-process', `✓ Done — make my${dims} ${noun}`);
+  setFlowStep(S.flowStep || 1);
+}
+
+function setFlowStep(n) {
+  S.flowStep = n;
+  const titles = { 1: `Upload your ${S.exam && S.exam.id !== 99999 ? (S.doc === 'photo' ? 'photo' : 'signature') : 'image'}`, 2: 'Adjust the crop', 3: 'Download' };
+  const a = document.getElementById('flow-num'), b = document.getElementById('flow-title'), c = document.getElementById('flow-steps');
+  if (a) a.textContent = n === 3 ? '✓' : n;
+  if (b) b.textContent = titles[n];
+  if (c) c.textContent = `Step ${n} of 3`;
+}
+
+function markSaved() { const e = document.getElementById('dl-saved'); if (e) e.style.display = 'block'; }
+
+// After the photo, most candidates need the signature too — one tap to continue
+function goNextDoc() {
+  const other = S.doc === 'photo' ? 'signature' : 'photo';
+  selectDoc(other, IS_EMBED);
+  goUpload();
+  const z = document.getElementById('drop-zone'); if (z) z.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function toggleCfg(force) {
+  const card = document.getElementById('cfg-toggle').closest('.card');
+  const open = force !== undefined ? force : card.classList.contains('cfg-collapsed');
+  card.classList.toggle('cfg-collapsed', !open);
+  document.getElementById('cfg-toggle').textContent = open ? 'Hide' : 'Edit size';
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -1738,7 +1835,25 @@ async function processImage() {
   document.getElementById('res-dim').textContent  = `${sp.w}×${sp.h}`;
   document.getElementById('res-size').textContent = `${kb} KB`;
   const st = document.getElementById('res-status');
-  st.textContent = ok ? '✓ OK' : '⚠ Check';
+  st.textContent = ok ? '✓ Correct' : '⚠ Check';
+  const tool = S.exam && S.exam.id === 99999;
+  const noun = tool ? 'image' : (S.doc === 'photo' ? 'photo' : 'signature');
+  const banner = document.getElementById('res-banner');
+  if (banner) {
+    banner.style.background = ok ? '#f0fdf4' : '#fffbeb';
+    banner.style.border = ok ? '1px solid #bbf7d0' : '1px solid #fde68a';
+    banner.style.color = ok ? '#166534' : '#92400e';
+    banner.innerHTML = ok
+      ? `✅ Ready! Your ${tool ? '' : (S.exam.name + ' ')}${noun} is <b>${sp.w}×${sp.h} px · ${kb} KB · ${sp.fmt}</b>${tool ? '.' : ' — exactly what the form asks for.'}`
+      : `⚠️ Saved at <b>${kb} KB</b>, but the limit is ${sp.min ? sp.min + '–' : 'up to '}${sp.max} KB. Try cropping a little tighter, or use a clearer original photo, then tap Done again.`;
+  }
+  document.getElementById('dl-link').textContent = `⬇️ Download ${noun} (${kb} KB)`;
+  const sv = document.getElementById('dl-saved'); if (sv) sv.style.display = 'none';
+  const nx = document.getElementById('next-doc');
+  if (nx) {
+    if (!tool && S.exam) { nx.textContent = `Next: resize your ${S.doc === 'photo' ? 'signature' : 'photo'} for ${S.exam.name} →`; nx.style.display = 'flex'; }
+    else nx.style.display = 'none';
+  }
   st.className   = 'text-sm font-bold px-2.5 py-0.5 rounded-full inline-block ' + (ok ? 'badge-ok' : 'badge-warn');
 
   const dl = document.getElementById('dl-link');
