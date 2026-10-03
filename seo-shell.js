@@ -58,6 +58,14 @@ h1{font-size:clamp(24px,4.4vw,38px);font-weight:900;margin:0 0 12px;line-height:
 .chip{background:rgba(255,255,255,.07);color:#e2e8f0;border:1px solid rgba(255,255,255,.14);padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:600;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .chip.ok{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3);color:#86efac;font-family:inherit;font-weight:600}
 .updated{font-size:12px;color:rgba(255,255,255,.45);margin-top:14px}
+.hero.lt{background:linear-gradient(180deg,#eaf1ff 0%,#f5f7fb 100%);color:#0f172a;padding:22px 16px 18px;text-align:center;border-bottom:1px solid #e6ebf2}
+.hero.lt .hero-in{max-width:760px}
+.hero.lt h1{color:#0f172a;font-size:clamp(23px,4.4vw,34px)}
+.hero.lt .crumbs{color:#64748b;text-align:left}.hero.lt .crumbs a{color:#475569}
+.hero.lt .lede{color:#475569;margin:0 auto 12px;display:block}.hero.lt .lede strong{color:#0f172a}
+.hero.lt .updated{color:#64748b;margin-top:10px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.trust span{font-size:12.5px;font-weight:700;color:#15803d;background:#fff;border:1px solid #bbf7d0;padding:5px 11px;border-radius:999px}
 .card{background:#fff;border:1px solid #e6ebf2;border-radius:18px;padding:24px;margin:0 0 20px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 28px rgba(16,24,40,.04)}
 .card h2{font-size:19px;font-weight:800;margin:0 0 12px;line-height:1.3;letter-spacing:-.01em}
 .card h3{font-size:15px;font-weight:700;margin:16px 0 6px}
@@ -102,7 +110,7 @@ details.faq .a{padding:0 16px 14px;font-size:14.5px;color:#475569}
 .decl{font-family:Georgia,serif;font-size:15px;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 16px;color:#422006}
 footer.foot{background:#0a0e1a;color:rgba(255,255,255,.55);margin-top:32px;padding:28px 16px;text-align:center;font-size:12.5px}
 footer.foot a{color:rgba(255,255,255,.6);text-decoration:none}
-@media(max-width:639px){.hero{padding:18px 16px 16px}.lede,.hero .chip.ok{display:none}.crumbs{font-size:11px;margin-bottom:8px}.updated{margin-top:10px;font-size:11px}.answer{padding:12px 14px}.answer p{font-size:14.5px}.tool-frame .tf-head span:last-child{display:none}}
+@media(max-width:639px){.hero{padding:18px 16px 16px}.hero:not(.lt) .lede,.hero .chip.ok{display:none}.hero.lt .crumbs,.hero.lt .updated{display:none}.crumbs{font-size:11px;margin-bottom:8px}.updated{margin-top:10px;font-size:11px}.answer{padding:12px 14px}.answer p{font-size:14.5px}.tool-frame .tf-head span:last-child{display:none}}
 footer.foot nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin:10px 0}
 `;
 
@@ -166,7 +174,6 @@ function crumbsSchema(items) {
 // Embedded resizer (the engine in ?embed=1 mode). Grows to fit its content.
 function toolFrame(src, heading) {
   return `<section class="tool-frame" id="resize-tool" aria-label="${esc(heading)}">
-  <div class="tf-head"><span>⚡ ${esc(heading)}</span><span style="font-weight:600;color:#16a34a">● 100% private · in your browser</span></div>
   <iframe src="${src}" title="${esc(heading)}" loading="eager" allow="clipboard-write" referrerpolicy="same-origin"></iframe>
 </section>
 <script>

@@ -349,24 +349,21 @@ function page(t) {
   </div>
 </nav>
 
-<div style="background:linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%);padding:36px 16px 30px">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);border-radius:999px;padding:4px 12px;margin-bottom:16px">
-      <span style="font-size:11px;font-weight:700;color:#93c5fd;text-transform:uppercase;letter-spacing:.08em">${GROUP_LABEL[t.group]}</span>
+<div style="background:linear-gradient(180deg,#eaf1ff 0%,#f5f7fb 100%);padding:22px 16px 18px;border-bottom:1px solid #e6ebf2;text-align:center">
+  <div style="max-width:760px;margin:0 auto">
+    <h1 style="font-size:clamp(23px,4.4vw,34px);font-weight:900;color:#0f172a;margin:0 0 10px;line-height:1.15;letter-spacing:-.025em">${t.h1}</h1>
+    <p style="color:#475569;font-size:15.5px;margin:0 auto 12px;max-width:620px">${t.blurb}</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px">
+      <span style="font-size:12.5px;font-weight:700;color:#15803d;background:#fff;border:1px solid #bbf7d0;padding:5px 11px;border-radius:999px">✔ Free</span>
+      <span style="font-size:12.5px;font-weight:700;color:#15803d;background:#fff;border:1px solid #bbf7d0;padding:5px 11px;border-radius:999px">✔ Auto KB compression</span>
+      <span style="font-size:12.5px;font-weight:700;color:#15803d;background:#fff;border:1px solid #bbf7d0;padding:5px 11px;border-radius:999px">✔ Nothing uploaded</span>
     </div>
-    <h1 style="font-size:clamp(22px,4vw,36px);font-weight:900;color:#fff;margin:0 0 12px;line-height:1.2">${t.h1}</h1>
-    <p style="color:rgba(255,255,255,.6);font-size:16px;margin:0 0 20px;max-width:620px">${t.blurb}</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px">
-      ${specChips(t)}
-    </div>
-    <a href="#resize-tool" class="cta-btn" style="font-size:15px;padding:12px 24px;border-radius:14px">Start below — it's free ↓</a>
   </div>
 </div>
 
-<div style="max-width:900px;margin:0 auto;padding:24px 16px 40px">
+<div style="max-width:900px;margin:0 auto;padding:16px 16px 40px">
   <!-- The resizer, embedded (engine in ?embed=1 mode) — no extra click -->
   <section id="resize-tool" style="background:#fff;border:1.5px solid #bfdbfe;border-radius:18px;overflow:hidden;margin-bottom:24px;box-shadow:0 10px 34px rgba(37,99,235,.10);scroll-margin-top:72px">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;background:#eff6ff;border-bottom:1px solid #bfdbfe;font-size:13px;font-weight:700;color:#1e40af"><span>⚡ ${t.name}</span><span style="color:#16a34a;font-weight:600">● Private · runs in your browser</span></div>
     <iframe src="${url}&embed=1" title="${t.name}" loading="eager" style="display:block;width:100%;border:0;min-height:760px"></iframe>
   </section>
   <script>addEventListener('message',function(e){if(e.origin!==location.origin||!e.data||e.data.type!=='ilx-embed-height')return;var f=document.querySelector('#resize-tool iframe');if(f){f.style.minHeight='0';f.style.height=Math.max(420,e.data.h)+'px';}});</script>

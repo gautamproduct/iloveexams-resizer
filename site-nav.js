@@ -40,7 +40,7 @@ body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-web
 ::selection{background:#bfdbfe;color:#0f172a}
 :focus-visible{outline:3px solid #60a5fa;outline-offset:2px;border-radius:6px}
 a,button{-webkit-tap-highlight-color:transparent}
-.hero{background:radial-gradient(900px 340px at 8% -20%,rgba(59,130,246,.34),transparent 62%),radial-gradient(700px 300px at 100% -10%,rgba(236,72,153,.16),transparent 60%),linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%)!important}
+.hero:not(.lt){background:radial-gradient(900px 340px at 8% -20%,rgba(59,130,246,.34),transparent 62%),radial-gradient(700px 300px at 100% -10%,rgba(236,72,153,.16),transparent 60%),linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%)!important}
 [id]{scroll-margin-top:76px}
 /* ── Menu ── */
 .ilx-nav{display:flex;align-items:center;gap:22px;font-size:13.5px;font-weight:600}

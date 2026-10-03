@@ -139,31 +139,23 @@ function generatePage(exam, docType) {
 
   const html = `${S.head({ title, desc, canonical, schema, extraHead: nd ? '<link rel="stylesheet" href="/assets/ilx-apps.css">' : '', ogTitle: `${short} ${label} Size ${YEAR} – ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB` })}
 
-<header class="hero">
+<header class="hero lt">
   <div class="hero-in">
     ${S.crumbsHtml(crumbs)}
     <h1>${nd ? `${esc(short)} Photo with Name &amp; Date ${YEAR} — Size &amp; Free Maker` : `${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer`}</h1>
-    <p class="lede">Resize your ${esc(exam.name)} ${lc} to exactly <strong>${spec.w}×${spec.h} pixels</strong> and <strong>${spec.min}–${spec.max} KB</strong> (${spec.fmt}) in one click — free, instant and private.</p>
-    <div class="chips">
-      <span class="chip">📐 ${spec.w}×${spec.h} px</span>
-      <span class="chip">💾 ${spec.min}–${spec.max} KB</span>
-      <span class="chip">🖼 ${spec.fmt}</span>
-      <span class="chip ok">✓ No upload · Works on mobile</span>
-    </div>
+    <p class="lede">Resize your ${esc(short)} ${lc} to <strong>${spec.w}×${spec.h} px</strong> and <strong>${spec.min}–${spec.max} KB</strong> as per the official guidelines — free, instant and 100% private.</p>
+    <div class="trust"><span>✔ Exact ${esc(short)} size</span><span>✔ Auto KB compression</span><span>✔ Nothing uploaded</span></div>
     <p class="updated">✓ Checked against the official notification · Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time>${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="answer" id="answer"><p>${answer}</p></div>
-
   ${nd ? `<div class="answer" style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border-color:#fde68a"><p>⚠️ ${nd.rule} Use the tool below — it prints them for you and keeps the file in ${spec.min}–${spec.max} KB.</p></div>
   <section id="app" class="app" data-tool="photo-name-date" data-size="${spec.w}x${spec.h}" data-max="${spec.max}" data-min="${spec.min}" data-strip="${nd.strip}" style="min-height:190px"><noscript>Please enable JavaScript to use this tool.</noscript></section>
   <p style="font-size:13.5px;margin:-8px 0 20px">Notification doesn't need name &amp; date? <a href="/resizer/?exam=${exam.slug}&amp;document=photo">Use the plain ${esc(short)} photo resizer →</a></p>`
       : S.toolFrame(`/resizer/?exam=${exam.slug}&document=${docType}&embed=1`, `${short} ${label} Resizer — ${specStr(spec)}`)}
   ${seo.note ? `<p class="note" style="margin:0 0 20px">${seo.note}</p>` : ''}
-
-  ${S.adSlot()}
+  <div class="answer" id="answer"><p>${answer}</p></div>
 
   <div class="cols">
     <section class="card">
@@ -188,6 +180,7 @@ function generatePage(exam, docType) {
       <p style="margin:14px 0 0"><a class="btn alt" href="${otherURL}">Resize ${esc(short)} ${otherL} →</a></p>
     </section>
   </div>
+  ${S.adSlot()}
   ${bankCard}
   ${GUIDES[exam.slug] ? `<section class="card"><h2>Where &amp; how to upload your ${esc(short)} ${lc}</h2>
     <p>You upload it on the official <strong>${esc(GUIDES[exam.slug].body)}</strong> website: <a href="${GUIDES[exam.slug].url}" target="_blank" rel="noopener">${GUIDES[exam.slug].url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</a> (always use the link in the official notification).</p>

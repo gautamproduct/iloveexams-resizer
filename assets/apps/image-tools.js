@@ -7,7 +7,7 @@
   var X = window.ILX, tool = app.dataset.tool;
   function ui(html) { app.innerHTML = html; return function (s) { return app.querySelector(s); }; }
   function drop(label, hint) {
-    return '<div class="drop" tabindex="0" role="button" aria-label="' + label + '"><div class="big">🖼️</div><strong>' + label + '</strong><span>' + hint + ' · processed on your device, never uploaded</span></div>';
+    return '<div class="drop" tabindex="0" role="button" aria-label="' + label + '"><div class="big">🖼️</div><strong>' + label + '</strong><span>' + hint + ' · stays on your device</span></div>';
   }
 
   // Decode any image file (HEIC via heic2any, loaded only when needed) into an <img>
@@ -95,7 +95,11 @@
       '<label><input type="checkbox" id="up" checked> CAPITAL letters</label></div>' +
       '<div class="status" id="st"></div><button class="go" id="go" disabled>Create photo</button><div id="res"></div>');
     // Page presets (e.g. TNPSC: 275×354, 20–50 KB, 1.5 cm strip ≈ 33%)
-    var D = app.dataset;
+    var D = Object.assign({}, app.dataset);
+    var Q = new URLSearchParams(location.search);
+    if (Q.get('w') && Q.get('h')) D.size = (+Q.get('w')) + 'x' + (+Q.get('h'));
+    if (Q.get('max')) D.max = +Q.get('max');
+    if (Q.get('min')) D.min = +Q.get('min');
     if (D.size) { if (![].some.call($('#sz').options, function (o) { return o.value === D.size; })) $('#sz').insertAdjacentHTML('afterbegin', '<option value="' + D.size + '">' + D.size.replace('x', '×') + ' px</option>'); $('#sz').value = D.size; }
     if (D.max) $('#mx').value = D.max;
     if (D.min) $('#mn').value = D.min;

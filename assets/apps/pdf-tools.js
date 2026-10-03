@@ -10,7 +10,7 @@
   function ui(html) { app.innerHTML = html; return function (sel) { return app.querySelector(sel); }; }
   function dropHtml(multi, label) {
     return '<div class="drop" tabindex="0" role="button" aria-label="' + label + '"><div class="big">📄</div><strong>' + label + '</strong><span>' +
-      (multi ? 'Drop PDF files here or tap to choose' : 'Drop a PDF here or tap to choose') + ' · processed on your device, never uploaded</span></div>';
+      (multi ? 'Tap to choose PDFs, or drop them here' : 'Tap to choose, or drop it here') + ' · stays on your device</span></div>';
   }
   function fail(st, e) {
     console.error(e);

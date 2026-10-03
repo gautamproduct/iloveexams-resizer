@@ -40,6 +40,10 @@
     readBuf: function (file) { return file.arrayBuffer(); },
     // Wire a drop zone + hidden <input type=file>
     drop: function (zone, opts, onFiles) {
+      var appEl = zone.closest('.app');
+      if (appEl && !opts.keepOpen) appEl.classList.add('needs-file');
+      var inner = onFiles;
+      onFiles = function (f) { if (appEl) appEl.classList.add('has-file'); return inner(f); };
       var input = document.createElement('input');
       input.type = 'file'; input.accept = opts.accept || '*/*'; input.multiple = !!opts.multiple; input.hidden = true;
       zone.appendChild(input);

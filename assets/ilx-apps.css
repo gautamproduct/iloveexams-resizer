@@ -54,3 +54,14 @@ textarea.inp{width:100%;min-height:130px;font-family:inherit;line-height:1.6}
 }
 
 @media(max-width:520px){.app .go{width:100%}}
+
+/* Options stay hidden until a file is chosen (one clear first action) */
+.app.needs-file:not(.has-file) > .row,
+.app.needs-file:not(.has-file) > .go,
+.app.needs-file:not(.has-file) > p,
+.app.needs-file:not(.has-file) > h2:not(:first-child),
+.app.needs-file:not(.has-file) > #drawBox,
+.app.needs-file:not(.has-file) > #upBox,
+.app.needs-file:not(.has-file) > .grid2:not(:first-child) { display: none !important; }
+.drop{padding:36px 16px}
+.drop strong{font-size:17px}

@@ -47,18 +47,18 @@ function page(p) {
     ? `<section id="app" class="app" data-tool="${p.tool}"${p.data ? Object.entries(p.data).map(([k, v]) => ` data-${k}="${esc(typeof v === 'string' ? v : JSON.stringify(v))}"`).join('') : ''} style="min-height:190px"><noscript>Please enable JavaScript to use this tool — it runs entirely in your browser.</noscript></section>`
     : S.toolFrame(p.frame.src, p.frame.title);
   const html = `${S.head({ title: p.title, desc: p.desc, canonical, schema, extraHead: p.tool ? APP_CSS : '' })}
-<header class="hero"><div class="hero-in">
+<header class="hero lt"><div class="hero-in">
   ${S.crumbsHtml(crumbs)}
   <h1>${esc(p.h1)}</h1>
   <p class="lede">${p.lede}</p>
-  <div class="chips">${(p.chips || ['✓ Free', '✓ No upload — runs on your device', '✓ Works on mobile']).map(c => `<span class="chip ok">${c}</span>`).join('')}</div>
+  <div class="trust">${(p.chips || ['✔ Free', '✔ Nothing uploaded', '✔ Works on mobile']).map(c => `<span>${c.replace(/^✓/, '✔')}</span>`).join('')}</div>
   ${p.dated ? `<p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>` : ''}
 </div></header>
 <main class="wrap">
+  ${toolBlock ? toolBlock : ''}
   ${p.answer ? `<div class="answer"><p>${p.answer}</p></div>` : ''}
-  ${toolBlock}
-  ${S.adSlot()}
   ${withTips(p.tips, p.body)}
+  ${S.adSlot()}
   ${p.steps ? `<section class="card"><h2>How to ${esc(p.howto || p.h1.replace(/ Online.*$/, '').toLowerCase())}</h2><ol style="margin:0;padding-left:20px">${p.steps.map(s => `<li>${s}</li>`).join('')}</ol></section>` : ''}
   ${p.faqs && p.faqs.length ? `<section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(p.faqs)}</section>` : ''}
   ${p.related && p.related.length ? `<section class="card"><h2>Related tools</h2><ul class="links">${p.related.map(r => `<li><a href="${r[0]}">${esc(r[1])}</a></li>`).join('')}</ul></section>` : ''}
