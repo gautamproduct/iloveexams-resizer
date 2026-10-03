@@ -262,7 +262,7 @@ for (const s of sizeList) {
   const [min, max] = mode(kbs).split('–').map(Number);
   const kbLabel = min ? `${min}–${max} KB` : `under ${max} KB`;
   const title = w === h
-    ? `${w}×${h} Pixel ${noun} (Width & Height) in ${kbLabel} – Free`
+    ? `${w} Pixel Width and Height ${noun} (${w}×${h}) – ${max} KB, Free`
     : `${w}×${h} ${noun} Size (Width ${w}px, Height ${h}px) – Free Resizer`;
   const desc = `Resize any ${noun.toLowerCase()} to exactly ${w}×${h} px (${w}x${h}) and ${kbLabel} in JPG, free and in your browser.${users.length ? ` Used by ${[...new Set(users.map(u => seoOf(u.e).short))].slice(0, 3).join(', ')} and more.` : ''}`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'By Pixel Size', url: `${SITE}/resizer/size/` }, { name: `${w}×${h} px`, url: canonical }];

@@ -387,4 +387,56 @@ ${S.footer()}`;
   write('contact', html.replace('</style>', '.guide h2{font-size:20px;margin:22px 0 8px}.guide h2:first-child{margin-top:0}.guide p,.guide li{font-size:15.5px;line-height:1.7}</style>'));
 }
 
+
+// ─── Embed page: free resizer for blogs, coaching & job sites (earns links) ──
+{
+  const canonical = `${SITE}/embed/`;
+  const title = 'Free Exam Photo Resizer for Your Website (Embed)';
+  const desc = 'Add a free exam photo & signature resizer to your blog, coaching or job-alert site. Copy one snippet — 80+ exams, exact px and KB, nothing uploaded.';
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Embed', url: canonical }];
+  const opts = EXAMS.map(e => `<option value="${e.slug}">${esc(seoOf(e).short)}</option>`).join('');
+  const names = Object.fromEntries(EXAMS.map(e => [e.slug, seoOf(e).short]));
+  const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs })] })}
+<header class="hero lt"><div class="hero-in">${S.crumbsHtml(crumbs)}<h1>Put a free exam photo resizer on your website</h1>
+<p class="lede" style="display:block">Running a job-alert blog, coaching site or exam Telegram channel? Give your readers a resizer that makes their photo and signature exactly the size the form asks for — free, no sign-up, no ads inside, and their files never leave their phone.</p></div></header>
+<main class="wrap">
+  <section class="card"><h2>1. Pick the exam</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <select id="em-exam" style="padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;min-width:200px">${opts}</select>
+      <select id="em-doc" style="padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px"><option value="photo">Photo</option><option value="signature">Signature</option></select>
+    </div>
+  </section>
+  <section class="card"><h2>2. Copy this code into your page</h2>
+    <p>Paste it into any HTML block — WordPress (Custom HTML block), Blogger (HTML view), Wix (Embed code) or plain HTML. The tool resizes itself to fit.</p>
+    <textarea id="em-code" readonly rows="9" style="width:100%;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:#f8fafc"></textarea>
+    <p><button id="em-copy" type="button" style="background:#2563eb;color:#fff;border:0;border-radius:10px;padding:11px 18px;font-weight:700;font-size:15px;cursor:pointer">Copy code</button> <span id="em-done" style="color:#16a34a;font-weight:600"></span></p>
+  </section>
+  <section class="card"><h2>Preview</h2><div id="em-preview"></div></section>
+  <section class="card"><h2>Good to know</h2><ul class="check">
+    <li>Free forever. Please keep the small credit link under the tool.</li>
+    <li>Sizes are kept up to date by us — when an exam changes its photo size, your embed updates automatically.</li>
+    <li>Privacy-safe: images are processed in the visitor's browser and never uploaded.</li>
+    <li>Need an exam we don't have? <a href="/contact/">Tell us</a> and we'll add it.</li>
+  </ul></section>
+</main>
+<script>
+(function () {
+  var N = ${JSON.stringify(names)}, ex = document.getElementById('em-exam'), dc = document.getElementById('em-doc'), out = document.getElementById('em-code');
+  ex.value = 'ssc-cgl' in N ? 'ssc-cgl' : ex.value;
+  function code() {
+    var s = ex.value, d = dc.value, label = N[s] + (d === 'signature' ? ' signature' : ' photo') + ' resizer';
+    return '<iframe src="${SITE}/resizer/?embed=1&exam=' + s + '&document=' + d + '" title="' + label + '" style="width:100%;max-width:760px;height:640px;border:0" loading="lazy"></iframe>\\n'
+      + '<p style="font-size:13px;margin:4px 0 0">Free <a href="${SITE}/resizer/' + s + '-' + d + '-resize/">' + label + '</a> by ILoveExams</p>\\n'
+      + '<script>addEventListener("message",function(e){if(e.origin!=="${SITE}"||!e.data||e.data.type!=="ilx-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(420,e.data.h)+"px"})});<\\/script>';
+  }
+  function render() { var c = code(); out.value = c; document.getElementById('em-preview').innerHTML = c.split('<script>')[0]; }
+  addEventListener('message', function (e) { if (e.origin !== location.origin || !e.data || e.data.type !== 'ilx-embed-height') return; document.querySelectorAll('#em-preview iframe').forEach(function (f) { if (f.contentWindow === e.source) f.style.height = Math.max(420, e.data.h) + 'px'; }); });
+  ex.onchange = dc.onchange = render; render();
+  document.getElementById('em-copy').onclick = function () { out.select(); (navigator.clipboard ? navigator.clipboard.writeText(out.value) : Promise.reject()).catch(function () { document.execCommand('copy'); }).then(function () { document.getElementById('em-done').textContent = '✓ Copied'; }); };
+})();
+</script>
+${S.footer()}`;
+  write('embed', html);
+}
+
 console.log(`✅ Generated ${GUIDES.length} guides, guides index, About and Contact pages`);

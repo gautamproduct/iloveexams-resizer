@@ -60,10 +60,15 @@ function generatePage(exam, docType) {
   const isBank    = BANK_EXTRA_EXAMS.includes(exam.slug);
 
   const nd = docType === 'photo' && seo.nameDate;   // exam needs name + date printed on the photo
-  const title = nd
+  const kw = seo.kw;   // the word searchers use for this exam's tool, e.g. "Compressor"
+  const title = kw
+    ? `${short} ${label} ${kw}${nd ? ' with Name & Date' : ''} ${YEAR}: ${spec.w}×${spec.h}px${nd ? '' : `, ${spec.min}–${spec.max}KB`}`
+    : nd
     ? `${short} Photo with Name & Date ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`
     : (t => t.length <= 64 ? t : `${short} ${label} Size ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`)(`${short} ${label} Size ${YEAR} & Resizer: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`);
-  const desc  = nd
+  const desc  = kw
+    ? `Free ${short} ${lc} ${kw.toLowerCase()} & resizer ${YEAR}: ${spec.w}×${spec.h} px, ${spec.min}–${spec.max} KB JPG${nd ? ' with your name & photo date printed' : ''}. Compress and edit in one step — no upload, works on mobile.`
+    : nd
     ? `${short} photo with name & date ${YEAR}: ${spec.w}×${spec.h} px, ${spec.min}–${spec.max} KB JPG. Add your name and photo date, resize and compress in one step — free, no upload.`
     : `${short} ${lc} size ${YEAR}: ${spec.w}×${spec.h} pixels, ${spec.min}–${spec.max} KB, ${spec.fmt}. Resize & compress your ${lc} online in seconds — free, no upload, works on mobile.`;
   const answer = `The <strong>${esc(exam.name)} ${lc}</strong> must be <strong>${spec.w} × ${spec.h} pixels</strong> (width × height), with a file size between <strong>${spec.min} KB and ${spec.max} KB</strong>, in <strong>${spec.fmt}/JPEG</strong> format. Upload your ${lc} in the tool below and it is resized and compressed to exactly this size in one click.`;
@@ -99,6 +104,12 @@ function generatePage(exam, docType) {
     { q: `What is the ${short} ${other} size?`,
       a: `The ${esc(exam.name)} ${other} must be ${otherSpec.w}×${otherSpec.h} pixels, ${otherSpec.min}–${otherSpec.max} KB, ${otherSpec.fmt}. <a href="${otherURL}">Resize your ${short} ${other} here</a>.` },
   ];
+  if (kw) faqs.splice(1, 0, { q: `Is there a free ${short} ${lc} ${kw.toLowerCase()}?`,
+    a: `Yes — the tool on this page is a free ${short} ${lc} ${kw.toLowerCase()}, resizer and editor in one. It crops to ${spec.w}×${spec.h} px and compresses to ${spec.min}–${spec.max} KB${nd ? ', printing your name and photo date at the bottom' : ''}, all inside your browser.` });
+  if (/^ibps-rrb-/.test(exam.slug)) faqs.push({ q: `What is the ${short} 10th marksheet size?`,
+    a: `If the ${short} form asks for your Class 10 marksheet or certificate, upload it as a <strong>PDF up to 500 KB</strong> (check the limit shown next to the upload button). Scan it clearly, then use <a href="/compress-pdf-to-500kb/">Compress PDF to 500 KB</a> — or <a href="/image-to-pdf/">Image to PDF</a> if you only have a photo of it.` },
+    { q: `What documents and sizes does the ${short} form need?`,
+      a: `Photo ${exam.photo.w}×${exam.photo.h}px (${exam.photo.min}–${exam.photo.max} KB), signature ${exam.sig.w}×${exam.sig.h}px (${exam.sig.min}–${exam.sig.max} KB), left thumb impression ${BANK_EXTRA_DOCS['thumb-impression'].w}×${BANK_EXTRA_DOCS['thumb-impression'].h}px (${BANK_EXTRA_DOCS['thumb-impression'].min}–${BANK_EXTRA_DOCS['thumb-impression'].max} KB), handwritten declaration ${BANK_EXTRA_DOCS['declaration'].w}×${BANK_EXTRA_DOCS['declaration'].h}px (${BANK_EXTRA_DOCS['declaration'].min}–${BANK_EXTRA_DOCS['declaration'].max} KB) — all JPG — plus any certificates as PDF.` });
   if (nd) faqs.unshift({ q: `Does the ${short} photo need name and date?`, a: `Yes. ${nd.rule} The tool on this page adds both and resizes the photo to ${spec.w}×${spec.h} px, ${spec.min}–${spec.max} KB.` });
   if (S.SPAN_NEXT) {
     faqs.splice(2, 0, { q: `What is the ${short} ${lc} size for ${S.NEXT_YEAR}?`,
@@ -142,7 +153,7 @@ function generatePage(exam, docType) {
 <header class="hero lt">
   <div class="hero-in">
     ${S.crumbsHtml(crumbs)}
-    <h1>${nd ? `${esc(short)} Photo with Name &amp; Date ${YEAR} — Size &amp; Free Maker` : `${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer`}</h1>
+    <h1>${kw ? `${esc(short)} ${label} ${kw}${nd ? ' with Name &amp; Date' : ''} ${YEAR} — ${spec.w}×${spec.h}px, ${spec.min}–${spec.max} KB` : nd ? `${esc(short)} Photo with Name &amp; Date ${YEAR} — Size &amp; Free Maker` : `${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer`}</h1>
     <p class="lede">Resize your ${esc(short)} ${lc} to <strong>${spec.w}×${spec.h} px</strong> and <strong>${spec.min}–${spec.max} KB</strong> as per the official guidelines — free, instant and 100% private.</p>
     <div class="trust"><span>✔ Exact ${esc(short)} size</span><span>✔ Auto KB compression</span><span>✔ Nothing uploaded</span></div>
     <p class="updated">✓ Checked against the official notification · Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time>${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>

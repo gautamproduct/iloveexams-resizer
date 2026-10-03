@@ -143,7 +143,7 @@ const FOOTER = `<footer class="ilx-foot"><div class="ilx-foot-in">
     <div><h4>Exam help</h4><ul>
       <li><a href="/exam-calculators/">Score calculators</a></li><li><a href="/jee-main-rank-predictor/">JEE rank predictor</a></li>
       <li><a href="/age-calculator/">Age calculator</a></li><li><a href="/typing-test/">Typing test</a></li>
-      <li><a href="/resizer/guides/">Guides</a> · <a href="/resizer/updates/">Size updates</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
+      <li><a href="/resizer/guides/">Guides</a> · <a href="/resizer/updates/">Size updates</a></li><li><a href="/embed/">Add our tool to your site</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
   </div>
   <div class="ilx-foot-bottom"><span>© ${new Date().getFullYear()} ILoveExams.in · Not affiliated with any exam body</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener">♥ Donate</a></span></div>
 </div></footer>`;

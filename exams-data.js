@@ -100,6 +100,7 @@ const SEO = {
                       nameDate: { strip: 0.25, rule: 'Kerala PSC requires your <strong>name</strong> and the <strong>date the photo was taken</strong> printed at the bottom of the photo.' },
                       note: 'This page is for <strong>Kerala PSC</strong> (Thulasi one-time registration). Applying to <strong>Karnataka PSC</strong> (kpsc.kar.nic.in)? Its photo and signature limits differ by notification — check yours, then set the exact width, height and KB in the <a href="/jpg-resize/">JPG resizer</a>.' },
   'tnpsc':          { short: 'TNPSC',           alt: ['Tamil Nadu PSC', 'TNPSC Group 4', 'TNPSC Group 2', 'TNPSC photo compressor'],
+                      kw: 'Compressor',   // searchers say "TNPSC photo/signature compressor", not "resizer"
                       // TNPSC OTR: name (CAPITALS, as in SSLC) + photo date printed in a 1.5 cm strip at the bottom of a 3.5×4.5 cm photo
                       nameDate: { strip: 0.33, rule: 'TNPSC requires your <strong>name in CAPITAL letters (as on your SSLC mark sheet)</strong> and the <strong>date the photo was taken (DD/MM/YYYY)</strong> printed in a strip at the bottom of the photo.' } },
   'apsc':           { short: 'APSC',            alt: ['Assam PSC', 'APSC CCE'] },

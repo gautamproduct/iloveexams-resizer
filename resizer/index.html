@@ -885,7 +885,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     <div><h4>Exam help</h4><ul>
       <li><a href="/exam-calculators/">Score calculators</a></li><li><a href="/jee-main-rank-predictor/">JEE rank predictor</a></li>
       <li><a href="/age-calculator/">Age calculator</a></li><li><a href="/typing-test/">Typing test</a></li>
-      <li><a href="/resizer/guides/">Guides</a> · <a href="/resizer/updates/">Size updates</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
+      <li><a href="/resizer/guides/">Guides</a> · <a href="/resizer/updates/">Size updates</a></li><li><a href="/embed/">Add our tool to your site</a></li><li><a href="/about/">About</a> · <a href="/contact/">Contact</a></li></ul></div>
   </div>
   <div class="ilx-foot-bottom"><span>© 2026 ILoveExams.in · Not affiliated with any exam body</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://razorpay.me/@gautamkumarrajkumar" target="_blank" rel="noopener">♥ Donate</a></span></div>
 </div></footer>
@@ -1164,8 +1164,17 @@ if (window.IS_EMBED) {
   // Measure the content itself (not the viewport) so the parent iframe can shrink as well as grow
   const postH = () => {
     const box = document.querySelector('body > .max-w-5xl');
-    parent.postMessage({ type: 'ilx-embed-height', h: Math.ceil(box ? box.getBoundingClientRect().height : document.body.scrollHeight) }, location.origin);
+    parent.postMessage({ type: 'ilx-embed-height', h: Math.ceil(box ? box.getBoundingClientRect().height : document.body.scrollHeight) }, '*');
   };
+  // Embedded on someone else's site → small credit link (opens the full tool)
+  let foreign = false; try { foreign = parent.location.origin !== location.origin; } catch (e) { foreign = true; }
+  if (foreign) document.addEventListener('DOMContentLoaded', () => {
+    const box = document.querySelector('body > .max-w-5xl'); if (!box) return;
+    const p = document.createElement('p');
+    p.style.cssText = 'text-align:center;font-size:12px;color:#64748b;margin:10px 0 4px';
+    p.innerHTML = 'Free tool by <a href="https://ilovexams.in/" target="_blank" rel="noopener" style="color:#2563eb;font-weight:600">ILoveExams.in</a> · photos never leave your device';
+    box.appendChild(p);
+  });
   new ResizeObserver(postH).observe(document.body);
   window.addEventListener('load', postH);
   document.addEventListener('click', e => {
