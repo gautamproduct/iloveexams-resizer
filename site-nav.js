@@ -32,13 +32,14 @@ const MOBILE = [
 
 const HEART = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width:20px;height:20px;margin:0 1px 3px;vertical-align:middle" aria-hidden="true"><path d="M16 28C16 28 2 19.5 2 10.5 2 6 5.2 3 9.5 3c2.7 0 4.9 1.6 6.5 3.8C17.6 4.6 19.8 3 22.5 3 26.8 3 30 6 30 10.5 30 19.5 16 28 16 28Z" fill="#ef4444"/><polyline points="10,13 14.5,18.5 22.5,10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-const CSS = `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-<style id="ilx-nav-css">
+const CSS = `<style id="ilx-nav-css">
 /* ── Theme polish (all pages) ── */
 html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
-body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif!important}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::selection{background:#bfdbfe;color:#0f172a}
 :focus-visible{outline:3px solid #60a5fa;outline-offset:2px;border-radius:6px}
+.ad-slot:has(ins[data-ad-status="unfilled"]),.ad-wrap:has(ins[data-ad-status="unfilled"]){display:none!important}
 a,button{-webkit-tap-highlight-color:transparent}
 .hero:not(.lt){background:radial-gradient(900px 340px at 8% -20%,rgba(59,130,246,.34),transparent 62%),radial-gradient(700px 300px at 100% -10%,rgba(236,72,153,.16),transparent 60%),linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%)!important}
 [id]{scroll-margin-top:76px}
@@ -183,6 +184,10 @@ function normalizeNav(html) {
   // One footer everywhere (replace the page's last <footer>)
   const fi = html.lastIndexOf('<footer');
   if (fi >= 0) { const fe = matchClose(html, fi, 'footer'); if (fe > 0) html = html.slice(0, fi) + FOOTER + html.slice(fe); }
+  // No web fonts: system fonts render instantly (no flash of re-styled text)
+  html = html.replace(/<link rel="preconnect" href="https:\/\/fonts\.(?:googleapis|gstatic)\.com"[^>]*>\s*/g, '')
+             .replace(/<link[^>]+href="https:\/\/fonts\.googleapis\.com\/[^"]*"[^>]*>\s*/g, '')
+             .replace(/@import url\(['"]?https:\/\/fonts\.googleapis\.com\/[^)]*\);?/g, '');
   // Theme + menu CSS once per page (refresh if already present)
   html = html.replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com" crossorigin><link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com\/css2\?family=Inter[^>]*>\s*<style id="ilx-nav-css">[\s\S]*?<\/style>\n?|<style id="ilx-nav-css">[\s\S]*?<\/style>\n?/, '');
   html = html.replace('</head>', `${CSS}\n</head>`);

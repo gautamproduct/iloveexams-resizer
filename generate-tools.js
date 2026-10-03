@@ -364,9 +364,9 @@ function page(t) {
 <div style="max-width:900px;margin:0 auto;padding:16px 16px 40px">
   <!-- The resizer, embedded (engine in ?embed=1 mode) — no extra click -->
   <section id="resize-tool" style="background:#fff;border:1.5px solid #bfdbfe;border-radius:18px;overflow:hidden;margin-bottom:24px;box-shadow:0 10px 34px rgba(37,99,235,.10);scroll-margin-top:72px">
-    <iframe src="${url}&embed=1" title="${t.name}" loading="eager" style="display:block;width:100%;border:0;min-height:760px"></iframe>
+    <iframe src="${url}&embed=1" title="${t.name}" loading="eager" style="display:block;width:100%;border:0;min-height:430px;opacity:0;transition:opacity .2s"></iframe>
   </section>
-  <script>addEventListener('message',function(e){if(e.origin!==location.origin||!e.data||e.data.type!=='ilx-embed-height')return;var f=document.querySelector('#resize-tool iframe');if(f){f.style.minHeight='0';f.style.height=Math.max(420,e.data.h)+'px';}});</script>
+  <script>addEventListener('message',function(e){if(e.origin!==location.origin||!e.data||e.data.type!=='ilx-embed-height')return;var f=document.querySelector('#resize-tool iframe');if(f){f.style.minHeight='0';f.style.height=Math.max(380,e.data.h)+'px';f.style.opacity='1';}});</script>
   <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:24px">
     <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 16px">How to ${t.h1} — Step by Step</h2>
     <div style="display:flex;flex-direction:column;gap:14px">

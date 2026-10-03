@@ -7,9 +7,6 @@
   <meta name="google-site-verification" content="0226qH4u04EiETLZppAKo_b77dJGdbbTM64xQ4egLjU" />
 
   <!-- ═══ PERFORMANCE ═══ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <!-- ═══ GEO ═══ -->
   <meta name="geo.region" content="IN">
   <meta name="geo.placename" content="India">
@@ -56,10 +53,10 @@
   <!-- ═══ ADSENSE ═══ -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9837613085159910" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="/assets/tw.css?v=f6340c54">
+  <link rel="stylesheet" href="/assets/tw.css?v=21af1c04">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    
     * { box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f1f5f9; margin: 0; }
     .hero { background: linear-gradient(135deg, #0a0e1a 0%, #0d1629 60%, #0a1828 100%); }
@@ -71,6 +68,35 @@
     }
     .cat-pill:hover { border-color: #3b82f6; color: #3b82f6; }
     .cat-pill.active { background: #0f172a; border-color: #0f172a; color: #fff; }
+    .hero.hp { background: linear-gradient(180deg, #e6efff 0%, #f5f7fb 100%) !important; border-bottom: 1px solid #e6ebf2; }
+    .hero.hp .ilx-search input { box-shadow: 0 10px 30px rgba(37,99,235,.14), 0 0 0 1px #dbe5ff; }
+    .hero.hp .ilx-quick a { color: #1d4ed8; background: #fff; border-color: #dbe5ff; }
+    .hero.hp .ilx-quick a:hover { background: #eff6ff; color: #1e40af; }
+    .start-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .start-tile { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 16px; text-decoration: none; color: #0f172a; box-shadow: 0 8px 24px rgba(15,23,42,.06); transition: transform .15s, box-shadow .15s, border-color .15s; }
+    .start-tile:hover { transform: translateY(-2px); border-color: #bfdbfe; box-shadow: 0 14px 30px rgba(37,99,235,.12); }
+    .start-tile .si { width: 46px; height: 46px; border-radius: 14px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .start-tile b { display: block; font-size: 15px; font-weight: 800; line-height: 1.25; }
+    .start-tile small { display: block; font-size: 12.5px; color: #64748b; margin-top: 2px; line-height: 1.35; }
+    .jump-wrap { position: sticky; top: 58px; z-index: 30; background: rgba(245,247,251,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 12px 0; margin-top: 18px; border-bottom: 1px solid #e6ebf2; }
+    .jump-wrap .cat-pill { text-decoration: none; padding: 8px 14px; font-size: 13px; }
+    .tool-sec { margin: 0 0 30px; scroll-margin-top: 130px; }
+    .sec-h { font-size: 19px; font-weight: 800; color: #0f172a; margin: 0 0 12px; letter-spacing: -.01em; }
+    .sec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .sec-grid .tool-card { padding: 16px !important; border-radius: 16px !important; }
+    .sec-grid .tool-ico { width: 40px !important; height: 40px !important; font-size: 19px !important; margin-bottom: 10px !important; border-radius: 12px !important; }
+    .sec-grid .tool-title { font-size: 15px !important; margin-bottom: 4px !important; }
+    .sec-grid .tool-desc { font-size: 13px !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tool-badge { display: none !important; }
+    @media (max-width: 900px) { .start-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) {
+      .start-tile { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px; }
+      .start-tile .si { width: 40px; height: 40px; font-size: 19px; }
+      .start-tile b { font-size: 14px; }
+      .sec-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .sec-h { font-size: 17px; }
+      .jump-wrap { top: 58px; }
+    }
     /* Hero search */
     .ilx-search { position: relative; max-width: 620px; margin: 26px auto 0; text-align: left; }
     .ilx-search input { width: 100%; box-sizing: border-box; border: 0; border-radius: 16px; padding: 17px 18px 17px 50px; font-size: 16px; background: #fff; color: #0f172a; box-shadow: 0 10px 40px rgba(0,0,0,.35); outline: none; }
@@ -93,7 +119,7 @@
       .pill-row { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding: 2px 16px 6px; margin: 0 -16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
       .pill-row::-webkit-scrollbar { display: none; }
       .pill-row .cat-pill { flex-shrink: 0; scroll-snap-align: start; }
-      #grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+
       .tool-card { padding: 14px !important; border-radius: 16px !important; }
       .tool-card .tool-ico { width: 36px !important; height: 36px !important; font-size: 18px !important; margin-bottom: 10px !important; border-radius: 10px !important; }
       .tool-card .tool-title { font-size: 14.5px; margin-bottom: 4px; line-height: 1.3; }
@@ -156,13 +182,14 @@
 
 
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
 <style id="ilx-nav-css">
 /* ── Theme polish (all pages) ── */
 html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
-body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif!important}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::selection{background:#bfdbfe;color:#0f172a}
 :focus-visible{outline:3px solid #60a5fa;outline-offset:2px;border-radius:6px}
+.ad-slot:has(ins[data-ad-status="unfilled"]),.ad-wrap:has(ins[data-ad-status="unfilled"]){display:none!important}
 a,button{-webkit-tap-highlight-color:transparent}
 .hero:not(.lt){background:radial-gradient(900px 340px at 8% -20%,rgba(59,130,246,.34),transparent 62%),radial-gradient(700px 300px at 100% -10%,rgba(236,72,153,.16),transparent 60%),linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%)!important}
 [id]{scroll-margin-top:76px}
@@ -264,14 +291,14 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<div class="hero">
-  <div class="max-w-4xl mx-auto px-4" style="padding-top:54px;padding-bottom:48px;text-align:center">
-    <h1 style="font-size:clamp(28px,5vw,46px);font-weight:900;color:#fff;margin:0 0 16px;line-height:1.12;letter-spacing:-1px">
-      Every image resize tool you need<br>for Indian exams &amp; ID forms
+<div class="hero lt hp">
+  <div class="max-w-4xl mx-auto px-4" style="padding-top:40px;padding-bottom:34px;text-align:center">
+    <h1 style="font-size:clamp(27px,5vw,44px);font-weight:900;color:#0f172a;margin:0 0 12px;line-height:1.12;letter-spacing:-.03em">
+      Exam photo, signature &amp; PDF tools — <span style="color:#2563eb">exact size, in seconds</span>
     </h1>
-    <p style="font-size:clamp(15px,2.4vw,18px);color:rgba(255,255,255,.6);margin:0 auto;max-width:640px;line-height:1.55">
-      Resize photo &amp; signature for 80+ exams, compress to an exact KB, set a custom size, or work in cm / inch / mm.
-      <strong style="color:#fff">100% free, instant &amp; private</strong> — nothing ever leaves your device.
+    <p style="font-size:clamp(15px,2.4vw,17.5px);color:#475569;margin:0 auto;max-width:620px;line-height:1.55">
+      Pick your exam or task. We set the official size for 80+ Indian exams automatically.
+      <strong style="color:#0f172a">Free, no sign-up, nothing uploaded.</strong>
     </p>
     <div class="ilx-search" role="search">
       <span class="ico" aria-hidden="true">🔍</span>
@@ -284,438 +311,370 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
   </div>
 </div>
 
-<!-- ═══ CATEGORY PILLS ═══ -->
-<div id="tools-grid" class="max-w-6xl mx-auto px-4" style="margin-top:-22px;position:relative;z-index:10;scroll-margin-top:70px">
-  <div class="pill-row">
-    <button class="cat-pill active" data-cat="all" onclick="filterCat('all',this)">All Tools</button>
-    <button class="cat-pill" data-cat="exam" onclick="filterCat('exam',this)">Exam Tools</button>
-    <button class="cat-pill" data-cat="id" onclick="filterCat('id',this)">ID Card</button>
-    <button class="cat-pill" data-cat="kb" onclick="filterCat('kb',this)">By File Size</button>
-    <button class="cat-pill" data-cat="dim" onclick="filterCat('dim',this)">By Dimension</button>
-    <button class="cat-pill" data-cat="pdf" onclick="filterCat('pdf',this)">PDF Tools</button>
-    <button class="cat-pill" data-cat="convert" onclick="filterCat('convert',this)">Converters</button>
-    <button class="cat-pill" data-cat="calc" onclick="filterCat('calc',this)">Calculators</button>
-    <button class="cat-pill" data-cat="text" onclick="filterCat('text',this)">Text Tools</button>
+
+<!-- ═══ START HERE ═══ -->
+<div class="max-w-6xl mx-auto px-4" style="margin-top:-18px;position:relative;z-index:10">
+  <div class="start-grid">
+    <a class="start-tile" href="/resizer/"><span class="si">📷</span><span><b>Exam photo &amp; signature</b><small>Pick your exam — exact size in one tap</small></span></a>
+    <a class="start-tile" href="/resize-image-to-50kb/"><span class="si">💾</span><span><b>Resize to exact KB</b><small>20 KB, 50 KB, 100 KB, 200 KB…</small></span></a>
+    <a class="start-tile" href="/pdf-tools/"><span class="si">📄</span><span><b>PDF tools</b><small>Compress to 100–500 KB, merge, unlock</small></span></a>
+    <a class="start-tile" href="/photo-with-name-and-date/"><span class="si">🏷</span><span><b>Photo with name &amp; date</b><small>For TNPSC, Kerala PSC &amp; more</small></span></a>
   </div>
 </div>
 
+<!-- ═══ JUMP BAR ═══ -->
+<div id="tools-grid" class="jump-wrap"><div class="max-w-6xl mx-auto px-4"><div class="pill-row"><a class="cat-pill" data-cat="exam" href="#exam">Exam photo &amp; signature</a><a class="cat-pill" data-cat="pdf" href="#pdf">PDF tools</a><a class="cat-pill" data-cat="kb" href="#kb">Resize to exact KB</a><a class="cat-pill" data-cat="id" href="#id">ID cards</a><a class="cat-pill" data-cat="dim" href="#dim">Resize by size — px, cm, inch</a><a class="cat-pill" data-cat="convert" href="#convert">Convert &amp; compress</a><a class="cat-pill" data-cat="calc" href="#calc">Exam calculators</a><a class="cat-pill" data-cat="text" href="#text">Text tools</a></div></div></div>
+
 <!-- ═══ TOOL GRID ═══ -->
 <main class="max-w-6xl mx-auto px-4" style="padding:34px 16px 24px">
-  <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px">
-
-    <!-- Exam Photo -->
-    <a class="tool-card" data-cat="exam" href="/resizer/">
+  <div id="grid">
+  <section class="tool-sec" id="exam">
+    <h2 class="sec-h">📷 Exam photo &amp; signature</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="exam" href="/resizer/">
       <div class="tool-ico" style="background:#dbeafe;color:#2563eb">📷</div>
       <h2 class="tool-title">Exam Photo Resizer</h2>
       <p class="tool-desc">Resize your photo to the exact pixels &amp; KB required for UPSC, SSC, NEET, SBI &amp; 80+ Indian exams.</p>
     </a>
-
-    <!-- Exam Signature -->
-    <a class="tool-card" data-cat="exam" href="/resizer/photo-signature-size-chart/">
+      <a class="tool-card" data-cat="exam" href="/resizer/photo-signature-size-chart/">
       <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">✍️</div>
       <h2 class="tool-title">Photo &amp; Signature Size Chart</h2>
       <p class="tool-desc">Exact photo &amp; signature pixels and KB for 80+ Indian exams in one table — tap any exam to resize.</p>
     </a>
-
-    <!-- Voter ID Photo -->
-    <a class="tool-card" data-cat="id" href="/resizer/?preset=voter-id-photo-resize&w=200&h=230&minkb=10&maxkb=100&fmt=JPG&title=Voter+ID+Photo+Resize+%28200%C3%97230+px%29&canon=https%3A%2F%2Filovexams.in%2Fvoter-id-photo-resize%2F">
-      <div class="tool-ico" style="background:#ccfbf1;color:#0d9488">🪪</div>
-      <h2 class="tool-title">Voter ID Photo Resize</h2>
-      <p class="tool-desc">Resize your photo to the size accepted for Voter ID / EPIC card online applications.</p>
-    </a>
-
-    <!-- Aadhaar cm/inch/mm -->
-    <a class="tool-card" data-cat="id dim" href="/resizer/?preset=aadhaar-card-resize-cm-inch-mm&w=1011&h=638&minkb=20&maxkb=300&fmt=JPG&title=Aadhaar+Card+Resize+in+cm+%2F+inch+%2F+mm&canon=https%3A%2F%2Filovexams.in%2Faadhaar-card-resize-cm-inch-mm%2F">
-      <div class="tool-ico" style="background:#dcfce7;color:#16a34a">🆔</div>
-      <h2 class="tool-title">Aadhaar Card Resize</h2>
-      <p class="tool-desc">Resize an Aadhaar card image in centimetres, inches or millimetres at print-ready DPI.</p>
-    </a>
-
-    <!-- Voter ID Card cm/inch/mm -->
-    <a class="tool-card" data-cat="id dim" href="/resizer/?preset=voter-id-card-resize-cm-inch-mm&w=1011&h=638&minkb=20&maxkb=300&fmt=JPG&title=Voter+ID+Card+Resize+in+cm+%2F+inch+%2F+mm&canon=https%3A%2F%2Filovexams.in%2Fvoter-id-card-resize-cm-inch-mm%2F">
-      <div class="tool-ico" style="background:#cffafe;color:#0891b2">📇</div>
-      <h2 class="tool-title">Voter ID Card Resize</h2>
-      <p class="tool-desc">Resize a Voter ID card image by cm, inch or mm — perfect for printing &amp; documents.</p>
-    </a>
-
-    <!-- Resize to 10 KB -->
-    <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-10kb&free=1&maxkb=10&title=Resize+Image+to+10+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-10kb%2F">
-      <div class="tool-ico" style="background:#fee2e2;color:#dc2626">💾</div>
-      <h2 class="tool-title">Resize Image to 10 KB</h2>
-      <p class="tool-desc">Compress any photo down to 10 KB while keeping it as sharp as possible.</p>
-    </a>
-
-    <!-- Resize to 20 KB -->
-    <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-20kb&free=1&maxkb=20&title=Resize+Image+to+20+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-20kb%2F">
-      <div class="tool-ico" style="background:#ffedd5;color:#ea580c">💾</div>
-      <h2 class="tool-title">Resize Image to 20 KB</h2>
-      <p class="tool-desc">Shrink your image to exactly 20 KB — a common limit for online exam &amp; ID forms.</p>
-    </a>
-
-    <!-- Resize to 100 KB -->
-    <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-100kb&free=1&maxkb=100&title=Resize+Image+to+100+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-100kb%2F">
-      <div class="tool-ico" style="background:#fef3c7;color:#d97706">💾</div>
-      <h2 class="tool-title">Resize Image to 100 KB</h2>
-      <p class="tool-desc">Reduce any image file size to 100 KB in one click without losing clarity.</p>
-    </a>
-
-    <!-- Resize to 150 KB -->
-    <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-150kb&free=1&maxkb=150&title=Resize+Image+to+150+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-150kb%2F">
-      <div class="tool-ico" style="background:#fef9c3;color:#ca8a04">💾</div>
-      <h2 class="tool-title">Resize Image to 150 KB</h2>
-      <p class="tool-desc">Compress your photo to 150 KB while preserving crisp, upload-ready quality.</p>
-    </a>
-
-    <!-- Custom Size -->
-    <a class="tool-card" data-cat="dim" href="/resizer/?preset=resize-image-custom-size&w=600&h=600&minkb=0&maxkb=500&fmt=JPG&title=Resize+Image+to+Custom+Size+%28px%29&canon=https%3A%2F%2Filovexams.in%2Fresize-image-custom-size%2F">
-      <div class="tool-ico" style="background:#f3e8ff;color:#9333ea">📐</div>
-      <h2 class="tool-title">Resize to Custom Size</h2>
-      <p class="tool-desc">Enter any width × height and target file size — full manual control over your image.</p>
-    </a>
-
-    <!-- cm/inch/mm -->
-    <a class="tool-card" data-cat="dim" href="/resizer/?preset=resize-image-cm-inch-mm&w=600&h=600&minkb=0&maxkb=500&fmt=JPG&title=Resize+Image+in+cm%2C+inch+or+mm&canon=https%3A%2F%2Filovexams.in%2Fresize-image-cm-inch-mm%2F">
-      <div class="tool-ico" style="background:#fce7f3;color:#db2777">📏</div>
-      <h2 class="tool-title">Resize in cm / inch / mm</h2>
-      <p class="tool-desc">Resize an image by centimetres, inches or millimetres at your chosen DPI.</p>
-    </a>
-
-    <!-- Age Calculator -->
-    <a class="tool-card" data-cat="calc" href="/age-calculator/">
-      <div class="tool-ico" style="background:#dcfce7;color:#16a34a">🎂</div>
-      <p class="tool-title">Age Calculator</p>
-      <p class="tool-desc">Find your exact age in years, months &amp; days. Check eligibility for UPSC, SSC, IBPS, SBI &amp; 50+ exams.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Compress Image -->
-    <a class="tool-card" data-cat="convert" href="/compress-image/">
-      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">🗜</div>
-      <p class="tool-title">Compress Image</p>
-      <p class="tool-desc">Reduce image file size online. Quality slider, real-time preview. Works on JPG, PNG &amp; WEBP — no upload.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- PNG to JPG -->
-    <a class="tool-card" data-cat="convert" href="/png-to-jpg/">
-      <div class="tool-ico" style="background:#fffbeb;color:#d97706">🖼</div>
-      <p class="tool-title">PNG to JPG</p>
-      <p class="tool-desc">Convert PNG images to JPEG online. Set quality &amp; background colour for transparent PNGs. Instant download.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- JPG to PNG -->
-    <a class="tool-card" data-cat="convert" href="/jpg-to-png/">
-      <div class="tool-ico" style="background:#fffbeb;color:#d97706">📷</div>
-      <p class="tool-title">JPG to PNG</p>
-      <p class="tool-desc">Convert JPEG images to lossless PNG format online, free. No upload — runs entirely in your browser.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Image to PDF -->
-    <a class="tool-card" data-cat="convert" href="/image-to-pdf/">
-      <div class="tool-ico" style="background:#fff5f5;color:#dc2626">📄</div>
-      <p class="tool-title">Image to PDF</p>
-      <p class="tool-desc">Convert JPG &amp; PNG images to PDF. Combine multiple images into one PDF — no upload, free.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Word Counter -->
-    <a class="tool-card" data-cat="text" href="/word-counter/">
-      <div class="tool-ico" style="background:#f0f9ff;color:#0284c7">📝</div>
-      <p class="tool-title">Word Counter</p>
-      <p class="tool-desc">Count words, characters, sentences &amp; paragraphs instantly. UPSC &amp; SSC answer-writing practice.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Percentage Calculator -->
-    <a class="tool-card" data-cat="calc" href="/percentage-calculator/">
-      <div class="tool-ico" style="background:#eef2ff;color:#4f46e5">%</div>
-      <p class="tool-title">Percentage Calculator</p>
-      <p class="tool-desc">Calculate marks percentage, percentage increase/decrease, discount &amp; more. 5 calculator modes in one.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- CGPA to Percentage -->
-    <a class="tool-card" data-cat="calc" href="/cgpa-to-percentage/">
-      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🎓</div>
-      <p class="tool-title">CGPA to Percentage</p>
-      <p class="tool-desc">Convert CGPA to percentage for CBSE, Anna University, VTU, Mumbai University, AKTU &amp; more.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Marks Calculator -->
-    <a class="tool-card" data-cat="calc" href="/marks-calculator/">
-      <div class="tool-ico" style="background:#fffbeb;color:#d97706">📊</div>
-      <p class="tool-title">Marks Calculator</p>
-      <p class="tool-desc">Enter subject-wise marks to get total, aggregate percentage &amp; CBSE grade. Works for any board exam.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- BMI Calculator -->
-    <a class="tool-card" data-cat="calc" href="/bmi-calculator/">
-      <div class="tool-ico" style="background:#fff1f2;color:#e11d48">⚖️</div>
-      <p class="tool-title">BMI Calculator</p>
-      <p class="tool-desc">Calculate BMI &amp; check against NDA, Indian Army, CRPF &amp; Police physical fitness standards.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- UPSC Age Calculator -->
-    <a class="tool-card" data-cat="calc" href="/age-calculator-for-upsc/">
-      <div class="tool-ico" style="background:#fef9c3;color:#854d0e">🏛</div>
-      <p class="tool-title">UPSC Age Calculator</p>
-      <p class="tool-desc">Check age eligibility for UPSC Civil Services IAS/IPS/IFS. Calculates attempts remaining &amp; age relaxation.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- NDA Age Calculator -->
-    <a class="tool-card" data-cat="calc" href="/age-calculator-for-nda/">
-      <div class="tool-ico" style="background:#e0f2fe;color:#0369a1">🪖</div>
-      <p class="tool-title">NDA Age Calculator</p>
-      <p class="tool-desc">Check age eligibility for NDA exam. Calculates if you meet the 16.5–19.5 year age window for Army/Air Force/Navy.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- UPSC Photo Size -->
-    <a class="tool-card" data-cat="exam" href="/upsc-photo-size/">
+      <a class="tool-card" data-cat="exam" href="/upsc-photo-size/">
       <div class="tool-ico" style="background:#f3e8ff;color:#7e22ce">📸</div>
       <p class="tool-title">UPSC Photo Size Guide</p>
       <p class="tool-desc">Exact photo &amp; signature pixel dimensions and KB limits for UPSC CSE online application. Resize directly.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- NEET Photo Size -->
-    <a class="tool-card" data-cat="exam" href="/neet-photo-size/">
+      <a class="tool-card" data-cat="exam" href="/neet-photo-size/">
       <div class="tool-ico" style="background:#fce7f3;color:#be185d">🩺</div>
       <p class="tool-title">NEET Photo Size Guide</p>
       <p class="tool-desc">NEET-UG photo &amp; signature size requirements. Get your image within exact pixel and KB limits instantly.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-
-    <!-- Compress PDF -->
-    <a class="tool-card" data-cat="pdf" href="/compress-pdf/">
-      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">🗜</div>
-      <p class="tool-title">Compress PDF</p>
-      <p class="tool-desc">Reduce PDF size to 100 KB, 200 KB, 500 KB or 1 MB for exam forms — on your device.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Compress PDF to 200 KB -->
-    <a class="tool-card" data-cat="pdf" href="/compress-pdf-to-200kb/">
-      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📉</div>
-      <p class="tool-title">Compress PDF to 200 KB</p>
-      <p class="tool-desc">Fit certificates and mark sheets under a 200 KB upload limit in one tap.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Merge PDF -->
-    <a class="tool-card" data-cat="pdf" href="/merge-pdf/">
-      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">➕</div>
-      <p class="tool-title">Merge PDF</p>
-      <p class="tool-desc">Combine several PDFs into one, in any order.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Split PDF -->
-    <a class="tool-card" data-cat="pdf" href="/split-pdf/">
-      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">✂️</div>
-      <p class="tool-title">Split PDF</p>
-      <p class="tool-desc">Extract the pages you need, or split every page into its own PDF.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- PDF to JPG -->
-    <a class="tool-card" data-cat="pdf" href="/pdf-to-jpg/">
-      <div class="tool-ico" style="background:#fff7ed;color:#ea580c">🖼</div>
-      <p class="tool-title">PDF to JPG</p>
-      <p class="tool-desc">Convert PDF pages to high-quality JPG images.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Organise PDF Pages -->
-    <a class="tool-card" data-cat="pdf" href="/organize-pdf/">
-      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🗂</div>
-      <p class="tool-title">Organise PDF Pages</p>
-      <p class="tool-desc">Reorder, delete or rotate pages with a visual preview.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Rotate PDF -->
-    <a class="tool-card" data-cat="pdf" href="/rotate-pdf/">
-      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🔄</div>
-      <p class="tool-title">Rotate PDF</p>
-      <p class="tool-desc">Fix sideways or upside-down scanned pages permanently.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Add Watermark to PDF -->
-    <a class="tool-card" data-cat="pdf" href="/add-watermark-to-pdf/">
-      <div class="tool-ico" style="background:#fef2f2;color:#dc2626">💧</div>
-      <p class="tool-title">Add Watermark to PDF</p>
-      <p class="tool-desc">Stamp "Only for verification" on ID and certificate copies.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Add Page Numbers -->
-    <a class="tool-card" data-cat="pdf" href="/add-page-numbers-to-pdf/">
-      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">🔢</div>
-      <p class="tool-title">Add Page Numbers</p>
-      <p class="tool-desc">Number PDF pages — "Page 1 of N" and more.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Unlock PDF -->
-    <a class="tool-card" data-cat="pdf" href="/unlock-pdf/">
-      <div class="tool-ico" style="background:#fef3c7;color:#b45309">🔓</div>
-      <p class="tool-title">Unlock PDF</p>
-      <p class="tool-desc">Remove a PDF password you know — e-Aadhaar, bank statements.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Sign PDF -->
-    <a class="tool-card" data-cat="pdf" href="/sign-pdf/">
-      <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">✒️</div>
-      <p class="tool-title">Sign PDF</p>
-      <p class="tool-desc">Draw or upload your signature and place it on any page.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- PDF to Black & White -->
-    <a class="tool-card" data-cat="pdf" href="/pdf-to-black-and-white/">
-      <div class="tool-ico" style="background:#f1f5f9;color:#334155">◐</div>
-      <p class="tool-title">PDF to Black &amp; White</p>
-      <p class="tool-desc">Grayscale or high-contrast — crisper scans, smaller files.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Resize PDF to A4 -->
-    <a class="tool-card" data-cat="pdf" href="/resize-pdf-to-a4/">
-      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">📏</div>
-      <p class="tool-title">Resize PDF to A4</p>
-      <p class="tool-desc">Fit every page onto A4, Letter or Legal paper.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- PDF to Text -->
-    <a class="tool-card" data-cat="pdf" href="/extract-text-from-pdf/">
-      <div class="tool-ico" style="background:#f8fafc;color:#475569">📝</div>
-      <p class="tool-title">PDF to Text</p>
-      <p class="tool-desc">Copy all text from a PDF or save it as .txt.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- HEIC to JPG -->
-    <a class="tool-card" data-cat="convert" href="/heic-to-jpg/">
-      <div class="tool-ico" style="background:#fdf4ff;color:#a21caf">📱</div>
-      <p class="tool-title">HEIC to JPG</p>
-      <p class="tool-desc">Convert iPhone photos to JPG — portals don't accept HEIC.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- WEBP to JPG -->
-    <a class="tool-card" data-cat="convert" href="/webp-to-jpg/">
-      <div class="tool-ico" style="background:#fffbeb;color:#d97706">🔁</div>
-      <p class="tool-title">WEBP to JPG</p>
-      <p class="tool-desc">Convert WEBP, PNG, GIF and BMP images to JPG in bulk.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- JPG Resize -->
-    <a class="tool-card" data-cat="dim convert" href="/jpg-resize/">
-      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📐</div>
-      <p class="tool-title">JPG Resize</p>
-      <p class="tool-desc">Resize a JPG to exact pixels, cm or inches and a KB limit.</p>
-      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
-    </a>
-
-    <!-- Photo with Name & Date -->
-    <a class="tool-card" data-cat="exam" href="/photo-with-name-and-date/">
+      <a class="tool-card" data-cat="exam" href="/photo-with-name-and-date/">
       <div class="tool-ico" style="background:#fce7f3;color:#be185d">🏷</div>
       <p class="tool-title">Photo with Name &amp; Date</p>
       <p class="tool-desc">Print your name and photo date below your passport photo, sized for forms.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- Join Photo & Signature -->
-    <a class="tool-card" data-cat="exam" href="/join-photo-and-signature/">
+      <a class="tool-card" data-cat="exam" href="/join-photo-and-signature/">
       <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">🧩</div>
       <p class="tool-title">Join Photo &amp; Signature</p>
       <p class="tool-desc">Combine photo and signature into one image under your KB limit.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- Resize Mark Sheet -->
-    <a class="tool-card" data-cat="exam kb" href="/resize-marksheet-for-online-form/">
+      <a class="tool-card" data-cat="exam kb" href="/resize-marksheet-for-online-form/">
       <div class="tool-ico" style="background:#ecfdf5;color:#059669">📄</div>
       <p class="tool-title">Resize Mark Sheet</p>
       <p class="tool-desc">Compress a scanned mark sheet to 100–500 KB for online forms.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- Resize Certificate -->
-    <a class="tool-card" data-cat="exam kb" href="/resize-certificate-for-online-form/">
+      <a class="tool-card" data-cat="exam kb" href="/resize-certificate-for-online-form/">
       <div class="tool-ico" style="background:#ecfdf5;color:#059669">📜</div>
       <p class="tool-title">Resize Certificate</p>
       <p class="tool-desc">Caste, EWS, domicile certificates under the portal's KB limit.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- Exam Score Calculators -->
-    <a class="tool-card" data-cat="calc" href="/exam-calculators/">
+    </div>
+  </section>
+  <section class="tool-sec" id="pdf">
+    <h2 class="sec-h">📄 PDF tools</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="pdf" href="/compress-pdf/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">🗜</div>
+      <p class="tool-title">Compress PDF</p>
+      <p class="tool-desc">Reduce PDF size to 100 KB, 200 KB, 500 KB or 1 MB for exam forms — on your device.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/compress-pdf-to-200kb/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📉</div>
+      <p class="tool-title">Compress PDF to 200 KB</p>
+      <p class="tool-desc">Fit certificates and mark sheets under a 200 KB upload limit in one tap.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/merge-pdf/">
+      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">➕</div>
+      <p class="tool-title">Merge PDF</p>
+      <p class="tool-desc">Combine several PDFs into one, in any order.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/split-pdf/">
+      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">✂️</div>
+      <p class="tool-title">Split PDF</p>
+      <p class="tool-desc">Extract the pages you need, or split every page into its own PDF.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/pdf-to-jpg/">
+      <div class="tool-ico" style="background:#fff7ed;color:#ea580c">🖼</div>
+      <p class="tool-title">PDF to JPG</p>
+      <p class="tool-desc">Convert PDF pages to high-quality JPG images.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/organize-pdf/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🗂</div>
+      <p class="tool-title">Organise PDF Pages</p>
+      <p class="tool-desc">Reorder, delete or rotate pages with a visual preview.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/rotate-pdf/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🔄</div>
+      <p class="tool-title">Rotate PDF</p>
+      <p class="tool-desc">Fix sideways or upside-down scanned pages permanently.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/add-watermark-to-pdf/">
+      <div class="tool-ico" style="background:#fef2f2;color:#dc2626">💧</div>
+      <p class="tool-title">Add Watermark to PDF</p>
+      <p class="tool-desc">Stamp "Only for verification" on ID and certificate copies.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/add-page-numbers-to-pdf/">
+      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">🔢</div>
+      <p class="tool-title">Add Page Numbers</p>
+      <p class="tool-desc">Number PDF pages — "Page 1 of N" and more.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/unlock-pdf/">
+      <div class="tool-ico" style="background:#fef3c7;color:#b45309">🔓</div>
+      <p class="tool-title">Unlock PDF</p>
+      <p class="tool-desc">Remove a PDF password you know — e-Aadhaar, bank statements.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/sign-pdf/">
+      <div class="tool-ico" style="background:#e0e7ff;color:#4f46e5">✒️</div>
+      <p class="tool-title">Sign PDF</p>
+      <p class="tool-desc">Draw or upload your signature and place it on any page.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/pdf-to-black-and-white/">
+      <div class="tool-ico" style="background:#f1f5f9;color:#334155">◐</div>
+      <p class="tool-title">PDF to Black &amp; White</p>
+      <p class="tool-desc">Grayscale or high-contrast — crisper scans, smaller files.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/resize-pdf-to-a4/">
+      <div class="tool-ico" style="background:#ecfeff;color:#0891b2">📏</div>
+      <p class="tool-title">Resize PDF to A4</p>
+      <p class="tool-desc">Fit every page onto A4, Letter or Legal paper.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="pdf" href="/extract-text-from-pdf/">
+      <div class="tool-ico" style="background:#f8fafc;color:#475569">📝</div>
+      <p class="tool-title">PDF to Text</p>
+      <p class="tool-desc">Copy all text from a PDF or save it as .txt.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="kb">
+    <h2 class="sec-h">💾 Resize to exact KB</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-10kb&free=1&maxkb=10&title=Resize+Image+to+10+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-10kb%2F">
+      <div class="tool-ico" style="background:#fee2e2;color:#dc2626">💾</div>
+      <h2 class="tool-title">Resize Image to 10 KB</h2>
+      <p class="tool-desc">Compress any photo down to 10 KB while keeping it as sharp as possible.</p>
+    </a>
+      <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-20kb&free=1&maxkb=20&title=Resize+Image+to+20+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-20kb%2F">
+      <div class="tool-ico" style="background:#ffedd5;color:#ea580c">💾</div>
+      <h2 class="tool-title">Resize Image to 20 KB</h2>
+      <p class="tool-desc">Shrink your image to exactly 20 KB — a common limit for online exam &amp; ID forms.</p>
+    </a>
+      <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-100kb&free=1&maxkb=100&title=Resize+Image+to+100+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-100kb%2F">
+      <div class="tool-ico" style="background:#fef3c7;color:#d97706">💾</div>
+      <h2 class="tool-title">Resize Image to 100 KB</h2>
+      <p class="tool-desc">Reduce any image file size to 100 KB in one click without losing clarity.</p>
+    </a>
+      <a class="tool-card" data-cat="kb" href="/resizer/?preset=resize-image-to-150kb&free=1&maxkb=150&title=Resize+Image+to+150+KB&canon=https%3A%2F%2Filovexams.in%2Fresize-image-to-150kb%2F">
+      <div class="tool-ico" style="background:#fef9c3;color:#ca8a04">💾</div>
+      <h2 class="tool-title">Resize Image to 150 KB</h2>
+      <p class="tool-desc">Compress your photo to 150 KB while preserving crisp, upload-ready quality.</p>
+    </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="id">
+    <h2 class="sec-h">🪪 ID cards</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="id" href="/resizer/?preset=voter-id-photo-resize&w=200&h=230&minkb=10&maxkb=100&fmt=JPG&title=Voter+ID+Photo+Resize+%28200%C3%97230+px%29&canon=https%3A%2F%2Filovexams.in%2Fvoter-id-photo-resize%2F">
+      <div class="tool-ico" style="background:#ccfbf1;color:#0d9488">🪪</div>
+      <h2 class="tool-title">Voter ID Photo Resize</h2>
+      <p class="tool-desc">Resize your photo to the size accepted for Voter ID / EPIC card online applications.</p>
+    </a>
+      <a class="tool-card" data-cat="id dim" href="/resizer/?preset=aadhaar-card-resize-cm-inch-mm&w=1011&h=638&minkb=20&maxkb=300&fmt=JPG&title=Aadhaar+Card+Resize+in+cm+%2F+inch+%2F+mm&canon=https%3A%2F%2Filovexams.in%2Faadhaar-card-resize-cm-inch-mm%2F">
+      <div class="tool-ico" style="background:#dcfce7;color:#16a34a">🆔</div>
+      <h2 class="tool-title">Aadhaar Card Resize</h2>
+      <p class="tool-desc">Resize an Aadhaar card image in centimetres, inches or millimetres at print-ready DPI.</p>
+    </a>
+      <a class="tool-card" data-cat="id dim" href="/resizer/?preset=voter-id-card-resize-cm-inch-mm&w=1011&h=638&minkb=20&maxkb=300&fmt=JPG&title=Voter+ID+Card+Resize+in+cm+%2F+inch+%2F+mm&canon=https%3A%2F%2Filovexams.in%2Fvoter-id-card-resize-cm-inch-mm%2F">
+      <div class="tool-ico" style="background:#cffafe;color:#0891b2">📇</div>
+      <h2 class="tool-title">Voter ID Card Resize</h2>
+      <p class="tool-desc">Resize a Voter ID card image by cm, inch or mm — perfect for printing &amp; documents.</p>
+    </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="dim">
+    <h2 class="sec-h">📐 Resize by size — px, cm, inch</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="dim" href="/resizer/?preset=resize-image-custom-size&w=600&h=600&minkb=0&maxkb=500&fmt=JPG&title=Resize+Image+to+Custom+Size+%28px%29&canon=https%3A%2F%2Filovexams.in%2Fresize-image-custom-size%2F">
+      <div class="tool-ico" style="background:#f3e8ff;color:#9333ea">📐</div>
+      <h2 class="tool-title">Resize to Custom Size</h2>
+      <p class="tool-desc">Enter any width × height and target file size — full manual control over your image.</p>
+    </a>
+      <a class="tool-card" data-cat="dim" href="/resizer/?preset=resize-image-cm-inch-mm&w=600&h=600&minkb=0&maxkb=500&fmt=JPG&title=Resize+Image+in+cm%2C+inch+or+mm&canon=https%3A%2F%2Filovexams.in%2Fresize-image-cm-inch-mm%2F">
+      <div class="tool-ico" style="background:#fce7f3;color:#db2777">📏</div>
+      <h2 class="tool-title">Resize in cm / inch / mm</h2>
+      <p class="tool-desc">Resize an image by centimetres, inches or millimetres at your chosen DPI.</p>
+    </a>
+      <a class="tool-card" data-cat="dim convert" href="/jpg-resize/">
+      <div class="tool-ico" style="background:#eff6ff;color:#2563eb">📐</div>
+      <p class="tool-title">JPG Resize</p>
+      <p class="tool-desc">Resize a JPG to exact pixels, cm or inches and a KB limit.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="convert">
+    <h2 class="sec-h">🔁 Convert &amp; compress</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="convert" href="/compress-image/">
+      <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">🗜</div>
+      <p class="tool-title">Compress Image</p>
+      <p class="tool-desc">Reduce image file size online. Quality slider, real-time preview. Works on JPG, PNG &amp; WEBP — no upload.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="convert" href="/png-to-jpg/">
+      <div class="tool-ico" style="background:#fffbeb;color:#d97706">🖼</div>
+      <p class="tool-title">PNG to JPG</p>
+      <p class="tool-desc">Convert PNG images to JPEG online. Set quality &amp; background colour for transparent PNGs. Instant download.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="convert" href="/jpg-to-png/">
+      <div class="tool-ico" style="background:#fffbeb;color:#d97706">📷</div>
+      <p class="tool-title">JPG to PNG</p>
+      <p class="tool-desc">Convert JPEG images to lossless PNG format online, free. No upload — runs entirely in your browser.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="convert" href="/image-to-pdf/">
+      <div class="tool-ico" style="background:#fff5f5;color:#dc2626">📄</div>
+      <p class="tool-title">Image to PDF</p>
+      <p class="tool-desc">Convert JPG &amp; PNG images to PDF. Combine multiple images into one PDF — no upload, free.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="convert" href="/heic-to-jpg/">
+      <div class="tool-ico" style="background:#fdf4ff;color:#a21caf">📱</div>
+      <p class="tool-title">HEIC to JPG</p>
+      <p class="tool-desc">Convert iPhone photos to JPG — portals don't accept HEIC.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="convert" href="/webp-to-jpg/">
+      <div class="tool-ico" style="background:#fffbeb;color:#d97706">🔁</div>
+      <p class="tool-title">WEBP to JPG</p>
+      <p class="tool-desc">Convert WEBP, PNG, GIF and BMP images to JPG in bulk.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="calc">
+    <h2 class="sec-h">🧮 Exam calculators</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="calc" href="/age-calculator/">
+      <div class="tool-ico" style="background:#dcfce7;color:#16a34a">🎂</div>
+      <p class="tool-title">Age Calculator</p>
+      <p class="tool-desc">Find your exact age in years, months &amp; days. Check eligibility for UPSC, SSC, IBPS, SBI &amp; 50+ exams.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/percentage-calculator/">
+      <div class="tool-ico" style="background:#eef2ff;color:#4f46e5">%</div>
+      <p class="tool-title">Percentage Calculator</p>
+      <p class="tool-desc">Calculate marks percentage, percentage increase/decrease, discount &amp; more. 5 calculator modes in one.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/cgpa-to-percentage/">
+      <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">🎓</div>
+      <p class="tool-title">CGPA to Percentage</p>
+      <p class="tool-desc">Convert CGPA to percentage for CBSE, Anna University, VTU, Mumbai University, AKTU &amp; more.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/marks-calculator/">
+      <div class="tool-ico" style="background:#fffbeb;color:#d97706">📊</div>
+      <p class="tool-title">Marks Calculator</p>
+      <p class="tool-desc">Enter subject-wise marks to get total, aggregate percentage &amp; CBSE grade. Works for any board exam.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/bmi-calculator/">
+      <div class="tool-ico" style="background:#fff1f2;color:#e11d48">⚖️</div>
+      <p class="tool-title">BMI Calculator</p>
+      <p class="tool-desc">Calculate BMI &amp; check against NDA, Indian Army, CRPF &amp; Police physical fitness standards.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/age-calculator-for-upsc/">
+      <div class="tool-ico" style="background:#fef9c3;color:#854d0e">🏛</div>
+      <p class="tool-title">UPSC Age Calculator</p>
+      <p class="tool-desc">Check age eligibility for UPSC Civil Services IAS/IPS/IFS. Calculates attempts remaining &amp; age relaxation.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/age-calculator-for-nda/">
+      <div class="tool-ico" style="background:#e0f2fe;color:#0369a1">🪖</div>
+      <p class="tool-title">NDA Age Calculator</p>
+      <p class="tool-desc">Check age eligibility for NDA exam. Calculates if you meet the 16.5–19.5 year age window for Army/Air Force/Navy.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+      <a class="tool-card" data-cat="calc" href="/exam-calculators/">
       <div class="tool-ico" style="background:#fefce8;color:#ca8a04">🧮</div>
       <p class="tool-title">Exam Score Calculators</p>
       <p class="tool-desc">NEET, JEE, SSC, bank, UPSC &amp; CAT score calculators with negative marking.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- NEET Score Calculator -->
-    <a class="tool-card" data-cat="calc" href="/neet-score-calculator/">
+      <a class="tool-card" data-cat="calc" href="/neet-score-calculator/">
       <div class="tool-ico" style="background:#fce7f3;color:#be185d">🩺</div>
       <p class="tool-title">NEET Score Calculator</p>
       <p class="tool-desc">Calculate NEET marks from the answer key (+4 / −1) with exam pattern.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- JEE Main Score Calculator -->
-    <a class="tool-card" data-cat="calc" href="/jee-main-score-calculator/">
+      <a class="tool-card" data-cat="calc" href="/jee-main-score-calculator/">
       <div class="tool-ico" style="background:#eff6ff;color:#2563eb">⚙️</div>
       <p class="tool-title">JEE Main Score Calculator</p>
       <p class="tool-desc">Calculate JEE Main marks subject-wise (+4 / −1).</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- JEE Main Rank Predictor -->
-    <a class="tool-card" data-cat="calc" href="/jee-main-rank-predictor/">
+      <a class="tool-card" data-cat="calc" href="/jee-main-rank-predictor/">
       <div class="tool-ico" style="background:#eff6ff;color:#2563eb">🏆</div>
       <p class="tool-title">JEE Main Rank Predictor</p>
       <p class="tool-desc">Convert your JEE Main percentile to an expected All India Rank.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- SSC CGL Score Calculator -->
-    <a class="tool-card" data-cat="calc" href="/ssc-cgl-score-calculator/">
+      <a class="tool-card" data-cat="calc" href="/ssc-cgl-score-calculator/">
       <div class="tool-ico" style="background:#f0fdf4;color:#16a34a">📊</div>
       <p class="tool-title">SSC CGL Score Calculator</p>
       <p class="tool-desc">Tier 1 marks with −0.5 negative marking, section-wise.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- UPSC Prelims Score Calculator -->
-    <a class="tool-card" data-cat="calc" href="/upsc-prelims-score-calculator/">
+      <a class="tool-card" data-cat="calc" href="/upsc-prelims-score-calculator/">
       <div class="tool-ico" style="background:#fff7ed;color:#ea580c">🏛</div>
       <p class="tool-title">UPSC Prelims Score Calculator</p>
       <p class="tool-desc">GS Paper I score and CSAT qualifying check.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
-
-    <!-- Typing Test -->
-    <a class="tool-card" data-cat="calc text" href="/typing-test/">
+      <a class="tool-card" data-cat="calc text" href="/typing-test/">
       <div class="tool-ico" style="background:#f5f3ff;color:#7c3aed">⌨️</div>
       <p class="tool-title">Typing Test</p>
       <p class="tool-desc">Practise for SSC skill tests — live WPM, accuracy and KDPH.</p>
       <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
     </a>
+    </div>
+  </section>
+  <section class="tool-sec" id="text">
+    <h2 class="sec-h">✍️ Text tools</h2>
+    <div class="sec-grid">
+      <a class="tool-card" data-cat="text" href="/word-counter/">
+      <div class="tool-ico" style="background:#f0f9ff;color:#0284c7">📝</div>
+      <p class="tool-title">Word Counter</p>
+      <p class="tool-desc">Count words, characters, sentences &amp; paragraphs instantly. UPSC &amp; SSC answer-writing practice.</p>
+      <span class="tool-badge" style="margin-top:12px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 10px;border-radius:6px">New</span>
+    </a>
+    </div>
+  </section>
   </div>
 
   <!-- empty state -->
@@ -781,19 +740,10 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
 </div></footer>
 
 <script>
-  function filterCat(cat, btn) {
-    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-    // If no button passed (e.g. called from nav dropdown), find the matching pill
-    const activePill = btn || document.querySelector('.cat-pill[data-cat="' + cat + '"]');
-    if (activePill) activePill.classList.add('active');
-    let shown = 0;
-    document.querySelectorAll('.tool-card').forEach(card => {
-      const cats = (card.dataset.cat || '').split(' ');
-      const show = cat === 'all' || cats.includes(cat);
-      card.style.display = show ? '' : 'none';
-      if (show) shown++;
-    });
-    document.getElementById('empty').style.display = shown ? 'none' : 'block';
+  function filterCat(cat) {
+    const el = document.getElementById(cat === 'all' || cat === 'tools-grid' ? 'grid' : cat);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
   }
 
   // Activate filter from URL hash (#id / #kb / #dim) — used by nav dropdown links

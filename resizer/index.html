@@ -7,8 +7,6 @@
   <meta name="google-site-verification" content="0226qH4u04EiETLZppAKo_b77dJGdbbTM64xQ4egLjU" />
 
   <!-- ═══ PERFORMANCE: PRECONNECT ═══ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
@@ -66,6 +64,15 @@
   <script>
     window.IS_EMBED = /[?&]embed=1(&|$)/.test(location.search);
     document.documentElement.classList.add('simple');
+    // Old tool/exam links → their landing page, before anything is drawn (?stay=1 opts out)
+    (function () {
+      var p = new URLSearchParams(location.search), go = null;
+      if (window.IS_EMBED || p.get('stay')) return;
+      try { var c = p.get('preset') && p.get('canon') && new URL(p.get('canon'), location.origin); if (c && c.origin === location.origin && c.pathname !== location.pathname) go = c.pathname; } catch (e) {}
+      var ex = p.get('exam');
+      if (!go && ex && /^[a-z0-9-]+$/.test(ex)) go = '/resizer/' + ex + '-' + (p.get('document') === 'signature' ? 'signature' : 'photo') + '-resize/';
+      if (go) { document.documentElement.style.visibility = 'hidden'; location.replace(go); }
+    })();
     if (window.IS_EMBED) {
       document.documentElement.classList.add('embed');
       var m = document.querySelector('meta[name="robots"]');
@@ -83,12 +90,12 @@
     }
   </script>
 
-  <link rel="stylesheet" href="/assets/tw.css?v=f6340c54">
+  <link rel="stylesheet" href="/assets/tw.css?v=21af1c04">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" defer></script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    
     * { box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #eff6ff; }
 
@@ -260,17 +267,19 @@
     html.simple .cfg-hidden { display: none !important; }
     html.simple #main-panels > .grid > :last-child { order: -1; }
     .cfg-collapsed > .p-5 { display: none !important; }
+    .cfg-hidden { display: none !important; }
   </style>
 
 
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
 <style id="ilx-nav-css">
 /* ── Theme polish (all pages) ── */
 html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
-body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif!important}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::selection{background:#bfdbfe;color:#0f172a}
 :focus-visible{outline:3px solid #60a5fa;outline-offset:2px;border-radius:6px}
+.ad-slot:has(ins[data-ad-status="unfilled"]),.ad-wrap:has(ins[data-ad-status="unfilled"]){display:none!important}
 a,button{-webkit-tap-highlight-color:transparent}
 .hero:not(.lt){background:radial-gradient(900px 340px at 8% -20%,rgba(59,130,246,.34),transparent 62%),radial-gradient(700px 300px at 100% -10%,rgba(236,72,153,.16),transparent 60%),linear-gradient(135deg,#0a0e1a 0%,#0d1629 60%,#0a1828 100%)!important}
 [id]{scroll-margin-top:76px}
@@ -442,13 +451,13 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
       <!-- ══════════════ LEFT: CONFIGURE ══════════════ -->
-      <div class="card flex flex-col">
+      <div class="card flex flex-col cfg-collapsed cfg-hidden">
         <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
           <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#64748b">⚙</span>
           <span class="font-bold text-slate-700">Size settings</span>
-          <button type="button" id="cfg-toggle" onclick="toggleCfg()" class="ml-auto text-xs font-semibold" style="color:var(--em);display:none">Edit size</button>
+          <button type="button" id="cfg-toggle" onclick="toggleCfg()" class="ml-auto text-xs font-semibold" style="color:var(--em)">Edit size</button>
         </div>
-        <p id="cfg-note" class="px-6 pt-3 text-xs text-slate-500" style="display:none;margin:0">✓ Already set to the official size. Change it only if your notification says something different.</p>
+        <p id="cfg-note" class="px-6 pt-3 pb-3 text-xs text-slate-500" style="margin:0">✓ Already set to the official size. Change it only if your notification says something different.</p>
 
         <div class="p-5 flex flex-col gap-5 flex-1">
 
@@ -617,7 +626,7 @@ if(location.pathname==='/'&&a.getAttribute('href').indexOf('/#')===0&&typeof win
             </div>
             <p class="text-center text-sm" style="margin:0">
               <button type="button" class="font-semibold" style="color:var(--em);background:none;border:0;cursor:pointer;padding:6px" onclick="document.getElementById('cam-input').click()">📷 Take a photo instead</button>
-              <span id="edit-size-wrap" style="display:none"><br><button type="button" class="font-semibold" style="color:#64748b;background:none;border:0;cursor:pointer;padding:6px" onclick="toggleCfg()">Different size? Edit</button></span>
+              <span id="edit-size-wrap"><br><button type="button" class="font-semibold" style="color:#64748b;background:none;border:0;cursor:pointer;padding:6px" onclick="toggleCfg()">Different size? Edit</button></span>
             </p>
             <div id="working" class="text-sm font-semibold text-center rounded-xl py-3" style="display:none;background:#eff6ff;color:#1e40af">⏳ Resizing your photo…</div>
             <p id="up-error" class="text-sm font-semibold rounded-lg px-3 py-2" style="display:none;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca"></p>
@@ -1136,7 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   readURLParams();
   // If no exam came from URL, pre-select a random popular exam so the
   // page is immediately useful rather than showing a blank hint
-  if (!S.exam) {
+  if (!S.exam && IS_EMBED) {
     const slug = FEATURED[Math.floor(Math.random() * FEATURED.length)];
     const exam = EXAMS.find(e => e.slug === slug);
     // skipURL=true — don't pollute the address bar; S.autoPick — don't scroll the visitor away from the top
@@ -1378,6 +1387,10 @@ function renderGrid(display, isDefault, hiddenCount) {
 // ────────────────────────────────────────────────────────────────────
 
 function selectExam(id, skipURL) {
+  if (!IS_EMBED && !skipURL && id !== 99999 && !new URLSearchParams(location.search).get('stay')) {
+    const e = EXAMS.find(x => x.id === id);
+    if (e) { location.href = `/resizer/${e.slug}-${S.doc === 'signature' ? 'signature' : 'photo'}-resize/`; return; }
+  }
   S.exam   = EXAMS.find(e => e.id === id) || null;
   S.edited = false;
   S.flipX  = 1;
