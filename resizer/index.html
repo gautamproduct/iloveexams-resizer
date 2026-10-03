@@ -65,6 +65,7 @@
        Nav, SEO content and ads are hidden there — the parent page carries them. -->
   <script>
     window.IS_EMBED = /[?&]embed=1(&|$)/.test(location.search);
+    document.documentElement.classList.add('simple');
     if (window.IS_EMBED) {
       document.documentElement.classList.add('embed');
       var m = document.querySelector('meta[name="robots"]');
@@ -237,25 +238,27 @@
     html.embed #card-exam-row, html.embed #engine-faq { display: none !important; }
     html.embed body > .max-w-5xl { padding: 12px !important; max-width: none; }
     /* Specs are preset on landing pages — on phones show the upload card first */
-    html.embed #main-panels > .grid { grid-template-columns: 1fr !important; }
+    html.simple #main-panels > .grid { grid-template-columns: 1fr !important; }
     .doc-tabs, .spec-line { display: none; }
-    html.embed .doc-tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 10px 12px 0; }
-    html.embed .doc-tabs > * { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 11px 6px; border-radius: 12px; border: 1.5px solid #e2e8f0; background: #f8fafc; color: #334155; font-size: 13.5px; font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap; }
-    html.embed .doc-tabs > .on { background: #2563eb; border-color: #2563eb; color: #fff; box-shadow: 0 6px 16px rgba(37,99,235,.25); }
-    html.embed .doc-tabs.tool-mode { display: none; }
-    html.embed .spec-line { display: block; margin: 0; text-align: center; font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: -.01em; }
-    html.embed .spec-line span { color: #64748b; font-weight: 600; }
-    html.embed #main-panels .card > .px-6.py-4 { display: none; }
+    html.simple .doc-tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 10px 12px 0; }
+    html.simple .doc-tabs > * { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 11px 6px; border-radius: 12px; border: 1.5px solid #e2e8f0; background: #f8fafc; color: #334155; font-size: 13.5px; font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap; }
+    html.simple .doc-tabs > .on { background: #2563eb; border-color: #2563eb; color: #fff; box-shadow: 0 6px 16px rgba(37,99,235,.25); }
+    html.simple .doc-tabs.tool-mode { display: none; }
+    html.simple .spec-line { display: block; margin: 0; text-align: center; font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: -.01em; }
+    html.simple .spec-line span { color: #64748b; font-weight: 600; }
+    html.simple #main-panels .card > .px-6.py-4 { display: none; }
     html.embed #main-panels .card { border: 0 !important; box-shadow: none !important; background: transparent; }
-    html.embed .doc-tabs > * > * { margin: 0; }
-    html.embed .doc-tabs > * { gap: 6px; }
-    html.embed #st-upload > .grid.grid-cols-3, html.embed #res-stats { display: none !important; }
+    html.simple:not(.embed) #main-panels { max-width: 640px; margin: 0 auto; }
+    html.simple:not(.embed) .doc-tabs { padding: 14px 14px 0; }
+    html.simple .doc-tabs > * > * { margin: 0; }
+    html.simple .doc-tabs > * { gap: 6px; }
+    html.simple #st-upload > .grid.grid-cols-3, html.simple #res-stats { display: none !important; }
     #res-compare > div:first-child { display: none; }
     #res-compare { grid-template-columns: 1fr !important; }
     #res-compare .result-img { max-height: 260px; }
     #res-compare .text-xs { display: none; }
-    html.embed .cfg-hidden { display: none !important; }
-    html.embed #main-panels > .grid > :last-child { order: -1; }
+    html.simple .cfg-hidden { display: none !important; }
+    html.simple #main-panels > .grid > :last-child { order: -1; }
     .cfg-collapsed > .p-5 { display: none !important; }
   </style>
 
@@ -1141,14 +1144,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Settings are preset (exam or tool) — fold them away; one tap ("Different size? Edit") opens them
+document.addEventListener('DOMContentLoaded', () => {
+  const t = document.getElementById('cfg-toggle'), n = document.getElementById('cfg-note');
+  if (t) { t.style.display = 'inline'; toggleCfg(false); t.closest('.card').classList.add('cfg-hidden'); }
+  if (n) n.style.display = 'block';
+  const w = document.getElementById('edit-size-wrap'); if (w) w.style.display = 'inline';
+});
 if (window.IS_EMBED) {
-  // Settings are preset by the landing page — fold them away (one tap to edit)
-  document.addEventListener('DOMContentLoaded', () => {
-    const t = document.getElementById('cfg-toggle'), n = document.getElementById('cfg-note');
-    if (t) { t.style.display = 'inline'; toggleCfg(false); t.closest('.card').classList.add('cfg-hidden'); }
-    if (n) n.style.display = 'block';
-    const w = document.getElementById('edit-size-wrap'); if (w) w.style.display = 'inline';
-  });
   // Measure the content itself (not the viewport) so the parent iframe can shrink as well as grow
   const postH = () => {
     const box = document.querySelector('body > .max-w-5xl');
@@ -1167,6 +1170,16 @@ if (window.IS_EMBED) {
 
 function readURLParams() {
   const p = new URLSearchParams(window.location.search);
+
+  // Standalone visits to a tool/exam URL go to its landing page (tool embedded there, plus guidance)
+  if (!IS_EMBED && !p.get('stay')) {
+    try {
+      const canon = p.get('preset') && p.get('canon') ? new URL(p.get('canon'), location.origin) : null;
+      if (canon && canon.origin === location.origin && canon.pathname !== location.pathname) { location.replace(canon.pathname); return; }
+      const ex = p.get('exam') && EXAMS.find(e => e.slug === p.get('exam'));
+      if (ex) { location.replace(`/resizer/${ex.slug}-${p.get('document') === 'signature' ? 'signature' : 'photo'}-resize/`); return; }
+    } catch (e) {}
+  }
 
   // ── Generic tool preset (voter id, aadhaar, resize-to-KB, custom, etc.) ──
   // e.g. /resizer/?preset=voter-id-photo&w=200&h=230&maxkb=50&title=Voter%20ID%20Photo
@@ -1236,6 +1249,7 @@ function applyPreset(p) {
   hide('selected-bar');       // "Change exam" bar
   hide('card-exam-row');      // "Change" row inside the Configure card
   hide('seo-specs');          // exam specs table (not relevant for KB/dimension tools)
+  hide('engine-faq');         // exam FAQs (not relevant for KB/dimension tools)
   hide('footer-exam-links');  // 80-exam footer link grid
 
   // Turn the hero into a clean tool header

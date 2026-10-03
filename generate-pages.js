@@ -152,7 +152,7 @@ function generatePage(exam, docType) {
 <main class="wrap">
   ${nd ? `<div class="answer" style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border-color:#fde68a"><p>⚠️ ${nd.rule} Use the tool below — it prints them for you and keeps the file in ${spec.min}–${spec.max} KB.</p></div>
   <section id="app" class="app" data-tool="photo-name-date" data-size="${spec.w}x${spec.h}" data-max="${spec.max}" data-min="${spec.min}" data-strip="${nd.strip}" style="min-height:190px"><noscript>Please enable JavaScript to use this tool.</noscript></section>
-  <p style="font-size:13.5px;margin:-8px 0 20px">Notification doesn't need name &amp; date? <a href="/resizer/?exam=${exam.slug}&amp;document=photo">Use the plain ${esc(short)} photo resizer →</a></p>`
+  <p style="font-size:13.5px;margin:-8px 0 20px">Notification doesn't need name &amp; date? <a href="/resizer/?exam=${exam.slug}&amp;document=photo&amp;stay=1">Use the plain ${esc(short)} photo resizer →</a></p>`
       : S.toolFrame(`/resizer/?exam=${exam.slug}&document=${docType}&embed=1`, `${short} ${label} Resizer — ${specStr(spec)}`)}
   ${seo.note ? `<p class="note" style="margin:0 0 20px">${seo.note}</p>` : ''}
   <div class="answer" id="answer"><p>${answer}</p></div>

@@ -44,7 +44,7 @@ const EXAMS = [
       { cat: 'J&K Domicile (General)', min: 21, max: 37, attempts: '6' },
     ],
     qual: "Bachelor's degree in any discipline from a recognised university. Final-year graduates can also apply.",
-    resizerLink: '/resizer/?document=photo',
+    resizerLink: '/resizer/upsc-photo-resize/',
     photoLink: '/upsc-photo-size/',
     faqs: [
       { q: 'What is the UPSC CSE age limit for general category?', a: 'The general category age limit for UPSC Civil Services Examination is 21 to 32 years as of 1 August of the exam year. You must be at least 21 but not have turned 32 before 2 August of the exam year.' },
@@ -75,7 +75,7 @@ const EXAMS = [
       { cat: 'Ex-Servicemen', min: 18, max: 35, attempts: 'No limit' },
     ],
     qual: "Bachelor's degree in any discipline from a recognised university.",
-    resizerLink: '/resizer/?preset=ssc-cgl-photo-resize',
+    resizerLink: '/resizer/ssc-cgl-photo-resize/',
     photoLink: '/ssc-cgl-photo-size/',
     faqs: [
       { q: 'What is the SSC CGL age limit 2025?', a: 'For most SSC CGL posts, the age limit is 18–32 years as of 1 January of the exam year. Some posts have different limits (e.g., Inspector posts: 18–30). Always check the official notification for post-wise age limits.' },
@@ -107,7 +107,7 @@ const EXAMS = [
       { cat: 'Ex-Servicemen/Commissioned Officers', min: 20, max: 35, attempts: 'No limit' },
     ],
     qual: "Bachelor's degree in any discipline from a recognised university, or equivalent qualification recognised by the Central Government.",
-    resizerLink: '/resizer/?preset=ibps-po-photo-resize',
+    resizerLink: '/resizer/ibps-po-photo-resize/',
     photoLink: '/ibps-po-photo-size/',
     faqs: [
       { q: 'What is the IBPS PO age limit 2025?', a: 'IBPS PO age limit is 20–30 years as of the notification date for general category candidates. OBC gets +3 years (up to 33), SC/ST gets +5 years (up to 35).' },
@@ -133,7 +133,7 @@ const EXAMS = [
       { cat: 'All candidates (no relaxation)', min: 16.5, max: 19.5, attempts: '2 per year' },
     ],
     qual: 'Class 12 (10+2) pass or appearing. For Army: any stream. For Navy/Air Force: Physics and Mathematics are mandatory subjects in 12th.',
-    resizerLink: '/resizer/?preset=nda-photo-resize',
+    resizerLink: '/resizer/upsc-nda-photo-resize/',
     photoLink: '/nda-photo-size/',
     faqs: [
       { q: 'What is the NDA age limit 2025?', a: 'NDA candidates must be between 16.5 and 19.5 years old on the first day of the month of course commencement. There is NO age relaxation for any category (SC/ST/OBC) for NDA.' },
@@ -159,7 +159,7 @@ const EXAMS = [
       { cat: 'All candidates (no upper age limit)', min: 17, max: 999, attempts: 'No limit' },
     ],
     qual: 'Class 12 (10+2) with Physics, Chemistry and Biology/Biotechnology as mandatory subjects. Minimum 50% marks (40% for SC/ST/OBC, 45% for PwBD general) in PCB.',
-    resizerLink: '/resizer/?preset=neet-photo-resize',
+    resizerLink: '/resizer/neet-ug-photo-resize/',
     photoLink: '/neet-photo-size/',
     faqs: [
       { q: 'What is the NEET age limit 2025?', a: 'The minimum age for NEET-UG is 17 years as on 31 December of the year of admission. There is NO upper age limit for NEET-UG after the Supreme Court struck down the 25-year upper age limit in 2018.' },
@@ -189,7 +189,7 @@ const EXAMS = [
       { cat: 'Ex-Servicemen/Commissioned Officers', min: 21, max: 35, attempts: 'No limit' },
     ],
     qual: "Bachelor's degree in any discipline from a recognised university.",
-    resizerLink: '/resizer/?preset=sbi-po-photo-resize',
+    resizerLink: '/resizer/sbi-po-photo-resize/',
     photoLink: '/ibps-po-photo-size/',
     faqs: [
       { q: 'What is the SBI PO age limit 2025?', a: 'SBI PO age limit for general category is 21–30 years as on the date specified in the notification. OBC gets +3 years (up to 33), SC/ST gets +5 years (up to 35).' },
@@ -219,7 +219,7 @@ const EXAMS = [
       { cat: 'Ex-Servicemen', min: 18, max: 36, attempts: 'No limit' },
     ],
     qual: 'Varies by post: Graduate (for Graduate Level posts) or 12th pass (for 12th Level posts). Some posts may require additional qualifications.',
-    resizerLink: '/resizer/?preset=rrb-ntpc-photo-resize',
+    resizerLink: '/rrb-ntpc-photo-size/',
     photoLink: '/rrb-ntpc-photo-size/',
     faqs: [
       { q: 'What is the RRB NTPC age limit 2025?', a: 'Most RRB NTPC posts have an age limit of 18–33 years as on the date specified in the notification. Some posts may have different limits — always check the post-wise age table in the official notification.' },
@@ -250,7 +250,7 @@ const EXAMS = [
       { cat: 'Ex-Servicemen', min: 20, max: 33, attempts: 'No limit' },
     ],
     qual: "Bachelor's degree in any discipline from a recognised university. Proficiency in local language is often required.",
-    resizerLink: '/resizer/?preset=ibps-clerk-photo-resize',
+    resizerLink: '/resizer/ibps-clerk-photo-resize/',
     photoLink: '/ibps-po-photo-size/',
     faqs: [
       { q: 'What is the IBPS Clerk age limit 2025?', a: 'IBPS Clerk age limit for general category is 20–28 years. OBC gets +3 years (up to 31), SC/ST gets +5 years (up to 33), PwBD gets +10 years.' },
