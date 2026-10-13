@@ -14,8 +14,14 @@ const { normalizeNav } = require('./site-nav');
 const ROOT = __dirname;
 const today = new Date().toISOString().slice(0, 10);
 
-// Top-level dirs that are never pages
-const SKIP = new Set(['node_modules', '.git', '.claude', '_before', 'assets']);
+// Top-level dirs that are never pages (privacy-policy is a redirect to /privacy/)
+const SKIP = new Set(['node_modules', '.git', '.claude', '_before', 'assets', 'privacy-policy']);
+
+// Flip to true once AdSense approves the site. Until then every in-content ad box is stripped:
+// empty "ADVERTISEMENT" frames on an unapproved site read as "built for ads" to the reviewer.
+// The adsbygoogle.js loader + account meta in <head> stay, so verification keeps working.
+const ADS_LIVE = false;
+const AD_BOX_RE = /\s*<aside[^>]*aria-label="Sponsored content"[^>]*>[\s\S]*?<\/aside>(\s*<script>[^<]*adsbygoogle[^<]*<\/script>)?/g;
 
 function walk(rel, out) {
   const abs = path.join(ROOT, rel);
@@ -133,6 +139,16 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
     const og = `<meta property="og:type" content="website">\n  <meta property="og:site_name" content="ILoveExams">\n  <meta property="og:title" content="${t}">\n  <meta property="og:description" content="${d}">\n  <meta property="og:url" content="${c}">\n  <meta property="og:image" content="https://ilovexams.in/og-image.png">\n  <meta name="twitter:card" content="summary_large_image">`;
     out = out.replace(/(<title>[^<]*<\/title>)/, `$1\n  ${og}`);
   }
+  if (!ADS_LIVE) out = out.replace(AD_BOX_RE, '');
+  // "/resizer/?preset=…&canon=<page>" links → the clean landing page they stand for, so crawlers
+  // don't see dozens of thin query-string URLs duplicating real pages.
+  // Skips &stay=1 tool launchers and links back to the page itself — those must open the resizer.
+  const self = '/' + p.replace(/index\.html$/, '');
+  out = out.replace(/href="\/resizer\/\?[^"]*?canon=([^"&]+)[^"]*"/g, (m, c) => {
+    const to = decodeURIComponent(c).replace(/^https:\/\/ilovexams\.in/, '');
+    if (m.includes('stay=1') || to === self || !fs.existsSync(path.join(ROOT, to, 'index.html'))) return m;
+    return `href="${to}"`;
+  });
   // Same top-bar menu on every page (see site-nav.js)
   const navved = normalizeNav(out);
   if (navved !== out) navFixed++;
