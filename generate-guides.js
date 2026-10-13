@@ -262,6 +262,200 @@ ${Object.values(BANK_EXTRA_DOCS).map(d => `<tr><td>${d.label}</td><td class="m">
       { q: 'Which ink should I use for the thumb impression?', a: 'Blue or black stamp-pad ink. The print should show the ridges clearly without smudging.' },
     ],
   },
+  {
+    slug: 'upload-error-messages-explained',
+    published: '2026-10-13',
+    title: 'Exam Upload Error Messages Explained: "Must Be at Least 300px", "Invalid Size" & More',
+    h1: 'Exam Form Upload Errors Decoded — What Each Message Means and How to Fix It',
+    desc: 'What "signature must be at least 300px width", "file size should be between 20 and 50 KB", "invalid file type" and other exam portal errors mean — and the exact fix for each.',
+    minutes: 8,
+    body: `
+<p>Every week thousands of candidates copy an exam portal's error message straight into Google — messages like <em>"Signature must be at least 300px width and 100px height. Your file is 275px × 118px."</em> The good news: these messages are precise. Each one tells you exactly which of three things is wrong — the <strong>pixels</strong>, the <strong>KB</strong> or the <strong>file type</strong>. This guide translates the common ones and gives a fix for each.</p>
+
+<h2>First, read the message for these three clues</h2>
+<ul>
+  <li><strong>"px", "width", "height", "dimension"</strong> — the image is the wrong size in pixels. Changing JPG quality will not help; you must resize.</li>
+  <li><strong>"KB", "file size", "MB"</strong> — the pixels may be fine but the file is too heavy or too light. Adjust compression, not dimensions.</li>
+  <li><strong>"format", "type", "extension"</strong> — the file is PNG, HEIC, WEBP or PDF instead of JPG.</li>
+</ul>
+<p>Fix only the thing the message names. Changing everything at once is how people end up with a blurry, stretched photo that passes the upload check but fails human scrutiny later.</p>
+
+<h2>"Must be at least 300px width and 100px height. Your file is 275px × 118px."</h2>
+<p>This is a <strong>minimum dimension</strong> error. Your signature is 275 px wide — a common size because it matches the 3.5 cm width used by NTA forms (JEE Main signature: ${spec('jee-main', 'sig')}) — but this particular portal wants at least 300 px wide and 100 px tall. The height (118 px) is already fine; only the width is short.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+  <li>Go back to your <em>original</em> scan or phone photo of the signature, not the already-shrunk 275 px file. Enlarging a small file makes the strokes soft.</li>
+  <li>Crop around the signature leaving a thin white margin, keeping a wide shape (roughly 3:1).</li>
+  <li>Resize to the exact size the portal asks for — for example 300 × 100 px — with the <a href="/resizer/size/">resize by pixel size</a> tool, then check the KB limit.</li>
+</ol>
+<p>If you only have the small file, upscaling from 275 to 300 px (about 9%) is safe — the difference is too small to blur a signature. Avoid stretching only one side; keep the shape and add white margin instead.</p>
+
+<h2>"File size should be between 20 KB and 50 KB"</h2>
+<p>Pixels may be correct; the file is outside the KB window. Phone photos are 2–6 MB, so "too large" is the usual case.</p>
+<p><strong>Fix (too large):</strong> resize to the required pixels first — a 200×230 image at decent quality is only 15–35 KB — and then lower JPG quality step by step. <strong>Fix (too small):</strong> raise JPG quality to maximum. Small signatures sometimes still fall short; our resizer pads the file to the minimum without changing the image. See <a href="/resizer/guides/pixels-kb-dpi-cm-explained/">pixels vs KB explained</a> for why the same photo can be 15 KB or 80 KB.</p>
+
+<h2>"Image dimension invalid" / "Please upload photo of 200 × 230 pixels"</h2>
+<p>Some portals check exact pixels rather than a range. A 201×230 file fails. <strong>Fix:</strong> use the preset for your exam from the <a href="/resizer/photo-signature-size-chart/">size chart</a>, which outputs the exact width and height. Crop to the same shape first so the face is not squashed.</p>
+
+<h2>"Invalid file type" / "Only JPG/JPEG allowed"</h2>
+<p>iPhones save photos as HEIC; screenshots are PNG; WhatsApp sometimes saves WEBP. Renaming <code>photo.png</code> to <code>photo.jpg</code> does <em>not</em> convert it — many portals read the file's real format and still reject it. <strong>Fix:</strong> convert properly with <a href="/heic-to-jpg/">HEIC to JPG</a>, <a href="/png-to-jpg/">PNG to JPG</a> or <a href="/webp-to-jpg/">WEBP to JPG</a>.</p>
+
+<h2>"Upload failed" / spinner that never finishes</h2>
+<p>No size or type is mentioned, so the file itself is probably fine. Causes are usually a slow connection, an expired session, or the portal under last-day load. <strong>Fix:</strong> log out and in again, try another browser, keep files near the lower end of the KB range, and upload early in the application window.</p>
+
+<h2>Photo accepted, but the preview looks wrong</h2>
+<p>If the preview shows a stretched face, a cut-off signature, or the photo in the signature box, do not submit. The upload check only measures size; a person checks the image later. Re-crop, re-upload and confirm the preview before final submission. Our <a href="/resizer/guides/photo-upload-rejected-reasons/">12 rejection reasons</a> guide covers what scrutiny looks for.</p>
+
+<h2>Quick reference</h2>
+<div class="tbl-wrap"><table class="grid" style="min-width:0"><thead><tr><th>Message mentions</th><th>What is wrong</th><th>What to change</th></tr></thead><tbody>
+<tr><td>px / width / height</td><td>Pixel dimensions</td><td>Resize (crop to shape first)</td></tr>
+<tr><td>KB / MB / file size</td><td>Compression</td><td>JPG quality</td></tr>
+<tr><td>type / format / extension</td><td>File format</td><td>Convert to JPG</td></tr>
+<tr><td>Nothing specific</td><td>Network or session</td><td>Retry, re-login, other browser</td></tr>
+</tbody></table></div>`,
+    faqs: [
+      { q: 'Why does the portal say my signature must be at least 300px wide?', a: 'Your file is narrower than the minimum that portal accepts. Resize the original signature scan to at least the stated width and height, keeping the same shape, then check the KB limit.' },
+      { q: 'Can I just rename a PNG file to JPG?', a: 'No. Renaming does not change the format inside the file, and many portals detect it. Convert it with a PNG to JPG tool.' },
+      { q: 'My photo is the right KB but still rejected — why?', a: 'The pixel dimensions are probably wrong. Portals check pixels and KB separately; resize to the exact width × height first.' },
+    ],
+  },
+  {
+    slug: 'photo-with-name-and-date-guide',
+    published: '2026-10-13',
+    title: 'Photo With Name and Date for TNPSC, Kerala PSC & Other Forms: Complete Guide',
+    h1: 'How to Make a Passport Photo With Your Name and Date Printed Below',
+    desc: 'Why TNPSC, Kerala PSC and some other forms want your name and photo date printed on the photo, how to add them correctly at home, and the mistakes that get it rejected.',
+    minutes: 6,
+    body: `
+<p>A few recruiting bodies — most notably the <strong>Tamil Nadu PSC</strong> and <strong>Kerala PSC</strong> — ask for something most exams do not: your <strong>name and the date the photo was taken</strong>, printed in a strip at the bottom of the photo. Studios do it routinely; at home it is easy to get slightly wrong. Here is how to do it right.</p>
+
+<h2>Why do they ask for it?</h2>
+<p>The date proves the photo is recent; the name ties the photo to the applicant. Both commissions use a <strong>one-time registration profile</strong> (TNPSC OTR, Kerala PSC Thulasi) where the photo is reused across many applications, so they want to know how old it is.</p>
+
+<h2>What the strip should contain</h2>
+<ul>
+  <li><strong>Your name</strong> — TNPSC asks for capital letters, exactly as on your SSLC mark sheet. Spelling should match your certificates.</li>
+  <li><strong>The date the photo was taken</strong>, not today's date — in DD/MM/YYYY (or the format your notification shows).</li>
+  <li>Black text on a white strip, centred, readable at the small upload size.</li>
+</ul>
+<p>Requirements differ slightly between commissions and change between notifications — always check the current notification for the exact pixels, KB range and text format. The exam pages for <a href="/resizer/tnpsc-photo-resize/">TNPSC</a> and <a href="/resizer/kpsc-photo-resize/">Kerala PSC</a> list the sizes we track.</p>
+
+<h2>Step by step</h2>
+<ol>
+  <li><strong>Take the photo</strong> against a plain white wall in daylight (see <a href="/resizer/guides/take-exam-photo-with-phone/">how to take an exam photo with your phone</a>). Note the date.</li>
+  <li><strong>Open the <a href="/photo-with-name-and-date/">photo with name &amp; date</a> tool</strong>, upload the photo and crop so your face fills most of the frame.</li>
+  <li><strong>Type your name and the photo date.</strong> The tool adds a white strip below the face — it does not cover your chin or shoulders.</li>
+  <li><strong>Pick your exam's preset</strong> so the final image, strip included, comes out at the required pixels and KB.</li>
+  <li><strong>Zoom into the result.</strong> Name and date must be readable. If they are blurry, start from a sharper original.</li>
+</ol>
+
+<h2>Mistakes that cause rejection</h2>
+<ul>
+  <li><strong>Text written over the face or background</strong> instead of in a separate strip.</li>
+  <li><strong>Today's date</strong> on an old photo. Scrutiny compares it with your face at verification.</li>
+  <li><strong>Name in a different spelling</strong> from your certificates, or initials in the wrong order.</li>
+  <li><strong>Resizing after adding text</strong> to a different shape — the text stretches and becomes unreadable. Add text and resize in one step.</li>
+  <li><strong>Handwritten name photographed on paper</strong> under the photo — looks unprofessional and is often too faint at small size.</li>
+</ul>
+
+<h2>Do other exams need this?</h2>
+<p>Most central exams (SSC, IBPS, NTA, UPSC) do <strong>not</strong> ask for name and date on the photo, and some instruct you not to add any text. Only add it when your notification asks for it.</p>`,
+    faqs: [
+      { q: 'Which date goes on the photo — today or when it was taken?', a: 'The date the photo was taken. The purpose is to show the photo is recent.' },
+      { q: 'Should the name be in capital letters?', a: 'TNPSC asks for capital letters matching your SSLC mark sheet. For other commissions, follow the notification; when it does not say, capitals are the safe choice.' },
+      { q: 'Can I add name and date for SSC or IBPS?', a: 'No — those exams do not ask for it. Add text only when the notification requires it.' },
+    ],
+  },
+  {
+    slug: 'compress-certificate-pdf-for-online-form',
+    published: '2026-10-13',
+    title: 'How to Compress Certificates & Mark Sheets to 100–500 KB Without Losing Readability',
+    h1: 'Compress Certificate and Mark Sheet PDFs for Online Forms — and Keep Them Readable',
+    desc: 'How to get caste, EWS, domicile certificates and mark sheets under a 100, 200 or 500 KB limit for exam forms while keeping text readable — scanning settings, JPG vs PDF, and fixes.',
+    minutes: 7,
+    body: `
+<p>Recruitment and admission forms increasingly ask for documents — caste, EWS, domicile, NCL-OBC certificates, Class 10/12 mark sheets, degree certificates — with tight limits like 100 KB, 200 KB or 500 KB. A phone scan is usually 2–8 MB. Squeeze it carelessly and the verifying officer cannot read it; that is a far bigger problem than a failed upload. Here is how to hit the limit and stay readable.</p>
+
+<h2>1. Start with a good scan</h2>
+<ul>
+  <li><strong>Flat and straight.</strong> Place the document on a dark table so the edges are easy to crop. Shoot from directly above.</li>
+  <li><strong>Daylight, no flash.</strong> Flash creates a shiny patch that hides stamps and signatures.</li>
+  <li><strong>Use a scanner app's "document" mode</strong> if you have one — it flattens and whitens the page, which also makes the file compress much smaller.</li>
+  <li><strong>Crop away everything outside the paper.</strong> Table edges and fingers waste kilobytes.</li>
+</ul>
+
+<h2>2. Choose the right format</h2>
+<p>Read the notification: some portals want <strong>PDF</strong>, some want <strong>JPG</strong>.</p>
+<ul>
+  <li>For <strong>JPG</strong>, use the <a href="/resize-certificate-for-online-form/">certificate resizer</a> or <a href="/resize-marksheet-for-online-form/">mark sheet resizer</a>.</li>
+  <li>For <strong>PDF</strong>, use <a href="/compress-pdf/">Compress PDF</a> or the one-tap <a href="/compress-pdf-to-200kb/">Compress PDF to 200 KB</a>. Multiple pages? <a href="/merge-pdf/">Merge</a> first, then compress.</li>
+  <li>Have a JPG but the portal wants PDF? <a href="/image-to-pdf/">Image to PDF</a>.</li>
+</ul>
+
+<h2>3. Why size and readability fight — and how to win</h2>
+<p>A certificate is mostly white paper with small black text. Colour photos of it waste space on paper texture and shadows. Three things shrink it without hurting the text:</p>
+<ol>
+  <li><strong>Lower the resolution sensibly.</strong> An A4 page at about 1240 × 1754 px (150 DPI) keeps printed text sharp; going under ~1000 px wide is where small print starts to blur.</li>
+  <li><strong>Convert to black and white or greyscale</strong> when colour does not matter. Our <a href="/pdf-to-black-and-white/">PDF to black &amp; white</a> tool often halves the size. Keep colour if the stamp or hologram must be visible and the notification says colour.</li>
+  <li><strong>Only then lower JPG quality.</strong> Quality around 60–75% is usually invisible for text documents.</li>
+</ol>
+
+<h2>4. Check before you upload</h2>
+<p>Open the compressed file on your phone and zoom to 100%. You should be able to read: your name, the certificate number, the issuing authority, the date, and the stamp/signature. If any of these is unreadable, go one step back — higher resolution or quality — even if it means a few more KB.</p>
+
+<h2>Common problems</h2>
+<ul>
+  <li><strong>Still over the limit at readable quality:</strong> crop margins tighter, switch to greyscale, or split a two-sided document only if the portal allows two files.</li>
+  <li><strong>"PDF is password protected":</strong> some downloaded e-certificates (DigiLocker, state portals) are locked. Use <a href="/unlock-pdf/">Unlock PDF</a> with the password you were given.</li>
+  <li><strong>Rotated page:</strong> fix it with <a href="/rotate-pdf/">Rotate PDF</a> before compressing — verifiers dislike sideways documents.</li>
+</ul>
+<p>Everything above runs inside your browser: documents with your caste, income or Aadhaar details never leave your device.</p>`,
+    faqs: [
+      { q: 'What resolution keeps a certificate readable?', a: 'About 150 DPI for an A4 page (roughly 1240 × 1754 px) keeps printed text sharp while staying small. Below about 1000 px wide, small text begins to blur.' },
+      { q: 'Should I upload certificates in colour?', a: 'Only if the notification asks for colour or a coloured stamp matters. Greyscale or black-and-white files are much smaller and just as readable.' },
+      { q: 'My PDF is locked — can I compress it?', a: 'Unlock it first using the password provided by the issuer, then compress.' },
+    ],
+  },
+  {
+    slug: 'jpg-png-pdf-which-format-for-exam-forms',
+    published: '2026-10-13',
+    title: 'JPG, PNG, HEIC or PDF: Which File Format to Use for Exam Forms',
+    h1: 'JPG vs PNG vs HEIC vs PDF — Which Format Exam Portals Want and Why',
+    desc: 'Why exam portals almost always ask for JPG photos and PDF documents, what goes wrong with PNG, HEIC and WEBP, and how to convert correctly without losing quality.',
+    minutes: 5,
+    body: `
+<p>"Invalid file format" is one of the most common upload errors, and it is entirely avoidable. Here is what each format is, why portals choose the ones they do, and how to convert without damaging your photo.</p>
+
+<h2>JPG / JPEG — the default for photos and signatures</h2>
+<p>JPG compresses photographs very efficiently, which is why portals can demand 20–50 KB files. "JPG" and "JPEG" are the same format; if a portal rejects one extension, rename <code>.jpeg</code> to <code>.jpg</code> (this rename is safe because the format is identical). Nearly every Indian exam — SSC, IBPS, NTA, UPSC and the State PSCs — asks for JPG photos and signatures.</p>
+
+<h2>PNG — fine for screenshots, wrong for uploads</h2>
+<p>PNG is lossless: great for screenshots and graphics, but a PNG photo is many times larger than the same JPG and is usually not accepted. Convert with <a href="/png-to-jpg/">PNG to JPG</a>. Note: transparent areas in a PNG become white in JPG, which is what you want for a signature.</p>
+
+<h2>HEIC — the iPhone trap</h2>
+<p>iPhones save photos as HEIC by default. Most portals do not accept it, and some Windows PCs cannot even open it. Either convert with <a href="/heic-to-jpg/">HEIC to JPG</a>, or change the iPhone setting <em>Settings → Camera → Formats → Most Compatible</em> before taking your exam photo.</p>
+
+<h2>WEBP — the WhatsApp/browser surprise</h2>
+<p>Images saved from websites or some WhatsApp versions may be WEBP even if the name looks normal. Convert with <a href="/webp-to-jpg/">WEBP to JPG</a>. Better still, send yourself the original photo as a <em>document</em> rather than an image — chat apps recompress images and reduce quality.</p>
+
+<h2>PDF — for documents, not photos</h2>
+<p>Certificates, mark sheets and ID proofs are usually requested as PDF so multi-page documents stay together. Do not upload your photo as a PDF unless the notification explicitly says so. To combine scans into one file use <a href="/image-to-pdf/">Image to PDF</a> or <a href="/merge-pdf/">Merge PDF</a>; to meet a size limit see <a href="/resizer/guides/compress-certificate-pdf-for-online-form/">compressing certificates</a>.</p>
+
+<h2>Renaming is not converting</h2>
+<p>Changing <code>photo.png</code> to <code>photo.jpg</code> changes only the label. Many portals check the file's real contents and still reject it — or accept it and fail later. Always convert with a tool that re-saves the image.</p>
+
+<h2>Quick reference</h2>
+<div class="tbl-wrap"><table class="grid" style="min-width:0"><thead><tr><th>Upload</th><th>Usual format</th><th>If you have…</th></tr></thead><tbody>
+<tr><td>Photo</td><td>JPG</td><td>HEIC / PNG / WEBP → convert to JPG</td></tr>
+<tr><td>Signature, thumb, declaration</td><td>JPG</td><td>PNG scan → convert to JPG</td></tr>
+<tr><td>Certificates, mark sheets</td><td>PDF (sometimes JPG)</td><td>Photos of pages → Image to PDF</td></tr>
+</tbody></table></div>`,
+    faqs: [
+      { q: 'Is JPEG the same as JPG?', a: 'Yes. They are the same format with different extensions. Renaming between .jpeg and .jpg is safe.' },
+      { q: 'Why is my iPhone photo rejected?', a: 'iPhones save HEIC by default, which most exam portals do not accept. Convert it to JPG or switch the camera to Most Compatible.' },
+      { q: 'Can I upload my photo as a PDF?', a: 'Only if the notification says so. Photos and signatures are almost always required as JPG.' },
+    ],
+  },
 ];
 
 // ─── Guide pages ──────────────────────────────────────────────────────────────
@@ -269,7 +463,7 @@ for (const g of GUIDES) {
   const canonical = `${SITE}/resizer/guides/${g.slug}/`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Guides', url: `${SITE}/resizer/guides/` }, { name: g.title, url: canonical }];
   const article = { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.desc, url: canonical, mainEntityOfPage: canonical,
-    datePublished: PUBLISHED, dateModified: S.ISO_DATE, inLanguage: 'en-IN', image: `${SITE}/og-image.png`,
+    datePublished: g.published || PUBLISHED, dateModified: S.ISO_DATE, inLanguage: 'en-IN', image: `${SITE}/og-image.png`,
     author: { '@type': 'Organization', name: 'ILoveExams Team', url: `${SITE}/about/` }, publisher: { '@type': 'Organization', name: 'ILoveExams', url: `${SITE}/`, logo: { '@type': 'ImageObject', url: `${SITE}/apple-touch-icon.png` } } };
   const html = `${S.head({ title: g.title.length > 60 ? g.title : `${g.title} | ILoveExams`, desc: g.desc, canonical, schema: [article, S.crumbsSchema(crumbs), ...(g.faqs.length ? [S.faqSchema(g.faqs)] : [])] })}
 <header class="hero"><div class="hero-in">
