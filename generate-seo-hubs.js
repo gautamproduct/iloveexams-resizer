@@ -144,8 +144,13 @@ for (const slug of BANK_EXTRA_EXAMS) {
     const dirName = `${slug}-${key}-resize`;
     const canonical = `${SITE}/resizer/${dirName}/`;
     const isDecl = key === 'declaration';
-    const title = `${short} ${doc.short} Size ${YEAR}: ${doc.w}×${doc.h}px, ${doc.min}–${doc.max}KB`;
-    const desc = `${short} ${doc.label.toLowerCase()} size ${YEAR}: ${doc.w}×${doc.h} pixels, ${doc.min}–${doc.max} KB, JPG.${isDecl ? ' Declaration text included.' : ''} Resize free online — no upload, works on mobile.`;
+    // Search data: declaration searchers want the wording first, the size second ("rrb po declaration 2026")
+    const title = isDecl
+      ? `${short} Declaration ${S.YEAR_ONLY}: Text to Copy + ${doc.w}×${doc.h}px Size`
+      : `${short} ${doc.short} Size ${YEAR}: ${doc.w}×${doc.h}px, ${doc.min}–${doc.max}KB`;
+    const desc = isDecl
+      ? `${short} handwritten declaration ${S.YEAR_ONLY}: copy the exact text, write it in running English, then resize to ${doc.w}×${doc.h} px, ${doc.min}–${doc.max} KB JPG — free, no upload.`
+      : `${short} ${doc.label.toLowerCase()} size ${YEAR}: ${doc.w}×${doc.h} pixels, ${doc.min}–${doc.max} KB, JPG. Resize free online — no upload, works on mobile.`;
     const cat = CATEGORIES[exam.cat];
     const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: cat.title, url: `${SITE}/resizer/${cat.hub}/` }, { name: `${short} ${doc.label}`, url: canonical }];
     const faqs = [
@@ -165,6 +170,7 @@ for (const slug of BANK_EXTRA_EXAMS) {
   <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
+  ${isDecl ? `<div class="answer"><p><strong>${esc(short)} declaration text ${S.YEAR_ONLY}:</strong> “${esc(DECLARATION_TEXT)}” — write it in English in your own running handwriting (not capitals), sign below, scan it and resize to <strong>${doc.w}×${doc.h} px, ${doc.min}–${doc.max} KB JPG</strong>.</p></div>` : ''}
   <div class="answer"><p>The <strong>${esc(exam.name)} ${doc.label.toLowerCase()}</strong> must be <strong>${doc.w} × ${doc.h} pixels</strong>, between <strong>${doc.min} and ${doc.max} KB</strong>, in <strong>JPG</strong> format. ${doc.tip}</p></div>
   ${isDecl ? `<section class="card"><h2>${esc(short)} Handwritten Declaration Text</h2><p>Copy this text in your own handwriting (English, running letters, black ink, white paper):</p><p class="decl">${esc(DECLARATION_TEXT)}</p><p class="note">Use the exact wording in your official notification if it differs.</p></section>` : ''}
   ${S.toolFrame(presetURL({ slug: dirName, ...doc, title: `${short} ${doc.label}`, canon: canonical }), `${short} ${doc.label} Resizer — ${doc.w}×${doc.h}px, ${doc.min}–${doc.max} KB`)}
@@ -242,6 +248,44 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   write(`resizer/${dirName}`, html); pages++;
 }
 
+// ─── 3c. Generic postcard / "postal size" photo (search demand: "postal size photo", "postcard size photo") ─
+{
+  const dirName = 'postcard-size-photo-resize';
+  const canonical = `${SITE}/resizer/${dirName}/`;
+  const title = `Postcard Size Photo (4×6 inch, Postal Size) – Resize Online Free`;
+  const desc = `Postcard size photo is 4×6 inch (10×15 cm): 600×900 px at 150 DPI or 1200×1800 px at 300 DPI. Resize your photo to postcard / postal size free — no upload.`;
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Postcard Size Photo', url: canonical }];
+  const faqs = [
+    { q: 'What is postcard size photo?', a: 'A postcard size photo is <strong>4×6 inches (about 10×15 cm)</strong>, portrait. In pixels that is 600×900 px at 150 DPI, 800×1200 px at 200 DPI or 1200×1800 px at 300 DPI.' },
+    { q: 'Is postal size photo the same as postcard size?', a: 'Yes. “Postal size” and “postcard size” both mean the 4×6 inch photo. It is different from the small passport size photo (3.5×4.5 cm).' },
+    { q: 'Which exams ask for a postcard size photo?', a: 'NEET-UG asks for a 4×6 inch postcard photo in addition to the passport-size photo. <a href="/resizer/neet-ug-postcard-photo-resize/">NEET postcard photo resizer</a>. Some recruitment forms and ID applications also ask for it — check your notification for the KB limit.' },
+    { q: 'How do I make a postcard size photo under 200 KB?', a: 'Upload your photo in the tool on this page. It crops to the 4×6 (2:3) shape and saves a 600×900 px JPG within 10–200 KB. Change the KB box if your form has a different limit.' },
+    { q: 'What is the passport size photo in pixels?', a: '3.5×4.5 cm — 413×531 px at 300 DPI, or 276×354 px at 200 DPI. <a href="/resizer/size/413x531-pixels/">Resize to 413×531 px</a> · <a href="/passport-size-photo-resize/">Passport size photo</a>.' },
+  ];
+  const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs }), S.appSchema({ url: canonical, name: 'Postcard Size Photo Resizer', desc }), S.faqSchema(faqs)] })}
+<header class="hero"><div class="hero-in">
+  ${S.crumbsHtml(crumbs)}
+  <h1>Postcard Size Photo (4×6 inch) — Free Resizer</h1>
+  <p class="lede">Resize any photo to <strong>postcard / postal size: 4×6 inch</strong> (600×900 px) and <strong>10–200 KB</strong> JPG — free, instant, never uploaded.</p>
+  <div class="chips"><span class="chip">📐 4×6 inch</span><span class="chip">10×15 cm</span><span class="chip">600×900 px</span><span class="chip ok">✓ No upload</span></div>
+  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
+</div></header>
+<main class="wrap">
+  <div class="answer"><p><strong>Postcard size photo</strong> (also called <strong>postal size</strong>) is <strong>4×6 inches (10×15 cm)</strong>, portrait — <strong>600×900 px at 150 DPI</strong> or 1200×1800 px at 300 DPI. Upload your photo below to crop and compress it to that size.</p></div>
+  ${S.toolFrame(presetURL({ slug: dirName, w: 600, h: 900, min: 10, max: 200, title: 'Postcard Size Photo (4×6 inch)', canon: canonical, unit: 'inch', dpi: 150 }), 'Postcard Size Photo Resizer — 4×6 inch, 600×900 px')}
+  <section class="card"><h2>Postcard vs passport size photo</h2>
+    <div class="tbl-wrap"><table class="grid" style="min-width:0"><thead><tr><th>Type</th><th>Physical size</th><th>Pixels</th></tr></thead><tbody>
+      <tr><td>Postcard / postal size</td><td class="m">4×6 inch (10×15 cm)</td><td class="m">600×900 @150 DPI · 1200×1800 @300 DPI</td></tr>
+      <tr><td>Passport size</td><td class="m">3.5×4.5 cm</td><td class="m"><a href="/resizer/size/413x531-pixels/">413×531</a> @300 DPI · 276×354 @200 DPI</td></tr>
+      <tr><td>Stamp size</td><td class="m">2×2.5 cm</td><td class="m">236×295 @300 DPI</td></tr>
+    </tbody></table></div>
+  </section>
+  <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
+</main>
+${S.footer()}`;
+  write(`resizer/${dirName}`, html); pages++;
+}
+
 // ─── 4. Pixel-size pages (no ad slots: short template pages — keep AdSense to content-rich pages) ──────────────────────────────────────────────────────
 const sizes = new Map(); // "WxH" -> { w, h, users: [{exam, doc, spec}] }
 const addSize = (w, h) => { const k = `${w}x${h}`; if (!sizes.has(k)) sizes.set(k, { w, h, users: [], extraMax: null }); return sizes.get(k); };
@@ -251,33 +295,43 @@ EXAMS.forEach(e => {
 });
 EXTRA_SIZES.forEach(x => { const s = addSize(x.w, x.h); if (!s.users.length) s.extraMax = x.max; });
 
+const PHYSICAL = { '413x531': '3.5×4.5 cm', '350x450': '3.5×4.5 cm', '1200x1200': '4×4 inch', '600x600': '2×2 inch', '300x300': '1×1 inch', '600x900': '4×6 inch' };
+const PHYS_DPI = { '413x531': 300, '350x450': 254, '1200x1200': 300, '600x600': 300, '300x300': 300, '600x900': 150 };
 const sizeList = [...sizes.values()].sort((a, b) => a.w - b.w || a.h - b.h);
 for (const s of sizeList) {
   const { w, h, users } = s;
   const slug = `${w}x${h}-pixels`;
   const canonical = `${SITE}/resizer/size/${slug}/`;
   const photoUse = users.filter(u => u.doc === 'photo').length, sigUse = users.length - photoUse;
-  const noun = sigUse > photoUse ? 'Signature' : 'Photo';
+  const noun = users.length ? (sigUse > photoUse ? 'Signature' : 'Photo') : (w >= h * 2 ? 'Signature' : 'Photo'); // wide extra sizes (140×40) are signatures
   const kbs = users.length ? users.map(u => `${u.sp.min}–${u.sp.max}`) : [`0–${s.extraMax}`];
   const [min, max] = mode(kbs).split('–').map(Number);
   const kbLabel = min ? `${min}–${max} KB` : `under ${max} KB`;
+  // Common print sizes people search by (300 DPI unless noted) — shown in the title so the snippet answers "what size is this?"
+  const phys = PHYSICAL[`${w}x${h}`];
   const title = w === h
-    ? `${w} Pixel Width and Height ${noun} (${w}×${h}) – ${max} KB, Free`
-    : `${w}×${h} ${noun} Size (Width ${w}px, Height ${h}px) – Free Resizer`;
-  const desc = `Resize any ${noun.toLowerCase()} to exactly ${w}×${h} px (${w}x${h}) and ${kbLabel} in JPG, free and in your browser.${users.length ? ` Used by ${[...new Set(users.map(u => seoOf(u.e).short))].slice(0, 3).join(', ')} and more.` : ''}`;
+    ? `${w} Pixel Width and Height ${noun} (${w}×${h}${phys ? `, ${phys}` : ''}) – ${max} KB, Free`
+    : phys
+      ? `${w}×${h} Pixels ${noun} (${phys}) – ${kbLabel}, Free Resizer`
+      : `${w}×${h} ${noun} Size (${h}×${w} px, ${w}*${h}) – ${kbLabel}, Free`;
+  const desc = `Resize any ${noun.toLowerCase()} to exactly ${w}×${h} px (${w}x${h}${w !== h ? `, also written ${h}×${w}` : ''}${phys ? `, ${phys}` : ''}) and ${kbLabel} in JPG, free and in your browser.${users.length ? ` Used by ${[...new Set(users.map(u => seoOf(u.e).short))].slice(0, 3).join(', ')} and more.` : ''}`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'By Pixel Size', url: `${SITE}/resizer/size/` }, { name: `${w}×${h} px`, url: canonical }];
   const cm = d => `${S.toCm(w, d)} × ${S.toCm(h, d)} cm`;
   const faqs = [
     { q: `How do I resize a photo to ${w}×${h} pixels?`, a: `Upload it in the tool on this page. The crop box is locked to ${w}:${h}; tap Process and the image is saved as a ${w}×${h} px JPG within ${kbLabel}. You can change the KB range in the tool.` },
     { q: `What is ${w}×${h} pixels in cm?`, a: `It depends on DPI: ${cm(96)} at 96 DPI, ${cm(200)} at 200 DPI and ${cm(300)} at 300 DPI. Exam portals check pixels, not cm.` },
-    { q: `Is ${w}×${h} width × height or height × width?`, a: `Width first: ${w} px wide and ${h} px tall${w === h ? ' (a square image)' : w < h ? ' (portrait)' : ' (landscape)'}.` },
+    { q: w === h ? `Is ${w}*${w}, ${w}x${w} and ${w}+${w} the same size?` : `Is ${w}×${h} the same as ${h}×${w} (${h}px ${w}px)?`,
+      a: w === h ? `Yes — all mean ${w} pixels wide and ${w} pixels tall (a square image). Forms write it differently but ask for the same thing.`
+                 : `Forms usually write width first: ${w} px wide and ${h} px tall${w < h ? ' (portrait)' : ' (landscape)'}. If a form says "${h}px ${w}px" or "${h}×${w}" for a ${noun.toLowerCase()}, it is the same ${w}×${h} size — this tool makes exactly that.` },
+    ...(phys ? [{ q: `Is ${w}×${h} pixels the same as ${phys}?`, a: `Yes. ${w}×${h} px prints at ${phys}${PHYS_DPI[`${w}x${h}`] ? ` at ${PHYS_DPI[`${w}x${h}`]} DPI` : ''}. When a form asks for ${phys}, upload ${w}×${h} px.` }] : []),
+    { q: `Can I make a ${w}×${h} ${noun.toLowerCase()} under 20 KB${max !== 50 ? ' or 50 KB' : ''}?`, a: `Yes. The tool is preset to ${kbLabel}; change the KB box to any limit (for example 20 KB or 50 KB) before tapping Process. If a form says “less than ${w} pixel width and height”, ${w}×${h} px is safe only if the limit is “up to”; otherwise pick a slightly smaller size with <a href="/jpg-resize/">JPG resize</a>.` },
     ...(users.length ? [{ q: `Which exams need a ${w}×${h} ${noun.toLowerCase()}?`, a: users.slice(0, 12).map(u => `${esc(seoOf(u.e).short)} ${u.doc} (${u.sp.min}–${u.sp.max} KB)`).join(', ') + (users.length > 12 ? ` and ${users.length - 12} more.` : '.') }] : []),
   ];
   const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs }), S.appSchema({ url: canonical, name: `${w}×${h} px Image Resizer`, desc }), S.faqSchema(faqs)] })}
 <header class="hero"><div class="hero-in">
   ${S.crumbsHtml(crumbs)}
   <h1>Resize ${noun} to ${w}×${h} Pixels Online</h1>
-  <p class="lede">Make any image exactly <strong>${w} px wide × ${h} px tall</strong> and <strong>${kbLabel}</strong> in JPG — free, instant, never uploaded.</p>
+  <p class="lede">Make any image exactly <strong>${w} px wide × ${h} px tall</strong>${phys ? ` (<strong>${phys}</strong>)` : ''} and <strong>${kbLabel}</strong> in JPG — free, instant, never uploaded.${w !== h ? ` Also written ${h}×${w} or ${w}*${h}.` : ` Also written ${w}*${w} or ${w}+${w}; any KB limit (20 KB, 50 KB).`}</p>
   <div class="chips"><span class="chip">📐 ${w}×${h} px</span><span class="chip">💾 ${kbLabel}</span><span class="chip">📏 ${cm(200)} @200 DPI</span></div>
 </div></header>
 <main class="wrap">
@@ -434,6 +488,16 @@ ${ordered.map(e => `- ${e.name}: photo ${px(e.photo)} px, ${kb(e.photo)}; signat
 
 ## NEET-UG postcard size photo
 - ${NEET_POSTCARD.inches}, ${NEET_POSTCARD.min}–${NEET_POSTCARD.max} KB, JPG — ${SITE}/resizer/neet-ug-postcard-photo-resize/
+
+## Common photo sizes (pixels ↔ print size)
+- Postcard / postal size photo: 4×6 inch (10×15 cm) = 600×900 px at 150 DPI or 1200×1800 px at 300 DPI — ${SITE}/resizer/postcard-size-photo-resize/
+- Passport size photo: 3.5×4.5 cm = 413×531 px at 300 DPI (350×450 px at 254 DPI, 276×354 px at 200 DPI) — ${SITE}/resizer/size/413x531-pixels/
+- 2×2 inch photo = 600×600 px at 300 DPI — ${SITE}/resizer/size/600x600-pixels/
+- 140×60 px signature (also written 60×140): the most common Indian exam signature size, 10–20 KB — ${SITE}/resizer/size/140x60-pixels/
+- 250×250 px photo (250 pixel width and height), usually 20–50 KB — ${SITE}/resizer/size/250x250-pixels/
+
+## Upload error messages
+- "Must be at least 300px width and 100px height. Your file is 275px × 118px" and similar portal errors are explained, with fixes, at ${SITE}/resizer/guides/upload-error-messages-explained/
 
 Sizes are compiled from official notifications; users should verify against the latest notification.
 `;

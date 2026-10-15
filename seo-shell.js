@@ -19,6 +19,7 @@ const YEAR = BUILD_DATE.getFullYear();
 const SPAN_NEXT = BUILD_DATE.getMonth() >= 8;
 const NEXT_YEAR = YEAR + 1;
 const YEARS = SPAN_NEXT ? `${YEAR}-${NEXT_YEAR}` : `${YEAR}`;
+const YEAR_ONLY = YEAR; // single year for short titles (people search "… 2026")
 const MONTH_YEAR = BUILD_DATE.toLocaleString('en-IN', { month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -228,4 +229,4 @@ function footer(extraLinks = []) {
 const toCm = (px, dpi) => (px * 2.54 / dpi).toFixed(2);
 const ratio = (w, h) => { const g = (a, b) => b ? g(b, a % b) : a; const d = g(w, h); const r = `${w / d}:${h / d}`; return r.length > 7 ? (w / h).toFixed(2) + ':1' : r; };
 
-module.exports = { SITE, ISO_DATE, YEAR, YEARS, SPAN_NEXT, NEXT_YEAR, MONTH_YEAR, esc, jsonLd, adSlot, head, footer, crumbsHtml, crumbsSchema, toolFrame, faqHtml, faqSchema, webPageSchema, appSchema, toCm, ratio };
+module.exports = { SITE, ISO_DATE, YEAR, YEAR_ONLY, YEARS, SPAN_NEXT, NEXT_YEAR, MONTH_YEAR, esc, jsonLd, adSlot, head, footer, crumbsHtml, crumbsSchema, toolFrame, faqHtml, faqSchema, webPageSchema, appSchema, toCm, ratio };

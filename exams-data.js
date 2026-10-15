@@ -201,7 +201,8 @@ const GUIDES = {
   'post-gds': { body: 'India Post (Gramin Dak Sevak)', url: 'https://indiapostgdsonline.gov.in/', tips: [
     'GDS has two steps: <strong>register</strong> first to get a registration number, then <strong>apply</strong> — the photo and signature are uploaded during the application.',
     'Selection is on Class 10 marks with no written exam, so a rejected or unclear upload can cost you the post — check the preview before submitting.',
-    'Keep the same mobile number and email for the whole process; the registration number is sent there.'] },
+    'Keep the same mobile number and email for the whole process; the registration number is sent there.',
+    'Looking for a <strong>postal / postcard size photo</strong> (4×6 inch)? That is a different, larger photo — use the <a href="/resizer/postcard-size-photo-resize/">postcard size photo resizer</a>.'] },
   'ukpsc': { body: 'Uttarakhand Public Service Commission', url: 'https://psc.uk.gov.in/', tips: [
     'UKPSC checks both pixel size and file size — a 150×200 photo must also stay within 30–50 KB.',
     'Use a recent photo with a plain light background; the same photo appears on your admit card.',

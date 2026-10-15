@@ -114,4 +114,14 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 ## NEET-UG postcard size photo
 - 4×6 inch, 10–200 KB, JPG — https://ilovexams.in/resizer/neet-ug-postcard-photo-resize/
 
+## Common photo sizes (pixels ↔ print size)
+- Postcard / postal size photo: 4×6 inch (10×15 cm) = 600×900 px at 150 DPI or 1200×1800 px at 300 DPI — https://ilovexams.in/resizer/postcard-size-photo-resize/
+- Passport size photo: 3.5×4.5 cm = 413×531 px at 300 DPI (350×450 px at 254 DPI, 276×354 px at 200 DPI) — https://ilovexams.in/resizer/size/413x531-pixels/
+- 2×2 inch photo = 600×600 px at 300 DPI — https://ilovexams.in/resizer/size/600x600-pixels/
+- 140×60 px signature (also written 60×140): the most common Indian exam signature size, 10–20 KB — https://ilovexams.in/resizer/size/140x60-pixels/
+- 250×250 px photo (250 pixel width and height), usually 20–50 KB — https://ilovexams.in/resizer/size/250x250-pixels/
+
+## Upload error messages
+- "Must be at least 300px width and 100px height. Your file is 275px × 118px" and similar portal errors are explained, with fixes, at https://ilovexams.in/resizer/guides/upload-error-messages-explained/
+
 Sizes are compiled from official notifications; users should verify against the latest notification.
