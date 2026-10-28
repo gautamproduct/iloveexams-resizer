@@ -1,6 +1,6 @@
 # ILoveExams
 
-> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for 80+ exams, updated October 2026.
+> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for 93+ exams, updated October 2026.
 
 Images are processed in the user's browser and never uploaded. All tools are free with no sign-up.
 
@@ -53,6 +53,9 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 - RRB ALP: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-alp-photo-resize/
 - RPF SI: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-si-photo-resize/
 - RPF Constable: photo 320×240 px, 20–50 KB; signature 140×60 px, 10–40 KB — https://ilovexams.in/resizer/rpf-constable-photo-resize/
+- RRB NTPC: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-ntpc-photo-resize/
+- RRB Group D: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-group-d-photo-resize/
+- RRB JE: photo 275×354 px, 50–150 KB; signature 275×157 px, 30–49 KB — https://ilovexams.in/resizer/rrb-je-photo-resize/
 - JEE Main: photo 275×354 px, 10–200 KB; signature 275×118 px, 10–100 KB — https://ilovexams.in/resizer/jee-main-photo-resize/
 - NEET UG: photo 275×354 px, 10–200 KB; signature 275×118 px, 4–30 KB — https://ilovexams.in/resizer/neet-ug-photo-resize/
 - GATE: photo 350×450 px, 5–1000 KB; signature 400×120 px, 3–1000 KB — https://ilovexams.in/resizer/gate-photo-resize/
@@ -61,10 +64,17 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 - CAT (IIM): photo 1200×1200 px, 30–80 KB; signature 1000×350 px, 30–80 KB — https://ilovexams.in/resizer/cat-photo-resize/
 - NTA CMAT: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/cmat-photo-resize/
 - XAT: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/xat-photo-resize/
+- Navodaya JNVST: photo 200×230 px, 10–100 KB; signature 140×60 px, 10–100 KB — https://ilovexams.in/resizer/jnvst-photo-resize/
+- Sainik School AISSEE: photo 275×354 px, 10–200 KB; signature 275×118 px, 4–30 KB — https://ilovexams.in/resizer/aissee-photo-resize/
+- BITSAT: photo 275×354 px, 50–100 KB; signature 275×118 px, 10–50 KB — https://ilovexams.in/resizer/bitsat-photo-resize/
+- MHT CET: photo 350×450 px, 15–200 KB; signature 280×120 px, 5–100 KB — https://ilovexams.in/resizer/mht-cet-photo-resize/
+- KCET: photo 275×354 px, 5–50 KB; signature 275×118 px, 5–50 KB — https://ilovexams.in/resizer/kcet-photo-resize/
 - IB ACIO: photo 200×230 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/ib-acio-photo-resize/
 - India Post GDS: photo 320×400 px, 30–100 KB; signature 300×120 px, 20–100 KB — https://ilovexams.in/resizer/post-gds-photo-resize/
 - UGC NET: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/ugc-net-photo-resize/
 - CSIR UGC NET: photo 200×230 px, 10–200 KB; signature 140×60 px, 4–30 KB — https://ilovexams.in/resizer/csir-net-photo-resize/
+- CTET: photo 275×354 px, 10–100 KB; signature 275×118 px, 3–30 KB — https://ilovexams.in/resizer/ctet-photo-resize/
+- DSSSB: photo 275×354 px, 25–100 KB; signature 275×118 px, 10–50 KB — https://ilovexams.in/resizer/dsssb-photo-resize/
 - UPPSC: photo 180×216 px, 20–50 KB; signature 216×108 px, 10–30 KB — https://ilovexams.in/resizer/uppsc-photo-resize/
 - BPSC: photo 250×250 px, 20–50 KB; signature 220×100 px, 10–20 KB — https://ilovexams.in/resizer/bpsc-photo-resize/
 - MPSC (Maharashtra): photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/mpsc-photo-resize/
@@ -93,6 +103,9 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 - JKSSB: photo 180×225 px, 20–50 KB; signature 180×100 px, 10–20 KB — https://ilovexams.in/resizer/jkssb-photo-resize/
 - OSSSC (Odisha): photo 200×240 px, 20–100 KB; signature 140×60 px, 10–50 KB — https://ilovexams.in/resizer/osssc-photo-resize/
 - RSMSSB (Rajasthan): photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/rsmssb-photo-resize/
+- REET: photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/reet-photo-resize/
+- UPSSSC PET: photo 275×354 px, 5–50 KB; signature 275×118 px, 5–30 KB — https://ilovexams.in/resizer/upsssc-pet-photo-resize/
+- CSBC Bihar Police Constable: photo 200×230 px, 30–50 KB; signature 140×60 px, 20–50 KB — https://ilovexams.in/resizer/csbc-bihar-police-photo-resize/
 - Delhi Judicial: photo 200×240 px, 20–50 KB; signature 140×80 px, 10–20 KB — https://ilovexams.in/resizer/delhi-judicial-photo-resize/
 - Patna High Court: photo 200×240 px, 20–50 KB; signature 140×80 px, 10–20 KB — https://ilovexams.in/resizer/patna-hc-photo-resize/
 - Bombay High Court: photo 200×240 px, 20–50 KB; signature 120×80 px, 10–20 KB — https://ilovexams.in/resizer/bombay-hc-photo-resize/

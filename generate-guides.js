@@ -530,6 +530,8 @@ ${S.footer()}`;
 // ─── Size updates log (trust: what changed and when) ─────────────────────────
 {
   const LOG = [
+    ['2026-10-28', 'Added <strong>13 exams</strong>: RRB NTPC, RRB Group D, RRB JE, CTET, DSSSB, Navodaya JNVST, Sainik School AISSEE, BITSAT, MHT CET, KCET, REET, UPSSSC PET and CSBC Bihar Police. Sizes follow each board’s portal; always confirm in your notification.', ['/resizer/rrb-ntpc-photo-resize/', '/resizer/ctet-photo-resize/']],
+    ['2026-10-28', 'New <strong>exam form calendar</strong> (290+ exams by usual form month) and <strong>upload-error fix pages</strong> for real portal messages; Hindi pages for 42 exams.', ['/resizer/exam-forms-open-now/', '/resizer/fix/']],
     ['2026-10-03', 'TNPSC and Kerala PSC photo pages now add your <strong>name and photo date</strong> on the photo, as both commissions require.', ['/resizer/tnpsc-photo-resize/', '/resizer/kpsc-photo-resize/']],
     ['2026-10-03', 'Resizer: iPhone <strong>HEIC</strong> photos now open in every browser; clearer steps and a one-tap “next: signature” button.', ['/resizer/']],
     ['2026-09-26', '<strong>JEE Main</strong> limits updated to the 2026 information bulletin: photo 10–200 KB, signature 10–100 KB.', ['/resizer/jee-main-photo-resize/', '/resizer/jee-main-signature-resize/']],
@@ -586,7 +588,7 @@ ${S.footer()}`;
 {
   const canonical = `${SITE}/embed/`;
   const title = 'Free Exam Photo Resizer for Your Website (Embed)';
-  const desc = 'Add a free exam photo & signature resizer to your blog, coaching or job-alert site. Copy one snippet — 80+ exams, exact px and KB, nothing uploaded.';
+  const desc = 'Add a free exam photo & signature resizer to your blog, coaching or job-alert site. Copy one snippet — 90+ exams, exact px and KB, nothing uploaded.';
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Embed', url: canonical }];
   const opts = EXAMS.map(e => `<option value="${e.slug}">${esc(seoOf(e).short)}</option>`).join('');
   const names = Object.fromEntries(EXAMS.map(e => [e.slug, seoOf(e).short]));

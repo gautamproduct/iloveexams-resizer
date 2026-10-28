@@ -70,6 +70,7 @@ fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
 // Section sitemaps (optional extra submissions in Search Console → per-section indexing reports).
 // sitemap.xml above stays the complete list.
 const SECTIONS = {
+  'sitemap-hindi.xml': p => p.startsWith('hi/'),
   'sitemap-exam-pages.xml': p => /^resizer\/[^/]+-resize$/.test(p) || /^[a-z0-9-]+-photo-size$/.test(p),
   'sitemap-pixel-sizes.xml': p => p.startsWith('resizer/size'),
   'sitemap-exam-calculators.xml': p => /score-calculator|rank-predictor|typing-test|exam-calculators|^age-calculator/.test(p),
@@ -106,7 +107,11 @@ sectionFiles.push(`resizer/: ${Object.entries(resizerMaps).map(([f, l]) => `${f}
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
 let tagged = 0, navFixed = 0, searchedAs = 0;
 const SEARCH_TERMS = fs.existsSync(path.join(ROOT, 'search-terms.json')) ? JSON.parse(fs.readFileSync(path.join(ROOT, 'search-terms.json'), 'utf8')) : {};
-const SEARCHED_RE = /\s*<!-- SEARCHED-AS:START -->[\s\S]*?<!-- SEARCHED-AS:END -->/g;
+const TRUST_RE = /\s*<!-- TRUST:START -->[\s\S]*?<!-- TRUST:END -->/g;
+const SHARE_RE = /\s*<!-- SHARE:START -->[\s\S]*?<!-- SHARE:END -->/g;
+const HREFLANG_RE = /\s*<!-- HREFLANG -->[\s\S]*?<!-- \/HREFLANG -->/g;
+const MONTH_NOW = new Date().toLocaleString('en-IN', { month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
+const SEARCHED_RE =/\s*<!-- SEARCHED-AS:START -->[\s\S]*?<!-- SEARCHED-AS:END -->/g;
 function trimDesc(d) {
   const lim = 158;
   const cut = d.slice(0, lim + 1);
@@ -166,6 +171,26 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
     const card = `<!-- SEARCHED-AS:START --><section class="card" style="margin-top:20px"><h2>People also search</h2><p style="margin:0 0 10px;font-size:14px">This page answers all of these searches — same size, same tool:</p><ul class="links" style="display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none">${pick.map(q => `<li style="font-size:13px;color:#334155;background:#f8fafc;border:1px solid #e2e8f0;padding:6px 12px;border-radius:999px">${esc(q)}</li>`).join('')}</ul></section><!-- SEARCHED-AS:END -->`;
     out = out.replace(/(\s*<\/main>)(?![\s\S]*<\/main>)/, `\n  ${card}$1`);
     searchedAs++;
+  }
+  // Trust strip at the top of every page's content + WhatsApp share at the end (exam groups spread links)
+  const hi = self.startsWith('/hi/');
+  out = out.replace(TRUST_RE, '').replace(SHARE_RE, '');
+  if (/<main[^>]*>/.test(out) && p !== '404.html') {
+    const strip = hi
+      ? `🔒 फोटो आपके फोन से बाहर नहीं जाती · ✓ आधिकारिक नोटिफिकेशन से मिलाया साइज · 🆓 फ्री, कोई साइन-अप नहीं · 🗓 अपडेट ${MONTH_NOW}`
+      : `🔒 Photos never leave your device · ✓ Sizes checked against official notifications · 🆓 Free, no sign-up · 🗓 Updated ${MONTH_NOW} · <a href="/resizer/updates/" style="color:inherit">What changed</a>`;
+    out = out.replace(/(<main[^>]*>)/, `$1\n  <!-- TRUST:START --><p class="ilx-trust" style="margin:0 0 16px;padding:9px 14px;border:1px solid #d1fae5;background:#f0fdf4;border-radius:12px;font-size:13px;line-height:1.6;color:#166534">${strip}</p><!-- TRUST:END -->`);
+    const t = ((out.match(/<title>([^<]*)<\/title>/) || [])[1] || 'ILoveExams').replace(/&amp;/g, '&');
+    const wa = `https://wa.me/?text=${encodeURIComponent(`${t} — free, exact size: https://ilovexams.in${self}`)}`;
+    const share = hi ? '📲 दोस्त भी यही फॉर्म भर रहे हैं? <a href="' + wa + '" target="_blank" rel="noopener">WhatsApp पर भेजें</a>' : `📲 Friends filling the same form? <a href="${wa}" target="_blank" rel="noopener">Share this size on WhatsApp</a>`;
+    out = out.replace(/(\s*<\/main>)(?![\s\S]*<\/main>)/, `\n  <!-- SHARE:START --><p style="margin:8px 0 20px;font-size:14px;text-align:center">${share}</p><!-- SHARE:END -->$1`);
+  }
+  // hreflang: English page ↔ Hindi page
+  out = out.replace(HREFLANG_RE, '');
+  const enPath = hi ? self.slice(3) : self, hiPath = hi ? self : `/hi${self}`;
+  if (fs.existsSync(path.join(ROOT, hiPath, 'index.html')) && fs.existsSync(path.join(ROOT, enPath, 'index.html'))) {
+    out = out.replace('</head>', `  <!-- HREFLANG --><link rel="alternate" hreflang="en-IN" href="https://ilovexams.in${enPath}"><link rel="alternate" hreflang="hi-IN" href="https://ilovexams.in${hiPath}"><link rel="alternate" hreflang="x-default" href="https://ilovexams.in${enPath}"><!-- /HREFLANG -->\n</head>`);
+    if (!hi && !out.includes('href="' + hiPath + '"')) out = out.replace(/(<p class="updated">[\s\S]*?)(<\/p>)/, `$1 · <a href="${hiPath}">हिंदी में पढ़ें</a>$2`);
   }
   // Same top-bar menu on every page (see site-nav.js)
   const navved = normalizeNav(out);

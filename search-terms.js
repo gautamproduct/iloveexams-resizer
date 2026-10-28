@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const { EXAMS, seoOf, BANK_EXTRA_EXAMS, EXTRA_SIZES } = require('./exams-data');
+const { FIXES } = require('./error-fixes');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'search-terms.json');
@@ -52,6 +53,7 @@ const examIn = q => { for (const [a, slug] of examAlias) if (new RegExp(`(^|[^a-
 const missingSizes = {};
 function target(q) {
   // Portal error messages people paste into Google
+  for (const f of FIXES) if (f.match.test(q)) return `/resizer/fix/${f.slug}/`;
   if (/must be|your file is|should be less than|size of sign/.test(q)) return '/resizer/guides/upload-error-messages-explained/';
   if (/post ?card|postal size/.test(q)) return /neet/.test(q) ? '/resizer/neet-ug-postcard-photo-resize/' : '/resizer/postcard-size-photo-resize/';
   const exam = examIn(q);

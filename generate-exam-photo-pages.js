@@ -424,7 +424,7 @@ function page(exam) {
       <a href="/nda-photo-size/" style="font-size:13px;color:#dc2626;background:#fff5f5;border:1px solid #fca5a5;padding:5px 12px;border-radius:8px;text-decoration:none">NDA</a>
       <a href="/rrb-ntpc-photo-size/" style="font-size:13px;color:#dc2626;background:#fff5f5;border:1px solid #fca5a5;padding:5px 12px;border-radius:8px;text-decoration:none">RRB NTPC</a>
       <a href="/sbi-po-photo-size/" style="font-size:13px;color:#dc2626;background:#fff5f5;border:1px solid #fca5a5;padding:5px 12px;border-radius:8px;text-decoration:none">SBI PO</a>
-      <a href="/resizer/" style="font-size:13px;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;padding:5px 12px;border-radius:8px;text-decoration:none">All 80+ Exams Resizer</a>
+      <a href="/resizer/" style="font-size:13px;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;padding:5px 12px;border-radius:8px;text-decoration:none">All 90+ Exams Resizer</a>
     </div>
   </div>
 </div>

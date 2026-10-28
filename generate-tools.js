@@ -103,6 +103,12 @@ const TOOLS = [
   // ───── RESIZE TO FILE SIZE (free dimensions) ─────
   kb(10), kb(15), kb(20), kb(25), kb(30), kb(40), kb(50),
   kb(80), kb(100), kb(150), kb(200), kb(300), kb(500), kb(1,'MB'),
+  // More KB limits seen on forms and in searches
+  kb(5), kb(35), kb(45), kb(60), kb(70), kb(90), kb(120), kb(250), kb(400), kb(2,'MB'),
+  ...[10, 20, 30, 40, 200].map(n => ({ slug:`resize-photo-to-${n}kb`, group:'kb', free:true, maxkb:n, name:`Resize Photo to ${n} KB`, h1:`Resize Photo to ${n} KB`,
+    blurb:`Compress your passport-size photo to ${n} KB for exam, job and government forms — sharp face, exact size limit, nothing uploaded.` })),
+  ...[15, 30, 40, 50].map(n => ({ slug:`resize-signature-to-${n}kb`, group:'kb', free:true, maxkb:n, name:`Resize Signature to ${n} KB`, h1:`Resize Signature to ${n} KB`,
+    blurb:`Compress your scanned signature to ${n} KB for online application forms — clean, readable and under the limit.` })),
 
   // photo / signature specific KB (free dims, just different copy)
   { slug:'resize-photo-to-50kb', group:'kb', free:true, maxkb:50, name:'Resize Photo to 50 KB', h1:'Resize Photo to 50 KB',

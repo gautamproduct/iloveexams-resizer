@@ -219,7 +219,7 @@ function footer(extraLinks = []) {
   return `<footer class="foot">
   <a href="/" class="logo" style="justify-content:center"><span class="logo-t" style="font-size:20px">I</span>${SVG_HEART}<span class="logo-t" style="font-size:20px">Exams</span><span class="logo-in">.in</span></a>
   <nav aria-label="Footer">${links.map(l => `<a href="${l.href}">${esc(l.t)}</a>`).join('')}</nav>
-  <p style="margin:0;color:rgba(255,255,255,.35)">Free photo &amp; signature resizer for 80+ Indian exams. Images are processed in your browser and never uploaded.</p>
+  <p style="margin:0;color:rgba(255,255,255,.35)">Free photo &amp; signature resizer for 90+ Indian exams. Images are processed in your browser and never uploaded.</p>
 </footer>
 </body>
 </html>`;

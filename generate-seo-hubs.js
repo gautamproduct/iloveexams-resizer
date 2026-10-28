@@ -293,8 +293,21 @@ ${S.footer()}`;
   const forms = D.OPEN_FORMS.map(f => ({ ...f, e: EXAMS.find(e => e.slug === f.slug) }));
   const updated = new Date(D.OPEN_FORMS_UPDATED).toLocaleString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
   const names = forms.slice(0, 4).map(f => f.cycle.replace(/\s*\(.*\)/, '')).join(', ');
-  const title = `Exam Forms Open Now (${MONTH_YEAR}): Photo & Signature Size`;
-  const desc = `Application forms open now: ${names} and more. Exact photo and signature size (pixels, KB) for each form, with a free one-click resizer.`;
+  // Full calendar: every exam once, at the month its form next usually opens, starting this month
+  const { CAL } = require('./exam-calendar');
+  const MON = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const cur = new Date(S.ISO_DATE).getMonth() + 1;
+  const ahead = m => (m - cur + 12) % 12;
+  const cal = CAL.map(([name, body, months, slug, site]) => ({ name, body, months, site, e: slug && EXAMS.find(e => e.slug === slug), next: months.reduce((a, m) => ahead(m) < ahead(a) ? m : a) }))
+    .sort((a, b) => ahead(a.next) - ahead(b.next) || a.name.localeCompare(b.name));
+  const byMonth = [...new Set(cal.map(c => c.next))];
+  const calRow = c => `<tr><td><strong>${esc(c.name)}</strong><br><small>${esc(c.body)}</small></td><td>${c.months.map(m => MON[m - 1].slice(0, 3)).join(', ')}</td><td class="m">${c.e ? `<a href="/resizer/${c.e.slug}-photo-resize/">${px(c.e.photo)}</a> <small>${kb(c.e.photo)}</small>` : '<a href="/jpg-resize/">Any size</a>'}</td><td class="m">${c.e ? `<a href="/resizer/${c.e.slug}-signature-resize/">${px(c.e.sig)}</a> <small>${kb(c.e.sig)}</small>` : '<a href="/resize-signature-to-20kb/">Signature</a>'}</td><td>${c.site ? `<a href="https://${c.site}" target="_blank" rel="noopener nofollow">${esc(c.site.split('/')[0])}</a>` : '—'}</td></tr>`;
+  const calendarHtml = byMonth.map(m => `<section class="card" id="${MON[m - 1].toLowerCase()}"><h2>${m === cur ? `Usually open now — ${MON[m - 1]}` : `Usually opens in ${MON[m - 1]}`} (${cal.filter(c => c.next === m).length} exams)</h2>
+    <div class="tbl-wrap"><table class="grid"><thead><tr><th>Exam</th><th>Usual form month</th><th>Photo</th><th>Signature</th><th>Official site</th></tr></thead><tbody>
+      ${cal.filter(c => c.next === m).map(calRow).join('\n      ')}
+    </tbody></table></div></section>`).join('\n  ');
+  const title = `Exam Forms Open Now & Calendar (${MONTH_YEAR}): ${Math.floor(CAL.length / 10) * 10}+ Exams, Photo Size`;
+  const desc = `Application forms open now: ${names} and more, plus the form calendar for ${CAL.length} Indian exams by month. Exact photo and signature size with a free resizer.`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Forms Open Now', url: canonical }];
   const faqs = [
     ...forms.slice(0, 5).map(f => ({ q: `What is the ${esc(f.cycle)} photo and signature size?`, a: `Photo ${px(f.e.photo)} px, ${kb(f.e.photo)}; signature ${px(f.e.sig)} px, ${kb(f.e.sig)}, JPG. <a href="/resizer/${f.slug}-photo-resize/">Resize ${esc(seoOf(f.e).short)} photo</a>.` })),
@@ -316,13 +329,15 @@ ${S.footer()}`;
     </tbody></table></div>
     <p class="note">Dates marked “expected” follow previous cycles. Confirm on the official site before paying the fee.</p>
   </section>
+  <section class="card"><h2>Exam form calendar: ${CAL.length} Indian exams, in order</h2><p>Every major exam, listed by the month its application form <strong>usually</strong> opens (from previous cycles), starting this month. Jump to: ${byMonth.map(m => `<a href="#${MON[m - 1].toLowerCase()}">${MON[m - 1].slice(0, 3)}</a>`).join(' · ')}</p><p class="note">Months are patterns, not announcements — boards can shift dates. Exams without a size link: use the size printed in your notification with the <a href="/jpg-resize/">custom resizer</a>.</p></section>
+  ${calendarHtml}
   <section class="card"><h2>Before you submit</h2><ul>
     <li><strong>Resize first, then upload.</strong> Use the exam’s own page so both pixels and KB match.</li>
     <li><strong>Use the same photo everywhere.</strong> The photo on the form is printed on your admit card and checked at the centre.</li>
     <li><strong>Check the preview.</strong> A face that is cut off or a blank signature can get the form rejected after the deadline. <a href="/resizer/guides/photo-upload-rejected-reasons/">Common rejection reasons</a>.</li>
   </ul></section>
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
-  <section class="card"><h2>Other exams</h2><ul class="links"><li><a href="/resizer/photo-signature-size-chart/">Size chart for 80+ exams</a></li><li><a href="/resizer/">Pick any exam</a></li><li><a href="/compress-pdf-to-200kb/">Certificate PDF to 200 KB</a></li></ul></section>
+  <section class="card"><h2>Other exams</h2><ul class="links"><li><a href="/resizer/photo-signature-size-chart/">Size chart for 90+ exams</a></li><li><a href="/resizer/">Pick any exam</a></li><li><a href="/compress-pdf-to-200kb/">Certificate PDF to 200 KB</a></li></ul></section>
 </main>
 ${S.footer()}`;
   write(`resizer/${dirName}`, html); pages++;
@@ -559,7 +574,7 @@ Sizes are compiled from official notifications; users should verify against the 
 <header class="hero"><div class="hero-in"><h1>Page not found</h1><p class="lede" style="display:block">This link may be old or mistyped. Find your exam below — every resizer is free and runs in your browser.</p></div></header>
 <main class="wrap">
   <section class="card"><h2>Popular exam resizers</h2><ul class="links">${popular.map(e => `<li><a href="/resizer/${e.slug}-photo-resize/">${esc(seoOf(e).short)} Photo</a></li><li><a href="/resizer/${e.slug}-signature-resize/">${esc(seoOf(e).short)} Signature</a></li>`).join('')}</ul></section>
-  <section class="card"><h2>Browse</h2><ul class="links"><li><a href="/resizer/">All 80+ exams</a></li><li><a href="/resizer/photo-signature-size-chart/">Size chart ${YEAR}</a></li><li><a href="/resizer/size/">Resize by pixels</a></li>${Object.values(CATEGORIES).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/">All tools</a></li></ul></section>
+  <section class="card"><h2>Browse</h2><ul class="links"><li><a href="/resizer/">All 90+ exams</a></li><li><a href="/resizer/photo-signature-size-chart/">Size chart ${YEAR}</a></li><li><a href="/resizer/size/">Resize by pixels</a></li>${Object.values(CATEGORIES).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/">All tools</a></li></ul></section>
 </main>
 ${S.footer()}`;
   fs.writeFileSync(path.join(ROOT, '404.html'), html, 'utf8');

@@ -85,6 +85,20 @@ const EXAMS = [
   {slug:'mah-judicial', name:'Maharashtra Judicial',     cat:'Judiciary', photo:{w:200,  h:240,  min:20,  max:50,   fmt:'JPG'}, sig:{w:140,  h:80,   min:10,  max:20,  fmt:'JPG'}},
   {slug:'gauhati-hc',   name:'Gauhati High Court',       cat:'Judiciary', photo:{w:200,  h:240,  min:20,  max:100,  fmt:'JPG'}, sig:{w:140,  h:80,   min:10,  max:50,  fmt:'JPG'}},
   {slug:'cg-judicial',  name:'CG Judicial Service',      cat:'Judiciary', photo:{w:200,  h:240,  min:20,  max:100,  fmt:'JPG'}, sig:{w:140,  h:80,   min:10,  max:100, fmt:'JPG'}},
+  // Added Oct 2026 (search demand + forms season). RRB: one rrbapply.gov.in portal for all CENs.
+  {slug:'rrb-ntpc', name:'RRB NTPC', cat:'Railways', photo:{w:275, h:354, min:50, max:150, fmt:'JPG'}, sig:{w:275, h:157, min:30, max:49, fmt:'JPG'}},
+  {slug:'rrb-group-d', name:'RRB Group D', cat:'Railways', photo:{w:275, h:354, min:50, max:150, fmt:'JPG'}, sig:{w:275, h:157, min:30, max:49, fmt:'JPG'}},
+  {slug:'rrb-je', name:'RRB JE', cat:'Railways', photo:{w:275, h:354, min:50, max:150, fmt:'JPG'}, sig:{w:275, h:157, min:30, max:49, fmt:'JPG'}},
+  {slug:'ctet', name:'CTET', cat:'Central', photo:{w:275, h:354, min:10, max:100, fmt:'JPG'}, sig:{w:275, h:118, min:3, max:30, fmt:'JPG'}},
+  {slug:'dsssb', name:'DSSSB', cat:'Central', photo:{w:275, h:354, min:25, max:100, fmt:'JPG'}, sig:{w:275, h:118, min:10, max:50, fmt:'JPG'}},
+  {slug:'jnvst', name:'Navodaya JNVST', cat:'Entrance', photo:{w:200, h:230, min:10, max:100, fmt:'JPG'}, sig:{w:140, h:60, min:10, max:100, fmt:'JPG'}},
+  {slug:'aissee', name:'Sainik School AISSEE', cat:'Entrance', photo:{w:275, h:354, min:10, max:200, fmt:'JPG'}, sig:{w:275, h:118, min:4, max:30, fmt:'JPG'}},
+  {slug:'bitsat', name:'BITSAT', cat:'Entrance', photo:{w:275, h:354, min:50, max:100, fmt:'JPG'}, sig:{w:275, h:118, min:10, max:50, fmt:'JPG'}},
+  {slug:'mht-cet', name:'MHT CET', cat:'Entrance', photo:{w:350, h:450, min:15, max:200, fmt:'JPG'}, sig:{w:280, h:120, min:5, max:100, fmt:'JPG'}},
+  {slug:'kcet', name:'KCET', cat:'Entrance', photo:{w:275, h:354, min:5, max:50, fmt:'JPG'}, sig:{w:275, h:118, min:5, max:50, fmt:'JPG'}},
+  {slug:'reet', name:'REET', cat:'Police', photo:{w:240, h:320, min:20, max:50, fmt:'JPG'}, sig:{w:280, h:80, min:20, max:50, fmt:'JPG'}},
+  {slug:'upsssc-pet', name:'UPSSSC PET', cat:'Police', photo:{w:275, h:354, min:5, max:50, fmt:'JPG'}, sig:{w:275, h:118, min:5, max:30, fmt:'JPG'}},
+  {slug:'csbc-bihar-police', name:'CSBC Bihar Police Constable', cat:'Police', photo:{w:200, h:230, min:30, max:50, fmt:'JPG'}, sig:{w:140, h:60, min:20, max:50, fmt:'JPG'}},
 ];
 
 // Short name used in <title> (what people actually type) + extra search

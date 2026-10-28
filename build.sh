@@ -5,7 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 for g in generate-tools.js generate-exam-age-pages.js generate-legal.js generate-exam-photo-pages.js \
-         generate-pages.js generate-seo-hubs.js generate-guides.js generate-apps.js; do
+         generate-pages.js generate-seo-hubs.js generate-guides.js generate-error-pages.js generate-hindi.js generate-apps.js; do
   node "$g"
 done
 # Compile only the Tailwind classes the pages use (replaces the 400 KB CDN runtime)

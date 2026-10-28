@@ -30,7 +30,7 @@ const TIPS = {
     <li><strong>Name files clearly</strong>, e.g. <code>10th_marksheet.pdf</code>, and open the final file once to check every page is readable.</li></ul></section>`,
   image: `<section class="card"><h2>Photo tips for exam and job forms</h2><ul>
     <li><strong>JPG is the safe format.</strong> Almost every Indian portal accepts only JPG/JPEG — HEIC, WEBP and PNG are commonly rejected.</li>
-    <li><strong>Match pixels and KB.</strong> Portals check both the dimensions (e.g. 200×230) and the file size (e.g. 20–50 KB). The <a href="/resizer/">exam resizer</a> presets both for 80+ exams.</li>
+    <li><strong>Match pixels and KB.</strong> Portals check both the dimensions (e.g. 200×230) and the file size (e.g. 20–50 KB). The <a href="/resizer/">exam resizer</a> presets both for 90+ exams.</li>
     <li><strong>Use a recent photo</strong> with a plain light background, your face clearly visible and no filters.</li>
     <li><strong>Keep the original.</strong> Save the full-quality photo — many exams ask you to bring a printed copy of the same photo later.</li></ul></section>`,
 };
