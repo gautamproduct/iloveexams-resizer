@@ -1,0 +1,3892 @@
+{
+ "/resize-image-to-10kb/": [
+  {
+   "q": "photo 10 kb to 20 kb",
+   "imp": 2
+  }
+ ],
+ "/resize-image-to-15kb/": [
+  {
+   "q": "15 kb photo size",
+   "imp": 2
+  },
+  {
+   "q": "signature resize 15 kb",
+   "imp": 1
+  }
+ ],
+ "/resize-image-to-20kb/": [
+  {
+   "q": "20 kb photo size",
+   "imp": 7
+  },
+  {
+   "q": "image size 20 kb",
+   "imp": 2
+  }
+ ],
+ "/resize-image-to-300kb/": [
+  {
+   "q": "300 kb photo size in pixels pdf",
+   "imp": 3
+  }
+ ],
+ "/resize-image-to-30kb/": [
+  {
+   "q": "150w x 200h photo size in 30 kb",
+   "imp": 3
+  },
+  {
+   "q": "30 kb photo size",
+   "imp": 3
+  },
+  {
+   "q": "photo resizer 30kb",
+   "imp": 2
+  }
+ ],
+ "/resize-image-to-40kb/": [
+  {
+   "q": "40 kb signature size in pixels",
+   "imp": 3
+  }
+ ],
+ "/resize-image-to-50kb/": [
+  {
+   "q": "30 to 50 kb signature size",
+   "imp": 1
+  }
+ ],
+ "/resize-photo-to-100kb/": [
+  {
+   "q": "100 kb photo size",
+   "imp": 3
+  }
+ ],
+ "/resize-photo-to-50kb/": [
+  {
+   "q": "photo resize 250 pixel 50kb",
+   "imp": 30
+  },
+  {
+   "q": "photo resize 50 kb",
+   "imp": 23
+  },
+  {
+   "q": "50 kb photo size",
+   "imp": 8
+  },
+  {
+   "q": "photo resizer 50kb",
+   "imp": 4
+  },
+  {
+   "q": "50kb photo resize",
+   "imp": 2
+  },
+  {
+   "q": "resize 50kb jpg",
+   "imp": 2
+  }
+ ],
+ "/resize-signature-to-20kb/": [
+  {
+   "q": "signature resize 10 to 20 kb",
+   "imp": 4
+  }
+ ],
+ "/resizer/bpsc-photo-resize/": [
+  {
+   "q": "bpsc photo and signature size",
+   "imp": 4
+  },
+  {
+   "q": "bpsc photo size",
+   "imp": 4
+  },
+  {
+   "q": "bpsc image resizer",
+   "imp": 3
+  },
+  {
+   "q": "bpsc photo",
+   "imp": 2
+  },
+  {
+   "q": "bpsc photo resize",
+   "imp": 2
+  },
+  {
+   "q": "bpsc document resize",
+   "imp": 1
+  },
+  {
+   "q": "bpsc resize image",
+   "imp": 1
+  }
+ ],
+ "/resizer/cat-photo-resize/": [
+  {
+   "q": "cat exam photo size",
+   "imp": 8
+  },
+  {
+   "q": "cat form photo size",
+   "imp": 8
+  },
+  {
+   "q": "cat passport size photo",
+   "imp": 4
+  },
+  {
+   "q": "cat photo resizer",
+   "imp": 3
+  },
+  {
+   "q": "cat photo dimensions",
+   "imp": 2
+  },
+  {
+   "q": "cat photo format",
+   "imp": 2
+  },
+  {
+   "q": "cat photo specifications",
+   "imp": 2
+  },
+  {
+   "q": "cat exam photo",
+   "imp": 1
+  },
+  {
+   "q": "cat photo resize",
+   "imp": 1
+  },
+  {
+   "q": "cat photo size",
+   "imp": 1
+  },
+  {
+   "q": "cat size photo",
+   "imp": 1
+  },
+  {
+   "q": "cat upload",
+   "imp": 1
+  }
+ ],
+ "/resizer/cat-signature-resize/": [
+  {
+   "q": "cat signature dimensions",
+   "imp": 2
+  },
+  {
+   "q": "cat signature size",
+   "imp": 2
+  }
+ ],
+ "/resizer/csir-net-photo-resize/": [
+  {
+   "q": "csir photo resizer",
+   "imp": 12
+  }
+ ],
+ "/resizer/gate-photo-resize/": [
+  {
+   "q": "gate photo resizer",
+   "imp": 3
+  },
+  {
+   "q": "gate image resizer",
+   "imp": 2
+  }
+ ],
+ "/resizer/gate-signature-resize/": [
+  {
+   "q": "gate 2027 signature resizer",
+   "imp": 3
+  }
+ ],
+ "/resizer/guides/ibps-thumb-impression-handwritten-declaration/": [
+  {
+   "q": "hand written declaration for uiicl ao",
+   "imp": 6
+  },
+  {
+   "q": "uiicl hand written declaration",
+   "imp": 6
+  },
+  {
+   "q": "left thumb impression and handwritten declaration",
+   "imp": 3
+  },
+  {
+   "q": "uiicl ao declaration",
+   "imp": 3
+  },
+  {
+   "q": "thumb impression resizer",
+   "imp": 2
+  },
+  {
+   "q": "thumb impression size",
+   "imp": 2
+  },
+  {
+   "q": "uiicl ao hand written declaration",
+   "imp": 2
+  },
+  {
+   "q": "uiicl ao handwritten declaration",
+   "imp": 2
+  },
+  {
+   "q": "declaration in capital letters",
+   "imp": 1
+  }
+ ],
+ "/resizer/guides/scan-signature-for-online-form/": [
+  {
+   "q": "how to scan photo and signature for online application",
+   "imp": 19
+  }
+ ],
+ "/resizer/guides/upload-error-messages-explained/": [
+  {
+   "q": "signature must be at least 300px width and 100px height. your file is 275px × 118px.",
+   "imp": 207
+  },
+  {
+   "q": "size of sign must be less than 15 kb.(हस्ताक्षर का आकार 15 kb से कम होना चाहिए) 2. width of sign must be between 250 pixel and 320 pixel.(हस्ताक्षर की चौड़ाई 250 px और 320 px के बीच होनी चाहिए) 3. height of sign must be between 150 pixel and 220 pixel.(हस्ताक्षर की ऊंचाई 150 px और 220 px के बीच होनी चाहिए)",
+   "imp": 35
+  },
+  {
+   "q": "1. size of sign must be less than 15 kb.(हस्ताक्षर का आकार 15 kb से कम होना चाहिए) 2. width of sign must be between 250 pixel and 320 pixel.(हस्ताक्षर की चौड़ाई 250 px और 320 px के बीच होनी चाहिए) 3. height of sign must be between 150 pixel and 220 pixel.(हस्ताक्षर की ऊंचाई 150 px और 220 px के बीच होनी चाहिए)",
+   "imp": 17
+  },
+  {
+   "q": "signature must be at least 300px width and 100px height. your file is 275px × 118px",
+   "imp": 16
+  },
+  {
+   "q": "photo must be max width 300px and max height 450px. your file is 413px × 531px.",
+   "imp": 14
+  },
+  {
+   "q": ". size of sign must be less than 15 kb.(हस्ताक्षर का आकार 15 kb से कम होना चाहिए) 2. width of sign must be between 250 pixel and 320 pixel.(हस्ताक्षर की चौड़ाई 250 px और 320 px के बीच होनी चाहिए) 3. height of sign must be between 150 pixel and 220 pixel.(हस्ताक्षर की ऊंचाई 150 px और 220 px के बीच होनी चाहिए)",
+   "imp": 10
+  },
+  {
+   "q": "(हस्ताक्षर का आकार 15 kb से कम होना चाहिए) 2. width of sign must be between 250 pixel and 320 pixel.(हस्ताक्षर की चौड़ाई 250 px और 320 px के बीच होनी चाहिए) 3. height of sign must be between 150 pixel and 220 pixel.(हस्ताक्षर की ऊंचाई 150 px और 220 px के बीच होनी चाहिए)",
+   "imp": 9
+  },
+  {
+   "q": "the signature dimensions must be between 100 × 50 and 200 × 200 pixels (width × height).",
+   "imp": 7
+  },
+  {
+   "q": "signature must be at least 300px width and 100px height. your file is 276px × 118px.",
+   "imp": 3
+  },
+  {
+   "q": "signature dimension must between 100 x 50 and 200 x 200 pixels width and helight.",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-clerk-declaration-resize/": [
+  {
+   "q": "declaration size for ibps clerk",
+   "imp": 3
+  },
+  {
+   "q": "ibps clerk declaration size",
+   "imp": 2
+  },
+  {
+   "q": "ibps clerk hand written declaration resize",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-clerk-signature-resize/": [
+  {
+   "q": "ibps clerk signature size",
+   "imp": 5
+  }
+ ],
+ "/resizer/ibps-clerk-thumb-impression-resize/": [
+  {
+   "q": "thumb size for ibps clerk",
+   "imp": 5
+  }
+ ],
+ "/resizer/ibps-po-declaration-resize/": [
+  {
+   "q": "ibps rrb declaration resize",
+   "imp": 31
+  },
+  {
+   "q": "ibps rrb handwritten declaration size",
+   "imp": 25
+  },
+  {
+   "q": "ibps rrb declaration size",
+   "imp": 19
+  },
+  {
+   "q": "ibps po handwritten declaration",
+   "imp": 14
+  },
+  {
+   "q": "ibps rrb hand written declaration 2026 resize",
+   "imp": 9
+  },
+  {
+   "q": "ibps rrb handwritten declaration resize",
+   "imp": 9
+  },
+  {
+   "q": "ibps rrb hand written declaration size",
+   "imp": 8
+  },
+  {
+   "q": "declaration size for ibps po",
+   "imp": 7
+  },
+  {
+   "q": "handwritten declaration for ibps rrb 2019",
+   "imp": 7
+  },
+  {
+   "q": "ibps rrb new declaration",
+   "imp": 7
+  },
+  {
+   "q": "declaration for ibps rrb 2019",
+   "imp": 5
+  },
+  {
+   "q": "ibps rrb hand written declaration resize",
+   "imp": 5
+  },
+  {
+   "q": "handwritten declaration for ibps po",
+   "imp": 4
+  },
+  {
+   "q": "ibps po declaration resize",
+   "imp": 4
+  },
+  {
+   "q": "ibps rrb hand written declaration 2026 size",
+   "imp": 4
+  },
+  {
+   "q": "ibps rrb handwritten declaration 2026",
+   "imp": 3
+  },
+  {
+   "q": "hand written declaration for ibps po",
+   "imp": 2
+  },
+  {
+   "q": "ibps declaration size",
+   "imp": 2
+  },
+  {
+   "q": "ibps po handwritten declaration 2026",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb declaration resizer",
+   "imp": 2
+  },
+  {
+   "q": "hand written declaration for ibps",
+   "imp": 1
+  },
+  {
+   "q": "handwritten declaration for ibps rrb",
+   "imp": 1
+  },
+  {
+   "q": "ibps handwritten declaration",
+   "imp": 1
+  }
+ ],
+ "/resizer/ibps-po-photo-resize/": [
+  {
+   "q": "ibps rrb 10th marksheet size",
+   "imp": 4
+  },
+  {
+   "q": "ibps po marksheet size",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb document resize",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb image",
+   "imp": 3
+  },
+  {
+   "q": "ibps po photo and signature size",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb documents size",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb photo and signature size",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb photo size",
+   "imp": 2
+  },
+  {
+   "q": "ibps photo upload problem",
+   "imp": 1
+  }
+ ],
+ "/resizer/ibps-po-signature-resize/": [
+  {
+   "q": "ibps signature resizer",
+   "imp": 16
+  },
+  {
+   "q": "ibps signature resize 20 kb",
+   "imp": 14
+  },
+  {
+   "q": "ibps signature resize online",
+   "imp": 9
+  },
+  {
+   "q": "ibps po signature resize",
+   "imp": 6
+  },
+  {
+   "q": "ibps rrb signature guidelines",
+   "imp": 5
+  },
+  {
+   "q": "ibps sign resizer",
+   "imp": 5
+  },
+  {
+   "q": "ibps po signature size",
+   "imp": 4
+  },
+  {
+   "q": "ibps po signature guidelines",
+   "imp": 3
+  },
+  {
+   "q": "ibps signature guidelines",
+   "imp": 2
+  },
+  {
+   "q": "sign size for ibps po",
+   "imp": 2
+  },
+  {
+   "q": "signature for ibps po",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-po-thumb-impression-resize/": [
+  {
+   "q": "left thumb impression for bank exam",
+   "imp": 13
+  },
+  {
+   "q": "ibps rrb thumb impression and declaration size",
+   "imp": 6
+  },
+  {
+   "q": "ibps thumb impression resize online",
+   "imp": 4
+  },
+  {
+   "q": "thumb impression for ibps rrb",
+   "imp": 4
+  },
+  {
+   "q": "ibps left thumb impression",
+   "imp": 3
+  },
+  {
+   "q": "thumb impression for ibps",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb left thumb impression",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-rrb-clerk-declaration-resize/": [
+  {
+   "q": "ibps rrb clerk declaration 2026",
+   "imp": 108
+  },
+  {
+   "q": "rrb clerk declaration 2026",
+   "imp": 34
+  },
+  {
+   "q": "rrb clerk declaration size",
+   "imp": 33
+  },
+  {
+   "q": "handwritten declaration for rrb clerk 2026",
+   "imp": 19
+  },
+  {
+   "q": "rrb clerk declaration",
+   "imp": 17
+  },
+  {
+   "q": "rrb clerk hand written declaration size",
+   "imp": 16
+  },
+  {
+   "q": "rrb clerk hand written declaration 2026",
+   "imp": 15
+  },
+  {
+   "q": "rrb clerk new declaration form",
+   "imp": 15
+  },
+  {
+   "q": "ibps rrb clerk declaration size",
+   "imp": 14
+  },
+  {
+   "q": "declaration size for rrb clerk",
+   "imp": 13
+  },
+  {
+   "q": "rrb clerk handwritten declaration 2026",
+   "imp": 11
+  },
+  {
+   "q": "rrb clerk 2026 handwritten declaration",
+   "imp": 9
+  },
+  {
+   "q": "rrb clerk declaration 2026 size",
+   "imp": 7
+  },
+  {
+   "q": "ibps rrb clerk declaration resize",
+   "imp": 6
+  },
+  {
+   "q": "ibps rrb clerk hand written declaration 2026",
+   "imp": 6
+  },
+  {
+   "q": "ibps rrb clerk hand written declaration resize",
+   "imp": 6
+  },
+  {
+   "q": "rrb clerk 2026 declaration",
+   "imp": 5
+  },
+  {
+   "q": "declaration for rrb clerk 2026",
+   "imp": 3
+  },
+  {
+   "q": "declaration rrb clerk 2026",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb clerk hand written declaration size",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb clerk handwritten declaration 2026",
+   "imp": 3
+  },
+  {
+   "q": "rrb clerk 2026 hand written declaration",
+   "imp": 3
+  },
+  {
+   "q": "handwritten declaration for ibps rrb clerk 2026",
+   "imp": 2
+  },
+  {
+   "q": "handwritten declaration rrb clerk 2026",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb clerk declaration",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk declaration format",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk declaration format 2026",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk declaration resize",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk handwritten declaration resize",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-rrb-clerk-photo-resize/": [
+  {
+   "q": "rrb clerk photo and signature size",
+   "imp": 3
+  },
+  {
+   "q": "rrb clerk 10th marksheet size",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk document resize",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk marksheet size",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk photo size",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb clerk documents size",
+   "imp": 1
+  }
+ ],
+ "/resizer/ibps-rrb-clerk-thumb-impression-resize/": [
+  {
+   "q": "ibps rrb clerk thumb impression",
+   "imp": 3
+  },
+  {
+   "q": "rrb clerk left thumb size",
+   "imp": 3
+  },
+  {
+   "q": "rrb clerk thumb size",
+   "imp": 2
+  },
+  {
+   "q": "rrb clerk thumb impression",
+   "imp": 1
+  }
+ ],
+ "/resizer/ibps-rrb-po-declaration-resize/": [
+  {
+   "q": "rrb po declaration 2026",
+   "imp": 275
+  },
+  {
+   "q": "rrb po declaration",
+   "imp": 92
+  },
+  {
+   "q": "ibps rrb po hand written declaration 2026",
+   "imp": 74
+  },
+  {
+   "q": "ibps rrb po declaration 2026",
+   "imp": 67
+  },
+  {
+   "q": "rrb declaration",
+   "imp": 66
+  },
+  {
+   "q": "rrb declaration 2026",
+   "imp": 60
+  },
+  {
+   "q": "rrb po declaration size",
+   "imp": 55
+  },
+  {
+   "q": "rrb po hand written declaration 2026",
+   "imp": 40
+  },
+  {
+   "q": "rrb po new declaration 2026",
+   "imp": 32
+  },
+  {
+   "q": "rrb declaration size",
+   "imp": 27
+  },
+  {
+   "q": "rrb po hand written declaration",
+   "imp": 21
+  },
+  {
+   "q": "handwritten declaration for rrb po 2026",
+   "imp": 20
+  },
+  {
+   "q": "ibps rrb po declaration size",
+   "imp": 20
+  },
+  {
+   "q": "rrb po declaration 2026 size",
+   "imp": 19
+  },
+  {
+   "q": "ibps rrb po declaration",
+   "imp": 18
+  },
+  {
+   "q": "ibps rrb po new declaration 2026",
+   "imp": 15
+  },
+  {
+   "q": "rrb new declaration",
+   "imp": 15
+  },
+  {
+   "q": "rrb po 2026 declaration",
+   "imp": 14
+  },
+  {
+   "q": "rrb po hand written declaration resize",
+   "imp": 14
+  },
+  {
+   "q": "new declaration of rrb po",
+   "imp": 12
+  },
+  {
+   "q": "new rrb declaration",
+   "imp": 10
+  },
+  {
+   "q": "rrb po handwritten declaration 2026",
+   "imp": 9
+  },
+  {
+   "q": "rrb po clerk declaration 2026",
+   "imp": 8
+  },
+  {
+   "q": "rrb po declaration format 2026",
+   "imp": 8
+  },
+  {
+   "q": "rrb po hand written declaration size",
+   "imp": 8
+  },
+  {
+   "q": "rrb 2026 declaration",
+   "imp": 7
+  },
+  {
+   "q": "rrb po declaration format",
+   "imp": 7
+  },
+  {
+   "q": "ibps rrb po and clerk declaration 2026",
+   "imp": 6
+  },
+  {
+   "q": "ibps rrb po hand written declaration",
+   "imp": 6
+  },
+  {
+   "q": "ibps rrb po handwritten declaration 2026",
+   "imp": 6
+  },
+  {
+   "q": "new declaration for rrb po 2026",
+   "imp": 6
+  },
+  {
+   "q": "rrb po declaration resize",
+   "imp": 6
+  },
+  {
+   "q": "declaration for rrb po 2026",
+   "imp": 5
+  },
+  {
+   "q": "declaration size for rrb po",
+   "imp": 5
+  },
+  {
+   "q": "ibps rrb po 2026 declaration",
+   "imp": 5
+  },
+  {
+   "q": "ibps rrb po hand written declaration resize",
+   "imp": 5
+  },
+  {
+   "q": "rrb po 2026 handwritten declaration",
+   "imp": 5
+  },
+  {
+   "q": "rrb po and clerk declaration 2026",
+   "imp": 5
+  },
+  {
+   "q": "rrb po new declaration",
+   "imp": 5
+  },
+  {
+   "q": "rrb po notification 2026 handwritten declaration",
+   "imp": 5
+  },
+  {
+   "q": "declaration for rrb po",
+   "imp": 4
+  },
+  {
+   "q": "rrb declaration form",
+   "imp": 4
+  },
+  {
+   "q": "rrb hand written declaration 2026",
+   "imp": 4
+  },
+  {
+   "q": "rrb office assistant hand written declaration 2026",
+   "imp": 4
+  },
+  {
+   "q": "rrb po hand declaration size",
+   "imp": 4
+  },
+  {
+   "q": "declaration of rrb po 2026",
+   "imp": 3
+  },
+  {
+   "q": "declaration rrb po 2026",
+   "imp": 3
+  },
+  {
+   "q": "hand written declaration size for rrb po",
+   "imp": 3
+  },
+  {
+   "q": "rrb declaration form 2026",
+   "imp": 3
+  },
+  {
+   "q": "rrb officer scale 1 hand written declaration",
+   "imp": 3
+  },
+  {
+   "q": "rrb po 2026 declaration format",
+   "imp": 3
+  },
+  {
+   "q": "rrb po and clerk declaration format 2026",
+   "imp": 3
+  },
+  {
+   "q": "rrb po declaration resizer",
+   "imp": 3
+  },
+  {
+   "q": "declaration for ibps rrb po 2026",
+   "imp": 2
+  },
+  {
+   "q": "declaration rrb",
+   "imp": 2
+  },
+  {
+   "q": "hand written declaration rrb po",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb po 2026 handwritten declaration",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb po clerk declaration 2026",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb po handwritten declaration",
+   "imp": 2
+  },
+  {
+   "q": "ibps rrb po self declaration form 2026",
+   "imp": 2
+  },
+  {
+   "q": "rrb po clerk hand written declaration 2026",
+   "imp": 2
+  },
+  {
+   "q": "rrb po new handwritten declaration",
+   "imp": 2
+  },
+  {
+   "q": "handwritten declaration rrb po",
+   "imp": 1
+  },
+  {
+   "q": "ibps rrb po declaration 2025",
+   "imp": 1
+  }
+ ],
+ "/resizer/ibps-rrb-po-photo-resize/": [
+  {
+   "q": "rrb po image",
+   "imp": 9
+  },
+  {
+   "q": "rrb po documents resize",
+   "imp": 3
+  },
+  {
+   "q": "rrb po documents size",
+   "imp": 3
+  },
+  {
+   "q": "rrb po handwritten",
+   "imp": 3
+  },
+  {
+   "q": "photo size for rrb po",
+   "imp": 2
+  },
+  {
+   "q": "rrb po 10th certificate size",
+   "imp": 2
+  },
+  {
+   "q": "rrb po 10th marksheet size",
+   "imp": 2
+  },
+  {
+   "q": "rrb po decleration",
+   "imp": 2
+  },
+  {
+   "q": "rrb po photo size",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-rrb-po-signature-resize/": [
+  {
+   "q": "rrb po signature size",
+   "imp": 5
+  },
+  {
+   "q": "rrb po signature",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-rrb-po-thumb-impression-resize/": [
+  {
+   "q": "rrb po thumb impression",
+   "imp": 5
+  },
+  {
+   "q": "rrb po thumb impression size",
+   "imp": 5
+  },
+  {
+   "q": "rrb po left thumb impression",
+   "imp": 4
+  },
+  {
+   "q": "ibps rrb po thumb size",
+   "imp": 3
+  },
+  {
+   "q": "rrb po thumb size",
+   "imp": 3
+  },
+  {
+   "q": "ibps rrb po thumb impression",
+   "imp": 2
+  }
+ ],
+ "/resizer/ibps-so-declaration-resize/": [
+  {
+   "q": "ibps so handwritten declaration",
+   "imp": 21
+  },
+  {
+   "q": "handwritten declaration for ibps so",
+   "imp": 14
+  }
+ ],
+ "/resizer/jee-main-signature-resize/": [
+  {
+   "q": "signature size for jee mains",
+   "imp": 1
+  }
+ ],
+ "/resizer/jkssb-photo-resize/": [
+  {
+   "q": "jkssb document upload size online",
+   "imp": 1
+  }
+ ],
+ "/resizer/kpsc-photo-resize/": [
+  {
+   "q": "kerala psc photo size",
+   "imp": 3
+  }
+ ],
+ "/resizer/lic-aao-declaration-resize/": [
+  {
+   "q": "lic aao handwritten declaration",
+   "imp": 5
+  }
+ ],
+ "/resizer/lic-aao-photo-resize/": [
+  {
+   "q": "lic aao notification 2027",
+   "imp": 2
+  }
+ ],
+ "/resizer/lic-aao-thumb-impression-resize/": [
+  {
+   "q": "thumb impression for lic aao",
+   "imp": 3
+  }
+ ],
+ "/resizer/neet-ug-photo-resize/": [
+  {
+   "q": "neet photo size",
+   "imp": 7
+  },
+  {
+   "q": "neet passport size photo",
+   "imp": 5
+  },
+  {
+   "q": "neet photo size 2022",
+   "imp": 4
+  },
+  {
+   "q": "neet photo resizer",
+   "imp": 3
+  },
+  {
+   "q": "neet 2021 photo size",
+   "imp": 1
+  }
+ ],
+ "/resizer/neet-ug-postcard-photo-resize/": [
+  {
+   "q": "post card size photo for neet",
+   "imp": 23
+  },
+  {
+   "q": "postcard size photo for neet",
+   "imp": 22
+  },
+  {
+   "q": "upload postcard size photo neet",
+   "imp": 5
+  },
+  {
+   "q": "post card photo size for neet 2021",
+   "imp": 4
+  },
+  {
+   "q": "neet post card size photo",
+   "imp": 3
+  },
+  {
+   "q": "size of postcard photo for neet 2024",
+   "imp": 3
+  },
+  {
+   "q": "is postcard size photo required for neet 2026",
+   "imp": 2
+  },
+  {
+   "q": "post card size photograph for neet",
+   "imp": 1
+  },
+  {
+   "q": "postcard photo size for neet",
+   "imp": 1
+  }
+ ],
+ "/resizer/niacl-declaration-resize/": [
+  {
+   "q": "niacl ao declaration",
+   "imp": 59
+  },
+  {
+   "q": "niacl hand written declaration",
+   "imp": 32
+  },
+  {
+   "q": "niacl ao hand written declaration 2026",
+   "imp": 22
+  },
+  {
+   "q": "niacl ao handwritten declaration",
+   "imp": 19
+  },
+  {
+   "q": "handwritten declaration for niacl ao",
+   "imp": 16
+  },
+  {
+   "q": "niacl ao hand declaration",
+   "imp": 15
+  },
+  {
+   "q": "niacl ao declaration 2026",
+   "imp": 11
+  },
+  {
+   "q": "niacl ao handwritten declaration 2026",
+   "imp": 11
+  },
+  {
+   "q": "niacl ao handwritten declaration 2025",
+   "imp": 3
+  },
+  {
+   "q": "niacl ao hand written declaration 2025",
+   "imp": 2
+  }
+ ],
+ "/resizer/niacl-photo-resize/": [
+  {
+   "q": "niacl ao photo size",
+   "imp": 5
+  },
+  {
+   "q": "niacl ao 2027",
+   "imp": 3
+  }
+ ],
+ "/resizer/niacl-signature-resize/": [
+  {
+   "q": "niacl ao signature size",
+   "imp": 27
+  }
+ ],
+ "/resizer/osssc-photo-resize/": [
+  {
+   "q": "osssc photos",
+   "imp": 29
+  }
+ ],
+ "/resizer/photo-signature-size-chart/": [
+  {
+   "q": "photo and signature size for government exam",
+   "imp": 3
+  }
+ ],
+ "/resizer/post-gds-photo-resize/": [
+  {
+   "q": "gds height",
+   "imp": 7
+  },
+  {
+   "q": "photo and signature for gds application",
+   "imp": 5
+  },
+  {
+   "q": "gds height and weight",
+   "imp": 4
+  },
+  {
+   "q": "india post gds height",
+   "imp": 2
+  }
+ ],
+ "/resizer/postcard-size-photo-resize/": [
+  {
+   "q": "post card size photo",
+   "imp": 480
+  },
+  {
+   "q": "postcard size photo",
+   "imp": 302
+  },
+  {
+   "q": "postal size photo",
+   "imp": 147
+  },
+  {
+   "q": "post card size photo in cm",
+   "imp": 121
+  },
+  {
+   "q": "postcard photo size",
+   "imp": 83
+  },
+  {
+   "q": "post card photo size",
+   "imp": 66
+  },
+  {
+   "q": "postcard size",
+   "imp": 58
+  },
+  {
+   "q": "post card size photo in inch",
+   "imp": 56
+  },
+  {
+   "q": "postcard size in cm",
+   "imp": 35
+  },
+  {
+   "q": "postcard size photo in cm",
+   "imp": 24
+  },
+  {
+   "q": "post card size photo in inches",
+   "imp": 22
+  },
+  {
+   "q": "postcard size photo size in cm",
+   "imp": 20
+  },
+  {
+   "q": "post card size",
+   "imp": 19
+  },
+  {
+   "q": "post card photo size in cm",
+   "imp": 15
+  },
+  {
+   "q": "postcard size photo dimensions",
+   "imp": 15
+  },
+  {
+   "q": "post card size photo size in cm",
+   "imp": 14
+  },
+  {
+   "q": "what is post card size photo",
+   "imp": 12
+  },
+  {
+   "q": "postcard size photo size",
+   "imp": 10
+  },
+  {
+   "q": "post card size photo size",
+   "imp": 9
+  },
+  {
+   "q": "postcard size photo in inches",
+   "imp": 9
+  },
+  {
+   "q": "post card size photo in pixels",
+   "imp": 8
+  },
+  {
+   "q": "post card size photo size in inch",
+   "imp": 7
+  },
+  {
+   "q": "postcard photo size in inches",
+   "imp": 7
+  },
+  {
+   "q": "postcard size photo means",
+   "imp": 7
+  },
+  {
+   "q": "postal size photo in cm",
+   "imp": 6
+  },
+  {
+   "q": "postcard size image",
+   "imp": 6
+  },
+  {
+   "q": "postcard size in pixels",
+   "imp": 6
+  },
+  {
+   "q": "size of postcard photo",
+   "imp": 6
+  },
+  {
+   "q": "size of postcard size photo in cm",
+   "imp": 5
+  },
+  {
+   "q": "postcard photo size in cm",
+   "imp": 4
+  },
+  {
+   "q": "postcard size photo in inch",
+   "imp": 4
+  },
+  {
+   "q": "postcard size photo ratio",
+   "imp": 4
+  },
+  {
+   "q": "postcard size photo resize",
+   "imp": 4
+  },
+  {
+   "q": "what is the size of postcard size photo",
+   "imp": 4
+  },
+  {
+   "q": "indian post card size photo",
+   "imp": 3
+  },
+  {
+   "q": "indian post card size photo in cm",
+   "imp": 3
+  },
+  {
+   "q": "photo postcard size",
+   "imp": 3
+  },
+  {
+   "q": "post card photo size in inches",
+   "imp": 3
+  },
+  {
+   "q": "post card size photo and passport size photo",
+   "imp": 3
+  },
+  {
+   "q": "postal size",
+   "imp": 3
+  },
+  {
+   "q": "postal size photo size",
+   "imp": 3
+  },
+  {
+   "q": "postcard size photos",
+   "imp": 3
+  },
+  {
+   "q": "size of postcard size photo",
+   "imp": 3
+  },
+  {
+   "q": "how to make post card size photo",
+   "imp": 2
+  },
+  {
+   "q": "indian postcard size photo",
+   "imp": 2
+  },
+  {
+   "q": "post card image size",
+   "imp": 2
+  },
+  {
+   "q": "post card size photo image",
+   "imp": 2
+  },
+  {
+   "q": "post card size photo means",
+   "imp": 2
+  },
+  {
+   "q": "postcard dimensions",
+   "imp": 2
+  },
+  {
+   "q": "postcard image size",
+   "imp": 2
+  },
+  {
+   "q": "postcard pixel size",
+   "imp": 2
+  },
+  {
+   "q": "postcard size in inch",
+   "imp": 2
+  },
+  {
+   "q": "postcard size photo size in inches",
+   "imp": 2
+  },
+  {
+   "q": "size of post card photo",
+   "imp": 2
+  },
+  {
+   "q": "what is postcard size photo",
+   "imp": 2
+  },
+  {
+   "q": "what is the size of a postcard size photo",
+   "imp": 2
+  },
+  {
+   "q": "what is the size of post card size photo",
+   "imp": 2
+  },
+  {
+   "q": "dimension of postcard size photo",
+   "imp": 1
+  },
+  {
+   "q": "family photo postcard size",
+   "imp": 1
+  },
+  {
+   "q": "image to postcard",
+   "imp": 1
+  },
+  {
+   "q": "make photo postcard size",
+   "imp": 1
+  },
+  {
+   "q": "make postcard size photo",
+   "imp": 1
+  },
+  {
+   "q": "make postcard size photo online",
+   "imp": 1
+  },
+  {
+   "q": "passport size photo to postcard size",
+   "imp": 1
+  },
+  {
+   "q": "photo post card size",
+   "imp": 1
+  },
+  {
+   "q": "post card dimensions",
+   "imp": 1
+  },
+  {
+   "q": "post card size photo ratio",
+   "imp": 1
+  },
+  {
+   "q": "post card size photograph",
+   "imp": 1
+  },
+  {
+   "q": "postal size photo means",
+   "imp": 1
+  },
+  {
+   "q": "postcard photo dimensions",
+   "imp": 1
+  },
+  {
+   "q": "postcard px size",
+   "imp": 1
+  },
+  {
+   "q": "postcard size in cm india",
+   "imp": 1
+  },
+  {
+   "q": "postcard size in px",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo and passport size photo",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo image",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo in pixels",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo maker online free",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo online",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photo resizer",
+   "imp": 1
+  },
+  {
+   "q": "postcard size photograph",
+   "imp": 1
+  },
+  {
+   "q": "size of post card",
+   "imp": 1
+  },
+  {
+   "q": "size of postcard",
+   "imp": 1
+  },
+  {
+   "q": "what is size of postcard size photo",
+   "imp": 1
+  }
+ ],
+ "/resizer/rbi-assistant-photo-resize/": [
+  {
+   "q": "rbi assistant 2027",
+   "imp": 3
+  }
+ ],
+ "/resizer/rbi-grade-b-photo-resize/": [
+  {
+   "q": "can we use calculator in rbi grade b exam",
+   "imp": 2
+  }
+ ],
+ "/resizer/rpf-constable-photo-resize/": [
+  {
+   "q": "rpf constable photo",
+   "imp": 4
+  }
+ ],
+ "/resizer/rpf-si-photo-resize/": [
+  {
+   "q": "rpf si image",
+   "imp": 10
+  },
+  {
+   "q": "rpf si photo",
+   "imp": 10
+  }
+ ],
+ "/resizer/rpsc-photo-resize/": [
+  {
+   "q": "rpsc photo",
+   "imp": 8
+  },
+  {
+   "q": "ras image",
+   "imp": 4
+  },
+  {
+   "q": "ras photo",
+   "imp": 4
+  }
+ ],
+ "/resizer/sbi-clerk-declaration-resize/": [
+  {
+   "q": "handwritten declaration for sbi clerk",
+   "imp": 14
+  },
+  {
+   "q": "hand declaration for sbi clerk",
+   "imp": 2
+  },
+  {
+   "q": "sbi clerk declaration format 2025",
+   "imp": 1
+  },
+  {
+   "q": "sbi clerk hand written declaration 2024",
+   "imp": 1
+  },
+  {
+   "q": "sbi clerk handwritten declaration 2024",
+   "imp": 1
+  }
+ ],
+ "/resizer/sbi-clerk-photo-resize/": [
+  {
+   "q": "sbi clerk photo and signature size",
+   "imp": 11
+  },
+  {
+   "q": "sbi clerk photo size",
+   "imp": 7
+  }
+ ],
+ "/resizer/sbi-clerk-thumb-impression-resize/": [
+  {
+   "q": "thumb impression size for sbi clerk",
+   "imp": 8
+  },
+  {
+   "q": "left thumb impression size for sbi clerk",
+   "imp": 3
+  },
+  {
+   "q": "thumb size for sbi clerk",
+   "imp": 3
+  }
+ ],
+ "/resizer/sbi-po-declaration-resize/": [
+  {
+   "q": "sbi po declaration 2026",
+   "imp": 5
+  },
+  {
+   "q": "hand written declaration for sbi po",
+   "imp": 2
+  },
+  {
+   "q": "sbi po declaration format 2026",
+   "imp": 2
+  },
+  {
+   "q": "hand declaration for sbi po 2026",
+   "imp": 1
+  },
+  {
+   "q": "sbi po hand written declaration",
+   "imp": 1
+  }
+ ],
+ "/resizer/sbi-po-photo-resize/": [
+  {
+   "q": "sbi photo resizer",
+   "imp": 11
+  },
+  {
+   "q": "sbi po photo size",
+   "imp": 4
+  }
+ ],
+ "/resizer/sbi-po-thumb-impression-resize/": [
+  {
+   "q": "left thumb impression size for sbi po",
+   "imp": 4
+  },
+  {
+   "q": "thumb impression size for sbi po",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/1000x350-pixels/": [
+  {
+   "q": "1000-350",
+   "imp": 14
+  },
+  {
+   "q": "1000/350",
+   "imp": 4
+  },
+  {
+   "q": "1000*350",
+   "imp": 3
+  },
+  {
+   "q": "1000 * 350",
+   "imp": 2
+  },
+  {
+   "q": "1000 x 350",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/100x120-pixels/": [
+  {
+   "q": "100*120",
+   "imp": 65
+  },
+  {
+   "q": "100*120 photo size",
+   "imp": 55
+  },
+  {
+   "q": "100*120 pixels photo online",
+   "imp": 27
+  },
+  {
+   "q": "100 * 120 pixels photo online",
+   "imp": 16
+  },
+  {
+   "q": "100 width * 120 height pixel",
+   "imp": 11
+  },
+  {
+   "q": "100 * 120",
+   "imp": 10
+  },
+  {
+   "q": "100 x 120 pixel image",
+   "imp": 10
+  },
+  {
+   "q": "100 x 120",
+   "imp": 8
+  },
+  {
+   "q": "100 120 pixels converter",
+   "imp": 5
+  },
+  {
+   "q": "=100*120",
+   "imp": 4
+  },
+  {
+   "q": "100 * 120 photo size",
+   "imp": 4
+  },
+  {
+   "q": "resize image 100 * 120",
+   "imp": 4
+  },
+  {
+   "q": "width 120px height 100px",
+   "imp": 4
+  },
+  {
+   "q": "100x120",
+   "imp": 2
+  },
+  {
+   "q": "120 x 100",
+   "imp": 1
+  },
+  {
+   "q": "120x 100",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/1200x1200-pixels/": [
+  {
+   "q": "1200+1200",
+   "imp": 10
+  },
+  {
+   "q": "1200 1200",
+   "imp": 6
+  },
+  {
+   "q": "1200px",
+   "imp": 4
+  },
+  {
+   "q": "1200 × 1200",
+   "imp": 1
+  },
+  {
+   "q": "1200 px",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/120x120-pixels/": [
+  {
+   "q": "120px",
+   "imp": 55
+  },
+  {
+   "q": "120 pixel image",
+   "imp": 11
+  },
+  {
+   "q": "120*120",
+   "imp": 5
+  },
+  {
+   "q": "120 pixels",
+   "imp": 1
+  },
+  {
+   "q": "120 px",
+   "imp": 1
+  },
+  {
+   "q": "120-120",
+   "imp": 1
+  },
+  {
+   "q": "120+120",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/120x80-pixels/": [
+  {
+   "q": "80*120",
+   "imp": 3
+  }
+ ],
+ "/resizer/size/130x180-pixels/": [
+  {
+   "q": "180*130",
+   "imp": 5
+  },
+  {
+   "q": "130*180",
+   "imp": 2
+  },
+  {
+   "q": "130+180",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/138x177-pixels/": [
+  {
+   "q": "138/177",
+   "imp": 14
+  },
+  {
+   "q": "138x177",
+   "imp": 10
+  }
+ ],
+ "/resizer/size/138x59-pixels/": [
+  {
+   "q": "138+59",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/140x177-pixels/": [
+  {
+   "q": "140/177",
+   "imp": 4
+  }
+ ],
+ "/resizer/size/140x40-pixels/": [
+  {
+   "q": "140*40",
+   "imp": 111
+  },
+  {
+   "q": "140 * 40",
+   "imp": 27
+  },
+  {
+   "q": "40*140",
+   "imp": 11
+  },
+  {
+   "q": "140+40",
+   "imp": 6
+  },
+  {
+   "q": "40 * 140",
+   "imp": 4
+  }
+ ],
+ "/resizer/size/140x60-pixels/": [
+  {
+   "q": "60px 140px signature",
+   "imp": 472
+  },
+  {
+   "q": "60*140 pixels signature 40 kb",
+   "imp": 178
+  },
+  {
+   "q": "60px 140px",
+   "imp": 67
+  },
+  {
+   "q": "140 x 60 pixels signature resize 40 kb",
+   "imp": 63
+  },
+  {
+   "q": "60 * 140 pixels signature 40 kb",
+   "imp": 53
+  },
+  {
+   "q": "60px to 140px signature size",
+   "imp": 51
+  },
+  {
+   "q": "photo resize 140 * 60 pixels 40 kb",
+   "imp": 51
+  },
+  {
+   "q": "signature 140 x 60 pixels 40 kb",
+   "imp": 50
+  },
+  {
+   "q": "signature resize 60px 140px",
+   "imp": 50
+  },
+  {
+   "q": "signature size 60px 140px",
+   "imp": 44
+  },
+  {
+   "q": "signature 60px 140px",
+   "imp": 41
+  },
+  {
+   "q": "signature resize 140 * 60 in 40 kb",
+   "imp": 38
+  },
+  {
+   "q": "140 * 60 pixels in 40 kb",
+   "imp": 29
+  },
+  {
+   "q": "140*60 pixels in 20 kb",
+   "imp": 29
+  },
+  {
+   "q": "140*60 pixels in 40 kb",
+   "imp": 28
+  },
+  {
+   "q": "140*60 pixels in 20 kb signature",
+   "imp": 24
+  },
+  {
+   "q": "compress image 60px 140px",
+   "imp": 18
+  },
+  {
+   "q": "resize image 60px 140px",
+   "imp": 18
+  },
+  {
+   "q": "140 × 60 pixels in cm",
+   "imp": 17
+  },
+  {
+   "q": "60px 140px signature size",
+   "imp": 17
+  },
+  {
+   "q": "140px 60px",
+   "imp": 14
+  },
+  {
+   "q": "140*60 pixels signature 20 kb",
+   "imp": 13
+  },
+  {
+   "q": "image resizer 140 * 60 in 40 kb",
+   "imp": 12
+  },
+  {
+   "q": "sign 60px 140px",
+   "imp": 12
+  },
+  {
+   "q": "140 * 60 pixels in 40 kb signature",
+   "imp": 11
+  },
+  {
+   "q": "image resizer 60px to 140px",
+   "imp": 11
+  },
+  {
+   "q": "140 * 60 pixels signature 20 kb",
+   "imp": 9
+  },
+  {
+   "q": "140 * 60 pixels signature 40 kb",
+   "imp": 9
+  },
+  {
+   "q": "60*140px signature size",
+   "imp": 9
+  },
+  {
+   "q": "140 * 60 pixels in 10 to 20 kb",
+   "imp": 8
+  },
+  {
+   "q": "140 x 60 pixels signature resize under 40 kb",
+   "imp": 7
+  },
+  {
+   "q": "140 * 60 pixels 20 kb",
+   "imp": 6
+  },
+  {
+   "q": "140 * 60 pixels in 20 kb",
+   "imp": 6
+  },
+  {
+   "q": "140 ×60 pixels in cm",
+   "imp": 6
+  },
+  {
+   "q": "140*60 pixels in cm",
+   "imp": 6
+  },
+  {
+   "q": "60px 140px in cm",
+   "imp": 6
+  },
+  {
+   "q": "photo resizer 60px 140px",
+   "imp": 6
+  },
+  {
+   "q": "140 * 60 px in cm",
+   "imp": 5
+  },
+  {
+   "q": "jpg 60px 140px",
+   "imp": 5
+  },
+  {
+   "q": "make image 60px 140px",
+   "imp": 5
+  },
+  {
+   "q": "140 x 60 pixels signature resize 20 kb",
+   "imp": 4
+  },
+  {
+   "q": "140 x 60 pixels signature resize 40 kb online free",
+   "imp": 4
+  },
+  {
+   "q": "image resize 60px to 140px",
+   "imp": 4
+  },
+  {
+   "q": "signature resize 60px 140px 40kb",
+   "imp": 4
+  },
+  {
+   "q": "140 60 pixels in cm 200 dpi",
+   "imp": 3
+  },
+  {
+   "q": "140 x 60 pixels signature resize",
+   "imp": 3
+  },
+  {
+   "q": "140px to 60px",
+   "imp": 3
+  },
+  {
+   "q": "60px 140px photo size",
+   "imp": 3
+  },
+  {
+   "q": "photo resize 140 * 60 pixels 20 kb",
+   "imp": 3
+  },
+  {
+   "q": "140 * 60 pixels in cm",
+   "imp": 2
+  },
+  {
+   "q": "140 60 pixels in cm",
+   "imp": 2
+  },
+  {
+   "q": "140*60 pixels in 50kb",
+   "imp": 2
+  },
+  {
+   "q": "140x60 pixels 20 kb",
+   "imp": 2
+  },
+  {
+   "q": "compress image to 140 * 60 pixels 40 kb",
+   "imp": 2
+  },
+  {
+   "q": "resize image 140 x 60 pixels 40 kb",
+   "imp": 2
+  },
+  {
+   "q": "rrb signature resize 60 140 pixels",
+   "imp": 2
+  },
+  {
+   "q": "140 x 60 pixels signature resize 30 kb",
+   "imp": 1
+  },
+  {
+   "q": "140*60 pixels in 40kb",
+   "imp": 1
+  },
+  {
+   "q": "60px 140px photo",
+   "imp": 1
+  },
+  {
+   "q": "60px by 140px",
+   "imp": 1
+  },
+  {
+   "q": "signature 140 x 60 pixel 20kb",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/140x80-pixels/": [
+  {
+   "q": "140*80",
+   "imp": 26
+  },
+  {
+   "q": "80*140",
+   "imp": 10
+  },
+  {
+   "q": "140 * 80",
+   "imp": 5
+  }
+ ],
+ "/resizer/size/150x100-pixels/": [
+  {
+   "q": "150*100",
+   "imp": 3
+  },
+  {
+   "q": "150×100 pixels",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/150x200-pixels/": [
+  {
+   "q": "upload photograph in prescribed format ( jpeg / jpg format,150 x 200 pixel), * between 20 and 30kb size must not exceed 30kb.",
+   "imp": 23
+  },
+  {
+   "q": "150×200 photo size",
+   "imp": 12
+  },
+  {
+   "q": "150 200 pixels 30 kb",
+   "imp": 10
+  },
+  {
+   "q": "200*150",
+   "imp": 8
+  },
+  {
+   "q": "200 * 150",
+   "imp": 7
+  },
+  {
+   "q": "150 x 200",
+   "imp": 6
+  },
+  {
+   "q": "150*200",
+   "imp": 6
+  },
+  {
+   "q": "150*200 photo size",
+   "imp": 5
+  },
+  {
+   "q": "photo 150px 200px",
+   "imp": 5
+  },
+  {
+   "q": "200*150 photo size",
+   "imp": 4
+  },
+  {
+   "q": "150 * 200 px jpg",
+   "imp": 3
+  },
+  {
+   "q": "150 200 photo size",
+   "imp": 3
+  },
+  {
+   "q": "200 x 150",
+   "imp": 3
+  },
+  {
+   "q": "height 200 width 150",
+   "imp": 3
+  },
+  {
+   "q": "200 *150",
+   "imp": 2
+  },
+  {
+   "q": "photo 150 width 200 height",
+   "imp": 2
+  },
+  {
+   "q": "photo 150*200",
+   "imp": 2
+  },
+  {
+   "q": "photo size 150*200",
+   "imp": 2
+  },
+  {
+   "q": "150 x 200 px in size",
+   "imp": 1
+  },
+  {
+   "q": "150-200",
+   "imp": 1
+  },
+  {
+   "q": "150/200",
+   "imp": 1
+  },
+  {
+   "q": "150+200+50",
+   "imp": 1
+  },
+  {
+   "q": "150×200",
+   "imp": 1
+  },
+  {
+   "q": "height 200px and width 150px",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/180x100-pixels/": [
+  {
+   "q": "100*180 size",
+   "imp": 3
+  },
+  {
+   "q": "100*180",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/180x216-pixels/": [
+  {
+   "q": "180-216",
+   "imp": 5
+  },
+  {
+   "q": "180+216",
+   "imp": 3
+  }
+ ],
+ "/resizer/size/180x225-pixels/": [
+  {
+   "q": "180*225",
+   "imp": 4
+  },
+  {
+   "q": "225 - 180",
+   "imp": 1
+  },
+  {
+   "q": "225+180",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/180x250-pixels/": [
+  {
+   "q": "180*250",
+   "imp": 15
+  },
+  {
+   "q": "250*180",
+   "imp": 5
+  },
+  {
+   "q": "180 * 250",
+   "imp": 4
+  }
+ ],
+ "/resizer/size/200x200-pixels/": [
+  {
+   "q": "160 x 200 pixels converter",
+   "imp": 15
+  },
+  {
+   "q": "200pixels",
+   "imp": 8
+  },
+  {
+   "q": "200px",
+   "imp": 6
+  },
+  {
+   "q": "200+200+250",
+   "imp": 2
+  },
+  {
+   "q": "200 * 200",
+   "imp": 1
+  },
+  {
+   "q": "200x200=",
+   "imp": 1
+  },
+  {
+   "q": "width 200px",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/200x230-pixels/": [
+  {
+   "q": "200 230 pixels in 50kb jpg",
+   "imp": 3
+  },
+  {
+   "q": "200 * 230 pixels in 50kb jpg",
+   "imp": 2
+  },
+  {
+   "q": "200*230px",
+   "imp": 2
+  },
+  {
+   "q": "200/230",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/200x240-pixels/": [
+  {
+   "q": "200*240",
+   "imp": 39
+  },
+  {
+   "q": "240*200",
+   "imp": 30
+  },
+  {
+   "q": "240+200",
+   "imp": 16
+  },
+  {
+   "q": "200 * 240",
+   "imp": 8
+  },
+  {
+   "q": "240/200",
+   "imp": 6
+  },
+  {
+   "q": "240 200",
+   "imp": 4
+  },
+  {
+   "q": "240 * 200",
+   "imp": 3
+  },
+  {
+   "q": "240 x 200",
+   "imp": 3
+  },
+  {
+   "q": "200 / 240",
+   "imp": 2
+  },
+  {
+   "q": "200/240",
+   "imp": 2
+  },
+  {
+   "q": "240 + 200",
+   "imp": 2
+  },
+  {
+   "q": "200+240",
+   "imp": 1
+  },
+  {
+   "q": "240 / 200",
+   "imp": 1
+  },
+  {
+   "q": "240-200",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/200x250-pixels/": [
+  {
+   "q": "200*250",
+   "imp": 63
+  },
+  {
+   "q": "250*200",
+   "imp": 37
+  },
+  {
+   "q": "250 x 200",
+   "imp": 15
+  },
+  {
+   "q": "200 * 250",
+   "imp": 11
+  },
+  {
+   "q": "200+250+250",
+   "imp": 5
+  },
+  {
+   "q": "200x250",
+   "imp": 5
+  },
+  {
+   "q": "250 * 200",
+   "imp": 5
+  },
+  {
+   "q": "200 x 250",
+   "imp": 3
+  },
+  {
+   "q": "200-250",
+   "imp": 3
+  },
+  {
+   "q": "200px x 250px photo size",
+   "imp": 3
+  },
+  {
+   "q": "200px width x 250px height",
+   "imp": 2
+  },
+  {
+   "q": "200*250 photo size",
+   "imp": 1
+  },
+  {
+   "q": "250 *200",
+   "imp": 1
+  },
+  {
+   "q": "image 200 * 250 pixels",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/200x80-pixels/": [
+  {
+   "q": "80*200",
+   "imp": 21
+  },
+  {
+   "q": "200*80",
+   "imp": 18
+  },
+  {
+   "q": "80 * 200",
+   "imp": 3
+  },
+  {
+   "q": "200 * 80",
+   "imp": 2
+  },
+  {
+   "q": "200 *80",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/216x108-pixels/": [
+  {
+   "q": "216 - 108",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/220x100-pixels/": [
+  {
+   "q": "220*100",
+   "imp": 10
+  },
+  {
+   "q": "220 * 100",
+   "imp": 4
+  },
+  {
+   "q": "100*220",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/240x240-pixels/": [
+  {
+   "q": "240*240 pixels in 200 dpi",
+   "imp": 16
+  },
+  {
+   "q": "240px",
+   "imp": 5
+  },
+  {
+   "q": "240 * 240 pixels in 200 dpi",
+   "imp": 4
+  },
+  {
+   "q": "240*240 pixels in 200 dpi 50kb",
+   "imp": 3
+  },
+  {
+   "q": "240 px of width size",
+   "imp": 2
+  },
+  {
+   "q": "240×240 pixels in 200 dpi",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/240x320-pixels/": [
+  {
+   "q": "resize photo 240x320",
+   "imp": 5
+  },
+  {
+   "q": "240*320",
+   "imp": 4
+  },
+  {
+   "q": "240+320",
+   "imp": 3
+  },
+  {
+   "q": "240x320 pixel converter",
+   "imp": 3
+  },
+  {
+   "q": "240/320",
+   "imp": 2
+  },
+  {
+   "q": "240 x 320",
+   "imp": 1
+  },
+  {
+   "q": "240x320 image",
+   "imp": 1
+  },
+  {
+   "q": "240x320 pixels",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/240x80-pixels/": [
+  {
+   "q": "240*80",
+   "imp": 28
+  },
+  {
+   "q": "240 * 80",
+   "imp": 4
+  },
+  {
+   "q": "240 x 80",
+   "imp": 3
+  },
+  {
+   "q": "80*240",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/250x250-pixels/": [
+  {
+   "q": "250 pixel width and height 50 kb",
+   "imp": 945
+  },
+  {
+   "q": "less than 250 pixel width and height",
+   "imp": 150
+  },
+  {
+   "q": "250 250",
+   "imp": 146
+  },
+  {
+   "q": "250+250",
+   "imp": 140
+  },
+  {
+   "q": "250 pixel width and height",
+   "imp": 120
+  },
+  {
+   "q": "passport size photo less than 250 pixel width and height",
+   "imp": 92
+  },
+  {
+   "q": "250*250 pixel",
+   "imp": 86
+  },
+  {
+   "q": "250 pixel width and height 20 kb",
+   "imp": 72
+  },
+  {
+   "q": "photo compressor 50 kb 250 pixels",
+   "imp": 61
+  },
+  {
+   "q": "photo compressor 250 pixel width and height",
+   "imp": 59
+  },
+  {
+   "q": "250*250 photo size",
+   "imp": 46
+  },
+  {
+   "q": "jpg 250*250",
+   "imp": 43
+  },
+  {
+   "q": "photo 250 pixel width and height",
+   "imp": 41
+  },
+  {
+   "q": "250 + 250",
+   "imp": 40
+  },
+  {
+   "q": "less than 250 pixel width and height 50 kb",
+   "imp": 40
+  },
+  {
+   "q": "photo 250 pixel width and height 50 kb",
+   "imp": 40
+  },
+  {
+   "q": "compress image to 50kb 250 pixels",
+   "imp": 35
+  },
+  {
+   "q": "photo less than 250 pixel width and height",
+   "imp": 35
+  },
+  {
+   "q": "photo resizer 50kb 250 pixels",
+   "imp": 34
+  },
+  {
+   "q": "250 pixel width and height 50 kb online free",
+   "imp": 33
+  },
+  {
+   "q": "compress image to 50kb less than 250 pixel width and height",
+   "imp": 27
+  },
+  {
+   "q": "jpg 250 pixel",
+   "imp": 27
+  },
+  {
+   "q": "50kb image compressor 250 pixels",
+   "imp": 26
+  },
+  {
+   "q": "250*250 pixel image",
+   "imp": 24
+  },
+  {
+   "q": "250 pixel photo size",
+   "imp": 22
+  },
+  {
+   "q": "compress photo to 50kb 250 pixels",
+   "imp": 21
+  },
+  {
+   "q": "250 x 250 pixels",
+   "imp": 17
+  },
+  {
+   "q": "250px",
+   "imp": 17
+  },
+  {
+   "q": "250px image",
+   "imp": 17
+  },
+  {
+   "q": "photo pixel 250",
+   "imp": 17
+  },
+  {
+   "q": "250 pixel photo compressor",
+   "imp": 15
+  },
+  {
+   "q": "250×250 photo size",
+   "imp": 15
+  },
+  {
+   "q": "compress image to 50kb less than 250 pixels",
+   "imp": 15
+  },
+  {
+   "q": "compress photo to 250 pixels",
+   "imp": 15
+  },
+  {
+   "q": "250*250",
+   "imp": 14
+  },
+  {
+   "q": "passport size (less than 250 pixel width and height )",
+   "imp": 14
+  },
+  {
+   "q": "compress image less than 250 pixel width and height",
+   "imp": 12
+  },
+  {
+   "q": "250*250 photo resize",
+   "imp": 11
+  },
+  {
+   "q": "250×250",
+   "imp": 11
+  },
+  {
+   "q": "jpg 50 kb 250 pixels",
+   "imp": 10
+  },
+  {
+   "q": "photo 250 pixel",
+   "imp": 10
+  },
+  {
+   "q": "photo compressor 50 kb less than 250 pixels",
+   "imp": 10
+  },
+  {
+   "q": "250 pixel",
+   "imp": 9
+  },
+  {
+   "q": "compress 250 pixel",
+   "imp": 9
+  },
+  {
+   "q": "passport size less than 250 pixel width and height",
+   "imp": 9
+  },
+  {
+   "q": "250/250",
+   "imp": 8
+  },
+  {
+   "q": "250-250",
+   "imp": 7
+  },
+  {
+   "q": "250x250 px photo resizer online free tool",
+   "imp": 7
+  },
+  {
+   "q": "compress image 250 pixels",
+   "imp": 7
+  },
+  {
+   "q": "compress image 50kb 250 pixels",
+   "imp": 7
+  },
+  {
+   "q": "less than 250 pixel",
+   "imp": 7
+  },
+  {
+   "q": "less than 250 pixel width and height photo",
+   "imp": 7
+  },
+  {
+   "q": "photo compressor less than 250 pixel width and height",
+   "imp": 7
+  },
+  {
+   "q": "250 pixel and 320 pixel",
+   "imp": 6
+  },
+  {
+   "q": "250+250+150",
+   "imp": 6
+  },
+  {
+   "q": "250+250=",
+   "imp": 6
+  },
+  {
+   "q": "photo less than 250 pixel",
+   "imp": 6
+  },
+  {
+   "q": "250 * 250",
+   "imp": 5
+  },
+  {
+   "q": "250px x 250px",
+   "imp": 5
+  },
+  {
+   "q": "image compressor less than 250 pixel width and height",
+   "imp": 5
+  },
+  {
+   "q": "photo 250*250",
+   "imp": 5
+  },
+  {
+   "q": "photo size 250*250",
+   "imp": 5
+  },
+  {
+   "q": "250 250 pixels",
+   "imp": 4
+  },
+  {
+   "q": "250 pixel passport size photo",
+   "imp": 4
+  },
+  {
+   "q": "250 px",
+   "imp": 4
+  },
+  {
+   "q": "250 px image",
+   "imp": 4
+  },
+  {
+   "q": "250+250+200",
+   "imp": 4
+  },
+  {
+   "q": "image 250 pixel",
+   "imp": 4
+  },
+  {
+   "q": "image compressor 250 pixel",
+   "imp": 4
+  },
+  {
+   "q": "image less than 250 pixel width and height",
+   "imp": 4
+  },
+  {
+   "q": "photo compressor to 250 pixels",
+   "imp": 4
+  },
+  {
+   "q": "photo resizer 250 x 250 pixels",
+   "imp": 4
+  },
+  {
+   "q": "photo size 250 pixel",
+   "imp": 4
+  },
+  {
+   "q": "reduce image size 250 250 pixels",
+   "imp": 4
+  },
+  {
+   "q": "250+250+",
+   "imp": 3
+  },
+  {
+   "q": "250+250+100",
+   "imp": 3
+  },
+  {
+   "q": "250+250+250",
+   "imp": 3
+  },
+  {
+   "q": "250+250+250+250+250",
+   "imp": 3
+  },
+  {
+   "q": "250+250+250+250+250+250",
+   "imp": 3
+  },
+  {
+   "q": "250+250+50",
+   "imp": 3
+  },
+  {
+   "q": "250x250 image size",
+   "imp": 3
+  },
+  {
+   "q": "compress jpeg to 50kb and 250 pixels",
+   "imp": 3
+  },
+  {
+   "q": "jpeg 250 pixel",
+   "imp": 3
+  },
+  {
+   "q": "only passport size (less than 250 pixel width and height )",
+   "imp": 3
+  },
+  {
+   "q": "passport size photo 250 pixel",
+   "imp": 3
+  },
+  {
+   "q": "resize image to 250 pixels",
+   "imp": 3
+  },
+  {
+   "q": "250 + 250 =",
+   "imp": 2
+  },
+  {
+   "q": "250 +250",
+   "imp": 2
+  },
+  {
+   "q": "250 pixel in cm",
+   "imp": 2
+  },
+  {
+   "q": "250 pixel size",
+   "imp": 2
+  },
+  {
+   "q": "250*250 image",
+   "imp": 2
+  },
+  {
+   "q": "250*250 pixel image converter",
+   "imp": 2
+  },
+  {
+   "q": "250+250+250+150",
+   "imp": 2
+  },
+  {
+   "q": "compress image to 250 pixels",
+   "imp": 2
+  },
+  {
+   "q": "convert image to 250 pixel width and height",
+   "imp": 2
+  },
+  {
+   "q": "convert jpg to less than 250 pixel width and height",
+   "imp": 2
+  },
+  {
+   "q": "image compressor 250 x 250",
+   "imp": 2
+  },
+  {
+   "q": "jpg less than 250 pixel width and height",
+   "imp": 2
+  },
+  {
+   "q": "passport size photo 250 pixels",
+   "imp": 2
+  },
+  {
+   "q": "photo size reducer 250 pixels",
+   "imp": 2
+  },
+  {
+   "q": "photo size reducer less than 250 pixels",
+   "imp": 2
+  },
+  {
+   "q": "photo to 250 pixel",
+   "imp": 2
+  },
+  {
+   "q": "250 + 250 +250",
+   "imp": 1
+  },
+  {
+   "q": "250 250 250",
+   "imp": 1
+  },
+  {
+   "q": "250 250 250 250",
+   "imp": 1
+  },
+  {
+   "q": "250 pixel compressor",
+   "imp": 1
+  },
+  {
+   "q": "250 px in kb",
+   "imp": 1
+  },
+  {
+   "q": "250+250+250+250",
+   "imp": 1
+  },
+  {
+   "q": "250pixel",
+   "imp": 1
+  },
+  {
+   "q": "compress jpeg less than 250 pixel width and height",
+   "imp": 1
+  },
+  {
+   "q": "convert photo to less than 250 pixel width and height",
+   "imp": 1
+  },
+  {
+   "q": "less than 250 pixel width and height ) file are accepted",
+   "imp": 1
+  },
+  {
+   "q": "make photo 250 pixel",
+   "imp": 1
+  },
+  {
+   "q": "passport size 250 pixel",
+   "imp": 1
+  },
+  {
+   "q": "photo 250 pixel compressor",
+   "imp": 1
+  },
+  {
+   "q": "resize image 250 x 250 pixels",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/250x320-pixels/": [
+  {
+   "q": "250*320",
+   "imp": 44
+  },
+  {
+   "q": "250 * 320 signature",
+   "imp": 11
+  },
+  {
+   "q": "250+320",
+   "imp": 11
+  },
+  {
+   "q": "320*250",
+   "imp": 10
+  },
+  {
+   "q": "250px 320px",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/250x80-pixels/": [
+  {
+   "q": "250*80",
+   "imp": 78
+  },
+  {
+   "q": "250 * 80",
+   "imp": 29
+  },
+  {
+   "q": "=250*80",
+   "imp": 6
+  },
+  {
+   "q": "250 *80",
+   "imp": 5
+  },
+  {
+   "q": "80*250",
+   "imp": 3
+  }
+ ],
+ "/resizer/size/250x96-pixels/": [
+  {
+   "q": "250*96",
+   "imp": 31
+  },
+  {
+   "q": "96*250",
+   "imp": 12
+  },
+  {
+   "q": "250 * 96",
+   "imp": 7
+  }
+ ],
+ "/resizer/size/275x90-pixels/": [
+  {
+   "q": "275+90",
+   "imp": 7
+  },
+  {
+   "q": "275*90",
+   "imp": 6
+  },
+  {
+   "q": "275/90",
+   "imp": 3
+  }
+ ],
+ "/resizer/size/280x80-pixels/": [
+  {
+   "q": "80*280",
+   "imp": 16
+  },
+  {
+   "q": "280x80",
+   "imp": 7
+  },
+  {
+   "q": "280*80",
+   "imp": 5
+  }
+ ],
+ "/resizer/size/300x120-pixels/": [
+  {
+   "q": "300-120",
+   "imp": 73
+  },
+  {
+   "q": "300*120",
+   "imp": 48
+  },
+  {
+   "q": "300/120",
+   "imp": 39
+  },
+  {
+   "q": "300+120",
+   "imp": 32
+  },
+  {
+   "q": "signature 300 * 120 pixel",
+   "imp": 22
+  },
+  {
+   "q": "300 - 120",
+   "imp": 20
+  },
+  {
+   "q": "300 x 120",
+   "imp": 18
+  },
+  {
+   "q": "300 * 120",
+   "imp": 11
+  },
+  {
+   "q": "300 / 120",
+   "imp": 8
+  },
+  {
+   "q": "signature resize 300 * 120 pixel",
+   "imp": 6
+  },
+  {
+   "q": "300 * 120 pixel",
+   "imp": 5
+  },
+  {
+   "q": "300 + 120",
+   "imp": 4
+  },
+  {
+   "q": "300 * 120 signature size",
+   "imp": 3
+  },
+  {
+   "q": "300 x 120 pixels",
+   "imp": 3
+  },
+  {
+   "q": "300×120",
+   "imp": 3
+  },
+  {
+   "q": "300 120 pixels signature",
+   "imp": 2
+  },
+  {
+   "q": "300x120",
+   "imp": 2
+  },
+  {
+   "q": "image 300 * 120 pixel",
+   "imp": 2
+  },
+  {
+   "q": "image size 300*120 pixel",
+   "imp": 2
+  },
+  {
+   "q": "photo resizer 300 120 pixels",
+   "imp": 2
+  },
+  {
+   "q": "300x120 pixel",
+   "imp": 1
+  },
+  {
+   "q": "image resizer 300 * 120 pixel",
+   "imp": 1
+  },
+  {
+   "q": "signature resize 300x120",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/300x300-pixels/": [
+  {
+   "q": "300+300",
+   "imp": 12
+  },
+  {
+   "q": "300 + 300",
+   "imp": 7
+  },
+  {
+   "q": "300 300",
+   "imp": 5
+  },
+  {
+   "q": "300+300+200",
+   "imp": 5
+  },
+  {
+   "q": "300+300+150",
+   "imp": 2
+  },
+  {
+   "q": "300+300+350",
+   "imp": 2
+  },
+  {
+   "q": "300×300",
+   "imp": 2
+  },
+  {
+   "q": "300x300 cm",
+   "imp": 2
+  },
+  {
+   "q": "300+300+100",
+   "imp": 1
+  },
+  {
+   "q": "convert to 300 pixels",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/300x400-pixels/": [
+  {
+   "q": "400+300+300",
+   "imp": 4
+  },
+  {
+   "q": "300*400 photo resize",
+   "imp": 3
+  },
+  {
+   "q": "300×400 pixel image jpg",
+   "imp": 2
+  },
+  {
+   "q": "400 x 300",
+   "imp": 2
+  },
+  {
+   "q": "photo compressor 300 * 400 pixels",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/320x240-pixels/": [
+  {
+   "q": "320-240",
+   "imp": 22
+  },
+  {
+   "q": "320x240 pixels",
+   "imp": 20
+  },
+  {
+   "q": "320/240",
+   "imp": 8
+  },
+  {
+   "q": "320+240",
+   "imp": 6
+  },
+  {
+   "q": "320x240 image",
+   "imp": 4
+  },
+  {
+   "q": "photo resize 320x240",
+   "imp": 4
+  },
+  {
+   "q": "320 - 240",
+   "imp": 3
+  },
+  {
+   "q": "320 x 240pixels",
+   "imp": 3
+  },
+  {
+   "q": "320px to 240px",
+   "imp": 3
+  },
+  {
+   "q": "photo 320x240",
+   "imp": 3
+  },
+  {
+   "q": "320×240",
+   "imp": 2
+  },
+  {
+   "q": "320×240 pixels",
+   "imp": 2
+  },
+  {
+   "q": "320 + 240",
+   "imp": 1
+  },
+  {
+   "q": "320 × 240",
+   "imp": 1
+  },
+  {
+   "q": "photo 320x240 pixels",
+   "imp": 1
+  },
+  {
+   "q": "resize image 320x240 in pixels",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/320x400-pixels/": [
+  {
+   "q": "320*400",
+   "imp": 25
+  },
+  {
+   "q": "320/400",
+   "imp": 18
+  },
+  {
+   "q": "400*320",
+   "imp": 10
+  },
+  {
+   "q": "320 x 400",
+   "imp": 6
+  },
+  {
+   "q": "photo size 320 x 400 pixels",
+   "imp": 5
+  },
+  {
+   "q": "400 x 320",
+   "imp": 4
+  },
+  {
+   "q": "320 × 400 pixels",
+   "imp": 2
+  },
+  {
+   "q": "320 400 pixels",
+   "imp": 2
+  },
+  {
+   "q": "320 x 400 pixels",
+   "imp": 2
+  },
+  {
+   "q": "320-400",
+   "imp": 2
+  },
+  {
+   "q": "320*400 pixel image",
+   "imp": 2
+  },
+  {
+   "q": "320+400",
+   "imp": 2
+  },
+  {
+   "q": "320x400 pixels",
+   "imp": 2
+  },
+  {
+   "q": "320 * 400",
+   "imp": 1
+  },
+  {
+   "q": "320x400",
+   "imp": 1
+  },
+  {
+   "q": "image 320 * 400",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/350x450-pixels/": [
+  {
+   "q": "resize image 350 * 450 pixels",
+   "imp": 14
+  },
+  {
+   "q": "photo size a height 450px and width 350px",
+   "imp": 11
+  },
+  {
+   "q": "350*450 photo size",
+   "imp": 8
+  },
+  {
+   "q": "350 * 450 photo size",
+   "imp": 7
+  },
+  {
+   "q": "350 x 450",
+   "imp": 7
+  },
+  {
+   "q": "350*450",
+   "imp": 6
+  },
+  {
+   "q": "350x450",
+   "imp": 2
+  },
+  {
+   "q": "photo 350 x 450 pixels converter",
+   "imp": 2
+  },
+  {
+   "q": "profile photo 350px x 450px",
+   "imp": 2
+  },
+  {
+   "q": "compress image 350px to 450px",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/400x120-pixels/": [
+  {
+   "q": "120*400",
+   "imp": 15
+  },
+  {
+   "q": "120 * 400",
+   "imp": 5
+  },
+  {
+   "q": "400*120",
+   "imp": 4
+  }
+ ],
+ "/resizer/size/400x400-pixels/": [
+  {
+   "q": "400+400",
+   "imp": 11
+  },
+  {
+   "q": "400 pixel image converter",
+   "imp": 3
+  },
+  {
+   "q": "400+400+300",
+   "imp": 3
+  },
+  {
+   "q": "400 400",
+   "imp": 2
+  },
+  {
+   "q": "400 px",
+   "imp": 2
+  },
+  {
+   "q": "400×400",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/413x531-pixels/": [
+  {
+   "q": "413×531 pixels in cm",
+   "imp": 106
+  },
+  {
+   "q": "413*531 pixels",
+   "imp": 54
+  },
+  {
+   "q": "413*531 pixels in cm",
+   "imp": 53
+  },
+  {
+   "q": "413x531 pixels in cm",
+   "imp": 34
+  },
+  {
+   "q": "413 x 531 pixels in cm",
+   "imp": 28
+  },
+  {
+   "q": "413*531 pixels image converter",
+   "imp": 26
+  },
+  {
+   "q": "413 * 531 pixels in cm",
+   "imp": 21
+  },
+  {
+   "q": "413 * 531 pixels converter",
+   "imp": 16
+  },
+  {
+   "q": "413 531 photo size",
+   "imp": 13
+  },
+  {
+   "q": "413 × 531 pixels",
+   "imp": 9
+  },
+  {
+   "q": "413×531 photo size",
+   "imp": 9
+  },
+  {
+   "q": "compress image 413 x 531 pixels",
+   "imp": 9
+  },
+  {
+   "q": "photo resize 413 x 531 pixels",
+   "imp": 8
+  },
+  {
+   "q": "413 pixels * 531 pixels",
+   "imp": 6
+  },
+  {
+   "q": "413px x 531px",
+   "imp": 6
+  },
+  {
+   "q": "413 * 531 dimensions in cm",
+   "imp": 5
+  },
+  {
+   "q": "413*531",
+   "imp": 5
+  },
+  {
+   "q": "413/531",
+   "imp": 5
+  },
+  {
+   "q": "413×531 pixels",
+   "imp": 5
+  },
+  {
+   "q": "413x531 pixels",
+   "imp": 4
+  },
+  {
+   "q": "413 x 531 pixels image converter",
+   "imp": 3
+  },
+  {
+   "q": "413 x 531 pixels",
+   "imp": 2
+  },
+  {
+   "q": "convert photo to 413 x 531 pixels",
+   "imp": 2
+  },
+  {
+   "q": "413 * 531 pixels image converter",
+   "imp": 1
+  },
+  {
+   "q": "413 531",
+   "imp": 1
+  },
+  {
+   "q": "413 x 531 pixels converter",
+   "imp": 1
+  }
+ ],
+ "/resizer/size/600x250-pixels/": [
+  {
+   "q": "600*250",
+   "imp": 20
+  },
+  {
+   "q": "600+250+250",
+   "imp": 2
+  }
+ ],
+ "/resizer/size/600x600-pixels/": [
+  {
+   "q": "600px",
+   "imp": 16
+  },
+  {
+   "q": "600/600",
+   "imp": 10
+  },
+  {
+   "q": "600 + 600",
+   "imp": 6
+  },
+  {
+   "q": "600 600",
+   "imp": 4
+  },
+  {
+   "q": "600+600+600",
+   "imp": 3
+  },
+  {
+   "q": "what is 600 + 600",
+   "imp": 3
+  },
+  {
+   "q": "what is 600+600",
+   "imp": 3
+  },
+  {
+   "q": "600 600 600",
+   "imp": 2
+  },
+  {
+   "q": "600+600",
+   "imp": 2
+  },
+  {
+   "q": "600×600",
+   "imp": 2
+  },
+  {
+   "q": "600 + 600 =",
+   "imp": 1
+  },
+  {
+   "q": "600+600+600=",
+   "imp": 1
+  },
+  {
+   "q": "600x600",
+   "imp": 1
+  }
+ ],
+ "/resizer/ssc-cgl-photo-resize/": [
+  {
+   "q": "ssc photo resizer",
+   "imp": 10
+  },
+  {
+   "q": "ssc cgl image",
+   "imp": 7
+  },
+  {
+   "q": "ssc cgl pic",
+   "imp": 5
+  },
+  {
+   "q": "image resizer for ssc",
+   "imp": 4
+  },
+  {
+   "q": "ssc cgl picture",
+   "imp": 2
+  },
+  {
+   "q": "photo resizer for ssc",
+   "imp": 1
+  }
+ ],
+ "/resizer/ssc-cgl-signature-resize/": [
+  {
+   "q": "ssc signature resizer",
+   "imp": 4
+  }
+ ],
+ "/resizer/ssc-chsl-photo-resize/": [
+  {
+   "q": "ssc chsl photo and signature size",
+   "imp": 3
+  }
+ ],
+ "/resizer/state-psc-photo-signature-size/": [
+  {
+   "q": "psc photo and signature size in kb",
+   "imp": 85
+  },
+  {
+   "q": "psc signature size",
+   "imp": 20
+  },
+  {
+   "q": "psc signature size in kb",
+   "imp": 20
+  },
+  {
+   "q": "psc image size",
+   "imp": 6
+  },
+  {
+   "q": "photo resizer for psc",
+   "imp": 5
+  },
+  {
+   "q": "psc clerkship photo and signature size",
+   "imp": 5
+  },
+  {
+   "q": "psc picture size",
+   "imp": 5
+  },
+  {
+   "q": "psc signature",
+   "imp": 4
+  },
+  {
+   "q": "psc size photo",
+   "imp": 2
+  },
+  {
+   "q": "psc pic",
+   "imp": 1
+  },
+  {
+   "q": "state psc",
+   "imp": 1
+  }
+ ],
+ "/resizer/tnpsc-photo-resize/": [
+  {
+   "q": "tnpsc photo resizer",
+   "imp": 10
+  },
+  {
+   "q": "tnpsc online photo resize",
+   "imp": 9
+  },
+  {
+   "q": "tnpsc photo editor",
+   "imp": 8
+  },
+  {
+   "q": "tnpsc photo and signature size",
+   "imp": 5
+  },
+  {
+   "q": "tnpsc photo editor online",
+   "imp": 3
+  },
+  {
+   "q": "tnpsc photo compressor",
+   "imp": 2
+  },
+  {
+   "q": "image compressor for tnpsc",
+   "imp": 1
+  },
+  {
+   "q": "photo compressor for tnpsc",
+   "imp": 1
+  },
+  {
+   "q": "tnpsc photo and signature size online",
+   "imp": 1
+  },
+  {
+   "q": "tnpsc photo compressor online",
+   "imp": 1
+  }
+ ],
+ "/resizer/tnpsc-signature-resize/": [
+  {
+   "q": "tnpsc signature pixel",
+   "imp": 21
+  },
+  {
+   "q": "tnpsc signature compressor",
+   "imp": 7
+  },
+  {
+   "q": "tnpsc signature size online",
+   "imp": 3
+  },
+  {
+   "q": "tnpsc sign compressor",
+   "imp": 2
+  },
+  {
+   "q": "tnpsc signature compressor 2026",
+   "imp": 1
+  },
+  {
+   "q": "tnpsc signature pixel and file size tips",
+   "imp": 1
+  }
+ ],
+ "/resizer/ukpsc-photo-resize/": [
+  {
+   "q": "ukpsc photo and signature size",
+   "imp": 142
+  },
+  {
+   "q": "ukpsc photo resizer",
+   "imp": 115
+  },
+  {
+   "q": "ukpsc photo resize",
+   "imp": 92
+  },
+  {
+   "q": "ukpsc image resizer",
+   "imp": 42
+  },
+  {
+   "q": "ukpsc photo size",
+   "imp": 17
+  },
+  {
+   "q": "photo resizer for ukpsc",
+   "imp": 5
+  },
+  {
+   "q": "ukpsc photo",
+   "imp": 1
+  }
+ ],
+ "/resizer/uppsc-photo-resize/": [
+  {
+   "q": "uppsc photo and signature size",
+   "imp": 2
+  }
+ ],
+ "/resizer/upsc-nda-photo-resize/": [
+  {
+   "q": "nda photo resizer",
+   "imp": 4
+  }
+ ],
+ "/resizer/upsc-photo-resize/": [
+  {
+   "q": "upsc photo resize",
+   "imp": 13
+  },
+  {
+   "q": "upsc ese photo and signature size",
+   "imp": 5
+  },
+  {
+   "q": "upsc ese photo size",
+   "imp": 4
+  },
+  {
+   "q": "upsc exam photo size",
+   "imp": 2
+  }
+ ]
+}

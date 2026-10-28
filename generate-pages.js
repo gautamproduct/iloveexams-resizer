@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, GUIDES } = require('./exams-data');
+const { EXAMS, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, GUIDES, OPEN_FORMS } = require('./exams-data');
 const S = require('./seo-shell');
 const { SITE, YEARS: YEAR, MONTH_YEAR, esc } = S;
 
@@ -61,7 +61,12 @@ function generatePage(exam, docType) {
 
   const nd = docType === 'photo' && seo.nameDate;   // exam needs name + date printed on the photo
   const kw = seo.kw;   // the word searchers use for this exam's tool, e.g. "Compressor"
-  const title = kw
+  // Form open now: searchers type the cycle year ("jee main 2027 photo size") — lead with it
+  const open = OPEN_FORMS.find(f => f.slug === exam.slug);
+  const openYear = open && (open.cycle.match(/20\d\d/) || [])[0];
+  const title = open && !kw && !nd
+    ? (t => t.length <= 66 ? t : `${short} ${openYear} ${label} Size: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`)(`${short} ${openYear} ${label} Size for Form: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`)
+    : kw
     ? `${short} ${label} ${kw}${nd ? ' with Name & Date' : ''} ${YEAR}: ${spec.w}×${spec.h}px${nd ? '' : `, ${spec.min}–${spec.max}KB`}`
     : nd
     ? `${short} Photo with Name & Date ${YEAR}: ${spec.w}×${spec.h}px, ${spec.min}–${spec.max}KB`
@@ -161,6 +166,7 @@ function generatePage(exam, docType) {
 </header>
 
 <main class="wrap">
+  ${open ? `<div class="answer" style="background:#ecfdf5;border-color:#a7f3d0"><p>📝 <strong>${esc(open.cycle)} application form:</strong> ${esc(open.window)}. Resize your ${lc} below, then upload it at <a href="${open.url}" target="_blank" rel="noopener">${esc(open.site)}</a>. <a href="/resizer/exam-forms-open-now/">All forms open now →</a></p></div>` : ''}
   ${nd ? `<div class="answer" style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border-color:#fde68a"><p>⚠️ ${nd.rule} Use the tool below — it prints them for you and keeps the file in ${spec.min}–${spec.max} KB.</p></div>
   <section id="app" class="app" data-tool="photo-name-date" data-size="${spec.w}x${spec.h}" data-max="${spec.max}" data-min="${spec.min}" data-strip="${nd.strip}" style="min-height:190px"><noscript>Please enable JavaScript to use this tool.</noscript></section>
   <p style="font-size:13.5px;margin:-8px 0 20px">Notification doesn't need name &amp; date? <a href="/resizer/?exam=${exam.slug}&amp;document=photo&amp;stay=1">Use the plain ${esc(short)} photo resizer →</a></p>`

@@ -252,7 +252,7 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
 {
   const dirName = 'postcard-size-photo-resize';
   const canonical = `${SITE}/resizer/${dirName}/`;
-  const title = `Postcard Size Photo (4×6 inch, Postal Size) – Resize Online Free`;
+  const title = `Post Card Size Photo in cm & Inch (4×6 inch, 10×15 cm) – Free`;
   const desc = `Postcard size photo is 4×6 inch (10×15 cm): 600×900 px at 150 DPI or 1200×1800 px at 300 DPI. Resize your photo to postcard / postal size free — no upload.`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Postcard Size Photo', url: canonical }];
   const faqs = [
@@ -286,6 +286,48 @@ ${S.footer()}`;
   write(`resizer/${dirName}`, html); pages++;
 }
 
+// ─── 3d. Exam forms open now (rides the application-season search wave: "jee main 2027 form photo size") ─
+{
+  const dirName = 'exam-forms-open-now';
+  const canonical = `${SITE}/resizer/${dirName}/`;
+  const forms = D.OPEN_FORMS.map(f => ({ ...f, e: EXAMS.find(e => e.slug === f.slug) }));
+  const updated = new Date(D.OPEN_FORMS_UPDATED).toLocaleString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  const names = forms.slice(0, 4).map(f => f.cycle.replace(/\s*\(.*\)/, '')).join(', ');
+  const title = `Exam Forms Open Now (${MONTH_YEAR}): Photo & Signature Size`;
+  const desc = `Application forms open now: ${names} and more. Exact photo and signature size (pixels, KB) for each form, with a free one-click resizer.`;
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Forms Open Now', url: canonical }];
+  const faqs = [
+    ...forms.slice(0, 5).map(f => ({ q: `What is the ${esc(f.cycle)} photo and signature size?`, a: `Photo ${px(f.e.photo)} px, ${kb(f.e.photo)}; signature ${px(f.e.sig)} px, ${kb(f.e.sig)}, JPG. <a href="/resizer/${f.slug}-photo-resize/">Resize ${esc(seoOf(f.e).short)} photo</a>.` })),
+    { q: 'Why does the form reject my photo even though it looks fine?', a: 'Portals check exact pixels and a KB window. A phone photo is usually 3–5 MB and thousands of pixels wide — resize it to the exam size first. <a href="/resizer/guides/upload-error-messages-explained/">Upload errors explained</a>.' },
+    { q: 'Are these dates official?', a: `Windows marked “expected” follow the previous cycles and news reports, as of ${updated}. Always confirm on the official website linked in the table before paying the fee.` },
+  ];
+  const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs }), S.faqSchema(faqs)] })}
+<header class="hero"><div class="hero-in">
+  ${S.crumbsHtml(crumbs)}
+  <h1>Exam Forms Open Now — Photo &amp; Signature Size</h1>
+  <p class="lede">Filling a form this month? Get the <strong>exact photo and signature size</strong> for each open application and resize in one tap — free, nothing uploaded.</p>
+  <p class="updated">Last checked: <time datetime="${D.OPEN_FORMS_UPDATED}">${updated}</time></p>
+</div></header>
+<main class="wrap">
+  <div class="answer"><p>Forms open or opening now: <strong>${forms.map(f => esc(f.cycle)).join(', ')}</strong>. Most reject a photo that is not the exact pixel size or is outside the KB range — pick your exam below.</p></div>
+  <section class="card"><h2>Open applications and upload sizes</h2>
+    <div class="tbl-wrap"><table class="grid"><thead><tr><th>Exam form</th><th>Application window</th><th>Photo</th><th>Signature</th><th>Apply at</th></tr></thead><tbody>
+      ${forms.map(f => `<tr><td><strong>${esc(f.cycle)}</strong></td><td>${esc(f.window)}</td><td class="m"><a href="/resizer/${f.slug}-photo-resize/">${px(f.e.photo)} px</a><br><small>${kb(f.e.photo)}</small></td><td class="m"><a href="/resizer/${f.slug}-signature-resize/">${px(f.e.sig)} px</a><br><small>${kb(f.e.sig)}</small></td><td><a href="${f.url}" target="_blank" rel="noopener">${esc(f.site)}</a></td></tr>`).join('\n      ')}
+    </tbody></table></div>
+    <p class="note">Dates marked “expected” follow previous cycles. Confirm on the official site before paying the fee.</p>
+  </section>
+  <section class="card"><h2>Before you submit</h2><ul>
+    <li><strong>Resize first, then upload.</strong> Use the exam’s own page so both pixels and KB match.</li>
+    <li><strong>Use the same photo everywhere.</strong> The photo on the form is printed on your admit card and checked at the centre.</li>
+    <li><strong>Check the preview.</strong> A face that is cut off or a blank signature can get the form rejected after the deadline. <a href="/resizer/guides/photo-upload-rejected-reasons/">Common rejection reasons</a>.</li>
+  </ul></section>
+  <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
+  <section class="card"><h2>Other exams</h2><ul class="links"><li><a href="/resizer/photo-signature-size-chart/">Size chart for 80+ exams</a></li><li><a href="/resizer/">Pick any exam</a></li><li><a href="/compress-pdf-to-200kb/">Certificate PDF to 200 KB</a></li></ul></section>
+</main>
+${S.footer()}`;
+  write(`resizer/${dirName}`, html); pages++;
+}
+
 // ─── 4. Pixel-size pages (no ad slots: short template pages — keep AdSense to content-rich pages) ──────────────────────────────────────────────────────
 const sizes = new Map(); // "WxH" -> { w, h, users: [{exam, doc, spec}] }
 const addSize = (w, h) => { const k = `${w}x${h}`; if (!sizes.has(k)) sizes.set(k, { w, h, users: [], extraMax: null }); return sizes.get(k); };
@@ -309,11 +351,16 @@ for (const s of sizeList) {
   const kbLabel = min ? `${min}–${max} KB` : `under ${max} KB`;
   // Common print sizes people search by (300 DPI unless noted) — shown in the title so the snippet answers "what size is this?"
   const phys = PHYSICAL[`${w}x${h}`];
-  const title = w === h
-    ? `${w} Pixel Width and Height ${noun} (${w}×${h}${phys ? `, ${phys}` : ''}) – ${max} KB, Free`
+  // Exact top searches from Search Console (search-terms.json) where the template wording doesn't match
+  const TITLE_AS_SEARCHED = {
+    '140x60': '60px 140px Signature (140×60 Pixels) – 20 KB or 40 KB, Free',
+    '100x120': '100*120 Photo Size (100×120 Pixels) – Under 50 KB, Free',
+  };
+  const title = TITLE_AS_SEARCHED[`${w}x${h}`] || (w === h
+    ? `${w} Pixel Width and Height ${max} KB ${noun} (${w}×${h}${phys ? `, ${phys}` : `, ${w}*${h}`}) – Free`
     : phys
       ? `${w}×${h} Pixels ${noun} (${phys}) – ${kbLabel}, Free Resizer`
-      : `${w}×${h} ${noun} Size (${h}×${w} px, ${w}*${h}) – ${kbLabel}, Free`;
+      : `${w}×${h} ${noun} Size (${h}×${w} px, ${w}*${h}) – ${kbLabel}, Free`);
   const desc = `Resize any ${noun.toLowerCase()} to exactly ${w}×${h} px (${w}x${h}${w !== h ? `, also written ${h}×${w}` : ''}${phys ? `, ${phys}` : ''}) and ${kbLabel} in JPG, free and in your browser.${users.length ? ` Used by ${[...new Set(users.map(u => seoOf(u.e).short))].slice(0, 3).join(', ')} and more.` : ''}`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'By Pixel Size', url: `${SITE}/resizer/size/` }, { name: `${w}×${h} px`, url: canonical }];
   const cm = d => `${S.toCm(w, d)} × ${S.toCm(h, d)} cm`;
@@ -450,6 +497,7 @@ ${END}`;
   items.push({ t: 'NEET postcard size photo', s: '4×6 inch · 10–200 KB', u: '/resizer/neet-ug-postcard-photo-resize/', i: '🖼', k: 'neet ug postcard' });
   for (const c of Object.values(CATEGORIES)) items.push({ t: `${c.title} — photo & signature sizes`, s: 'Size chart for every exam in this category', u: `/resizer/${c.hub}/`, i: '📋', k: 'size chart list' });
   items.push({ t: `Exam photo & signature size chart ${YEAR}`, s: `All ${EXAMS.length}+ exams in one table`, u: '/resizer/photo-signature-size-chart/', i: '📊', k: 'all exams chart table' });
+  items.push({ t: 'Exam forms open now', s: D.OPEN_FORMS.slice(0, 3).map(f => f.cycle).join(' · '), u: '/resizer/exam-forms-open-now/', i: '📝', k: 'application form open apply 2027 ' + D.OPEN_FORMS.map(f => f.cycle).join(' ').toLowerCase() });
   items.push({ t: 'Resize by pixel size', s: '150×200, 200×230, 275×354 and more', u: '/resizer/size/', i: '📐', k: 'pixels px dimension' });
   items.push({ t: 'Exam guides', s: 'Phone photo, signature scan, rejected uploads', u: '/resizer/guides/', i: '📖', k: 'guide help tips' });
   const json = JSON.stringify(items).replace(/</g, '\\u003c');

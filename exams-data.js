@@ -179,6 +179,9 @@ const EXTRA_SIZES = [
   { w: 150, h: 200, max: 50 }, { w: 250, h: 250, max: 50 }, { w: 200, h: 200, max: 50 },
   { w: 300, h: 300, max: 100 }, { w: 140, h: 40, max: 20 }, { w: 600, h: 600, max: 100 },
   { w: 413, h: 531, max: 100 }, { w: 350, h: 450, max: 100 }, { w: 100, h: 120, max: 50 },
+  // Searched in Search Console with no page yet (Oct 2026): "250*80", "250*320", "240*240", "250*96" …
+  { w: 250, h: 80, max: 20 }, { w: 250, h: 96, max: 20 }, { w: 250, h: 320, max: 50 }, { w: 240, h: 240, max: 50 },
+  { w: 120, h: 120, max: 50 }, { w: 180, h: 250, max: 50 }, { w: 300, h: 400, max: 50 }, { w: 600, h: 250, max: 50 },
 ];
 
 // Exam-specific "where & how to upload" guidance for the highest-traffic exams.
@@ -237,4 +240,19 @@ const GUIDES = {
     'AFCAT photos should be formal and front-facing with a plain background — they are verified again at the AFSB interview.'] },
 };
 
-module.exports = { GUIDES, EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };
+// Application forms open / opening now — drives /resizer/exam-forms-open-now/, a banner + "<year> form" title
+// on each exam page, and the homepage link. Windows are from past NTA/UPSC/SSC cycles and news reports;
+// say "expected" until the official notice is out. Update or remove rows as windows close.
+const OPEN_FORMS_UPDATED = '2026-10-28';
+const OPEN_FORMS = [
+  { slug: 'jee-main',  cycle: 'JEE Main 2027 (Session 1)', window: 'Expected ~28 Oct – late Nov 2026 · exam 22–30 Jan 2027', site: 'jeemain.nta.nic.in', url: 'https://jeemain.nta.nic.in/' },
+  { slug: 'ssc-gd',    cycle: 'SSC GD Constable 2027',     window: 'Expected Oct – Nov 2026 · CBT Jan–Mar 2027',           site: 'ssc.gov.in',          url: 'https://ssc.gov.in/' },
+  { slug: 'ugc-net',   cycle: 'UGC NET December 2026',     window: 'Expected Oct – Nov 2026',                              site: 'ugcnet.nta.nic.in',   url: 'https://ugcnet.nta.nic.in/' },
+  { slug: 'afcat',     cycle: 'AFCAT 1/2027',              window: 'Expected Nov – mid Dec 2026 · exam late Jan 2027',     site: 'afcat.cdac.in',       url: 'https://afcat.cdac.in/' },
+  { slug: 'nabard',    cycle: 'NABARD Grade A 2026',       window: 'Expected Nov 2026',                                    site: 'nabard.org',          url: 'https://www.nabard.org/' },
+  { slug: 'uppsc',     cycle: 'UPPSC RO / ARO 2026',       window: 'Reported last date 26 Nov 2026',                       site: 'uppsc.up.nic.in',     url: 'https://uppsc.up.nic.in/' },
+  { slug: 'upsc-nda',  cycle: 'NDA & NA (I) 2027',         window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
+  { slug: 'upsc-cds',  cycle: 'CDS (I) 2027',              window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
+];
+
+module.exports = { OPEN_FORMS, OPEN_FORMS_UPDATED, GUIDES, EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };

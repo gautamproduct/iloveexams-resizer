@@ -104,7 +104,9 @@ sectionFiles.push(`resizer/: ${Object.entries(resizerMaps).map(([f, l]) => `${f}
 // Site-wide post-processing. AdSense site verification: every page (incl. hand-written and older generated
 // ones) must carry the account meta tag. Idempotent.
 const ADS_META = '<meta name="google-adsense-account" content="ca-pub-9837613085159910">';
-let tagged = 0, navFixed = 0;
+let tagged = 0, navFixed = 0, searchedAs = 0;
+const SEARCH_TERMS = fs.existsSync(path.join(ROOT, 'search-terms.json')) ? JSON.parse(fs.readFileSync(path.join(ROOT, 'search-terms.json'), 'utf8')) : {};
+const SEARCHED_RE = /\s*<!-- SEARCHED-AS:START -->[\s\S]*?<!-- SEARCHED-AS:END -->/g;
 function trimDesc(d) {
   const lim = 158;
   const cut = d.slice(0, lim + 1);
@@ -149,6 +151,22 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
     if (m.includes('stay=1') || to === self || !fs.existsSync(path.join(ROOT, to, 'index.html'))) return m;
     return `href="${to}"`;
   });
+  // Exact phrases people search for this page (search-terms.json, from Search Console via search-terms.js)
+  out = out.replace(SEARCHED_RE, '');
+  const terms = SEARCH_TERMS[self];
+  if (terms && out.includes('</main>')) {
+    const seen = new Set(), pick = [];
+    for (const { q } of terms) {
+      const k = q.replace(/[^a-z0-9ऀ-ॿ]+/g, '');
+      if (q.length > 80 || seen.has(k)) continue;
+      seen.add(k); pick.push(q);
+      if (pick.length === 16) break;
+    }
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    const card = `<!-- SEARCHED-AS:START --><section class="card" style="margin-top:20px"><h2>People also search</h2><p style="margin:0 0 10px;font-size:14px">This page answers all of these searches — same size, same tool:</p><ul class="links" style="display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none">${pick.map(q => `<li style="font-size:13px;color:#334155;background:#f8fafc;border:1px solid #e2e8f0;padding:6px 12px;border-radius:999px">${esc(q)}</li>`).join('')}</ul></section><!-- SEARCHED-AS:END -->`;
+    out = out.replace(/(\s*<\/main>)(?![\s\S]*<\/main>)/, `\n  ${card}$1`);
+    searchedAs++;
+  }
   // Same top-bar menu on every page (see site-nav.js)
   const navved = normalizeNav(out);
   if (navved !== out) navFixed++;
@@ -156,4 +174,5 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
 }
 if (tagged) console.log(`✅ Added AdSense account meta to ${tagged} pages`);
 if (navFixed) console.log(`✅ Normalised top menu on ${navFixed} pages`);
+if (searchedAs) console.log(`✅ "People also search" phrases on ${searchedAs} pages`);
 console.log(`✅ Sitemap rebuilt: ${entries.length} URLs · sections: ${sectionFiles.join(', ')}`);
