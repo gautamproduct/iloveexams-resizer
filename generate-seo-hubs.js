@@ -78,7 +78,6 @@ for (const [catName, cat] of Object.entries(CATEGORIES)) {
   ${S.crumbsHtml(crumbs)}
   <h1>${esc(cat.title)} Photo &amp; Signature Size ${YEAR}</h1>
   <p class="lede">Exact photo and signature dimensions, KB limits and format for <strong>${list.length} ${esc(cat.title.replace(/\s*\(.*\)/, ''))}</strong>. Tap any size to open that exam's free resizer.</p>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p>Most ${esc(cat.title.replace(/\s*\(.*\)/, ''))} require a <strong>photo of ${mp}</strong> and a <strong>signature of ${ms}</strong> in JPG format. The exact requirement for every exam is in the table below.</p></div>
@@ -96,7 +95,7 @@ for (const [catName, cat] of Object.entries(CATEGORIES)) {
   ${S.adSlot()}
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
   <section class="card"><h2>Other exam categories</h2><ul class="links">${Object.values(CATEGORIES).filter(c => c !== cat).map(c => `<li><a href="/resizer/${c.hub}/">${esc(c.title)}</a></li>`).join('')}<li><a href="/resizer/photo-signature-size-chart/">All exams chart</a></li></ul></section>
-  <p class="note">Compiled from recent official notifications (last review: ${MONTH_YEAR}). Always verify against the latest notification — the resizer lets you edit width, height and KB if a size changes.</p>
+  <p class="note">Compiled from recent official notifications. Always verify against the latest notification — the resizer lets you edit width, height and KB if a size changes.</p>
 </main>
 ${S.footer()}`;
   write(`resizer/${cat.hub}`, html); pages++;
@@ -122,7 +121,6 @@ ${S.footer()}`;
   ${S.crumbsHtml(crumbs)}
   <h1>Photo &amp; Signature Size Chart ${YEAR} — ${EXAMS.length}+ Indian Exams</h1>
   <p class="lede">Every size in one place: <strong>pixels, KB and format</strong> for UPSC, SSC, IBPS, SBI, RRB, NEET, JEE, CAT, State PSC, Police and Judiciary exams. Tap a size to resize free.</p>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p>The most common exam photo sizes are <strong>200×230 px, 20–50 KB</strong> (bank exams) and <strong>275×354 px, 20–50 KB</strong> (SSC, NTA, State PSC). The most common signature size is <strong>140×60 px, 10–20 KB</strong>. All exams accept <strong>JPG</strong>. Find your exam below.</p></div>
@@ -130,7 +128,7 @@ ${S.footer()}`;
   <section class="card"><h2>All Exams — Photo &amp; Signature Size ${YEAR}</h2>${examTable(ordered, { showCat: true })}</section>
   ${S.adSlot()}
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
-  <p class="note">Compiled from recent official notifications (last review: ${MONTH_YEAR}). Sizes can change between exam cycles — always verify against the latest notification.</p>
+  <p class="note">Compiled from recent official notifications. Sizes can change between exam cycles — always verify against the latest notification.</p>
 </main>
 ${S.footer()}`;
   write('resizer/photo-signature-size-chart', html); pages++;
@@ -167,7 +165,6 @@ for (const slug of BANK_EXTRA_EXAMS) {
   <h1>${esc(short)} ${doc.label} Size ${YEAR} &amp; Free Resizer</h1>
   <p class="lede">Resize your ${esc(exam.name)} ${doc.label.toLowerCase()} to <strong>${doc.w}×${doc.h} px</strong> and <strong>${doc.min}–${doc.max} KB</strong> (JPG) — free, instant, private.</p>
   <div class="chips"><span class="chip">📐 ${doc.w}×${doc.h} px</span><span class="chip">💾 ${doc.min}–${doc.max} KB</span><span class="chip">🖼 JPG</span><span class="chip ok">✓ No upload</span></div>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   ${isDecl ? `<div class="answer"><p><strong>${esc(short)} declaration text ${S.YEAR_ONLY}:</strong> “${esc(DECLARATION_TEXT)}” — write it in English in your own running handwriting (not capitals), sign below, scan it and resize to <strong>${doc.w}×${doc.h} px, ${doc.min}–${doc.max} KB JPG</strong>.</p></div>` : ''}
@@ -190,7 +187,7 @@ for (const slug of BANK_EXTRA_EXAMS) {
   </section>
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
   <section class="card"><h2>${doc.label} for other bank exams</h2><ul class="links">${BANK_EXTRA_EXAMS.filter(s => s !== slug).map(s => `<li><a href="/resizer/${s}-${key}-resize/">${esc(seoOf(EXAMS.find(e => e.slug === s)).short)}</a></li>`).join('')}</ul></section>
-  <p class="note">Standard IBPS-pattern specification (last review: ${MONTH_YEAR}). Always verify against the latest official notification.</p>
+  <p class="note">Standard IBPS-pattern specification. Always verify against the latest official notification.</p>
 </main>
 ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
     write(`resizer/${dirName}`, html); pages++;
@@ -218,7 +215,6 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   <h1>NEET Postcard Size Photo ${YEAR} &amp; Free Resizer</h1>
   <p class="lede">Resize your NEET postcard photo to <strong>${doc.inches}</strong> and <strong>${doc.min}–${doc.max} KB</strong> (JPG) — free, instant, private.</p>
   <div class="chips"><span class="chip">📐 ${doc.inches}</span><span class="chip">${doc.w}×${doc.h} px</span><span class="chip">💾 ${doc.min}–${doc.max} KB</span><span class="chip ok">✓ No upload</span></div>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p>The <strong>NEET-UG postcard size photo</strong> is <strong>${doc.inches}</strong> (${doc.w}×${doc.h} px at 150 DPI), uploaded as a <strong>JPG of ${doc.min}–${doc.max} KB</strong>. ${doc.tip}</p></div>
@@ -242,7 +238,7 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
     </tbody></table></div>
   </section>
   <section style="margin:0 0 20px"><h2 style="font-size:19px;font-weight:800;margin:8px 0 12px">FAQs</h2>${S.faqHtml(faqs)}</section>
-  <p class="note">Based on the NTA NEET-UG information bulletin (last review: ${MONTH_YEAR}). Always verify against the latest bulletin.</p>
+  <p class="note">Based on the NTA NEET-UG information bulletin. Always verify against the latest bulletin.</p>
 </main>
 ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   write(`resizer/${dirName}`, html); pages++;
@@ -268,7 +264,6 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
   <h1>Postcard Size Photo (4×6 inch) — Free Resizer</h1>
   <p class="lede">Resize any photo to <strong>postcard / postal size: 4×6 inch</strong> (600×900 px) and <strong>10–200 KB</strong> JPG — free, instant, never uploaded.</p>
   <div class="chips"><span class="chip">📐 4×6 inch</span><span class="chip">10×15 cm</span><span class="chip">600×900 px</span><span class="chip ok">✓ No upload</span></div>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p><strong>Postcard size photo</strong> (also called <strong>postal size</strong>) is <strong>4×6 inches (10×15 cm)</strong>, portrait — <strong>600×900 px at 150 DPI</strong> or 1200×1800 px at 300 DPI. Upload your photo below to crop and compress it to that size.</p></div>
@@ -291,7 +286,6 @@ ${S.footer()}`;
   const dirName = 'exam-forms-open-now';
   const canonical = `${SITE}/resizer/${dirName}/`;
   const forms = D.OPEN_FORMS.map(f => ({ ...f, e: EXAMS.find(e => e.slug === f.slug) }));
-  const updated = new Date(D.OPEN_FORMS_UPDATED).toLocaleString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
   const names = forms.slice(0, 4).map(f => f.cycle.replace(/\s*\(.*\)/, '')).join(', ');
   // Full calendar: every exam once, at the month its form next usually opens, starting this month
   const { CAL } = require('./exam-calendar');
@@ -306,20 +300,19 @@ ${S.footer()}`;
     <div class="tbl-wrap"><table class="grid"><thead><tr><th>Exam</th><th>Usual form month</th><th>Photo</th><th>Signature</th><th>Official site</th></tr></thead><tbody>
       ${cal.filter(c => c.next === m).map(calRow).join('\n      ')}
     </tbody></table></div></section>`).join('\n  ');
-  const title = `Exam Forms Open Now & Calendar (${MONTH_YEAR}): ${Math.floor(CAL.length / 10) * 10}+ Exams, Photo Size`;
+  const title = `Exam Forms Open Now & Calendar: ${Math.floor(CAL.length / 10) * 10}+ Exams, Photo Size`;
   const desc = `Application forms open now: ${names} and more, plus the form calendar for ${CAL.length} Indian exams by month. Exact photo and signature size with a free resizer.`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Forms Open Now', url: canonical }];
   const faqs = [
     ...forms.slice(0, 5).map(f => ({ q: `What is the ${esc(f.cycle)} photo and signature size?`, a: `Photo ${px(f.e.photo)} px, ${kb(f.e.photo)}; signature ${px(f.e.sig)} px, ${kb(f.e.sig)}, JPG. <a href="/resizer/${f.slug}-photo-resize/">Resize ${esc(seoOf(f.e).short)} photo</a>.` })),
     { q: 'Why does the form reject my photo even though it looks fine?', a: 'Portals check exact pixels and a KB window. A phone photo is usually 3–5 MB and thousands of pixels wide — resize it to the exam size first. <a href="/resizer/guides/upload-error-messages-explained/">Upload errors explained</a>.' },
-    { q: 'Are these dates official?', a: `Windows marked “expected” follow the previous cycles and news reports, as of ${updated}. Always confirm on the official website linked in the table before paying the fee.` },
+    { q: 'Are these dates official?', a: `Windows marked “expected” follow the previous cycles and news reports. Always confirm on the official website linked in the table before paying the fee.` },
   ];
   const html = `${S.head({ title, desc, canonical, schema: [S.webPageSchema({ url: canonical, name: title, desc, crumbs }), S.faqSchema(faqs)] })}
 <header class="hero"><div class="hero-in">
   ${S.crumbsHtml(crumbs)}
   <h1>Exam Forms Open Now — Photo &amp; Signature Size</h1>
   <p class="lede">Filling a form this month? Get the <strong>exact photo and signature size</strong> for each open application and resize in one tap — free, nothing uploaded.</p>
-  <p class="updated">Last checked: <time datetime="${D.OPEN_FORMS_UPDATED}">${updated}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p>Forms open or opening now: <strong>${forms.map(f => esc(f.cycle)).join(', ')}</strong>. Most reject a photo that is not the exact pixel size or is outside the KB range — pick your exam below.</p></div>
@@ -526,7 +519,7 @@ ${END}`;
   const ordered = Object.keys(CATEGORIES).flatMap(c => EXAMS.filter(e => e.cat === c));
   const txt = `# ILoveExams
 
-> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for ${EXAMS.length}+ exams, updated ${MONTH_YEAR}.
+> Free, private (in-browser) photo and signature resizer for Indian government and entrance exams. Exact pixel and KB sizes for ${EXAMS.length}+ exams.
 
 Images are processed in the user's browser and never uploaded. All tools are free with no sign-up.
 

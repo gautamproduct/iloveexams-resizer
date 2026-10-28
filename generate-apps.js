@@ -52,7 +52,6 @@ function page(p) {
   <h1>${esc(p.h1)}</h1>
   <p class="lede">${p.lede}</p>
   <div class="trust">${(p.chips || ['✔ Free', '✔ Nothing uploaded', '✔ Works on mobile']).map(c => `<span>${c.replace(/^✓/, '✔')}</span>`).join('')}</div>
-  ${p.dated ? `<p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>` : ''}
 </div></header>
 <main class="wrap">
   ${toolBlock ? toolBlock : ''}
@@ -378,7 +377,7 @@ for (const c of CALCS) {
       { q: 'Is the calculator free and private?', a: 'Yes — it runs in your browser and nothing you enter is sent anywhere.' },
     ],
     related: CALCS.filter(x => x !== c).map(x => [`/${x.slug}/`, `${x.exam} score calculator`]).concat([['/jee-main-rank-predictor/', 'JEE Main rank predictor'], ['/typing-test/', 'Typing test']]),
-    note: `Exam patterns are based on the latest official notifications (reviewed ${MONTH_YEAR}). Always confirm with the current notification — if the pattern changes, section-wise entries still let you calculate correctly.`,
+    note: `Exam patterns are based on the latest official notifications. Always confirm with the current notification — if the pattern changes, section-wise entries still let you calculate correctly.`,
   });
 }
 

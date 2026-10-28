@@ -36,7 +36,6 @@ for (const f of FIXES) {
   ${S.crumbsHtml(crumbs)}
   <h1>Fix: “${esc(f.titleText)}”</h1>
   <p class="lede">Got this error on an exam or job form? Resize your ${f.doc} to <strong>${p.w}×${p.h} px, ${p.min}–${p.max} KB</strong> below — it passes this check. Free, nothing uploaded.</p>
-  <p class="updated">Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
 </div></header>
 <main class="wrap">
   <div class="answer"><p><strong>Error:</strong> “${esc(f.error)}”</p><p>${f.means}</p></div>

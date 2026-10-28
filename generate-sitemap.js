@@ -110,7 +110,6 @@ const SEARCH_TERMS = fs.existsSync(path.join(ROOT, 'search-terms.json')) ? JSON.
 const TRUST_RE = /\s*<!-- TRUST:START -->[\s\S]*?<!-- TRUST:END -->/g;
 const SHARE_RE = /\s*<!-- SHARE:START -->[\s\S]*?<!-- SHARE:END -->/g;
 const HREFLANG_RE = /\s*<!-- HREFLANG -->[\s\S]*?<!-- \/HREFLANG -->/g;
-const MONTH_NOW = new Date().toLocaleString('en-IN', { month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
 const SEARCHED_RE =/\s*<!-- SEARCHED-AS:START -->[\s\S]*?<!-- SEARCHED-AS:END -->/g;
 function trimDesc(d) {
   const lim = 158;
@@ -177,8 +176,8 @@ for (const p of [...pagesList.map(p => p ? `${p}/index.html` : 'index.html'), '4
   out = out.replace(TRUST_RE, '').replace(SHARE_RE, '');
   if (/<main[^>]*>/.test(out) && p !== '404.html') {
     const strip = hi
-      ? `🔒 फोटो आपके फोन से बाहर नहीं जाती · ✓ आधिकारिक नोटिफिकेशन से मिलाया साइज · 🆓 फ्री, कोई साइन-अप नहीं · 🗓 अपडेट ${MONTH_NOW}`
-      : `🔒 Photos never leave your device · ✓ Sizes checked against official notifications · 🆓 Free, no sign-up · 🗓 Updated ${MONTH_NOW} · <a href="/resizer/updates/" style="color:inherit">What changed</a>`;
+      ? `🔒 फोटो आपके फोन से बाहर नहीं जाती · ✓ आधिकारिक नोटिफिकेशन से मिलाया साइज · 🆓 फ्री, कोई साइन-अप नहीं`
+      : `🔒 Photos never leave your device · ✓ Sizes checked against official notifications · 🆓 Free, no sign-up · <a href="/resizer/updates/" style="color:inherit">What changed</a>`;
     out = out.replace(/(<main[^>]*>)/, `$1\n  <!-- TRUST:START --><p class="ilx-trust" style="margin:0 0 16px;padding:9px 14px;border:1px solid #d1fae5;background:#f0fdf4;border-radius:12px;font-size:13px;line-height:1.6;color:#166534">${strip}</p><!-- TRUST:END -->`);
     const t = ((out.match(/<title>([^<]*)<\/title>/) || [])[1] || 'ILoveExams').replace(/&amp;/g, '&');
     const wa = `https://wa.me/?text=${encodeURIComponent(`${t} — free, exact size: https://ilovexams.in${self}`)}`;

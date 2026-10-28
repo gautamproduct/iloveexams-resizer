@@ -161,7 +161,7 @@ function generatePage(exam, docType) {
     <h1>${kw ? `${esc(short)} ${label} ${kw}${nd ? ' with Name &amp; Date' : ''} ${YEAR} — ${spec.w}×${spec.h}px, ${spec.min}–${spec.max} KB` : nd ? `${esc(short)} Photo with Name &amp; Date ${YEAR} — Size &amp; Free Maker` : `${esc(short)} ${label} Size ${YEAR} &amp; Free Online Resizer`}</h1>
     <p class="lede">Resize your ${esc(short)} ${lc} to <strong>${spec.w}×${spec.h} px</strong> and <strong>${spec.min}–${spec.max} KB</strong> as per the official guidelines — free, instant and 100% private.</p>
     <div class="trust"><span>✔ Exact ${esc(short)} size</span><span>✔ Auto KB compression</span><span>✔ Nothing uploaded</span></div>
-    <p class="updated">✓ Checked against the official notification · Last updated: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time>${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>
+    <p class="updated">✓ Checked against the official notification${seo.alt.length ? ` · Also searched as: ${seo.alt.map(esc).join(', ')}` : ''}</p>
   </div>
 </header>
 
@@ -248,7 +248,7 @@ function generatePage(exam, docType) {
     <p style="margin:14px 0 0;font-size:14px"><a href="/resizer/${cat.hub}/">All ${esc(cat.title)} photo &amp; signature sizes →</a> · <a href="/resizer/photo-signature-size-chart/">Full exam size chart ${YEAR} →</a> · <a href="/resizer/size/${spec.w}x${spec.h}-pixels/">Resize any image to ${spec.w}×${spec.h}px →</a></p>
   </section>
 
-  <p class="note">Specifications on this page are compiled from recent official ${esc(exam.name)} notifications and checked regularly (last review: ${MONTH_YEAR}). Always cross-check with the latest official notification before submitting — if the size has changed, you can edit width, height and KB directly in the tool. Spotted a change? <a href="mailto:gautamcoder@gmail.com?subject=${encodeURIComponent(`Size update: ${exam.name} ${lc}`)}">Tell us</a> and we will update this page.</p>
+  <p class="note">Specifications on this page are compiled from recent official ${esc(exam.name)} notifications and checked regularly. Always cross-check with the latest official notification before submitting — if the size has changed, you can edit width, height and KB directly in the tool. Spotted a change? <a href="mailto:gautamcoder@gmail.com?subject=${encodeURIComponent(`Size update: ${exam.name} ${lc}`)}">Tell us</a> and we will update this page.</p>
 
   ${S.adSlot()}
 </main>

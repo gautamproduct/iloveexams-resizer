@@ -469,7 +469,7 @@ for (const g of GUIDES) {
 <header class="hero"><div class="hero-in">
   ${S.crumbsHtml(crumbs)}
   <h1>${esc(g.h1)}</h1>
-  <p class="updated" style="margin-top:6px">By the ILoveExams Team · ${g.minutes} min read · Updated <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time></p>
+  <p class="updated" style="margin-top:6px">By the ILoveExams Team · ${g.minutes} min read · Published <time datetime="${g.published || PUBLISHED}">${new Date(g.published || PUBLISHED).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</time></p>
 </div></header>
 <main class="wrap">
   <article class="card guide">${g.body}</article>

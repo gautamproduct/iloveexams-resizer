@@ -52,7 +52,7 @@ for (const slug of HINDI_EXAMS) {
   <h1>${esc(short)} ${hiDoc} साइज ${YEAR} — फ्री ऑनलाइन रिसाइज़र</h1>
   <p class="lede">अपनी ${esc(short)} ${hiDoc} को <strong>${sp.w}×${sp.h} px</strong> और <strong>${sp.min}–${sp.max} KB</strong> में बदलें — फ्री, तुरंत और 100% प्राइवेट।</p>
   <div class="trust"><span>✔ सही ${esc(short)} साइज</span><span>✔ अपने आप KB कम</span><span>✔ कोई अपलोड नहीं</span></div>
-  <p class="updated">✓ आधिकारिक नोटिफिकेशन से मिलाया गया · अपडेट: <time datetime="${S.ISO_DATE}">${MONTH_YEAR}</time> · <a href="/resizer/${dir}/">English</a></p>
+  <p class="updated">✓ आधिकारिक नोटिफिकेशन से मिलाया गया · <a href="/resizer/${dir}/">English</a></p>
 </div></header>
 <main class="wrap">
   ${S.toolFrame(`/resizer/?exam=${slug}&document=${doc}&embed=1`, `${short} ${hiDoc} रिसाइज़र — ${sp.w}×${sp.h}px, ${sp.min}–${sp.max} KB`)}
