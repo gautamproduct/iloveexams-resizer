@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
- * Search Console queries → the exact words people type, printed on the page they belong to.
+ * Search Console queries → the page each one belongs on (a report for planning pages and titles).
  *
  *   node search-terms.js ~/Downloads/<export>/Queries.csv [more Queries.csv …]
  *
  * Merges every export into search-terms.json ({ "/resizer/…/": [{ q, imp }] }, impressions summed
  * per query, max per export so overlapping 7/28-day exports don't double count).
- * generate-sitemap.js then adds a "People also search" card with those exact phrases to each page.
+ * Used as a report: which page each search lands on, and which searched sizes have no page.
+ * (Printing these phrases on pages was removed — near-identical query lists read as keyword stuffing.)
  * Queries it can't place are listed so a page or rule can be added for them.
  */
 const fs = require('fs');

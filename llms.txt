@@ -83,7 +83,7 @@ Images are processed in the user's browser and never uploaded. All tools are fre
 - APSC (Assam): photo 200×250 px, 20–50 KB; signature 140×60 px, 10–20 KB — https://ilovexams.in/resizer/apsc-photo-resize/
 - MPPSC: photo 275×354 px, 25–200 KB; signature 275×118 px, 25–200 KB — https://ilovexams.in/resizer/mppsc-photo-resize/
 - JPSC (Jharkhand): photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/jpsc-photo-resize/
-- TNPSC: photo 275×354 px, 20–50 KB; signature 275×118 px, 10–20 KB — https://ilovexams.in/resizer/tnpsc-photo-resize/
+- TNPSC: photo 275×354 px, 20–50 KB; signature 300×130 px, 10–20 KB — https://ilovexams.in/resizer/tnpsc-photo-resize/
 - KPSC (Kerala): photo 150×200 px, 20–30 KB; signature 150×100 px, 20–30 KB — https://ilovexams.in/resizer/kpsc-photo-resize/
 - GPSC (Gujarat): photo 130×180 px, 10–15 KB; signature 275×90 px, 10–15 KB — https://ilovexams.in/resizer/gpsc-photo-resize/
 - RPSC / RAS: photo 240×320 px, 20–50 KB; signature 280×80 px, 20–50 KB — https://ilovexams.in/resizer/rpsc-photo-resize/

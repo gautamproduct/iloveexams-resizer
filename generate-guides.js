@@ -530,6 +530,7 @@ ${S.footer()}`;
 // ─── Size updates log (trust: what changed and when) ─────────────────────────
 {
   const LOG = [
+    ['2026-11-07', '<strong>TNPSC signature</strong> now 300×130 px, 10–20 KB: the TNPSC portal rejects signatures under 300×100 px (“Signature must be at least 300px width and 100px height”). Exam forms open now refreshed for November.', ['/resizer/tnpsc-signature-resize/', '/resizer/fix/signature-at-least-300px-width-100px-height/']],
     ['2026-10-28', 'Added <strong>13 exams</strong>: RRB NTPC, RRB Group D, RRB JE, CTET, DSSSB, Navodaya JNVST, Sainik School AISSEE, BITSAT, MHT CET, KCET, REET, UPSSSC PET and CSBC Bihar Police. Sizes follow each board’s portal; always confirm in your notification.', ['/resizer/rrb-ntpc-photo-resize/', '/resizer/ctet-photo-resize/']],
     ['2026-10-28', 'New <strong>exam form calendar</strong> (290+ exams by usual form month) and <strong>upload-error fix pages</strong> for real portal messages; Hindi pages for 42 exams.', ['/resizer/exam-forms-open-now/', '/resizer/fix/']],
     ['2026-10-03', 'TNPSC and Kerala PSC photo pages now add your <strong>name and photo date</strong> on the photo, as both commissions require.', ['/resizer/tnpsc-photo-resize/', '/resizer/kpsc-photo-resize/']],

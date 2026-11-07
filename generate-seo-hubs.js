@@ -248,7 +248,7 @@ ${S.footer([{ href: `/resizer/${cat.hub}/`, t: cat.title }])}`;
 {
   const dirName = 'postcard-size-photo-resize';
   const canonical = `${SITE}/resizer/${dirName}/`;
-  const title = `Post Card Size Photo in cm & Inch (4×6 inch, 10×15 cm) – Free`;
+  const title = `Postcard Size Photo (4×6 inch, Postal Size) – Resize Online Free`;
   const desc = `Postcard size photo is 4×6 inch (10×15 cm): 600×900 px at 150 DPI or 1200×1800 px at 300 DPI. Resize your photo to postcard / postal size free — no upload.`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'Postcard Size Photo', url: canonical }];
   const faqs = [
@@ -359,16 +359,11 @@ for (const s of sizeList) {
   const kbLabel = min ? `${min}–${max} KB` : `under ${max} KB`;
   // Common print sizes people search by (300 DPI unless noted) — shown in the title so the snippet answers "what size is this?"
   const phys = PHYSICAL[`${w}x${h}`];
-  // Exact top searches from Search Console (search-terms.json) where the template wording doesn't match
-  const TITLE_AS_SEARCHED = {
-    '140x60': '60px 140px Signature (140×60 Pixels) – 20 KB or 40 KB, Free',
-    '100x120': '100*120 Photo Size (100×120 Pixels) – Under 50 KB, Free',
-  };
-  const title = TITLE_AS_SEARCHED[`${w}x${h}`] || (w === h
-    ? `${w} Pixel Width and Height ${max} KB ${noun} (${w}×${h}${phys ? `, ${phys}` : `, ${w}*${h}`}) – Free`
+  const title = w === h
+    ? `${w} Pixel Width and Height ${noun} (${w}×${h}${phys ? `, ${phys}` : ''}) – ${max} KB, Free`
     : phys
       ? `${w}×${h} Pixels ${noun} (${phys}) – ${kbLabel}, Free Resizer`
-      : `${w}×${h} ${noun} Size (${h}×${w} px, ${w}*${h}) – ${kbLabel}, Free`);
+      : `${w}×${h} ${noun} Size (${h}×${w} px, ${w}*${h}) – ${kbLabel}, Free`;
   const desc = `Resize any ${noun.toLowerCase()} to exactly ${w}×${h} px (${w}x${h}${w !== h ? `, also written ${h}×${w}` : ''}${phys ? `, ${phys}` : ''}) and ${kbLabel} in JPG, free and in your browser.${users.length ? ` Used by ${[...new Set(users.map(u => seoOf(u.e).short))].slice(0, 3).join(', ')} and more.` : ''}`;
   const crumbs = [{ name: 'Home', url: `${SITE}/` }, { name: 'Exam Resizer', url: `${SITE}/resizer/` }, { name: 'By Pixel Size', url: `${SITE}/resizer/size/` }, { name: `${w}×${h} px`, url: canonical }];
   const cm = d => `${S.toCm(w, d)} × ${S.toCm(h, d)} cm`;

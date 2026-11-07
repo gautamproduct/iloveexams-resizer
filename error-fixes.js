@@ -6,12 +6,17 @@ const FIXES = [
   {
     slug: 'signature-at-least-300px-width-100px-height',
     short: 'Signature at least 300×100 px',
-    titleText: 'Signature must be at least 300px width and 100px height',
+    titleText: 'Signature must be at least 300px width and 100px height (TNPSC)',
     error: 'Signature must be at least 300px width and 100px height. Your file is 275px × 118px.',
-    match: /at least 300 ?px width and 100 ?px height/,
+    match: /at least 300 ?px width and 100 ?px height|300 ?px width and 100 ?px height/,
     doc: 'signature',
-    means: 'The form wants a signature image that is <strong>at least 300 pixels wide and 100 pixels tall</strong>. Your file (for example 275×118 px, the SSC/NTA size) is too narrow. Make it bigger, not smaller — 350×150 px keeps the same shape and clears both minimums.',
-    preset: { w: 350, h: 150, min: 10, max: 50 },
+    means: 'This is the <strong>TNPSC</strong> one-time registration check: the signature must be <strong>at least 300 pixels wide and 100 pixels tall</strong>. A 275×118 px file (an older TNPSC size, also used by NTA) is too narrow. Make it bigger, not smaller — <strong>300×130 px</strong> keeps the same shape, clears both minimums and stays within TNPSC’s 10–20 KB.',
+    preset: { w: 300, h: 130, min: 10, max: 20 },
+    faq: [
+      { q: 'Which exam shows this error?', a: 'TNPSC (Tamil Nadu Public Service Commission) — people search it as “tnpsc signature compressor 300px width and 100px height”. Other portals with a 300×100 minimum accept the same 300×130 px file. <a href="/resizer/tnpsc-signature-resize/">TNPSC signature resizer</a>.' },
+      { q: 'My file is 276×118 or 275×115 px — same fix?', a: 'Yes. Any width under 300 px fails. Resize to 300×130 px here; the KB stays within 10–20 KB.' },
+      { q: 'Can I just stretch the image to 300 px wide?', a: 'Stretching only the width squashes the signature. This tool scales both sides together and crops to 300×130, so it still looks like your signature.' },
+    ],
   },
   {
     slug: 'photo-max-width-300px-max-height-450px',

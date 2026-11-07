@@ -58,7 +58,7 @@ const EXAMS = [
   {slug:'apsc',         name:'APSC (Assam)',              cat:'State PSC', photo:{w:200,  h:250,  min:20,  max:50,   fmt:'JPG'}, sig:{w:140,  h:60,   min:10,  max:20,  fmt:'JPG'}},
   {slug:'mppsc',        name:'MPPSC',                    cat:'State PSC', photo:{w:275,  h:354,  min:25,  max:200,  fmt:'JPG'}, sig:{w:275,  h:118,  min:25,  max:200, fmt:'JPG'}},
   {slug:'jpsc',         name:'JPSC (Jharkhand)',          cat:'State PSC', photo:{w:275,  h:354,  min:20,  max:50,   fmt:'JPG'}, sig:{w:275,  h:118,  min:10,  max:20,  fmt:'JPG'}},
-  {slug:'tnpsc',        name:'TNPSC',                    cat:'State PSC', photo:{w:275,  h:354,  min:20,  max:50,   fmt:'JPG'}, sig:{w:275,  h:118,  min:10,  max:20,  fmt:'JPG'}},
+  {slug:'tnpsc',        name:'TNPSC',                    cat:'State PSC', photo:{w:275,  h:354,  min:20,  max:50,   fmt:'JPG'}, sig:{w:300,  h:130,  min:10,  max:20,  fmt:'JPG'}}, // portal rejects < 300×100: "Signature must be at least 300px width and 100px height"
   {slug:'kpsc',         name:'KPSC (Kerala)',             cat:'State PSC', photo:{w:150,  h:200,  min:20,  max:30,   fmt:'JPG'}, sig:{w:150,  h:100,  min:20,  max:30,  fmt:'JPG'}},
   {slug:'gpsc',         name:'GPSC (Gujarat)',            cat:'State PSC', photo:{w:130,  h:180,  min:10,  max:15,   fmt:'JPG'}, sig:{w:275,  h:90,   min:10,  max:15,  fmt:'JPG'}},
   {slug:'rpsc',         name:'RPSC / RAS',               cat:'State PSC', photo:{w:240,  h:320,  min:20,  max:50,   fmt:'JPG'}, sig:{w:280,  h:80,   min:20,  max:50,  fmt:'JPG'}},
@@ -225,6 +225,7 @@ const GUIDES = {
     'Use a recent photo with a plain light background; the same photo appears on your admit card.',
     'Prepare the signature (150×100 px, 20–30 KB) before you start the form so you can finish in one sitting.'] },
   'tnpsc': { body: 'Tamil Nadu Public Service Commission', url: 'https://www.tnpsc.gov.in/', tips: [
+    'The TNPSC portal rejects signatures smaller than <strong>300×100 px</strong> (“Signature must be at least 300px width and 100px height”). This page makes a 300×130 px, 10–20 KB signature that passes.',
     'Photo and signature are uploaded once in your <strong>One Time Registration (OTR)</strong> and reused for every TNPSC exam you apply to.',
     'Print your name in CAPITAL letters exactly as on your SSLC mark sheet, and the date the photo was taken (DD/MM/YYYY), at the bottom of the photo.',
     'The photo must be recent — within three months of the notification.'] },
@@ -257,16 +258,18 @@ const GUIDES = {
 // Application forms open / opening now — drives /resizer/exam-forms-open-now/, a banner + "<year> form" title
 // on each exam page, and the homepage link. Windows are from past NTA/UPSC/SSC cycles and news reports;
 // say "expected" until the official notice is out. Update or remove rows as windows close.
-const OPEN_FORMS_UPDATED = '2026-10-28';
+const OPEN_FORMS_UPDATED = '2026-11-07';
 const OPEN_FORMS = [
-  { slug: 'jee-main',  cycle: 'JEE Main 2027 (Session 1)', window: 'Expected ~28 Oct – late Nov 2026 · exam 22–30 Jan 2027', site: 'jeemain.nta.nic.in', url: 'https://jeemain.nta.nic.in/' },
-  { slug: 'ssc-gd',    cycle: 'SSC GD Constable 2027',     window: 'Expected Oct – Nov 2026 · CBT Jan–Mar 2027',           site: 'ssc.gov.in',          url: 'https://ssc.gov.in/' },
-  { slug: 'ugc-net',   cycle: 'UGC NET December 2026',     window: 'Expected Oct – Nov 2026',                              site: 'ugcnet.nta.nic.in',   url: 'https://ugcnet.nta.nic.in/' },
-  { slug: 'afcat',     cycle: 'AFCAT 1/2027',              window: 'Expected Nov – mid Dec 2026 · exam late Jan 2027',     site: 'afcat.cdac.in',       url: 'https://afcat.cdac.in/' },
-  { slug: 'nabard',    cycle: 'NABARD Grade A 2026',       window: 'Expected Nov 2026',                                    site: 'nabard.org',          url: 'https://www.nabard.org/' },
-  { slug: 'uppsc',     cycle: 'UPPSC RO / ARO 2026',       window: 'Reported last date 26 Nov 2026',                       site: 'uppsc.up.nic.in',     url: 'https://uppsc.up.nic.in/' },
-  { slug: 'upsc-nda',  cycle: 'NDA & NA (I) 2027',         window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
-  { slug: 'upsc-cds',  cycle: 'CDS (I) 2027',              window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
+  { slug: 'jee-main',   cycle: 'JEE Main 2027 (Session 1)',     window: 'Open now · last date 22 Nov 2026 (late fee till 26 Nov) · exam 22–30 Jan 2027', site: 'jeemain.nta.nic.in',  url: 'https://jeemain.nta.nic.in/' },
+  { slug: 'rrb-ntpc',   cycle: 'RRB Isolated Categories 2026',  window: 'Reported open 5 Nov – 4 Dec 2026',                    site: 'rrbapply.gov.in',     url: 'https://www.rrbapply.gov.in/' },
+  { slug: 'upsssc-pet', cycle: 'UPSSSC Inter-level posts 2026', window: 'Reported last date 1 Dec 2026',                        site: 'upsssc.gov.in',       url: 'http://upsssc.gov.in/' },
+  { slug: 'uppsc',      cycle: 'UPPSC RO / ARO 2026',           window: 'Reported last date 26 Nov 2026',                       site: 'uppsc.up.nic.in',     url: 'https://uppsc.up.nic.in/' },
+  { slug: 'jkssb',      cycle: 'JKSSB Junior Engineer 2026',    window: 'Reported last date 29 Dec 2026',                       site: 'jkssb.nic.in',        url: 'https://jkssb.nic.in/' },
+  { slug: 'ssc-gd',     cycle: 'SSC GD Constable 2027',         window: 'Expected Nov – Dec 2026 · CBT Jan–Mar 2027',           site: 'ssc.gov.in',          url: 'https://ssc.gov.in/' },
+  { slug: 'afcat',      cycle: 'AFCAT 1/2027',                  window: 'Expected Nov – mid Dec 2026 · exam late Jan 2027',     site: 'afcat.cdac.in',       url: 'https://afcat.cdac.in/' },
+  { slug: 'nabard',     cycle: 'NABARD Grade A 2026',           window: 'Expected Nov – Dec 2026',                              site: 'nabard.org',          url: 'https://www.nabard.org/' },
+  { slug: 'upsc-nda',   cycle: 'NDA & NA (I) 2027',             window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
+  { slug: 'upsc-cds',   cycle: 'CDS (I) 2027',                  window: 'Expected Dec 2026 – Jan 2027',                         site: 'upsconline.gov.in',   url: 'https://upsconline.gov.in/' },
 ];
 
 module.exports = { OPEN_FORMS, OPEN_FORMS_UPDATED, GUIDES, EXAMS, SEO, seoOf, CATEGORIES, BANK_EXTRA_EXAMS, BANK_EXTRA_DOCS, DECLARATION_TEXT, EXTRA_SIZES, NEET_POSTCARD };
